@@ -7,6 +7,7 @@ Aelliana Seidenstein github lesson edit
 COntributer: Gabe Carlton
 Contributer: Harmony Peura
 Contributor: Grayson Jones
+Contributor: Eric Bae
 
 
 ## Purpose
