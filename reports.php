@@ -110,6 +110,7 @@ $(function() {
             <form class="report_select" method="post">
         <?php
 	
-        <?PHP include('footer.inc'); ?>
+        #<?PHP
+		 include('footer.inc'); ?>
 
 </body>
