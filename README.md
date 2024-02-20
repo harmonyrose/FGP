@@ -1,4 +1,6 @@
 
+Aelliana Seidenstein github lesson edit
+
 # Old Dominion Humane Society (ODHS) Medicine Tracker
 Contributer: Harmony Peura
 Contributor: Grayson Jones
