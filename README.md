@@ -8,6 +8,7 @@ COntributer: Gabe Carlton
 Contributer: Harmony Peura
 Contributor: Grayson Jones
 Contributor: Eric Bae
+Contributor: Joshua Cottrell
 
 
 ## Purpose
