@@ -65,6 +65,35 @@ function find_vendors() {
     return $vendors;
 }
 
+function find_next_id() {
+    $query = "SELECT COUNT(*) FROM dbGiftCardVendors";
+    $connection = connect();
+
+    if (!$connection) {
+        // Connection failed, return null or handle error accordingly
+        return null;
+    }
+
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        // Query execution failed
+        mysqli_close($connection);
+        return null;
+    }
+
+    $raw = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($connection);
+
+    if (!$raw || empty($raw)) {
+        // No rows returned
+        return null;
+    }
+
+    return $raw[0]['COUNT(*)'];
+}
+
 function make_a_vendor($result_row) {
     $theVendor = new Vendor(
                     $result_row['vendorID'],
@@ -73,4 +102,23 @@ function make_a_vendor($result_row) {
                     $result_row['vendorLocation']
                 );   
     return $theVendor;
+}
+
+function create_vendor($vendor) {
+    $connection = connect();
+    $id = find_next_id() + 1;
+	$vendorName = $vendor["vendorName"];
+    $vendorType = $vendor["vendorType"];
+	$vendorLocation = $vendor["vendorLocation"];
+    $query = "
+        INSERT INTO dbGiftCardVendors (vendorID, vendorName, vendorType, vendorLocation)
+        values ('$id','$vendorName','$vendorType', '$vendorLocation')
+    ";
+    $result = mysqli_query($connection, $query);
+    // if (!$result) {
+    //     return null;
+    // }
+    mysqli_commit($connection);
+    mysqli_close($connection);
+    return $id;
 }
