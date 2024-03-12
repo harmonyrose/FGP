@@ -71,8 +71,8 @@
                 </div>
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="addEvent.php">
-                        <img src="images/new-event.svg">
-                        <span>Add Appointment</span>
+                        <img src="images/create-report.svg">
+                        <span>Points Program Form</span>
                     </div>
                 <?php endif ?>
 				<div class="dashboard-item" data-link="addAnimal.php">
