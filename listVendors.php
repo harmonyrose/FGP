@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 function displaySearchRow($vendor){
     echo "
     <tr>
@@ -31,6 +34,7 @@ function displaySearchRow($vendor){
         die();
     }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,6 +45,10 @@ function displaySearchRow($vendor){
         <?php require_once('header.php') ?>
         <h1>Vendor List</h1>
         <form id="vendor-search" class="general" method="get">
+        <?php if (isset($_GET['createSuccess'])): ?>
+            <div class="happy-toast">Vendor created successfully!</div>
+        <?php endif ?>
+        <a class="button cancel" href="addVendors.php">Add vendors</a>
             <?php 
                 require_once('include/input-validation.php');
                 require_once('database/dbGiftCardVendors.php');
