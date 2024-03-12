@@ -96,7 +96,7 @@
         <?php require_once('header.php') ?>
         <h1>Points Program</h1>
         <main class="date">
-            <h2>Help Request Form</h2>
+            <h2>Points Program Form</h2>
             <form id="new-event-form" method="post">
                 <label for="name">* Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter contact name">
