@@ -135,6 +135,10 @@
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
                 </div>
+                <div class="dashboard-item" data-link="giftCardManagement.php">
+                    <img src="images/giftcard.svg">
+                    <span>Gift Card Management</span>
+                </div>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>
