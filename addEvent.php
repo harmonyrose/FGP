@@ -98,8 +98,123 @@
         <main class="date">
             <h2>Help Request Form</h2>
             <form id="new-event-form" method="post">
+                <label for="name">* Name </label>
+                <input type="text" id="name" name="name" required placeholder="Enter contact name">
                 <label for="name">* Address </label>
                 <input type="text" id="address" name="address" required placeholder="Enter address">
+                <label for="name">Freezer Meals & Snacks </label>
+                    <p><b>We offer two freezer meals and snacks per month at NO CHARGE to your points.</b> 
+                    Freezer meals will be delivered on the third <b>Tuesday</b> of even months
+                    (February, April, June, August, October and December) and snacks will
+                     be delivered on the third <b>Tuesday</b> of the odd months 
+                     (January, March, May, July, September and November)  
+                      On freezer meal months, we ask that you leave a cooler on your doorstep.  
+                      A volunteer will leave the meals in the cooler without ringing the doorbell
+                       and there's no need for you to be home. 
+                </p>
+                <label for="name">* How many freezer meals would you like? </label>
+                <ul>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 2 Meals per month (Free)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 4 meals per month (2 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 6 meals per month (3 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 8 meals per month (4 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> We do not want ANY freezer meals</li>
+                </ul>
+                <label for="name">* Are there any food allergies that we need to be aware of? </label>
+                <ul>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Peanuts"> Peanuts</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Tree Nuts"> Tree Nuts</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Gluten"> Gluten</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Soy"> Soy</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Egg"> Egg</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Dairy"> Dairy</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="No Known Allergies"> No Known Allergies</li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="Other:"> Other: <input type= "text" id="name2" name="name2" /></li>
+                </ul>
+                <label for="name">* What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
+                <ul>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Crackers"> Crackers</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Cookies"> Cookies</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Chips"> Chips</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Granola Bars"> Granola Bars</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Cereal"> Cereal</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Nuts"> Nuts</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Fruit Snacks"> Fruit Snacks</li>
+                <li><input type="checkbox" id="snacks" name="snacks" value="Other:"> Other: <input type= "text" id="name2" name="name2" /></li>
+                </ul>
+                <label for="name">* Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>
+                <input type="text" id="snack_notes" name="snack_notes" required placeholder="Your answer">
+                <label for="name">Grocery Store Gift Cards </label>
+                <p>We only offer gift cards from stores that allow us to 
+                    purchase the cards online.  Shoppers Food Warehouse 
+                    and Aldi do not currently have that service. 
+                    Please note that Walmart does not allow shipments to
+                    PO Boxes. 
+                </p>
+                <label for="name"> Store Selection </label>
+                <style>
+                    th, td {
+                        padding: 8px;
+                        text-align: center;
+                    }
+                </style>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>$25 Gift Card<br>(1 point)</th>
+                            <th>$50 Gift Card<br>(2 points)</th>
+                            <th>$75 Gift Card<br>(3 points)</th>
+                            <th>$100 Gift Card<br>(4 points)</th>
+                            <th>$200 Gift Card<br>(8 points)</th>
+                            <th>$300 Gift Card<br>(12 points)</th>
+                            <th>$400 Gift Card<br>(16 points)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Food Lion</td>
+                            <td><input type="checkbox" name="foodlion_25"></td>
+                            <td><input type="checkbox" name="foodlion_50"></td>
+                            <td><input type="checkbox" name="foodlion_75"></td>
+                            <td><input type="checkbox" name="foodlion_100"></td>
+                            <td><input type="checkbox" name="foodlion_200"></td>
+                            <td><input type="checkbox" name="foodlion_300"></td>
+                            <td><input type="checkbox" name="foodlion_400"></td>
+                        </tr>
+                        <tr>
+                            <td>Giant</td>
+                            <td><input type="checkbox" name="giant_25"></td>
+                            <td><input type="checkbox" name="giant_50"></td>
+                            <td><input type="checkbox" name="giant_75"></td>
+                            <td><input type="checkbox" name="giant_100"></td>
+                            <td><input type="checkbox" name="giant_200"></td>
+                            <td><input type="checkbox" name="giant_300"></td>
+                            <td><input type="checkbox" name="giant_400"></td>
+                        </tr>
+                        <tr>
+                            <td>Walmart</td>
+                            <td><input type="checkbox" name="walmart_25"></td>
+                            <td><input type="checkbox" name="walmart_50"></td>
+                            <td><input type="checkbox" name="walmart_75"></td>
+                            <td><input type="checkbox" name="walmart_100"></td>
+                            <td><input type="checkbox" name="walmart_200"></td>
+                            <td><input type="checkbox" name="walmart_300"></td>
+                            <td><input type="checkbox" name="walmart_400"></td>
+                        </tr>
+                        <tr>
+                            <td>Wegmans</td>
+                            <td><input type="checkbox" name="wegmans_25"></td>
+                            <td><input type="checkbox" name="wegmans_50"></td>
+                            <td><input type="checkbox" name="wegmans_75"></td>
+                            <td><input type="checkbox" name="wegmans_100"></td>
+                            <td><input type="checkbox" name="wegmans_200"></td>
+                            <td><input type="checkbox" name="wegmans_300"></td>
+                            <td><input type="checkbox" name="wegmans_400"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--Commented out original ODHS code-->
                 <!--<label for="name">* Appointment Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name">
                 <label for="name">* Abbreviated Name</label>
