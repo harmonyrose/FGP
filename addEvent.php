@@ -98,8 +98,10 @@
         <main class="date">
             <h2>New Appointment Form</h2>
             <form id="new-event-form" method="post">
-                <label for="name">* Appointment Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter name"> 
+                <label for="name">* Address </label>
+                <input type="text" id="address" name="address" required placeholder="Enter address">
+                <!--<label for="name">* Appointment Name </label>
+                <input type="text" id="name" name="name" required placeholder="Enter name">
                 <label for="name">* Abbreviated Name</label>
                 <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
                 <label for="name">* Date </label>
@@ -156,6 +158,7 @@
                     ?>
                 </select><br/>
                 <p></p>
+                -->
                 <input type="submit" value="Create Event">
             </form>
                 <?php if ($date): ?>
