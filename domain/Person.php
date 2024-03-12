@@ -20,6 +20,15 @@ $accessLevelsByRole = [
 	'superadmin' => 3
 ];
 
+enum Status
+{
+	case active;
+	case inactive;
+	case remission;
+	case survivor;
+	case stargazer;
+}
+
 class Person {
 	private $id;         // id (unique key) = first_name . phone1
 	private $start_date; // format: 99-03-12
@@ -83,7 +92,7 @@ class Person {
 			$notes, $pass,
 			$suns, $sune, $mons, $mone, $tues, $tuee, $weds, $wede,
 			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, $diagnosis,
-			$diagnosis_date,$hospital) {
+			$diagnosis_date,$hospital,$permission_to_confirm) {
 		$this->id = $e;
 		$this->start_date = $sd;
 		$this->venue = $v;
@@ -152,6 +161,7 @@ class Person {
 		$this->diagnosis =$diagnosis;
 		$this->diagnosis_date=$diagnosis_date;
 		$this->hospital=$hospital;
+		$this->permission_to_confirm=$permission_to_confirm;
 	}
 
 	function get_id() {
@@ -396,5 +406,9 @@ class Person {
 
 	function get_hospital() {
 		return $this->hopsital;
+	}
+
+	function get_permission_to_confirm() {
+		return $this->permission_to_confirm;
 	}
 }

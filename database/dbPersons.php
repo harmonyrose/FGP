@@ -76,7 +76,8 @@ function add_person($person) {
             $person->get_gender() . '","' .
             $person->get_diagnosis() . '","' .
             $person->get_diagnosis_date() . '","' .
-            $person->get_hospital() .
+            $person->get_hospital() . '","' .
+            $person->get_permission_to_contact() .
             '");'
         );							
         mysqli_close($con);
@@ -328,7 +329,8 @@ function make_a_person($result_row) {
                     $result_row['gender'],
                     $result_row['diagnosis'],
                     $result_row['diagnosis_date'],
-                    $result_row['hospital']
+                    $result_row['hospital'],
+                    $result_row['permission_to_confirm']
                 );   
     return $thePerson;
 }
