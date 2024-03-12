@@ -31,8 +31,8 @@ session_start();
         <nav>
             <span id="nav-top">
                 <span class="logo">
-                    <img src="images/gwynethsgift.png">
-                        <span id="vms-logo"> MedTracker </span>
+                    <img src="images/fgp-logo.png">
+                        <span id="vms-logo"> Fairy Godmother Project </span>
                         </span>
                     <img id="menu-toggle" src="images/menu.png">
                 </span>

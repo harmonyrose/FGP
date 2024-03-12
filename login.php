@@ -82,7 +82,7 @@
     <body>
         <?php require_once('header.php') ?>
         <main class="login">
-            <h1>ODHS MedTracker Login</h1>
+            <h1>FGP Login</h1>
             <?php if (isset($_GET['registerSuccess'])): ?>
                 <div class="happy-toast">
                     Your registration was successful! Please log in below.
@@ -104,7 +104,7 @@
 
             </form>
             <p></p>
-            <p>Looking for <a href="https://www.olddominionhumanesociety.org">Old Dominion Humane Society</a>?</p>
+            <p>Looking for <a href="https://www.fgpinfo.org/">Fairy Godmother Project</a>?</p>
         </main>
     </body>
 </html>
