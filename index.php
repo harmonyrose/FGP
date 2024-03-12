@@ -25,7 +25,7 @@
 <html>
     <head>
         <?php require('universal.inc'); ?>
-        <title>ODHS Medicine Tracker | Dashboard</title>
+        <title>FGP | Dashboard</title>
     </head>
     <body>
         <?php require('header.php'); ?>
