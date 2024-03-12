@@ -73,7 +73,10 @@ function add_person($person) {
             $person->get_saturday_availability_end() . '","' .
             $person->get_profile_pic() . '","' .
             $person->is_password_change_required() . '","' .
-            $person->get_gender() .
+            $person->get_gender() . '","' .
+            $person->get_diagnosis() . '","' .
+            $person->get_diagnosis_date() . '","' .
+            $person->get_hospital() .
             '");'
         );							
         mysqli_close($con);
@@ -322,7 +325,10 @@ function make_a_person($result_row) {
                     $result_row['saturdays_start'],
                     $result_row['saturdays_end'],
                     $result_row['force_password_change'],
-                    $result_row['gender']
+                    $result_row['gender'],
+                    $result_row['diagnosis'],
+                    $result_row['diagnosis_date'],
+                    $result_row['hospital']
                 );   
     return $thePerson;
 }

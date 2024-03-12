@@ -35,8 +35,10 @@ class Person {
 	private $phone1type; // home, cell, or work
 	private $phone2;   // secondary phone -- home, cell, or work
 	private $phone2type; // home, cell, or work
-	private $birthday;     // format: 64-03-12
+	//child dob
+	private $birthday;     // format: 64-03-12 
 	private $email;
+	//parent contact name and number
 	private $contact_name;   // emergency contact name
 	private $contact_num;   // emergency cont. phone number
 	private $relation;   // relation to emergency contact
@@ -67,6 +69,9 @@ class Person {
 	private $saturdaysEnd;
 	private $mustChangePassword;
 	private $gender;
+	private $diagnosis;
+	private $diagnosis_date;
+	private $hopital;
 
 	function __construct($f, $l, $v, $a, $c, $s, $z, $pp, $p1, $p1t, $p2, $p2t, $e, 
 			//$ts, $comp, $cam, $tran, 
@@ -77,7 +82,8 @@ class Person {
 			//$hdyh, 
 			$notes, $pass,
 			$suns, $sune, $mons, $mone, $tues, $tuee, $weds, $wede,
-			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender) {
+			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, $diagnosis,
+			$diagnosis_date,$hospital) {
 		$this->id = $e;
 		$this->start_date = $sd;
 		$this->venue = $v;
@@ -143,6 +149,9 @@ class Person {
 		$this->saturdaysStart = $sats;
 		$this->saturdaysEnd = $sate;
 		$this->gender = $gender;
+		$this->diagnosis =$diagnosis;
+		$this->diagnosis_date=$diagnosis_date;
+		$this->hospital=$hospital;
 	}
 
 	function get_id() {
@@ -375,5 +384,17 @@ class Person {
 
 	function get_gender() {
 		return $this->gender;
+	}
+
+	function get_diagnosis() {
+		return $this->diagnosis;
+	}
+
+	function get_diagnosis_date() {
+		return $this->diagnosis_date;
+	}
+
+	function get_hospital() {
+		return $this->hopsital;
 	}
 }
