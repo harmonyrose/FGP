@@ -47,11 +47,11 @@
                 <div class="happy-toast">Volunteer registered successfully!</div>
             <?php endif ?> -->
             <div id="dashboard">
-                <div class="dashboard-item" data-link="calendar.php">
+                <div class="dashboard-item" data-link="listVendors.php">
                     <img src="images/list.svg">
                     <span>List Vendors</span>
                 </div>
-                <div class="dashboard-item" data-link="inde x.php">
+                <div class="dashboard-item" data-link="index.php">
                     <img src="images/dashboard.svg">
                     <span>Dashboard</span>
                 </div>
