@@ -81,6 +81,7 @@ class Person {
 	private $diagnosis;
 	private $diagnosis_date;
 	private $hopital;
+	private $permission_to_confirm;
 	private $expected_treatment_end_date;
 	private $services_interested_in;
 	private $allergies;
@@ -98,8 +99,10 @@ class Person {
 			//$hdyh, 
 			$notes, $pass,
 			$suns, $sune, $mons, $mone, $tues, $tuee, $weds, $wede,
-			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, $diagnosis,
-			$diagnosis_date,$hospital,$permission_to_confirm,$expected_treatment_end_date,$services_interested_in,$allergies,$sibling_info,$can_share_contact_info,$username) {
+			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, 
+			$diagnosis,$diagnosis_date,$hospital,$permission_to_confirm,
+			$expected_treatment_end_date, $services_interested_in,$allergies,
+			$sibling_info,$can_share_contact_info,$username) {
 		$this->id = $e;
 		$this->start_date = $sd;
 		$this->venue = $v;

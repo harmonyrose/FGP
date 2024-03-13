@@ -202,4 +202,7 @@
         return filter_var($url, FILTER_VALIDATE_URL);
     }
 
+    function validateAgreement($agreement, $name){
+        return strcmp($agreement,$name);
+    }
 ?>
