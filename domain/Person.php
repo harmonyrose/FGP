@@ -81,6 +81,13 @@ class Person {
 	private $diagnosis;
 	private $diagnosis_date;
 	private $hopital;
+	private $expected_treatment_end_date;
+	private $services_interested_in;
+	private $allergies;
+	private $sibling_info;
+	private $can_share_contact_info;
+	private $username;
+	
 
 	function __construct($f, $l, $v, $a, $c, $s, $z, $pp, $p1, $p1t, $p2, $p2t, $e, 
 			//$ts, $comp, $cam, $tran, 
@@ -92,7 +99,7 @@ class Person {
 			$notes, $pass,
 			$suns, $sune, $mons, $mone, $tues, $tuee, $weds, $wede,
 			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, $diagnosis,
-			$diagnosis_date,$hospital,$permission_to_confirm) {
+			$diagnosis_date,$hospital,$permission_to_confirm,$expected_treatment_end_date,$services_interested_in,$allergies,$sibling_info,$can_share_contact_info,$username) {
 		$this->id = $e;
 		$this->start_date = $sd;
 		$this->venue = $v;
@@ -162,6 +169,12 @@ class Person {
 		$this->diagnosis_date=$diagnosis_date;
 		$this->hospital=$hospital;
 		$this->permission_to_confirm=$permission_to_confirm;
+		$this->expected_treatment_end_date=$expected_treatment_end_date;
+		$this->services_interested_in=$services_interested_in;
+		$this->allergies=$allergies;
+		$this->sibling_info=$sibling_info;
+		$this->can_share_contact_info=$can_share_contact_info;
+		$this->username=$username;
 	}
 
 	function get_id() {
@@ -411,4 +424,23 @@ class Person {
 	function get_permission_to_confirm() {
 		return $this->permission_to_confirm;
 	}
+	function get_expected_treatment_end_date() {
+		return $this->expected_treatment_end_date;
+	}
+	function get_services_interested_in() {
+		return $this->services_interested_in;
+	}
+	function get_allergies() {
+		return $this->allergies;
+	}
+	function get_sibling_info() {
+		return $this->sibling_info;
+	}
+	function get_can_share_contact_info() {
+		return $this->can_share_contact_info;
+	}
+	function get_username() {
+		return $this->username;
+	}
+	
 }

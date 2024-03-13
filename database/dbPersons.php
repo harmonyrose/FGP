@@ -77,8 +77,15 @@ function add_person($person) {
             $person->get_diagnosis() . '","' .
             $person->get_diagnosis_date() . '","' .
             $person->get_hospital() . '","' .
-            $person->get_permission_to_contact() .
+            $person->get_permission_to_confirm() . '","' .
+            $person->get_expected_treatment_end_date() . '","' .
+            $person->get_services_interested_in() . '","' .
+            $person->get_allergies() . '","' .
+            $person->get_sibling_info() . '","' .
+            $person->get_can_share_contact_info() . '","' .
+            $person->get_username() . 
             '");'
+
         );							
         mysqli_close($con);
         return true;
@@ -330,7 +337,13 @@ function make_a_person($result_row) {
                     $result_row['diagnosis'],
                     $result_row['diagnosis_date'],
                     $result_row['hospital'],
-                    $result_row['permission_to_confirm']
+                    $result_row['permission_to_confirm'],
+                    $result_row['expected_treatment_end_date'],
+                    $result_row['services_interested_in'],
+                    $result_row['allergies'],
+                    $result_row['sibling_info'],
+                    $result_row['can_share_contact_info'],
+                    $result_row['username']
                 );   
     return $thePerson;
 }
