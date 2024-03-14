@@ -114,11 +114,11 @@
                 </p>
                 <label for="name">* How many freezer meals would you like? </label>
                 <ul>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 2 Meals per month (Free)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 4 meals per month (2 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 6 meals per month (3 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 8 meals per month (4 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> We do not want ANY freezer meals</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=2> 2 Meals per month (Free)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=4> 4 meals per month (2 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=6> 6 meals per month (3 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=8> 8 meals per month (4 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=0> We do not want ANY freezer meals</li>
                 </ul>
                 <label for="name">* Are there any food allergies that we need to be aware of? </label>
                 <ul>
@@ -129,7 +129,7 @@
                 <li><input type="checkbox" id="allergies" name="allergies" value="Egg"> Egg</li>
                 <li><input type="checkbox" id="allergies" name="allergies" value="Dairy"> Dairy</li>
                 <li><input type="checkbox" id="allergies" name="allergies" value="No Known Allergies"> No Known Allergies</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Other:"> Other: <input type= "text" id="name2" name="name2" /></li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="other"> Other: <input type= "text" id="otherallergy" name="otherallergy" /></li>
                 </ul>
                 <label for="name">* What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
                 <ul>
