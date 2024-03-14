@@ -114,11 +114,17 @@ function create_vendor($vendor) {
         INSERT INTO dbGiftCardVendors (vendorID, vendorName, vendorType, vendorLocation)
         values ('$id','$vendorName','$vendorType', '$vendorLocation')
     ";
-    $result = mysqli_query($connection, $query);
-    // if (!$result) {
-    //     return null;
-    // }
-    mysqli_commit($connection);
-    mysqli_close($connection);
-    return $id;
+    try {
+        $result = mysqli_query($connection, $query);
+        mysqli_commit($connection);
+        mysqli_close($connection);
+        return $id;
+    } catch (mysqli_sql_exception $e) {
+        // Check if the error is due to duplicate entry for vendorName
+        if ($e->getCode() === 1062) { // Error code for duplicate entry
+            return null; // or handle the error in some other way
+        } else {
+            throw $e; // Re-throw other exceptions
+        }
+    }
 }
