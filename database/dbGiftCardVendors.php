@@ -7,27 +7,6 @@ include_once(dirname(__FILE__).'/../domain/Vendor.php');
  * add a vendor to dbGiftCardVendors table: if already there, return false
  */
 
-// function add_Vendor($animal) {
-//     if (!$animal instanceof Animal)
-//         die("Error: add_event type mismatch");
-//     $con=connect();
-//     $query = "SELECT * FROM dbAnimals WHERE id = '" . $animal->get_id() . "'";
-//     $result = mysqli_query($con,$query);
-//     //if there's no entry for this id, add it
-//     if ($result == null || mysqli_num_rows($result) == 0) {
-//         mysqli_query($con,'INSERT INTO dbEvents VALUES("' .
-//                 $vendor->get_id() . '","' .
-//                 $vendor->get_name() . '","' .
-//                 $vendor->get_type() . '","' .
-//                 $vendor->get_location() . '","' .           
-//                 '");');							
-//         mysqli_close($con);
-//         return true;
-//     }
-//     mysqli_close($con);
-//     return false;
-// }
-
 /*
  * remove an event from dbEvents table.  If already there, return false
  */
@@ -104,6 +83,7 @@ function make_a_vendor($result_row) {
     return $theVendor;
 }
 
+// Adds a vendor
 function create_vendor($vendor) {
     $connection = connect();
     $id = find_next_id() + 1;
@@ -126,5 +106,21 @@ function create_vendor($vendor) {
         } else {
             throw $e; // Re-throw other exceptions
         }
+    }
+}
+
+function remove_vendor($vendorIDs) {
+    $connection = connect();
+    $idString = implode(',', $vendorIDs);
+    $query = "
+        DELETE FROM dbGiftCardVendors WHERE vendorID = '$idString'
+    ";
+    try {
+        $result = mysqli_query($connection, $query);
+        mysqli_commit($connection);
+        mysqli_close($connection);
+        return 1;
+    } catch (mysqli_sql_exception $e) {
+        throw $e;
     }
 }
