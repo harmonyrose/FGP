@@ -148,7 +148,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <input type="date" id="birthdate" name="birthdate" required placeholder="Choose your birthday" max="<?php echo date('Y-m-d'); ?>">
 
             <label for="diagnosis"><em>* </em>Child's Diagnosis</label>
-            <input type="text" id="diagnosis" name="diagnosis" >
+            <input type="text" id="diagnosis" name="diagnosis" required placeholder="Your answer">
 
             <label for="diagnosis_date"><em>* </em>Date of Diagnosis</label>
             <input type="date" id="diagnosis_date" name="diagnosis_date" required placeholder="Your answer">

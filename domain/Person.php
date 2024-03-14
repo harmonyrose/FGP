@@ -79,7 +79,7 @@ class Person {
 	private $gender;
 	private $diagnosis;
 	private $diagnosis_date;
-	private $hopital;
+	private $hospital;
 	private $permission_to_confirm;
 	private $expected_treatment_end_date;
 	private $services_interested_in;

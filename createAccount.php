@@ -18,12 +18,12 @@
     }
 
     // Require admin privileges
-    if ($accessLevel < 2)
+    /*if ($accessLevel < 2)
     {
         header('Location: login.php');
         echo 'bad access level';
         die();
-    }
+    }*/
     
 
     // if (isset($_SESSION['_id'])) {
@@ -60,12 +60,12 @@
 
             $required = array('econtact-name','cmethod','phone','email',
                 'address', 'city', 'state', 'zip', 'first-name', 'last-name', 'birthdate',
-                'diagnosis_date','agreement'
-                /*'diagnosis','hospital','permission_to_confirm',
-                'expected_treatment_end_date','services_interested_in'*/
+                'diagnosis','diagnosis_date','hospital','permission_to_confirm',
+                'expected_treatment_end_date'/*,'services_interested_in'*/,'agreement'
                 //form requries these but they cannot be confirmed by computer
             );
             
+
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
                 $errors = true;
@@ -83,6 +83,8 @@
                 $errors = true;
                 echo 'bad diagnosis date';
             }*/
+
+            $expected_treatment_end_date=$args['expected_treatment_end_date'];
 
             $address = $args['address'];
             $city = $args['city'];
@@ -124,6 +126,17 @@
                 echo 'bad e-contact phone';
             }*/
             
+            $diagnosis=$args['diagnosis'];
+            //$hospital=$args['hospital'];
+            $hospital='TEST STRING IS THIS SHOWING UP';
+            $permission_to_confirm=$args['permission_to_confirm'];
+            
+            if($args['services_interested_in']){
+                $services_interested_in="there were things checked";
+            }
+            else{
+                $services_interested_in="";
+            }
 
             // May want to enforce password requirements at this step
             $password=$dateOfBirth;
@@ -132,6 +145,37 @@
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
+            }
+
+            $optional=array('allergies','sibling_info','can_share_contact_info',
+            //family_info
+            'how_did_you_hear');
+
+            if($args['sibling_info']){
+                $sibling_info=$args['sibling_info'];
+            }
+            else{
+                $sibling_info="";
+            }
+
+            if($args['allergies']){
+                $allergies=$args['allergies'];
+            }
+            else{
+                $allergies="";
+            }
+
+            if($args['can_share_contact_info']){
+                $can_share_contact_info=$args['can_share_contact_info'];
+            }
+            else{
+                $can_share_contact_info="";
+            }
+
+            if($args['how_did_you_hear']){
+                $how_did_you_hear=$args['how_did_you_hear'];
+            }else{
+                $how_did_you_hear="";
             }
             // need to incorporate availability here
             $newperson = new Person(
