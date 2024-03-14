@@ -6,7 +6,7 @@
     
     require_once('include/input-validation.php');
 
-    /*$loggedIn = false;
+    $loggedIn = false;
     if (isset($_SESSION['change-password'])) {
         header('Location: changePassword.php');
         die();
@@ -24,7 +24,7 @@
         echo 'bad access level';
         die();
     }
-    */
+    
 
     // if (isset($_SESSION['_id'])) {
     //     header('Location: index.php');
@@ -59,9 +59,10 @@
             // }
 
             $required = array('econtact-name','cmethod','phone','email',
-                'address', 'city', 'state', 'zip', 'first-name', 'last-name', 'birthdate'
-                /*'diagnosis','diagnosis_date','hospital','permission_to_confirm',
-                'expected_treatment_end_date','services_interested_in','agreement'*/
+                'address', 'city', 'state', 'zip', 'first-name', 'last-name', 'birthdate',
+                'diagnosis_date','agreement'
+                /*'diagnosis','hospital','permission_to_confirm',
+                'expected_treatment_end_date','services_interested_in'*/
                 //form requries these but they cannot be confirmed by computer
             );
             
@@ -76,6 +77,12 @@
                 $errors = true;
                 echo 'bad dob';
             }
+            $diagnosis_date=$args['diagnosis_date'];
+            /*$diagnosis_date = validateDate($args['diagnosis_date']);
+            if (!$diagnosis_date) {
+                $errors = true;
+                echo 'bad diagnosis date';
+            }*/
 
             $address = $args['address'];
             $city = $args['city'];
@@ -105,15 +112,22 @@
             }
 
             $econtactName = $args['econtact-name'];
-            $phone1 = validateAndFilterPhoneNumber($args['econtact-phone']);
+            $agreement=$args['agreement'];
+            if(validateAgreement($agreement, $econtactName)!=0){
+                $errors=true;
+                echo 'bad agreement';
+            }
+
+            /*$phone1 = validateAndFilterPhoneNumber($args['econtact-phone']);
             if (!$econtactPhone) {
                 $errors = true;
                 echo 'bad e-contact phone';
-            }
+            }*/
             
 
             // May want to enforce password requirements at this step
-            $password = password_hash($args['password'], PASSWORD_BCRYPT);
+            $password=$dateOfBirth;
+            //$password = password_hash($args['password'], PASSWORD_BCRYPT);
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
@@ -121,24 +135,28 @@
             }
             // need to incorporate availability here
             $newperson = new Person(
-//first, last venue
-		$first, $last, 'portland', 
-//address, city state, zip code, profile picture
-                $address, $city, $state, $zipcode, "",
-//phone1, phone type, phone 2, phonetype 2, email
-                $phone, 'cell', null, null, $email, 
-//contact name, contact number, contact relation
-		$econtactName, null, null, 
-//ct=contact when, type=t, status = st, ct=contact method 
-                null, 'afamily', 'inactive', $cmethod, 
-//availability array, schedule array, hours array
-		'', '', '', 
-//bd=date of birth, sd=start date, notes password
-                $dateOfBirth, null, null, $dateOfBirth,
+            //first, last venue
+		    $first, $last, 'portland', 
+            //address, city state, zip code, profile picture
+            $address, $city, $state, $zipcode, "",
+            //phone1, phone type, phone 2, phonetype 2, email
+            $phone, 'cell', null, null, $email, 
+            //contact name, contact number, contact relation
+		    $econtactName, null, null, 
+            //ct=contact when, type=t, status = st, ct=contact method 
+            null, 'family', 'inactive', $cmethod, 
+            //availability array, schedule array, hours array
+		    '', '', '', 
+            //bd=date of birth, sd=start date, notes password
+            $dateOfBirth, null, null, $password,
                 $sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
                 $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
                 $thursdaysStart, $thursdaysEnd, $fridaysStart, $fridaysEnd,
-                $saturdaysStart, $saturdaysEnd, 0, $gender
+                $saturdaysStart, $saturdaysEnd, 0, $gender,$diagnosis,
+            $diagnosis_date,$hospital,$permission_to_confirm, 
+            $expected_treatment_end_date,$services_interested_in, 
+            $allergies,$sibling_info,$can_share_contact_info,
+            substr($first, 0,1).$last //username
             );
             $result = add_person($newperson);
             if (!$result) {

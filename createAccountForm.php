@@ -54,7 +54,6 @@ function buildSelect($name, $disabled=false, $selected=null) {
         <p>An asterisk (<em>*</em>) indicates a required field.</p>
         <fieldset>
             <!--<legend>Personal Information</legend>-->
-            <p>The following information will help us identify you within our system.</p>
             <label for="econtact-name"><em>* </em>Who is the best person to contact to set up services?</label>
             <input type="text" id="econtact-name" name="econtact-name" required placeholder="Your answer">
 
@@ -75,7 +74,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <input type="text" id="address" name="address" required placeholder="">
 
             <label for="address">Address Line 2</label>
-            <input type="text" id="address" name="address" required placeholder="">
+            <input type="text" id="address" name="address" placeholder="">
 
             <label for="city"><em>* </em>City</label>
             <input type="text" id="city" name="city" required placeholder="Enter your city">
@@ -152,7 +151,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <input type="text" id="diagnosis" name="diagnosis" >
 
             <label for="diagnosis_date"><em>* </em>Date of Diagnosis</label>
-            <input type="text" id="diagnosis_date" name="diagnosis" required placeholder="Your answer">
+            <input type="date" id="diagnosis_date" name="diagnosis_date" required placeholder="Your answer">
 
             <label for="hospital"><em>* </em>Where is your child receiving treatment? please include name of oncologist or contact at hospital</label>
             <input type="text" id="hospital" name="hospital" required placeholder="Your answer">
@@ -164,7 +163,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             </div>
 
             <label for="expected_treatment_end_date"><em>* </em>What is the expected date of treatment completion?</label>
-            <input type="text" id="expected_treatment_end_date" name="expected_treatment_end_date" required placeholder="Your answer">
+            <input type="date" id="expected_treatment_end_date" name="expected_treatment_end_date" required placeholder="Your answer">
 
             <label for="services_interested_in"><em>* </em>What services are you interested in?</label>
             <p> This is not a guarentee of services. Service is dependent upon volunteer availability. </p>
@@ -196,27 +195,27 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="AAA"> AAA membership</label> </div>
 
             <label for="allergies">If you are interested in meals, are there any allergies or dietary restrictions?</label>
-            <input type="text" id="allergies" name="allergies" required placeholder="Your answer">
+            <input type="text" id="allergies" name="allergies" placeholder="Your answer">
 
             <label for="sibling_info">With our Adopt-A-Family program, volunteers send out monthly cards and gifts. 
             Please provide names and ages of siblings, along with any interests or hobbies your family may have.</label>
-            <input type="text" id="sibling_info" name="sibling_info" required placeholder="Your answer">
+            <input type="text" id="sibling_info" name="sibling_info" placeholder="Your answer">
 
             <label><em>* </em>Do we have permission to share your name and contact information with our service providers and partners?</label>
             <p> We will share your information with lawn service, Moms in Motion (provide assistance with the medicaid waiver which serves as a secondary insurance),
                  cleaners, and YMCA (you receive a membership through them). </p>
             <div class="radio-group">
-                <input type="radio" id="permission-yes" name="can_share_contact_info" value="Yes" required><label for="permission-yes">Yes</label>
-                <input type="radio" id="permission-no" name="can_share_contact_info" value="No" required><label for="permission-no">No</label>
-                <input type="radio" id="permission-other" name="can_share_contact_info" value="Other" required><label for="permission-other">Other</label>
+                <input type="radio" id="permission-yes" name="can_share_contact_info" value="Yes"><label for="permission-yes">Yes</label>
+                <input type="radio" id="permission-no" name="can_share_contact_info" value="No" ><label for="permission-no">No</label>
+                <input type="radio" id="permission-other" name="can_share_contact_info" value="Other" ><label for="permission-other">Other</label>
                 <p> need to add pop up question if other is selected </p>
             </div>
 
             <label for="family_info">Please tell us about your family.</label>
-            <input type="text" id="family_info" name="family_info" required placeholder="Your answer">
+            <input type="text" id="family_info" name="family_info" placeholder="Your answer">
 
             <label for="how_did_you_hear">How did you hear about FGP?</label>
-            <input type="text" id="how_did_you_hear" name="how_did_you_hear" required placeholder="Your answer">
+            <input type="text" id="how_did_you_hear" name="how_did_you_hear" placeholder="Your answer">
 
             <label for="agreement"><em>* </em>In consideration of Fairy Godmother Project allowing Volunteer to act as an official “Fairy Godmother Project” volunteer,
             Family voluntarily waives any and all rights to recovery from Fairy Godmother Project, its representatives, agents, officers, directors, shareholders, employees,
