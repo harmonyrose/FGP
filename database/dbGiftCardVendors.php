@@ -3,28 +3,7 @@
 include_once('dbinfo.php');
 include_once(dirname(__FILE__).'/../domain/Vendor.php');
 
-/*
- * add a vendor to dbGiftCardVendors table: if already there, return false
- */
-
-/*
- * remove an event from dbEvents table.  If already there, return false
- */
-
-// function remove_vendor($id) {
-//     $con=connect();
-//     $query = 'SELECT * FROM dbEvents WHERE id = "' . $id . '"';
-//     $result = mysqli_query($con,$query);
-//     if ($result == null || mysqli_num_rows($result) == 0) {
-//         mysqli_close($con);
-//         return false;
-//     }
-//     $query = 'DELETE FROM dbEvents WHERE id = "' . $id . '"';
-//     $result = mysqli_query($con,$query);
-//     mysqli_close($con);
-//     return true;
-// }
-
+// Finds all vendors in the database and returns them as an array. Used in listVendors.php to fill the table.
 function find_vendors() {
     $query = "select * from dbGiftCardVendors";
 
@@ -44,8 +23,9 @@ function find_vendors() {
     return $vendors;
 }
 
+// Finds the highest id in the database that is not already used so it can be assigned to the next vendor. Used in create_vendor.
 function find_next_id() {
-    $query = "SELECT COUNT(*) FROM dbGiftCardVendors";
+    $query = "SELECT MAX(vendorID) AS max_id FROM dbGiftCardVendors";
     $connection = connect();
 
     if (!$connection) {
@@ -61,18 +41,19 @@ function find_next_id() {
         return null;
     }
 
-    $raw = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
     mysqli_close($connection);
 
-    if (!$raw || empty($raw)) {
-        // No rows returned
+    if (!$row || empty($row['max_id'])) {
+        // No max vendorID found
         return null;
     }
 
-    return $raw[0]['COUNT(*)'];
+    return $row['max_id'];
 }
 
+// Takes in a dictionary, creates a vendor object with it, and returns that vendor object. Used in addVendor.php
 function make_a_vendor($result_row) {
     $theVendor = new Vendor(
                     $result_row['vendorID'],
@@ -83,7 +64,8 @@ function make_a_vendor($result_row) {
     return $theVendor;
 }
 
-// Adds a vendor
+// Takes in a vendor object, creates a row in database with their information. Returns their vendor id if successful.
+// Returns null if there is already a vendor with the given name in the database. Used in addVendor.php
 function create_vendor($vendor) {
     $connection = connect();
     $id = find_next_id() + 1;
@@ -109,11 +91,13 @@ function create_vendor($vendor) {
     }
 }
 
+// Takes in an array of vendor Ids, turns them into a string separated by commas, and then removes them all from the database.
+// Used in listVendors.php for deleting vendors.
 function remove_vendor($vendorIDs) {
     $connection = connect();
     $idString = implode(',', $vendorIDs);
     $query = "
-        DELETE FROM dbGiftCardVendors WHERE vendorID = '$idString'
+        DELETE FROM dbGiftCardVendors WHERE vendorID IN ($idString)
     ";
     try {
         $result = mysqli_query($connection, $query);

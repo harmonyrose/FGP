@@ -1,19 +1,4 @@
 <?php
-
-
-
-
-// Formatting for each row of the table
-function displaySearchRow($vendor){
-    echo "
-    <tr>
-        <td>" . $vendor->get_name() . "</td>
-        <td>" . $vendor->get_type() . "</td>
-        <td>" . $vendor->get_location() . "</td>
-        <td><input class=\"vendorsCheckbox\" type=\"checkbox\" name=" . $vendor->get_id() . "/>&nbsp;</td>";
-    echo "</tr>";
-}
-
     // Template for new VMS pages. Base your new page on this one
 
     // Make session information accessible, allowing us to associate
@@ -35,6 +20,19 @@ function displaySearchRow($vendor){
         header('Location: index.php');
         die();
     }
+
+
+// Formatting for each row of the table
+function displaySearchRow($vendor){
+    echo "
+    <tr>
+        <td>" . $vendor->get_name() . "</td>
+        <td>" . $vendor->get_type() . "</td>
+        <td>" . $vendor->get_location() . "</td>
+        <td><input class=\"vendorsCheckbox\" type=\"checkbox\" name=" . $vendor->get_id() . ">&nbsp;</td>";
+    echo "</tr>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -51,27 +49,71 @@ function displaySearchRow($vendor){
         <?php if (isset($_GET['createSuccess'])): ?>
             <div class="happy-toast">Vendor created successfully!</div>
         <?php endif ?>
+        <!-- If the delete vendors button is clicked, delete the selected vendors -->
+        <?php
+        require_once('database/dbGiftCardVendors.php');
+        // Check if the 'checkedNames' parameter is present in the GET request
+        if(isset($_GET['checkedNames'])) {
+            // Retrieve the 'checkedNames' parameter value from the GET request
+            $checkedNamesString = $_GET['checkedNames'];
+            
+            // Explode the string into an array using comma as delimiter
+            $checkedNamesArray = explode(",", $checkedNamesString);
+            
+            // Remove vendor from database
+            remove_vendor($checkedNamesArray);
+            // Display confirmation notification
+            echo '<div class="happy-toast">Vendors deleted successfully!</div>';
+        }
+        ?>
+
+        <?php if (isset($_GET['deletedVendors'])): ?>
+            <div class="error-toast">Vendor deleted successfully!</div>
+        <?php endif ?>
         <!-- Add vendors button -->
         <a class="button cancel" href="addVendors.php" style="background-color: green">Add vendors</a>
-        <!-- Delete vendors button, can probably do this cleaner so maybe fix that -->
-        <a class="button cancel" href="#" style="background-color: red">Delete vendors</a>
+
+        <!-- Delete vendors button -->
+        <a class="button cancel" id="deleteButton" style="background-color: red">Delete vendors</a>
+
+        <!-- JavaScript code to handle deleting vendors -->
         <script>
-            document.getElementById('deleteVendorsBtn').addEventListener('click', function() {
-                var selectedIds = [];
-                // Assuming your checkboxes have a class name 'vendorCheckbox'
-                var checkboxes = document.querySelectorAll('.vendorCheckbox:checked');
+            // Get the button element by its ID
+            var button = document.getElementById('deleteButton');
+
+            // Add an event listener to the button for the 'click' event
+            button.addEventListener('click', function() {
+                // Array to store the names of checked checkboxes
+                var checkedNames = [];
+
+                // Get all checkboxes in the table
+                var checkboxes = document.querySelectorAll('#vendorTable input[type="checkbox"]');
+
+                // Iterate over each checkbox
                 checkboxes.forEach(function(checkbox) {
-                    selectedIds.push(checkbox.name); // Might not work
+                    // If checkbox is checked, add its name to the array
+                    if (checkbox.checked) {
+                        checkedNames.push(checkbox.name);
+                    }
                 });
 
-                if (selectedIds.length > 0) {
-                    remove_vendors(selectedIds);
-                    window.location.href = "listVendors.php";
+                // If there are checked checkboxes, construct the URL with the parameters
+                if (checkedNames.length > 0) {
+                    var url = "listVendors.php?checkedNames=" + checkedNames.join(",");
+                    // Perform the GET request using the constructed URL
+                    window.location.href = url;
                 } else {
-                    <div class="error-toast">Please select at least one vendor.</div>
+                    alert("No checkboxes are checked.");
                 }
             });
         </script>
+
+
+
+
+
+
+            <!-- The actual table -->
             <?php 
                 require_once('include/input-validation.php');
                 require_once('database/dbGiftCardVendors.php');
@@ -82,7 +124,7 @@ function displaySearchRow($vendor){
                     if (count($vendors) > 0) {
                         echo '
                         <div class="table-wrapper">
-                            <table class="general">
+                            <table class="general" id="vendorTable">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -108,7 +150,7 @@ function displaySearchRow($vendor){
             ?>
             <p></p>
             <!-- Return button -->
-            <a class="button cancel" href="index.php">Return to Dashboard</a>
+            <a class="button cancel" href="giftCardManagement.php">Return to Gift Card Management</a>
         </form>
     </body>
 </html>
