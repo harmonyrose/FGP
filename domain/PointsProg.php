@@ -1,6 +1,6 @@
 <?php
 /**
- * Encapsulated version of a dbEvents entry.
+ * Encapsulated version of a Points Program entry.
  */
 class PointsProg {
     private $id;
