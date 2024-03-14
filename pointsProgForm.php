@@ -24,29 +24,18 @@
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbEvents.php');
+        require_once('database/dbPointsProg.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "date", "start-time", "description", "location", "service", "animal"
+            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
+            "AAA_membership", "photography", "house_projects", "financial_relief"
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
             die();
         } else {
-            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
-            if (!$validated) {
-                echo 'bad time range';
-                die();
-            }
-            $startTime = $args['start-time'] = $validated[0];
-            $date = $args['date'] = validateDate($args["date"]);
-            //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime || !$date || $abbrevLength > 11){
-                echo 'bad args';
-                die();
-            }
-            $id = create_event($args);
+            $date = $args['AAA_membership_DOB'] = validateDate($args["AAA_membership_DOB"]);
+            $id = ($args);
             if(!$id){
                 echo "Oopsy!";
                 die();
@@ -54,7 +43,6 @@
             require_once('include/output.php');
             
             $name = htmlspecialchars_decode($args['name']);
-            $startTime = time24hto12h($startTime);
             $date = date('l, F j, Y', strtotime($date));
             require_once('database/dbMessages.php');
             system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
