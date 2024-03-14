@@ -83,7 +83,22 @@ function add_person($person) {
             $person->get_allergies() . '","' .
             $person->get_sibling_info() . '","' .
             $person->get_can_share_contact_info() . '","' .
-            $person->get_username() . 
+            $person->get_username() . '","' .
+            $person->get_meals() . '","' .
+            $person->get_housecleaning() . '","' .
+            $person->get_lawncare() . '","' .
+            $person->get_photography() . '","' .
+            $person->get_gas() . '","' .
+            $person->get_grocery() . '","' .
+            $person->get_aaaInterest() . '","' .
+            $person->get_socialEvents() . '","' .
+            $person->get_houseProjects() . '","' .
+
+            $person->get_how_did_you_hear() . '","' .
+            $person->get_familyInfo() . '","' .
+            $person->get_leadVolunteer() . '","' .
+            $person->get_gift_card_delivery_method() . '","' .
+            $person->get_location() .
             '");'
 
         );							
@@ -343,7 +358,21 @@ function make_a_person($result_row) {
                     $result_row['allergies'],
                     $result_row['sibling_info'],
                     $result_row['can_share_contact_info'],
-                    $result_row['username']
+                    $result_row['username'],
+                    $result_row['meals'],
+                    $result_row['housecleaning'],
+                    $result_row['lawncare'],
+                    $result_row['photography'],
+                    $result_row['gas'],
+                    $result_row['grocery'],
+                    $result_row['aaaInterest'],
+                    $result_row['socialEvents'],
+                    $result_row['houseProjects'],
+                    $result_row['how_did_you_hear'],
+                    $result_row['familyInfo'],
+                    $result_row['leadVolunteer'],
+                    $result_row['gift_card_delivery_method'],
+                    $result_row['location']
                 );   
     return $thePerson;
 }

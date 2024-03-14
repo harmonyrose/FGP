@@ -87,6 +87,20 @@ class Person {
 	private $sibling_info;
 	private $can_share_contact_info;
 	private $username;
+	private $meals;
+	private $housecleaning;
+	private $lawncare;
+	private $photography;
+	private $gas;
+	private $grocery;
+	private $aaaInterest;
+	private $socialEvents;
+	private $houseProjects;
+	private $how_did_you_hear;
+	private $familyInfo;
+	private	$leadVolunteer;
+	private	$gift_card_delivery_method;
+	private	$location;
 	
 
 	function __construct($f, $l, $v, $a, $c, $s, $z, $pp, $p1, $p1t, $p2, $p2t, $e, 
@@ -101,7 +115,11 @@ class Person {
 			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, 
 			$diagnosis,$diagnosis_date,$hospital,$permission_to_confirm,
 			$expected_treatment_end_date, $services_interested_in,$allergies,
-			$sibling_info,$can_share_contact_info,$username) {
+			$sibling_info,$can_share_contact_info,$username,$meals,
+			$housecleaning,$lawncare,$photography, $gas,$grocery,$aaaInterest,
+			$socialEvents,$houseProjects,$how_did_you_hear,$familyInfo,
+			$leadVolunteer,$gift_card_delivery_method,$location
+			) {
 		$this->id = $e;
 		$this->start_date = $sd;
 		$this->venue = $v;
@@ -177,6 +195,20 @@ class Person {
 		$this->sibling_info=$sibling_info;
 		$this->can_share_contact_info=$can_share_contact_info;
 		$this->username=$username;
+		$this->meals=$meals;
+		$this->housecleaning=$housecleaning;
+		$this->lawncare=$lawncare;
+		$this->photography=$photography;
+		$this->gas=$gas;
+		$this->grocery=$grocery;
+		$this->aaaInterest=$aaaInterest;
+		$this->socialEvents=$socialEvents;
+		$this->houseProjects=$houseProjects;
+		$this->how_did_you_hear=$how_did_you_hear;
+		$this->familyInfo=$familyInfo;
+		$this->leadVolunteer=$leadVolunteer;
+		$this->gift_card_delivery_method=$gift_card_delivery_method;
+		$this->location=$location;
 	}
 
 	function get_id() {
@@ -287,8 +319,8 @@ class Person {
 		return $this->credithours;
 	}
 
-	function get_howdidyouhear() {
-		return $this->howdidyouhear;
+	function get_how_did_you_hear() {
+		return $this->how_did_you_hear;
 	}
 
 	function get_commitment() {
@@ -420,7 +452,7 @@ class Person {
 	}
 
 	function get_hospital() {
-		return $this->hopsital;
+		return $this->hospital;
 	}
 
 	function get_permission_to_confirm() {
@@ -444,5 +476,57 @@ class Person {
 	function get_username() {
 		return $this->username;
 	}
+
+	function get_meals() {
+		return $this->meals;
+	}
 	
+	function get_housecleaning() {
+		return $this->housecleaning;
+	}
+	
+	function get_lawncare() {
+		return $this->lawncare;
+	}
+
+	function get_photography() {
+		return $this->photography;
+	}
+
+	function get_gas() {
+		return $this->gas;
+	}
+
+	function get_grocery() {
+		return $this->grocery;
+	}
+
+	function get_aaaInterest() {
+		return $this->aaaInterest;
+	}
+
+	function get_socialEvents() {
+		return $this->socialEvents;
+	}
+
+	function get_houseProjects() {
+		return $this->houseProjects;
+	}	
+
+	function get_leadVolunteer() {
+		return $this->houseProjects;
+	}	
+
+	function get_gift_card_delivery_method() {
+		return $this->gift_card_delivery_method;
+	}	
+
+	function get_location() {
+		return $this->location;
+	}	
+
+	function get_familyInfo() {
+		return $this->familyInfo;
+	}
+
 }

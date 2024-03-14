@@ -65,7 +65,8 @@
                 //form requries these but they cannot be confirmed by computer
             );
             
-
+            $hospital=$args['hospital'];
+            
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
                 $errors = true;
@@ -83,6 +84,12 @@
                 $errors = true;
                 echo 'bad diagnosis date';
             }*/
+
+            $cmethod=$args['cmethod'];
+            if(!$cmethod="call" and !$cmethod='text'){
+                $errors=true;
+                echo 'bad contact method';
+            }
 
             $expected_treatment_end_date=$args['expected_treatment_end_date'];
 
@@ -115,10 +122,12 @@
 
             $econtactName = $args['econtact-name'];
             $agreement=$args['agreement'];
-            if(validateAgreement($agreement, $econtactName)!=0){
+            //requires signature to be same as contact parent, doesn't seem 
+            //like a guarentee so cut for now
+            /*if(validateAgreement($agreement, $econtactName)!=0){
                 $errors=true;
                 echo 'bad agreement';
-            }
+            }*/
 
             /*$phone1 = validateAndFilterPhoneNumber($args['econtact-phone']);
             if (!$econtactPhone) {
@@ -127,16 +136,12 @@
             }*/
             
             $diagnosis=$args['diagnosis'];
-            //$hospital=$args['hospital'];
-            $hospital='TEST STRING IS THIS SHOWING UP';
             $permission_to_confirm=$args['permission_to_confirm'];
             
-            if($args['services_interested_in']){
-                $services_interested_in="there were things checked";
-            }
-            else{
-                $services_interested_in="";
-            }
+            $services_interested_in="test string";
+
+
+            
 
             // May want to enforce password requirements at this step
             $password=$dateOfBirth;
@@ -148,15 +153,7 @@
             }
 
             $optional=array('allergies','sibling_info','can_share_contact_info',
-            //family_info
-            'how_did_you_hear');
-
-            if($args['sibling_info']){
-                $sibling_info=$args['sibling_info'];
-            }
-            else{
-                $sibling_info="";
-            }
+            'family_info','how_did_you_hear','address2');
 
             if($args['allergies']){
                 $allergies=$args['allergies'];
@@ -165,6 +162,14 @@
                 $allergies="";
             }
 
+            if($args['sibling_info']){
+                $sibling_info=$args['sibling_info'];
+            }
+            else{
+                $sibling_info="";
+            }
+
+
             if($args['can_share_contact_info']){
                 $can_share_contact_info=$args['can_share_contact_info'];
             }
@@ -172,11 +177,71 @@
                 $can_share_contact_info="";
             }
 
+            if($args['family_info']){
+                $family_info=$args['family_info'];
+            }
+            else{
+                $family_info="";
+            }
+            
             if($args['how_did_you_hear']){
                 $how_did_you_hear=$args['how_did_you_hear'];
             }else{
                 $how_did_you_hear="";
             }
+            
+            if($args['address2']){
+                $address=$address."' '".$args['address2'];
+            }
+
+            /*
+            if($args['meals']){
+                $meals=1;
+            }
+            else{
+                $meals=0;
+            }
+
+            if($args['housecleaning']){
+                $housecleaning=1;
+            }
+            else{
+                $housecleaning=0;
+            }
+
+            if($args['lawncare']){
+                $lawncare=1;
+            }
+            else{
+                $lawncare=0;
+            }
+
+            if($args['photography']){
+                $photography=1;
+            }
+            else{
+                $photography=0;
+            }
+
+            if($args['gas']){
+                $gas=1;
+            }
+            else{
+                $gas=0;
+            }*/
+            $meals=0;
+            $housecleaning=0;
+            $lawncare=0;
+            $photography=0;
+            $gas=0;
+            $grocery=0;
+            $aaaInterest=0;
+            $socialEvents=0;
+            $houseProjects=0;
+
+            
+
+
             // need to incorporate availability here
             $newperson = new Person(
             //first, last venue
@@ -193,14 +258,20 @@
 		    '', '', '', 
             //bd=date of birth, sd=start date, notes password
             $dateOfBirth, null, null, $password,
-                $sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
-                $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
-                $thursdaysStart, $thursdaysEnd, $fridaysStart, $fridaysEnd,
-                $saturdaysStart, $saturdaysEnd, 0, $gender,$diagnosis,
+            //all the availability variables
+            null,null,null,null,
+            null,null,null,null,
+            null,null,null,null,
+            //avail, avail, must change password, gender, diagnosis
+            null,null, 0, null,$diagnosis,
             $diagnosis_date,$hospital,$permission_to_confirm, 
             $expected_treatment_end_date,$services_interested_in, 
             $allergies,$sibling_info,$can_share_contact_info,
             substr($first, 0,1).$last //username
+            ,$meals, $housecleaning, $lawncare,$photography,
+            $gas,$grocery,$aaaInterest,$socialEvents, $houseProjects,
+            //how did they hear, general family info, lead volunteer, GC delivery method, location
+            $how_did_you_hear,$family_info,null,null,null
             );
             $result = add_person($newperson);
             if (!$result) {

@@ -61,10 +61,10 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <select id="cmethod" name="cmethod" required>
                 <option value="">Choose an option</option>
                 <option value="text">Text Message</option>
-                <option value="phone">Phone Call</option>
+                <option value="call">Phone Call</option>
             </select>
 
-            <label for="phone"><em>* </em>Cell Phone Number</label>
+            <label for="phone"><em>* </em>Phone Number</label>
             <input type="tel" id="phone" name="phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Ex. (555) 555-5555">
            
             <label for="email"><em>* </em>Email</label>
@@ -73,8 +73,8 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="address"><em>* </em>Address</label>
             <input type="text" id="address" name="address" required placeholder="">
 
-            <label for="address">Address Line 2</label>
-            <input type="text" id="address" name="address" placeholder="">
+            <label for="address2">Address Line 2</label>
+            <input type="text" id="address2" name="address2" placeholder="">
 
             <label for="city"><em>* </em>City</label>
             <input type="text" id="city" name="city" required placeholder="Enter your city">
@@ -165,22 +165,23 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="expected_treatment_end_date"><em>* </em>What is the expected date of treatment completion?</label>
             <input type="date" id="expected_treatment_end_date" name="expected_treatment_end_date" required placeholder="Your answer">
 
-            <label for="services_interested_in"><em>* </em>What services are you interested in?</label>
+            <label><em>* </em>What services are you interested in?</label>
             <p> This is not a guarentee of services. Service is dependent upon volunteer availability. </p>
-            <input type="checkbox" id="meals" name="meals">
-            <label for="meals"> Meals **Not available in Northern Neck</label> 
             
-            <input type="checkbox" id="lawncare" name="lawncare">
-            <label for="lawncare"> Lawn Care ** Not available in Northern Neck</label> 
+            <input type="checkbox" id="meals" value="meals">
+            <label> Meals **Not available in Northern Neck</label> 
             
-            <input type="checkbox" id="housecleaning" name="housecleaning">
-            <label for="housecleaning"> Professional House Cleaning **Not available in Northern Neck</label>
+            <input type="checkbox" id="lawncare" value="lawncare">
+            <label> Lawn Care ** Not available in Northern Neck</label> 
+            
+            <input type="checkbox" id="housecleaning" value="housecleaning">
+            <label> Professional House Cleaning **Not available in Northern Neck</label>
 
             <input type="checkbox" id="gascards" name="gascards">
             <label for="gascards"> Gas Cards</label>
 
             <div><input type="checkbox" id="socialevents" name="socialevents">
-            <label for="socialevents"> Gas Cards</label> </div>
+            <label for="socialevents"> Social Events</label> </div>
 
             <div><input type="checkbox" id="houseprojects" name="houseprojects">
             <label for="houseprojects"> House Projects **Not available in Northern Neck</label> 
@@ -208,7 +209,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
                 <input type="radio" id="permission-yes" name="can_share_contact_info" value="Yes"><label for="permission-yes">Yes</label>
                 <input type="radio" id="permission-no" name="can_share_contact_info" value="No" ><label for="permission-no">No</label>
                 <input type="radio" id="permission-other" name="can_share_contact_info" value="Other" ><label for="permission-other">Other</label>
-                <p> need to add pop up question if other is selected </p>
+                <!--<p> need to add pop up question if other is selected </p>-->
             </div>
 
             <label for="family_info">Please tell us about your family.</label>
