@@ -2,6 +2,7 @@
 // Start session
 session_start();
 
+require_once('header.php');
 // Connect to the database
 $hostname = "localhost"; 
 $database = "fgp";
@@ -38,14 +39,22 @@ if (!$result) {
 }
 
 // Display families and their status
-echo "<table>";
-echo "<tr><th>Family</th><th>Status</th><th>Action</th></tr>";
+?>
 
+<table style="margin: auto; border-collapse: collapse;">
+    <tr>
+        <th style="text-align: center; padding: 10px;">Family</th>
+        <th style="text-align: center; padding: 10px;">Status</th>
+        <th style="text-align: center; padding: 10px;">Action</th>
+    </tr>
+
+<?php
 while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['last_name'] . "</td>";
-    echo "<td>";
-    
+    ?>
+    <tr>
+        <td style="text-align: center; padding: 10px;"><?php echo $row['last_name']; ?></td>
+        <td style="text-align: center; padding: 10px;">
+    <?php
     // approved column in the database indicating the status
     if ($row['approved'] == 1) {
         echo "Approved";
@@ -59,20 +68,20 @@ while ($row = mysqli_fetch_assoc($result)) {
     } else {
         echo "Rejected";
     }
-    
-    echo "</td>";
-    echo "<td>";
-    
-    // Display approval and rejection buttons
-    echo "<button onclick=\"handleApproval(" . $row['id'] . ")\">Approve</button>";
-    echo "<button onclick=\"handleRejection(" . $row['id'] . ")\">Reject</button>";
-    
-    echo "</td>";
-    echo "</tr>";
+    ?>
+        </td>
+        <td style="text-align: center; padding: 10px;">
+            <button onclick="handleApproval(<?php echo $row['id']; ?>)">Approve</button>
+            <button onclick="handleRejection(<?php echo $row['id']; ?>)">Reject</button>
+        </td>
+    </tr>
+    <?php
 }
+?>
 
-echo "</table>";
+</table>
 
+<?php
 // Close the database connection
 mysqli_close($connection);
 
