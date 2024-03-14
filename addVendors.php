@@ -24,6 +24,8 @@
         echo 'bad access level';
         die();
     }
+
+    // Handles form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbGiftCardVendors.php');
@@ -35,22 +37,22 @@
             echo 'bad form data';
             die();
         } else {
+            // Try to add vendor
             $id = create_vendor($args);
+            // If null, there is a duplicate name (should probably make duplicate name an error number since there will be other errors maybe)
             if(!$id){
                 header("Location: addVendors.php?duplicateName");
                 die();
             }
-            require_once('include/output.php');
-            
-            $name = htmlspecialchars_decode($args['name']);
-            require_once('database/dbMessages.php');
             header("Location: listVendors.php?id=$id&createSuccess");
             die();
         }
     }
-    $date = null;
+
 
 ?>
+
+<!-- The form to be filled out -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,10 +62,13 @@
     <body>
         <?php require_once('header.php') ?>
         <h1>Add Vendor</h1>
+        <!-- If the user tried to submit already and had a duplicate name, display error notification -->
         <?php if (isset($_GET['duplicateName'])): ?>
             <div class="error-toast">A vendor with that name already exists. Please try again.</div>
         <?php endif ?>
-        <main class="date">
+        <!-- Legacy thing i dont wanna mess with -->
+        <main class="date"> 
+            <!-- Form -->
             <h2>New Vendor Form</h2>
             <form id="new-vendor-form" method="post">
                 
@@ -76,11 +81,7 @@
                 <p></p>
                 <input type="submit" value="Add New Vendor">
             </form>
-                <?php if ($date): ?>
-                    <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>
-                <?php else: ?>
-                    <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
-                <?php endif ?>
+            <a class="button cancel" href="listVendors.php" style="margin-top: -.5rem">Return to vendor list</a>
         </main>
     </body>
 </html>
