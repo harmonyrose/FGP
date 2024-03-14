@@ -214,7 +214,112 @@
                         </tr>
                     </tbody>
                 </table>
-                <!--Commented out original ODHS code-->
+                <label for="name">Gas Gift Cards</label>
+                <p> We are currently offering gas cards from Sheetz and Wawa.</p>
+                <label for="name">Gas Card Selection</label>
+                <style>
+                    th, td {
+                        padding: 8px;
+                        text-align: center;
+                    }
+                </style>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>$25 Gift Card<br>(1 point)</th>
+                            <th>$50 Gift Card<br>(2 points)</th>
+                            <th>$75 Gift Card<br>(3 points)</th>
+                            <th>$100 Gift Card<br>(4 points)</th>
+                            <th>$200 Gift Card<br>(8 points)</th>
+                            <th>$300 Gift Card<br>(12 points)</th>
+                            <th>$400 Gift Card<br>(16 points)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sheetz</td>
+                            <td><input type="checkbox" name="sheetz_25"></td>
+                            <td><input type="checkbox" name="sheetz_50"></td>
+                            <td><input type="checkbox" name="sheetz_75"></td>
+                            <td><input type="checkbox" name="sheetz_100"></td>
+                            <td><input type="checkbox" name="sheetz_200"></td>
+                            <td><input type="checkbox" name="sheetz_300"></td>
+                            <td><input type="checkbox" name="sheetz_400"></td>
+                        </tr>
+                        <tr>
+                            <td>Wawa</td>
+                            <td><input type="checkbox" name="wawa_25"></td>
+                            <td><input type="checkbox" name="wawa_50"></td>
+                            <td><input type="checkbox" name="wawa_75"></td>
+                            <td><input type="checkbox" name="wawa_100"></td>
+                            <td><input type="checkbox" name="wawa_200"></td>
+                            <td><input type="checkbox" name="wawa_300"></td>
+                            <td><input type="checkbox" name="wawa_400"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <label for="name">* Would you like house cleaning? </label>
+                    <?php 
+                        echo '<ul>';
+                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "once" . '" required/> ' . "Once a month (7 points)" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "twice" . '" required/> ' . "Twice a month (14 points)" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "no" . '" required/> ' . "We do not want house cleaning" . '</li>';
+                        echo '</ul>';
+                    ?>
+                <label for="name">* Would you like lawn care? </label>
+                    <?php 
+                        echo '<ul>';
+                        echo '<li><input class="radio" type="radio" name="lawn_care" value="' . "yes" . '" required/> ' . "Yes (3 points per month)" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="lawn_care" value="' . "no" . '" required/> ' . "We do not want lawn care" . '</li>';
+                        echo '</ul>';
+                    ?>
+                <label for="name">* Would you like a AAA Plus Membership? </label>
+                    <?php 
+                        echo '<ul>';
+                        echo '<li><input class="radio" type="radio" name="AAA_membership" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="AAA_membership" value="' . "no" . '" required/> ' . "No" . '</li>';
+                        echo '</ul>';
+                    ?>
+                <p> If yes to AAA Membership please provide the responsible party's name and date of birth. </p>
+                <p>Responsible Party's Name </p>
+                <input type="text" id="AAA_membership_name" name="AAA_membership_name" required placeholder="Enter name">
+                <p> Responsible Party's Date of Birth </p>
+                <input type="date" id="AAA_membership_DOB" name="AAA_membership_DOB" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
+                <label for="name"> Photography </label>
+                    <p> 
+                    We offer your family two sessions of photography.  
+                    We will do one during treatment and again after treatment has finished. 
+                    There is no charge to your points for this service. 
+                    </p> 
+                <label for="name">* Are you interested in a photography session? </label>
+                    <?php 
+                        echo '<ul>';
+                        echo '<li><input class="radio" type="radio" name="photography" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="photography" value="' . "no" . '" required/> ' . "No" . '</li>';
+                        echo '</ul>';
+                    ?>
+                <label for="name"> Additional Services </label>
+                    <p>
+                    We currently offer to help with house projects and financial relief twice a year.  
+                    If you are interested we will contact you when these services become available
+                    </p>   
+                <label for="name">* House Projects </label>
+                    <?php 
+                        echo '<ul>';
+                        echo '<li><input class="radio" type="radio" name="house_projects" value="' . "more_info" . '" required/> ' . "We would like more information when available" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="house_projects" value="' . "not_interested" . '" required/> ' . "We are not interested in house projects" . '</li>';
+                        echo '</ul>';
+                    ?>
+                <label for="name">* Financial Relief </label>
+                    <?php 
+                        echo '<ul>';
+                        echo '<li><input class="radio" type="radio" name="financiel_relief" value="' . "more_info" . '" required/> ' . "We would like more information when available" . '</li>';
+                        echo '<li><input class="radio" type="radio" name="financiel_relief" value="' . "not_interested" . '" required/> ' . "We are not interested in financial relief" . '</li>';
+                        echo '</ul>';
+                    ?>
+                <input type="submit" value="Submit">
+                                <!--Commented out original ODHS code-->
                 <!--<label for="name">* Appointment Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name">
                 <label for="name">* Abbreviated Name</label>
@@ -274,130 +379,12 @@
                 </select><br/>
                 <p></p>
                 -->
-                <label for="name">Gas Gift Cards</label>
-                <p> We are currently offering gas cards from Sheetz and Wawa.</p>
-                <label for="name">Gas Card Selection</label>
-                <style>
-                    th, td {
-                        padding: 8px;
-                        text-align: center;
-                    }
-                </style>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>$25 Gift Card<br>(1 point)</th>
-                            <th>$50 Gift Card<br>(2 points)</th>
-                            <th>$75 Gift Card<br>(3 points)</th>
-                            <th>$100 Gift Card<br>(4 points)</th>
-                            <th>$200 Gift Card<br>(8 points)</th>
-                            <th>$300 Gift Card<br>(12 points)</th>
-                            <th>$400 Gift Card<br>(16 points)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sheetz</td>
-                            <td><input type="checkbox" name="sheetz_25"></td>
-                            <td><input type="checkbox" name="sheetz_50"></td>
-                            <td><input type="checkbox" name="sheetz_75"></td>
-                            <td><input type="checkbox" name="sheetz_100"></td>
-                            <td><input type="checkbox" name="sheetz_200"></td>
-                            <td><input type="checkbox" name="sheetz_300"></td>
-                            <td><input type="checkbox" name="sheetz_400"></td>
-                        </tr>
-                        <tr>
-                            <td>Wawa</td>
-                            <td><input type="checkbox" name="wawa_25"></td>
-                            <td><input type="checkbox" name="wawa_50"></td>
-                            <td><input type="checkbox" name="wawa_75"></td>
-                            <td><input type="checkbox" name="wawa_100"></td>
-                            <td><input type="checkbox" name="wawa_200"></td>
-                            <td><input type="checkbox" name="wawa_300"></td>
-                            <td><input type="checkbox" name="wawa_400"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <label for="name">* Would you like house cleaning? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "once" . '" required/> ' . "Once a month (7 points)" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "twice" . '" required/> ' . "Twice a month (14 points)" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "no" . '" required/> ' . "We do not want house cleaning" . '</li>';
-                        echo '</ul>';
-                    ?>
-
-                <label for="name">* Would you like lawn care? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="lawn_care" value="' . "yes" . '" required/> ' . "Yes (3 points per month)" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="lawn_care" value="' . "no" . '" required/> ' . "We do not want lawn care" . '</li>';
-                        echo '</ul>';
-                    ?>
-
-                <label for="name">* Would you like a AAA Plus Membership? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="AAA_membership" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="AAA_membership" value="' . "no" . '" required/> ' . "No" . '</li>';
-                        echo '</ul>';
-                    ?>
-
-                <p> If yes to AAA Membership please provide the responsible party's name and date of birth. </p>
-
-                <p>Responsible Party's Name </p>
-                <input type="text" id="AAA_membership_name" name="AAA_membership_name" required placeholder="Enter name">
-
-                <p> Responsible Party's Date of Birth </p>
-                <input type="date" id="AAA_membership_DOB" name="AAA_membership_DOB" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
-
-                <label for="name"> Photography </label>
-                    <p> 
-                    We offer your family two sessions of photography.  
-                    We will do one during treatment and again after treatment has finished. 
-                    There is no charge to your points for this service. 
-                    </p> 
-
-                <label for="name">* Are you interested in a photography session? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="photography" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="photography" value="' . "no" . '" required/> ' . "No" . '</li>';
-                        echo '</ul>';
-                    ?>
-
-                <label for="name"> Additional Services </label>
-                    <p>
-                    We currently offer to help with house projects and financial relief twice a year.  
-                    If you are interested we will contact you when these services become available
-                    </p>   
-
-                <label for="name">* House Projects </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="house_projects" value="' . "more_info" . '" required/> ' . "We would like more information when available" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="house_projects" value="' . "not_interested" . '" required/> ' . "We are not interested in house projects" . '</li>';
-                        echo '</ul>';
-                    ?>
-
-                <label for="name">* Financial Relief </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="financiel_relief" value="' . "more_info" . '" required/> ' . "We would like more information when available" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="financiel_relief" value="' . "not_interested" . '" required/> ' . "We are not interested in financial relief" . '</li>';
-                        echo '</ul>';
-                    ?>
-
-                <input type="submit" value="Submit">
             </form>
                 <?php if ($date): ?>
                     <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>
                 <?php else: ?>
                     <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
                 <?php endif ?>
-
                 <!-- Require at least one checkbox be checked -->
                 <script type="text/javascript">
                     $(document).ready(function(){
