@@ -56,9 +56,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         <td style="text-align: center; padding: 10px;">
     <?php
     // approved column in the database indicating the status
-    if ($row['approved'] == 1) {
+    if ($row['status'] == 1) {
         echo "Approved";
-    } elseif ($row['approved'] == 0) {
+    } elseif ($row['status'] == 0) {
         echo "Pending Approval";
         // Notify the admin/superadmin
         // implement the notification logic
@@ -66,7 +66,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $_SESSION['notification'] = "A new family is pending approval.";
         }
     } else {
-        echo "Rejected";
+        echo "Pending";
     }
     ?>
         </td>
