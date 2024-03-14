@@ -2,6 +2,9 @@
 /**
  * Encapsulated version of a dbGiftCardVendors entry.
  */
+
+
+//  Super simple just has getters and a constructor
 class Vendor {
     private $id;
     private $name;
