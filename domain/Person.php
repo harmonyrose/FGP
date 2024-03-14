@@ -20,8 +20,7 @@ $accessLevelsByRole = [
 	'superadmin' => 3
 ];
 
-enum Status
-{
+enum Status{
 	case active;
 	case inactive;
 	case remission;
