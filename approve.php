@@ -18,7 +18,7 @@ if (!$connection) {
 
 // Query to fetch the logged-in user's type from the dbpersons table
 // Assuming the user's username is stored in a session variable
-$username = $_SESSION['username']; // have a session variable for the username
+/*$username = $_SESSION['username'];*/ // have a session variable for the username
 $query = "SELECT type FROM dbpersons WHERE username = '$username'";
 $result = mysqli_query($connection, $query);
 
