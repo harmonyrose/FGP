@@ -208,7 +208,6 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <div class="radio-group">
                 <input type="radio" id="permission-yes" name="can_share_contact_info" value="Yes"><label for="permission-yes">Yes</label>
                 <input type="radio" id="permission-no" name="can_share_contact_info" value="No" ><label for="permission-no">No</label>
-                <input type="radio" id="permission-other" name="can_share_contact_info" value="Other" ><label for="permission-other">Other</label>
                 <!--<p> need to add pop up question if other is selected </p>-->
             </div>
 
