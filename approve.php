@@ -30,7 +30,7 @@ $row = mysqli_fetch_assoc($result);
 $userType = $row['type'];
 
 // Query to fetch all families from the database
-$query = "SELECT * FROM dbPersons  WHERE type = 'family' ORDER BY last_name";
+$query = "SELECT * FROM dbPersons  WHERE type = 'family' AND status='inactive' ORDER BY last_name";
 $result = mysqli_query($connection, $query);
 
 if (!$result) {
@@ -75,4 +75,6 @@ echo "</table>";
 
 // Close the database connection
 mysqli_close($connection);
+
+require_once('universal.inc');
 ?>
