@@ -80,7 +80,7 @@
             <?php
             if ($accessLevel >= 2) {
                 echo '
-                    <a class="button" href="addEvent.php?date=' . $date . '">
+                    <a class="button" href="pointsProgForm.php?date=' . $date . '">
                         Create New Event
                     </a>';
             }
