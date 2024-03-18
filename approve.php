@@ -37,7 +37,7 @@ if (isset($_POST['approve'])) {
 }
 
 // Query to fetch all families from the database
-$query = "SELECT * FROM dbPersons WHERE type = 'family' AND status = 'inactive' ORDER BY last_name";
+$query = "SELECT * FROM dbPersons WHERE type = 'family' AND status = 'pending' ORDER BY last_name";
 $result = mysqli_query($connection, $query);
 
 if (!$result) {
@@ -63,7 +63,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <?php
     
     // Display status
-    if ($row['status'] == 'active') {
+    if ($row['status'] == 'Active') {
         echo "Approved";
     } elseif ($row['status'] == 'pending') {
         echo "Pending Approval";
