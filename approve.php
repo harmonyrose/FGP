@@ -3,6 +3,7 @@
 session_start();
 
 require_once('header.php');
+
 // Connect to the database
 $hostname = "localhost"; 
 $database = "fgp";
@@ -16,21 +17,27 @@ if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Query to fetch the logged-in user's type from the dbpersons table
-// Assuming the user's username is stored in a session variable
-/*$username = $_SESSION['username'];*/ // have a session variable for the username
-$query = "SELECT type FROM dbpersons WHERE username = '$username'";
-$result = mysqli_query($connection, $query);
-
-if (!$result) {
-    die("Database query failed: " . mysqli_error($connection));
+// Function to update status
+function update_status($id, $new_status) {
+    global $connection; // Access the global $connection variable
+    $query = "UPDATE dbPersons SET status = '$new_status' WHERE id = '$id'";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        die("Update failed: " . mysqli_error($connection));
+    }
 }
 
-// Fetch the user's type
-$row = mysqli_fetch_assoc($result);
+// Check if the "Approve" or "Reject" button is clicked
+if (isset($_POST['approve'])) {
+    $id = $_POST['id']; // Family ID
+    update_status($id, 'Active'); // Set status to 'Active'
+} elseif (isset($_POST['reject'])) {
+    $id = $_POST['id']; // Family ID
+    update_status($id, 'Rejected'); // Set status to 'Rejected'
+}
 
 // Query to fetch all families from the database
-$query = "SELECT * FROM dbPersons  WHERE type = 'family' AND status='inactive' ORDER BY last_name";
+$query = "SELECT * FROM dbPersons WHERE type = 'family' AND status = 'inactive' ORDER BY last_name";
 $result = mysqli_query($connection, $query);
 
 if (!$result) {
@@ -54,24 +61,20 @@ while ($row = mysqli_fetch_assoc($result)) {
         <td style="text-align: center; padding: 10px;"><?php echo $row['last_name']; ?></td>
         <td style="text-align: center; padding: 10px;">
     <?php
-    // approved column in the database indicating the status
-    if ($row['status'] == 1) {
+    // Display status
+    if ($row['status'] == 'Active') {
         echo "Approved";
-    } elseif ($row['status'] == 0) {
+    } elseif ($row['status'] == 'Pending') {
         echo "Pending Approval";
-        // Notify the admin/superadmin
-        // implement the notification logic
-        if ($userType == "admin" || $userType == "superadmin") {
-            $_SESSION['notification'] = "A new family is pending approval.";
-        }
-    } else {
-        echo "Pending";
     }
     ?>
         </td>
         <td style="text-align: center; padding: 10px;">
-            <button onclick="handleApproval(<?php echo $row['id']; ?>)">Approve</button>
-            <button onclick="handleRejection(<?php echo $row['id']; ?>)">Reject</button>
+            <form method="post">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <button type="submit" name="approve" style="background-color: green; color: white;">Approve</button>
+                <button type="submit" name="reject" style="background-color: red; color: white;">Reject</button>
+            </form>
         </td>
     </tr>
     <?php
@@ -83,6 +86,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 <?php
 // Close the database connection
 mysqli_close($connection);
-
 require_once('universal.inc');
 ?>
