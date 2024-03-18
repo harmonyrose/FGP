@@ -296,7 +296,7 @@
             //contact name, contact number, contact relation
 		    $econtactName, null, null, 
             //ct=contact when, type=t, status = st, ct=contact method 
-            null, 'family', 'inactive', $cmethod, 
+            null, 'family', 'pending', $cmethod, 
             //availability array, schedule array, hours array
 		    '', '', '', 
             //bd=date of birth, sd=start date, notes password

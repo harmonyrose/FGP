@@ -21,8 +21,9 @@ $accessLevelsByRole = [
 ];
 
 enum Status{
-	case active;
-	case inactive;
+	case pending; //family waiting for admin approval
+	case active; //family has been approved
+	case inactive; //family was rejected
 	case remission;
 	case survivor;
 	case stargazer;
