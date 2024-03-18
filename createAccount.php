@@ -61,11 +61,11 @@
             $required = array('econtact-name','cmethod','phone','email',
                 'address', 'city', 'state', 'zip', 'first-name', 'last-name', 'birthdate',
                 'diagnosis','diagnosis_date','hospital','permission_to_confirm',
-                'expected_treatment_end_date'/*,'services_interested_in'*/,'agreement'
+                'expected_treatment_end_date','services','agreement'
                 //form requries these but they cannot be confirmed by computer
             );
             
-            $hospital=$args['hospital'];
+            
             
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
@@ -84,6 +84,8 @@
                 $errors = true;
                 echo 'bad diagnosis date';
             }*/
+
+            $hospital=$args['hospital'];
 
             $cmethod=$args['cmethod'];
             if(!$cmethod="call" and !$cmethod='text'){
@@ -137,8 +139,34 @@
             
             $diagnosis=$args['diagnosis'];
             $permission_to_confirm=$args['permission_to_confirm'];
-            
-            $services_interested_in="test string";
+           
+            /*
+            $services=$args['services'];
+            if(empty($services)){
+                $meals=0;
+                $housecleaning=0;
+                $lawncare=0;
+                $photography=0;
+                $gas=0;
+                $grocery=0;
+                $aaaInterest=0;
+                $socialEvents=0;
+                $houseProjects=0;
+            }
+            else{
+                $n=count($services);
+                echo $n . "number of services[] items";
+                for($i=0;$i<$n;$i++){
+                    switch ($services[$i]){
+                        case 'meals':
+                            $meals=1;
+                        case 'lawncare':
+                            $lawncare=1;
+                        case 'housecleaning':
+                            $housecleaning=1;
+                    }
+                }
+            }*/
 
 
             
@@ -191,24 +219,36 @@
             }
             
             if($args['address2']){
-                $address=$address."' '".$args['address2'];
+                $address=$address.", ".$args['address2'];
             }
 
-            /*
-            if($args['meals']){
+            
+            if(isset($_POST['meals'])){
                 $meals=1;
             }
             else{
                 $meals=0;
             }
-
-            if($args['housecleaning']){
+            if(isset($_POST['gascards'])){
+                $gascards=1;
+            }
+            else{
+                $gascards=0;
+            }
+            if(isset($_POST['lawncare'])){
+                $lawncare=1;
+            }
+            else{
+                $lawncare=0;
+            }
+            
+            if(isset($_POST['housecleaning'])){
                 $housecleaning=1;
             }
             else{
                 $housecleaning=0;
             }
-
+            /*
             if($args['lawncare']){
                 $lawncare=1;
             }
@@ -229,6 +269,9 @@
             else{
                 $gas=0;
             }*/
+
+            //code to make this run and not throw errors
+            //just sets all the variables of the checkbox question to 0
             $meals=0;
             $housecleaning=0;
             $lawncare=0;
@@ -239,7 +282,7 @@
             $socialEvents=0;
             $houseProjects=0;
 
-            
+            $services_interested_in=0;
 
 
             // need to incorporate availability here

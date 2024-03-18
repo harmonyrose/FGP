@@ -28,7 +28,7 @@ if (!$result) {
 
 // Fetch the user's type
 $row = mysqli_fetch_assoc($result);
-$userType = $row['type'];
+//$userType = $row['type'];
 
 // Query to fetch all families from the database
 $query = "SELECT * FROM dbPersons  WHERE type = 'family' AND status='inactive' ORDER BY last_name";

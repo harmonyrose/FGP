@@ -168,16 +168,16 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label><em>* </em>What services are you interested in?</label>
             <p> This is not a guarentee of services. Service is dependent upon volunteer availability. </p>
             
-            <input type="checkbox" id="meals" value="meals">
+            <input type="checkbox" id="meals" name="services[]" value='meals'>
             <label> Meals **Not available in Northern Neck</label> 
             
-            <input type="checkbox" id="lawncare" value="lawncare">
-            <label> Lawn Care ** Not available in Northern Neck</label> 
+            <input type="checkbox" id="lawncare" name="services[]" value="lawncare">
+            <label> Lawn Care **Not available in Northern Neck</label> 
             
-            <input type="checkbox" id="housecleaning" value="housecleaning">
+            <input type="checkbox" id="housecleaning" name="services[]" value="housecleaning">
             <label> Professional House Cleaning **Not available in Northern Neck</label>
 
-            <input type="checkbox" id="gascards" name="gascards">
+            <input type="checkbox" id="gascards" name="services[]" name="gascards">
             <label for="gascards"> Gas Cards</label>
 
             <div><input type="checkbox" id="socialevents" name="socialevents">
