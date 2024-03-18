@@ -54,6 +54,8 @@
         $permission_array['register.php'] = 0;
         $permission_array['findanimal.php'] = 0;
         $permission_array['createaccount.php']=0;
+        //move to admin or superadmin later, here for testing
+        $permission_array['approve.php']=0;
         //pages volunteers can view
         $permission_array['help.php'] = 1;
         $permission_array['dashboard.php'] = 1;

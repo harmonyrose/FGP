@@ -61,10 +61,11 @@ while ($row = mysqli_fetch_assoc($result)) {
         <td style="text-align: center; padding: 10px;"><?php echo $row['last_name']; ?></td>
         <td style="text-align: center; padding: 10px;">
     <?php
+    
     // Display status
     if ($row['status'] == 'Active') {
         echo "Approved";
-    } elseif ($row['status'] == 'Pending') {
+    } elseif ($row['status'] == 'inactive') {
         echo "Pending Approval";
     }
     ?>
