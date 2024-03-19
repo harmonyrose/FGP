@@ -78,7 +78,7 @@
         $permission_array['reports.php'] = 2;
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
-        $permission_array['addevent.php'] = 2;
+        $permission_array['pointsprogform.php'] = 2;
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -95,6 +95,7 @@
         $permission_array['editanimal.php'] = 2;
         $permission_array['giftcardmanagement.php'] = 2;
         $permission_array['listvendors.php'] = 2;
+        $permission_array['addvendors.php'] = 2;
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1));
@@ -132,7 +133,7 @@
             echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
             echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
             echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'addEvent.php">Add</a>');
+            echo('<a class="dropdown-item" href="' . $path . 'pointsProgForm.php">Add</a>');
             echo('</div>');
             echo('</li>');
 
