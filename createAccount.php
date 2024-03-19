@@ -64,7 +64,8 @@
                 'expected_treatment_end_date','services','agreement'
                 //form requries these but they cannot be confirmed by computer
             );
-            
+
+            $services=$args['services'];
             
             
             $errors = false;
@@ -140,37 +141,52 @@
             $diagnosis=$args['diagnosis'];
             $permission_to_confirm=$args['permission_to_confirm'];
            
-            /*
-            $services=$args['services'];
-            if(empty($services)){
-                $meals=0;
-                $housecleaning=0;
-                $lawncare=0;
-                $photography=0;
-                $gas=0;
-                $grocery=0;
-                $aaaInterest=0;
-                $socialEvents=0;
-                $houseProjects=0;
-            }
-            else{
-                $n=count($services);
-                echo $n . "number of services[] items";
-                for($i=0;$i<$n;$i++){
-                    switch ($services[$i]){
-                        case 'meals':
-                            $meals=1;
-                        case 'lawncare':
-                            $lawncare=1;
-                        case 'housecleaning':
-                            $housecleaning=1;
-                    }
-                }
-            }*/
-
-
             
-
+            $meals=0;
+            $housecleaning=0;
+            $lawncare=0;
+            $photography=0;
+            $gas=0;
+            $grocery=0;
+            $aaaInterest=0;
+            $socialEvents=0;
+            $houseProjects=0;
+            
+            //$n=count($services);
+            //echo $n . "number of services[] items";
+            foreach ($services as $service){
+                //echo $service . "<br>";
+                switch ($service){
+                    case 'meals':
+                        $meals=1;
+                        break;
+                    case 'housecleaning':
+                        $housecleaning=1;  
+                        break;
+                    case 'lawncare':
+                        $lawncare=1;
+                        break;
+                    case 'profphotos':
+                        $profphotos=1;
+                        break;
+                    case 'gascards':
+                        $gascards=1;  
+                        break;  
+                    case 'grocerycards':
+                        $grocerycards=1;  
+                        break;
+                    case 'aaaInterest':
+                        $aaaInterest=1;  
+                        break;
+                    case 'socialevents':
+                        $socialevents=1;  
+                        break;
+                    case 'houseprojects':
+                        $houseprojects=1;  
+                        break;
+                }
+            }
+            
             // May want to enforce password requirements at this step
             $password=$dateOfBirth;
             //$password = password_hash($args['password'], PASSWORD_BCRYPT);
@@ -222,66 +238,8 @@
                 $address=$address.", ".$args['address2'];
             }
 
-            
-            if(isset($_POST['meals'])){
-                $meals=1;
-            }
-            else{
-                $meals=0;
-            }
-            if(isset($_POST['gascards'])){
-                $gascards=1;
-            }
-            else{
-                $gascards=0;
-            }
-            if(isset($_POST['lawncare'])){
-                $lawncare=1;
-            }
-            else{
-                $lawncare=0;
-            }
-            
-            if(isset($_POST['housecleaning'])){
-                $housecleaning=1;
-            }
-            else{
-                $housecleaning=0;
-            }
-            /*
-            if($args['lawncare']){
-                $lawncare=1;
-            }
-            else{
-                $lawncare=0;
-            }
 
-            if($args['photography']){
-                $photography=1;
-            }
-            else{
-                $photography=0;
-            }
-
-            if($args['gas']){
-                $gas=1;
-            }
-            else{
-                $gas=0;
-            }*/
-
-            //code to make this run and not throw errors
-            //just sets all the variables of the checkbox question to 0
-            $meals=0;
-            $housecleaning=0;
-            $lawncare=0;
-            $photography=0;
-            $gas=0;
-            $grocery=0;
-            $aaaInterest=0;
-            $socialEvents=0;
-            $houseProjects=0;
-
+        
             $services_interested_in=0;
 
 

@@ -165,35 +165,44 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="expected_treatment_end_date"><em>* </em>What is the expected date of treatment completion?</label>
             <input type="date" id="expected_treatment_end_date" name="expected_treatment_end_date" required placeholder="Your answer">
 
-            <label><em>* </em>What services are you interested in?</label>
+            <label for="services_interested_in"><em>* </em>What services are you interested in?</label>
             <p> This is not a guarentee of services. Service is dependent upon volunteer availability. </p>
-            
-            <input type="checkbox" id="meals" name="services[]" value='meals'>
-            <label> Meals **Not available in Northern Neck</label> 
-            
+            <ul>
+                
+            <li><input type="checkbox" id="meals" name="services[]" value='meals'>
+            Meals **Not available in Northern Neck </li>
+            <li>
             <input type="checkbox" id="lawncare" name="services[]" value="lawncare">
-            <label> Lawn Care **Not available in Northern Neck</label> 
+            Lawn Care **Not available in Northern Neck</li> 
             
+            <li>
             <input type="checkbox" id="housecleaning" name="services[]" value="housecleaning">
-            <label> Professional House Cleaning **Not available in Northern Neck</label>
+            Professional House Cleaning **Not available in Northern Neck</li>
 
-            <input type="checkbox" id="gascards" name="services[]" name="gascards">
-            <label for="gascards"> Gas Cards</label>
+            <li>
+            <input type="checkbox" id="gascards" name="services[]" value="gascards">
+            Gas Cards</li>
 
-            <div><input type="checkbox" id="socialevents" name="socialevents">
-            <label for="socialevents"> Social Events</label> </div>
+            <li>
+            <input type="checkbox" id="socialevents" name="services[]" value="socialEvents">
+            Social Events</li>
 
-            <div><input type="checkbox" id="houseprojects" name="houseprojects">
-            <label for="houseprojects"> House Projects **Not available in Northern Neck</label> 
+            <li>
+            <input type="checkbox" id="houseprojects" name="services[]"  value="houseprojects">
+            House Projects **Not available in Northern Neck</li>
 
-            <div><input type="checkbox" id="profphotos" name="profphotos">
-            <label for="profphotos"> Professional Photography</label> </div>
+            <li>
+            <input type="checkbox" id="profphotos" name="services[]" value="profphotos">
+            Professional Photography</li>
 
-            <div><input type="checkbox" id="grocerycards" name="grocerycards">
-            <label for="grocerycards"> Grocery Cards</label> </div>
+            <li>
+            <input type="checkbox" id="grocerycards"  name="services[]" value="grocerycards">
+            Grocery Cards</li>
 
-            <div><input type="checkbox" id="AAA" name="AAA">
-            <label for="AAA"> AAA membership</label> </div>
+            <li>
+            <input type="checkbox" id="AAA" name="services[]" value="aaa">
+            AAA membership</li>
+            </ul>
 
             <label for="allergies">If you are interested in meals, are there any allergies or dietary restrictions?</label>
             <input type="text" id="allergies" name="allergies" placeholder="Your answer">
