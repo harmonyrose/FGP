@@ -239,10 +239,6 @@
             }
 
 
-        
-            //$services_interested_in=0;
-
-
             // need to incorporate availability here
             $newperson = new Person(
             //first, last venue
@@ -273,7 +269,7 @@
             ,$meals, $housecleaning, $lawncare,$profphotos,
             $gas,$grocery,$aaaInterest,$socialEvents, $houseProjects,
             //how did they hear, general family info, lead volunteer, GC delivery method, location
-            $how_did_you_hear,$family_info,null,null,null
+            $how_did_you_hear,$family_info,$leadvolunteer,null,null
             );
             $result = add_person($newperson);
             if (!$result) {
@@ -282,7 +278,7 @@
                 if ($loggedIn) {
                     echo '<script>document.location = "index.php?registerSuccess";</script>';
                 } else {
-                    //echo '<script>document.location = "login.php?registerSuccess";</script>';
+                    echo '<script>document.location = "login.php?registerSuccess";</script>';
                 }
             }
         } else {

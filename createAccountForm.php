@@ -156,7 +156,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="hospital"><em>* </em>Where is your child receiving treatment? please include name of oncologist or contact at hospital</label>
             <input type="text" id="hospital" name="hospital" required placeholder="Your answer">
 
-            <label><em>* </em>Do we have permission to reach out to the above mentioned on your behave to confirm treament?</label>
+            <label><em>* </em>Do we have permission to reach out to the above mentioned on your behalf to confirm treament?</label>
             <div class="radio-group">
                 <input type="radio" id="permission-yes" name="permission_to_confirm" value="Yes" required><label for="permission-yes">Yes</label>
                 <input type="radio" id="permission-no" name="permission_to_confirm" value="No" required><label for="permission-no">No</label>
@@ -202,7 +202,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             Social Events</li>
 
             <li>
-            <input type="checkbox" id="houseprojects" name="services[]"  value="houseprojects">
+            <input type="checkbox" id="houseprojects" name="services[]"  value="houseProjects">
             House Projects **Not available in Northern Neck</li>
             </ul>
 
