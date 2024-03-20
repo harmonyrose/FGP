@@ -83,7 +83,7 @@ class Person {
 	private $hospital;
 	private $permission_to_confirm;
 	private $expected_treatment_end_date;
-	private $services_interested_in;
+	//private $services_interested_in;
 	private $allergies;
 	private $sibling_info;
 	private $can_share_contact_info;
@@ -115,7 +115,9 @@ class Person {
 			$suns, $sune, $mons, $mone, $tues, $tuee, $weds, $wede,
 			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, 
 			$diagnosis,$diagnosis_date,$hospital,$permission_to_confirm,
-			$expected_treatment_end_date, $services_interested_in,$allergies,
+			$expected_treatment_end_date, 
+			//$services_interested_in,
+			$allergies,
 			$sibling_info,$can_share_contact_info,$username,$meals,
 			$housecleaning,$lawncare,$photography, $gas,$grocery,$aaaInterest,
 			$socialEvents,$houseProjects,$how_did_you_hear,$familyInfo,
@@ -191,7 +193,7 @@ class Person {
 		$this->hospital=$hospital;
 		$this->permission_to_confirm=$permission_to_confirm;
 		$this->expected_treatment_end_date=$expected_treatment_end_date;
-		$this->services_interested_in=$services_interested_in;
+		//$this->services_interested_in=$services_interested_in;
 		$this->allergies=$allergies;
 		$this->sibling_info=$sibling_info;
 		$this->can_share_contact_info=$can_share_contact_info;

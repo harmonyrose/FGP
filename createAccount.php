@@ -145,7 +145,7 @@
             $meals=0;
             $housecleaning=0;
             $lawncare=0;
-            $photography=0;
+            $profphotos=0;
             $gas=0;
             $grocery=0;
             $aaaInterest=0;
@@ -170,19 +170,19 @@
                         $profphotos=1;
                         break;
                     case 'gascards':
-                        $gascards=1;  
+                        $gas=1;  
                         break;  
                     case 'grocerycards':
-                        $grocerycards=1;  
+                        $grocery=1;  
                         break;
-                    case 'aaaInterest':
+                    case 'aaa':
                         $aaaInterest=1;  
                         break;
-                    case 'socialevents':
-                        $socialevents=1;  
+                    case 'socialEvents':
+                        $socialEvents=1;  
                         break;
-                    case 'houseprojects':
-                        $houseprojects=1;  
+                    case 'houseProjects':
+                        $houseProjects=1;  
                         break;
                 }
             }
@@ -240,7 +240,7 @@
 
 
         
-            $services_interested_in=0;
+            //$services_interested_in=0;
 
 
             // need to incorporate availability here
@@ -266,10 +266,11 @@
             //avail, avail, must change password, gender, diagnosis
             null,null, 0, null,$diagnosis,
             $diagnosis_date,$hospital,$permission_to_confirm, 
-            $expected_treatment_end_date,$services_interested_in, 
+            $expected_treatment_end_date,
+            //$services_interested_in, 
             $allergies,$sibling_info,$can_share_contact_info,
             substr($first, 0,1).$last //username
-            ,$meals, $housecleaning, $lawncare,$photography,
+            ,$meals, $housecleaning, $lawncare,$profphotos,
             $gas,$grocery,$aaaInterest,$socialEvents, $houseProjects,
             //how did they hear, general family info, lead volunteer, GC delivery method, location
             $how_did_you_hear,$family_info,null,null,null
@@ -281,7 +282,7 @@
                 if ($loggedIn) {
                     echo '<script>document.location = "index.php?registerSuccess";</script>';
                 } else {
-                    echo '<script>document.location = "login.php?registerSuccess";</script>';
+                    //echo '<script>document.location = "login.php?registerSuccess";</script>';
                 }
             }
         } else {
