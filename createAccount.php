@@ -189,7 +189,8 @@
             
             // May want to enforce password requirements at this step
             $password=$dateOfBirth;
-            //$password = password_hash($args['password'], PASSWORD_BCRYPT);
+            //$password=$first_name;
+            $password = password_hash($args['password'], PASSWORD_BCRYPT);
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
