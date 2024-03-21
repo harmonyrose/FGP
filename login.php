@@ -27,7 +27,9 @@
             dateChecker();
             $username = strtolower($args['username']);
             $password = $args['password'];
-            $user = retrieve_person($username);
+            $user = retrieve_person_by_username($username);
+            echo "username is: ". $username."<br>";
+            echo "password is: ". $user->get_password()."<br>";
             if (!$user) {
                 $badLogin = true;
             } else if (password_verify($password, $user->get_password())) {

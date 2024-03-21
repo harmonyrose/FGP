@@ -165,6 +165,24 @@ function retrieve_persons_by_name ($name) {
     return $persons;	
 }
 
+function retrieve_person_by_username($username) {
+    $con=connect();
+    $query = "SELECT * FROM dbPersons WHERE username = '" . $username . "'";
+    $result = mysqli_query($con,$query);
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    elseif (mysqli_num_rows($result)>=2){
+        echo "More than one matching username...<br>";
+    }
+    $result_row = mysqli_fetch_assoc($result);
+    // var_dump($result_row);
+    $thePerson = make_a_person($result_row);
+//    mysqli_close($con);
+    return $thePerson;
+}
+
 function change_password($id, $newPass) {
     $con=connect();
     $query = 'UPDATE dbPersons SET password = "' . $newPass . '", force_password_change="0" WHERE id = "' . $id . '"';
