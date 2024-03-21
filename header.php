@@ -54,8 +54,6 @@
         $permission_array['register.php'] = 0;
         $permission_array['findanimal.php'] = 0;
         $permission_array['createaccount.php']=0;
-        //move to admin or superadmin later, here for testing
-        $permission_array['approve.php']=0;
         //pages volunteers can view
         $permission_array['help.php'] = 1;
         $permission_array['dashboard.php'] = 1;
@@ -69,6 +67,8 @@
         $permission_array['viewprofile.php'] = 1;
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
+        $permission_array['familyServiceDoc.php'] = 1;
+        $permission_array['approve.php']=1;
         //pages only managers can view
         $permission_array['personsearch.php'] = 2;
         $permission_array['personedit.php'] = 0; // changed to 0 so that applicants can apply
@@ -96,6 +96,7 @@
         $permission_array['giftcardmanagement.php'] = 2;
         $permission_array['listvendors.php'] = 2;
         $permission_array['addvendors.php'] = 2;
+        
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1));
