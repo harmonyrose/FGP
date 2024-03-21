@@ -53,6 +53,9 @@
         $permission_array['logout.php'] = 0;
         $permission_array['register.php'] = 0;
         $permission_array['findanimal.php'] = 0;
+        $permission_array['createaccount.php']=0;
+        //move to admin or superadmin later, here for testing
+        $permission_array['approve.php']=0;
         //pages volunteers can view
         $permission_array['help.php'] = 1;
         $permission_array['dashboard.php'] = 1;
@@ -75,7 +78,7 @@
         $permission_array['reports.php'] = 2;
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
-        $permission_array['addevent.php'] = 2;
+        $permission_array['pointsprogform.php'] = 2;
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -130,7 +133,7 @@
             echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
             echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
             echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'addEvent.php">Add</a>');
+            echo('<a class="dropdown-item" href="' . $path . 'pointsProgForm.php">Add</a>');
             echo('</div>');
             echo('</li>');
 

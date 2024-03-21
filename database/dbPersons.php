@@ -73,8 +73,34 @@ function add_person($person) {
             $person->get_saturday_availability_end() . '","' .
             $person->get_profile_pic() . '","' .
             $person->is_password_change_required() . '","' .
-            $person->get_gender() .
+            $person->get_gender() . '","' .
+            $person->get_diagnosis() . '","' .
+            $person->get_diagnosis_date() . '","' .
+            $person->get_hospital() . '","' .
+            $person->get_permission_to_confirm() . '","' .
+            $person->get_expected_treatment_end_date() . '","' .
+            $person->get_services_interested_in() . '","' .
+            $person->get_allergies() . '","' .
+            $person->get_sibling_info() . '","' .
+            $person->get_can_share_contact_info() . '","' .
+            $person->get_username() . '","' .
+            $person->get_meals() . '","' .
+            $person->get_housecleaning() . '","' .
+            $person->get_lawncare() . '","' .
+            $person->get_photography() . '","' .
+            $person->get_gas() . '","' .
+            $person->get_grocery() . '","' .
+            $person->get_aaaInterest() . '","' .
+            $person->get_socialEvents() . '","' .
+            $person->get_houseProjects() . '","' .
+
+            $person->get_how_did_you_hear() . '","' .
+            $person->get_familyInfo() . '","' .
+            $person->get_leadVolunteer() . '","' .
+            $person->get_gift_card_delivery_method() . '","' .
+            $person->get_location() .
             '");'
+
         );							
         mysqli_close($con);
         return true;
@@ -322,7 +348,31 @@ function make_a_person($result_row) {
                     $result_row['saturdays_start'],
                     $result_row['saturdays_end'],
                     $result_row['force_password_change'],
-                    $result_row['gender']
+                    $result_row['gender'],
+                    $result_row['diagnosis'],
+                    $result_row['diagnosis_date'],
+                    $result_row['hospital'],
+                    $result_row['permission_to_confirm'],
+                    $result_row['expected_treatment_end_date'],
+                    $result_row['services_interested_in'],
+                    $result_row['allergies'],
+                    $result_row['sibling_info'],
+                    $result_row['can_share_contact_info'],
+                    $result_row['username'],
+                    $result_row['meals'],
+                    $result_row['housecleaning'],
+                    $result_row['lawncare'],
+                    $result_row['photography'],
+                    $result_row['gas'],
+                    $result_row['grocery'],
+                    $result_row['aaaInterest'],
+                    $result_row['socialEvents'],
+                    $result_row['houseProjects'],
+                    $result_row['how_did_you_hear'],
+                    $result_row['familyInfo'],
+                    $result_row['leadVolunteer'],
+                    $result_row['gift_card_delivery_method'],
+                    $result_row['location']
                 );   
     return $thePerson;
 }
