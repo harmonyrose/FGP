@@ -24,29 +24,18 @@
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbEvents.php');
+        require_once('database/dbPointsProg.php');
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "abbrev-name", "date", "start-time", "description", "location", "service", "animal"
+            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
+            "AAA_membership", "photography", "house_projects", "financial_relief"
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
             echo 'bad form data';
             die();
         } else {
-            $validated = validate12hTimeRangeAndConvertTo24h($args["start-time"], "11:59 PM");
-            if (!$validated) {
-                echo 'bad time range';
-                die();
-            }
-            $startTime = $args['start-time'] = $validated[0];
-            $date = $args['date'] = validateDate($args["date"]);
-            //$capacity = intval($args["capacity"]);
-            $abbrevLength = strlen($args['abbrev-name']);
-            if (!$startTime || !$date || $abbrevLength > 11){
-                echo 'bad args';
-                die();
-            }
-            $id = create_event($args);
+            $date = $args['AAA_membership_DOB'] = validateDate($args["AAA_membership_DOB"]);
+            $id = ($args);
             if(!$id){
                 echo "Oopsy!";
                 die();
@@ -54,7 +43,6 @@
             require_once('include/output.php');
             
             $name = htmlspecialchars_decode($args['name']);
-            $startTime = time24hto12h($startTime);
             $date = date('l, F j, Y', strtotime($date));
             require_once('database/dbMessages.php');
             system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
@@ -114,11 +102,11 @@
                 </p>
                 <label for="name">* How many freezer meals would you like? </label>
                 <ul>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 2 Meals per month (Free)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 4 meals per month (2 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 6 meals per month (3 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> 8 meals per month (4 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value="2 Meals per month (Free)"> We do not want ANY freezer meals</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=2> 2 Meals per month (Free)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=4> 4 meals per month (2 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=6> 6 meals per month (3 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=8> 8 meals per month (4 points)</li>
+                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=0> We do not want ANY freezer meals</li>
                 </ul>
                 <label for="name">* Are there any food allergies that we need to be aware of? </label>
                 <ul>
@@ -129,7 +117,7 @@
                 <li><input type="checkbox" id="allergies" name="allergies" value="Egg"> Egg</li>
                 <li><input type="checkbox" id="allergies" name="allergies" value="Dairy"> Dairy</li>
                 <li><input type="checkbox" id="allergies" name="allergies" value="No Known Allergies"> No Known Allergies</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Other:"> Other: <input type= "text" id="name2" name="name2" /></li>
+                <li><input type="checkbox" id="allergies" name="allergies" value="other"> Other: <input type= "text" id="otherallergy" name="otherallergy" /></li>
                 </ul>
                 <label for="name">* What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
                 <ul>
