@@ -4,7 +4,7 @@ require_once('header.php');
 
 
 // Check if the form is submitted
-//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Process the submitted form data
 
     // Retrieve and sanitize the input data
@@ -14,8 +14,8 @@ require_once('header.php');
     $lead_volunteer = $_POST['lead_volunteer'];
     $gift_card_delivery_method = $_POST['gift_card_delivery_method'];
 
-//}
-
+}
+//change post to get
 // Display the form to add values for location, start_date, lead_volunteer, and gift_card_delivery_method
 ?>
 
@@ -33,7 +33,6 @@ require_once('header.php');
     <label for="gift_card_delivery_method">Gift Card Delivery Method:</label>
     <select name="gift_card_delivery_method" id="gift_card_delivery_method" required>
         <!-- Not sure which options we chose yet -->
-        <option value="Email">Email</option>
         <option value="Mail">Mail</option>
         <option value="In Person">In Person</option>
     </select><br>
