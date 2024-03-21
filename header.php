@@ -67,7 +67,7 @@
         $permission_array['viewprofile.php'] = 1;
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
-        $permission_array['familyServiceDoc.php'] = 1;
+        $permission_array['familyservicedoc.php'] = 1;
         $permission_array['approve.php']=1;
         //pages only managers can view
         $permission_array['personsearch.php'] = 2;
