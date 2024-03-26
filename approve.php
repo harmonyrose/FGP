@@ -1,4 +1,5 @@
 <?php
+
 // Start session
 session_start();
 
@@ -31,7 +32,7 @@ function update_status($id, $new_status) {
 if (isset($_POST['approve'])) {
     $id = $_POST['id']; // Family ID
     update_status($id, 'Active'); // Set status to 'Active'
-    header("Location: familyServiceDoc.php"); // Redirect to familyServiceDoc.php after approving
+    header("Location: familyServiceDoc.php?id=$id"); // Redirect to familyServiceDoc.php after approving
     exit; // Stop further execution
 } elseif (isset($_POST['reject'])) {
     $id = $_POST['id']; // Family ID
