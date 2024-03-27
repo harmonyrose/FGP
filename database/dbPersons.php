@@ -146,6 +146,7 @@ function retrieve_person($id) {
 //    mysqli_close($con);
     return $thePerson;
 }
+
 // Name is first concat with last name. Example 'James Jones'
 // return array of Persons.
 function retrieve_persons_by_name ($name) {
@@ -262,7 +263,7 @@ function getall_dbPersons($name_from, $name_to, $venue) {
   @return all rows from dbPersons
 
 */
-function getall_volunteers() {
+function getall_families() {
     $con=connect();
     $query = 'SELECT * FROM dbPersons WHERE id != "vmsroot"';
     $result = mysqli_query($con,$query);
