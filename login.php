@@ -27,12 +27,28 @@
             dateChecker();
             $username = strtolower($args['username']);
             $password = $args['password'];
-            $user = retrieve_person_by_username($username);
-            echo "username is: ". $username."<br>";
-            echo "password is: ". $user->get_password()."<br>";
+            //find all matching accounts with same username, can be dulplicates
+            $users = retrieve_persons_by_username($username);
+            //echo "count of users: ". count($users). "<br>";
+            //check array of users, if just one, that is the correct user
+            if(count($users)==1){
+                $user=$users[0];
+            }else if(count($users)>1){  //if more than one matching username, check passwords for match
+                foreach ($users as $person){
+                    if($password==$person->get_password()){
+                        $user=$person;
+                        break;
+                    }
+                }
+            }else{  //no matching usernames
+                $badLogin=true;
+                $user;
+            }
+            //orignial login code, modified with above to work for non-uniuqe usernames
             if (!$user) {
                 $badLogin = true;
-            } else if (password_verify($password, $user->get_password())) {
+            }
+            else if($password==$user->get_password()){
                 $changePassword = false;
                 if ($user->is_password_change_required()) {
                     $changePassword = true;
@@ -70,6 +86,7 @@
             } else {
                 $badLogin = true;
             }
+        
         }
     }
     //<p>Or <a href="register.php">register as a new volunteer</a>!</p>
@@ -95,11 +112,11 @@
             <form method="post">
                 <?php
                     if ($badLogin) {
-                        echo '<span class="error">No login with that e-mail and password combination currently exists.</span>';
+                        echo '<span class="error">No login with that username and password combination currently exists.</span>';
                     }
                 ?>
                 <label for="username">Username</label>
-        		<input type="text" name="username" placeholder="Enter your e-mail address" required>
+        		<input type="text" name="username" placeholder="Enter your username" required>
         		<label for="password">Password</label>
                 <input type="password" name="password" placeholder="Enter your password" required>
                 <input type="submit" name="login" value="Log in">

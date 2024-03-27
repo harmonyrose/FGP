@@ -165,7 +165,7 @@ function retrieve_persons_by_name ($name) {
     return $persons;	
 }
 
-function retrieve_person_by_username($username) {
+function retrieve_persons_by_username($username) {
     $con=connect();
     $query = "SELECT * FROM dbPersons WHERE username = '" . $username . "'";
     $result = mysqli_query($con,$query);
@@ -176,11 +176,19 @@ function retrieve_person_by_username($username) {
     elseif (mysqli_num_rows($result)>=2){
         echo "More than one matching username...<br>";
     }
-    $result_row = mysqli_fetch_assoc($result);
+    /*$result_row = mysqli_fetch_assoc($result);
     // var_dump($result_row);
     $thePerson = make_a_person($result_row);
 //    mysqli_close($con);
-    return $thePerson;
+    return $thePerson;*/
+
+    $result = mysqli_query($con,$query);
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $the_person = make_a_person($result_row);
+        $persons[] = $the_person;
+        //echo "new person added to output array <br>";
+    }
+    return $persons;
 }
 
 function change_password($id, $newPass) {

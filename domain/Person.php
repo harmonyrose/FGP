@@ -170,7 +170,8 @@ class Person {
 			$this->hours = array();
 		$this->notes = $notes;
 		if ($pass == "")
-			$this->password = password_hash($this->birthday, PASSWORD_BCRYPT); // default password
+			//$this->password = password_hash($this->birthday, PASSWORD_BCRYPT); // default password
+			$this->password =$this->birthday;
 		else
 			$this->password = $pass;
 		$this->sundaysStart = $suns;
