@@ -532,5 +532,30 @@ class Person {
 	function get_familyInfo() {
 		return $this->familyInfo;
 	}
+	function setLocation($location) {
+        $this->location = $location;
+    }
+
+    function setStartDate($start_date) {
+        $this->start_date = $start_date;
+    }
+
+    function setLeadVolunteer($leadVolunteer) {
+        $this->leadVolunteer = $leadVolunteer;
+    }
+
+    function setGiftCardDeliveryMethod($gift_card_delivery_method) {
+        $this->gift_card_delivery_method = $gift_card_delivery_method;
+    }
+
+	// Function to update a person in the database
+function update_person($person) {
+    $con = connect(); // Assuming connect() is a function to establish a database connection
+    // Construct your update query here based on the provided Person object
+    $query = "UPDATE dbPersons SET location = '{$person->get_location()}', start_date = '{$person->get_start_date()}', lead_volunteer = '{$person->get_lead_volunteer()}', gift_card_delivery_method = '{$person->get_gift_card_delivery_method()}' WHERE id = '{$person->get_id()}'";
+    $result = mysqli_query($con, $query);
+    return $result; // Return true if update is successful, false otherwise
+}
+
 
 }
