@@ -20,14 +20,14 @@ $accessLevelsByRole = [
 	'superadmin' => 3
 ];
 
-enum Status{
+/*enum Status{
 	case pending; //family waiting for admin approval
 	case active; //family has been approved
 	case inactive; //family was rejected
 	case remission;
 	case survivor;
 	case stargazer;
-}
+}*/
 
 class Person {
 	private $id;         // id (unique key) = first_name . phone1
@@ -83,7 +83,7 @@ class Person {
 	private $hospital;
 	private $permission_to_confirm;
 	private $expected_treatment_end_date;
-	private $services_interested_in;
+	//private $services_interested_in;
 	private $allergies;
 	private $sibling_info;
 	private $can_share_contact_info;
@@ -115,7 +115,9 @@ class Person {
 			$suns, $sune, $mons, $mone, $tues, $tuee, $weds, $wede,
 			$thus, $thue, $fris, $frie, $sats, $sate, $mcp, $gender, 
 			$diagnosis,$diagnosis_date,$hospital,$permission_to_confirm,
-			$expected_treatment_end_date, $services_interested_in,$allergies,
+			$expected_treatment_end_date, 
+			//$services_interested_in,
+			$allergies,
 			$sibling_info,$can_share_contact_info,$username,$meals,
 			$housecleaning,$lawncare,$photography, $gas,$grocery,$aaaInterest,
 			$socialEvents,$houseProjects,$how_did_you_hear,$familyInfo,
@@ -168,7 +170,8 @@ class Person {
 			$this->hours = array();
 		$this->notes = $notes;
 		if ($pass == "")
-			$this->password = password_hash($this->id, PASSWORD_BCRYPT); // default password
+			//$this->password = password_hash($this->birthday, PASSWORD_BCRYPT); // default password
+			$this->password =$this->birthday;
 		else
 			$this->password = $pass;
 		$this->sundaysStart = $suns;
@@ -191,7 +194,7 @@ class Person {
 		$this->hospital=$hospital;
 		$this->permission_to_confirm=$permission_to_confirm;
 		$this->expected_treatment_end_date=$expected_treatment_end_date;
-		$this->services_interested_in=$services_interested_in;
+		//$this->services_interested_in=$services_interested_in;
 		$this->allergies=$allergies;
 		$this->sibling_info=$sibling_info;
 		$this->can_share_contact_info=$can_share_contact_info;
@@ -529,5 +532,30 @@ class Person {
 	function get_familyInfo() {
 		return $this->familyInfo;
 	}
+	function setLocation($location) {
+        $this->location = $location;
+    }
+
+    function setStartDate($start_date) {
+        $this->start_date = $start_date;
+    }
+
+    function setLeadVolunteer($leadVolunteer) {
+        $this->leadVolunteer = $leadVolunteer;
+    }
+
+    function setGiftCardDeliveryMethod($gift_card_delivery_method) {
+        $this->gift_card_delivery_method = $gift_card_delivery_method;
+    }
+
+	// Function to update a person in the database
+function update_person($person) {
+    $con = connect(); // Assuming connect() is a function to establish a database connection
+    // Construct your update query here based on the provided Person object
+    $query = "UPDATE dbPersons SET location = '{$person->get_location()}', start_date = '{$person->get_start_date()}', lead_volunteer = '{$person->get_lead_volunteer()}', gift_card_delivery_method = '{$person->get_gift_card_delivery_method()}' WHERE id = '{$person->get_id()}'";
+    $result = mysqli_query($con, $query);
+    return $result; // Return true if update is successful, false otherwise
+}
+
 
 }

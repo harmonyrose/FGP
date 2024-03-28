@@ -1,4 +1,5 @@
 <?php
+
 // Start session
 session_start();
 
@@ -31,11 +32,12 @@ function update_status($id, $new_status) {
 if (isset($_POST['approve'])) {
     $id = $_POST['id']; // Family ID
     update_status($id, 'Active'); // Set status to 'Active'
+    header("Location: familyServiceDoc.php?id=$id"); // Redirect to familyServiceDoc.php after approving
+    exit; // Stop further execution
 } elseif (isset($_POST['reject'])) {
     $id = $_POST['id']; // Family ID
     update_status($id, 'Rejected'); // Set status to 'Rejected'
 }
-
 // Query to fetch all families from the database
 $query = "SELECT * FROM dbPersons WHERE type = 'family' AND status = 'pending' ORDER BY last_name";
 $result = mysqli_query($connection, $query);
@@ -50,6 +52,7 @@ if (!$result) {
 <table style="margin: auto; border-collapse: collapse;">
     <tr>
         <th style="text-align: center; padding: 10px;">Family</th>
+        <th style="text-align: center; padding: 10px;">Email</th>
         <th style="text-align: center; padding: 10px;">Status</th>
         <th style="text-align: center; padding: 10px;">Action</th>
     </tr>
@@ -59,13 +62,13 @@ while ($row = mysqli_fetch_assoc($result)) {
     ?>
     <tr>
         <td style="text-align: center; padding: 10px;"><?php echo $row['last_name']; ?></td>
+        <td style="text-align: center; padding: 10px;"><?php echo $row['email']; ?></td>
         <td style="text-align: center; padding: 10px;">
     <?php
-    
     // Display status
     if ($row['status'] == 'Active') {
         echo "Approved";
-    } elseif ($row['status'] == 'pending') {
+    } elseif ($row['status'] == 'pending' or $row['status'] == 'Pending') {
         echo "Pending Approval";
     }
     ?>
