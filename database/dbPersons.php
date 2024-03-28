@@ -79,11 +79,12 @@ function add_person($person) {
             $person->get_hospital() . '","' .
             $person->get_permission_to_confirm() . '","' .
             $person->get_expected_treatment_end_date() . '","' .
-            $person->get_services_interested_in() . '","' .
+            //$person->get_services_interested_in() . '","' .
             $person->get_allergies() . '","' .
             $person->get_sibling_info() . '","' .
             $person->get_can_share_contact_info() . '","' .
             $person->get_username() . '","' .
+            
             $person->get_meals() . '","' .
             $person->get_housecleaning() . '","' .
             $person->get_lawncare() . '","' .
@@ -163,6 +164,32 @@ function retrieve_persons_by_name ($name) {
         $persons[] = $the_person;
     }
     return $persons;	
+}
+
+function retrieve_persons_by_username($username) {
+    $con=connect();
+    $query = "SELECT * FROM dbPersons WHERE username = '" . $username . "'";
+    $result = mysqli_query($con,$query);
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    elseif (mysqli_num_rows($result)>=2){
+        echo "More than one matching username...<br>";
+    }
+    /*$result_row = mysqli_fetch_assoc($result);
+    // var_dump($result_row);
+    $thePerson = make_a_person($result_row);
+//    mysqli_close($con);
+    return $thePerson;*/
+
+    $result = mysqli_query($con,$query);
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $the_person = make_a_person($result_row);
+        $persons[] = $the_person;
+        //echo "new person added to output array <br>";
+    }
+    return $persons;
 }
 
 function change_password($id, $newPass) {
@@ -355,7 +382,7 @@ function make_a_person($result_row) {
                     $result_row['hospital'],
                     $result_row['permission_to_confirm'],
                     $result_row['expected_treatment_end_date'],
-                    $result_row['services_interested_in'],
+                    //$result_row['services_interested_in'],
                     $result_row['allergies'],
                     $result_row['sibling_info'],
                     $result_row['can_share_contact_info'],
@@ -1008,3 +1035,6 @@ function find_user_names($name) {
         mysqli_close($connection);
         return $row['first_name'] . ' ' . $row['last_name'];
     }
+	
+    
+    
