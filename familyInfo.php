@@ -94,8 +94,7 @@
             echo "<div class=\"item\">Diagnosis Date: " . $person->get_diagnosis_date() . " </div>";
             echo "<div class=\"item\">Hospital: " . $person->get_hospital() . " </div>";
             echo "<div class=\"item\">Permission to Confirm: " . $person->get_permission_to_confirm() . " </div>";
-            echo "<div class=\"item\">Expected Treatment End Date: " . $person->get_expected_treatment_end_date() . " </div>";
-            echo "<div class=\"item\">Services Interested In: " . $person->get_services_interested_in() . " </div>";
+            echo "<div class=\"item\">Expected Treatment End Date: " . $person->get_expected_treatment_end_date() . " </div>"; 
             echo "<div class=\"item\">Allergies: " . $person->get_allergies() . " </div>";
             echo "<div class=\"item\">Sibling Info: " . $person->get_sibling_info() . " </div>";
             echo "<div class=\"item\">Can Share Contact Info? " . ($person->get_can_share_contact_info() ? "Yes" : "No") . " </div>";
