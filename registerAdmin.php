@@ -171,9 +171,9 @@
                 //meals, housecleaning, lawncare, photos
                 null,null,null,null,
                 //gas, grocery, aaainterest, social events, houseprojects
-                null,null,null,null,null
+                null,null,null,null,null,
                 //how did they hear, general family info, lead volunteer, GC delivery method, location
-                //null,null,null,null
+                null,null,null,null,null
             );
             echo "after large create statement <br>";
             $result = add_person($newperson);
