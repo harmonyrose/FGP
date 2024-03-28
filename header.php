@@ -97,12 +97,13 @@
         $permission_array['giftcardmanagement.php'] = 2;
         $permission_array['listvendors.php'] = 2;
         $permission_array['addvendors.php'] = 2;
+        $permission_array['viewfamilyaccounts.php'] = 2;
+        $permission_array['familyinfo.php'] = 2;
         $permission_array['approve.php'] = 2;
         $permission_array['viewadmin.php'] = 2;
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
-        
-
+      
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1));
         $current_page = substr($current_page, strpos($current_page,"/"));
