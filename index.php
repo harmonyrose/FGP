@@ -65,10 +65,6 @@
                         }
                     ?></span>
                 </div>
-                <div class="dashboard-item" data-link="calendar.php">
-                    <img src="images/view-calendar.svg">
-                    <span>View Calendar</span>
-                </div>
                 <?php if ($_SESSION['access_level'] >= 2): ?>
                     <div class="dashboard-item" data-link="pointsProgForm.php">
                         <img src="images/create-report.svg">
@@ -78,18 +74,6 @@
 				<div class="dashboard-item" data-link="addAnimal.php">
                     <img src="images/settings.png">
                     <span>Add Animal</span>
-                </div>
-				<div class="dashboard-item" data-link="addService.php">
-                    <img src="images/settings.png">
-                    <span>Add Service</span>
-                </div>
-				<div class="dashboard-item" data-link="addLocation.php">
-                    <img src="images/settings.png">
-                    <span>Add Location</span>
-                </div>
-                <div class="dashboard-item" data-link="findAnimal.php">
-                        <img src="images/person-search.svg">
-                        <span>Find Animal</span>
                 </div>
                 <!-- Commenting out because volunteers won't be searching events
                 <div class="dashboard-item" data-link="eventSearch.php">
@@ -101,10 +85,6 @@
                 <div class="dashboard-item" data-link="personSearch.php">
                     <img src="images/person-search.svg">
                     <span>Find Volunteer</span>
-                </div>
-                <div class="dashboard-item" data-link="register.php">
-                     <img src="images/add-person.svg">
-                    <span>Register Volunteer</span>
                 </div>
                 <div class="dashboard-item" data-link="viewArchived.php">
                     <img src="images/person-search.svg">
