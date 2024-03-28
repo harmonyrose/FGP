@@ -143,6 +143,10 @@
                     <img src="images/settings.png">
                     <span>Approve Acounts</span>
                 </div>
+                <div class="dashboard-item" data-link="viewAdmin.php">
+                    <img src="images/settings.png">
+                    <span>View Admin</span>
+                </div>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>

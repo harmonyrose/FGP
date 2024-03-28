@@ -98,6 +98,7 @@
         $permission_array['listvendors.php'] = 2;
         $permission_array['addvendors.php'] = 2;
         $permission_array['approve.php'] = 2;
+        $permission_array['viewAdmin.php'] = 2;
         
 
         //Check if they're at a valid page for their access level.
