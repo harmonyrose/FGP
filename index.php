@@ -139,10 +139,6 @@
                     <img src="images/giftcard.svg">
                     <span>Gift Card Management</span>
                 </div>
-                <div class ="dashboard-item" data-link="addVolunteer.php">
-                    <img src="images/add-person.svg">
-                    <span>Add Volunteer</span>
-                </div>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>
