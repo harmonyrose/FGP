@@ -6,10 +6,20 @@
 }
 
 .item {
+    text-align: center;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 10px;
+    width: calc(33.33% - 20px); /* Adjust width as needed */
+    flex-basis: calc(33.33% - 20px); /* Adjust flex basis */
+}
+
+.label {
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0px;
     width: calc(33.33% - 20px); /* Adjust width as needed */
     flex-basis: calc(33.33% - 20px); /* Adjust flex basis */
 }
