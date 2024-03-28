@@ -1,6 +1,5 @@
 <?php
-    // Author: Lauren Knight
-    // Description: Registration page for new volunteers
+    // Description: Registration page for new families
     session_cache_expire(30);
     session_start();
     
@@ -58,11 +57,11 @@
             //     echo "<p>$key: $value</p>";
             // }
 
+            //required fields
             $required = array('econtact-name','cmethod','phone','email',
                 'address', 'city', 'state', 'zip', 'first-name', 'last-name', 'birthdate',
                 'diagnosis','diagnosis_date','hospital','permission_to_confirm',
                 'expected_treatment_end_date','services','agreement'
-                //form requries these but they cannot be confirmed by computer
             );
 
             $services=$args['services'];
@@ -152,8 +151,7 @@
             $socialEvents=0;
             $houseProjects=0;
             
-            //$n=count($services);
-            //echo $n . "number of services[] items";
+            //iterate over array to check if value was passed via checkbox
             foreach ($services as $service){
                 //echo $service . "<br>";
                 switch ($service){
@@ -189,14 +187,13 @@
             
             // May want to enforce password requirements at this step
             $password=$dateOfBirth;
-            //$password=$first_name;
             //$password = password_hash($args['password'], PASSWORD_BCRYPT);
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
             }
-
+            //optional field parsing
             $optional=array('allergies','sibling_info','can_share_contact_info',
             'family_info','how_did_you_hear','address2');
 
@@ -213,7 +210,6 @@
             else{
                 $sibling_info="";
             }
-
 
             if($args['can_share_contact_info']){
                 $can_share_contact_info=$args['can_share_contact_info'];
@@ -240,7 +236,6 @@
             }
 
 
-            // need to incorporate availability here
             $newperson = new Person(
             //first, last venue
 		    $first, $last, 'portland', 

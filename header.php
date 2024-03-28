@@ -99,6 +99,8 @@
         $permission_array['addvendors.php'] = 2;
         $permission_array['approve.php'] = 2;
         $permission_array['viewadmin.php'] = 2;
+        //need to update permission later
+        $permission_array['modifyadminform.php'] = 0;
         
 
         //Check if they're at a valid page for their access level.

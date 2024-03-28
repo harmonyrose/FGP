@@ -68,7 +68,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     // Display status
     if ($row['status'] == 'Active') {
         echo "Approved";
-    } elseif ($row['status'] == 'pending') {
+    } elseif ($row['status'] == 'pending' or $row['status'] == 'Pending') {
         echo "Pending Approval";
     }
     ?>

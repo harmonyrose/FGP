@@ -18,7 +18,7 @@ if (!$connection) {
 // Function to delete an admin
 function delete_admin($id) {
     global $connection; // Access the global $connection variable
-    $query = "DELETE FROM dbPersons WHERE id = '$id' AND type = 'admin'";
+    $query = "DELETE FROM dbPersons WHERE id = '$id' AND type = 'admin' OR type='Admin'";
     $result = mysqli_query($connection, $query);
     if (!$result) {
         die("Delete failed: " . mysqli_error($connection));
@@ -26,7 +26,7 @@ function delete_admin($id) {
 }
 
 // Query to fetch all admins from the database
-$query = "SELECT * FROM dbPersons WHERE type = 'admin'";
+$query = "SELECT * FROM dbPersons WHERE type = 'admin' OR type='Admin'";
 $result = mysqli_query($connection, $query);
 
 if (!$result) {
@@ -54,6 +54,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                 <button type="submit" name="delete" style="background-color: red; color: white;">Delete</button>
             </form>
+            <form method="post">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <button type="submit" name="modify" style="background-color: blue; color: white;">Modify</button>
+            </form>
         </td>
     </tr>
     <?php
@@ -67,6 +71,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 if (isset($_POST['delete'])) {
     $id = $_POST['id']; // Admin ID
     delete_admin($id);
+}
+else if(isset($_POST['modify'])){
+    $id = $_POST['id']; // Family ID
+    header("Location: familyServiceDoc.php?id=$id");
 }
 ?>
 
