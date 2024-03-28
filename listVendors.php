@@ -109,7 +109,15 @@ function displaySearchRow($vendor){
         </script>
 
 
-
+    <style>   /* Apply alternating background colors */
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Lighter color */
+        }
+            
+        tr:nth-child(odd) {
+            background-color: #e6e6e6; /* Slightly darker color */
+        }
+    </style>
 
 
 
@@ -135,6 +143,7 @@ function displaySearchRow($vendor){
                                 </thead>
                                 <tbody class="standout">';
                         // Show each vendor as formatted in displaySearchRow above \\
+
                         foreach ($vendors as $vendor) {
                             displaySearchRow($vendor);
                         }
