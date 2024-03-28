@@ -65,9 +65,61 @@ function buildSelect($name, $disabled=false, $selected=null) {
         echo 'bad access level';
         die();
     }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        require_once('include/input-validation.php');
+        require_once('database/dbPointsProg.php');
+        $args = sanitize($_POST, null);
+        $required = array(
+            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
+            "AAA_membership", "photography", "house_projects", "financial_relief"
+        );
+        if (!wereRequiredFieldsSubmitted($args, $required)) {
+            echo 'bad form data';
+            die();
+        } else {
+            $date = $args['AAA_membership_DOB'] = validateDate($args["AAA_membership_DOB"]);
+            $id = ($args);
+            if(!$id){
+                echo "Oopsy!";
+                die();
+            }
+            require_once('include/output.php');
+            
+            $name = htmlspecialchars_decode($args['name']);
+            $date = date('l, F j, Y', strtotime($date));
+            require_once('database/dbMessages.php');
+            system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
+            header("Location: event.php?id=$id&createSuccess");
+            die();
+        }
+    }
+    $date = null;
+    if (isset($_GET['date'])) {
+        $date = $_GET['date'];
+        $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
+        $timeStamp = strtotime($date);
+        if (!preg_match($datePattern, $date) || !$timeStamp) {
+            header('Location: calendar.php');
+            die();
+        }
+    }
+
+    // get animal data from database for form
+    // Connect to database
+    include_once('database/dbinfo.php'); 
+    $con=connect();  
+    // Get all the animals from animal table
+    $sql = "SELECT * FROM `dbAnimals`";
+    $all_animals = mysqli_query($con,$sql);
+    $sql = "SELECT * FROM `dbLocations`";
+    $all_locations = mysqli_query($con,$sql);
+    $sql = "SELECT * FROM `dbServices`";
+    $all_services = mysqli_query($con,$sql);
+    //get all vendors from vendor table
+    $sql = "SELECT * FROM `dbGiftCardVendors`";
+    $all_vendors = mysqli_query($con,$sql);
+
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -145,113 +197,54 @@ function buildSelect($name, $disabled=false, $selected=null) {
                     PO Boxes. 
                 </p>
                 <label for="name"> Store Selection </label>
-                <style>
-                    th, td {
-                        padding: 8px;
-                        text-align: center;
+                <?php
+                // Check if there are any vendors
+                if (mysqli_num_rows($all_vendors) > 0) {
+                    // Loop through each row in the result set
+                    while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
+                        // Check if the vendor type is "grocery"
+                        if ($vendor['vendorType'] == "grocery") {
+                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
+                            echo '<select name="'. $vendor['vendorName'] .'" id="'. $vendor['vendorName'] .'">';
+                            for ($i = 25; $i <= 400; $i += 25) {
+                                echo '<option value="'. $vendor['vendorName'] .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
+                             }
+                            echo '</select>';
+                        }
                     }
-                </style>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>$25 Gift Card<br>(1 point)</th>
-                            <th>$50 Gift Card<br>(2 points)</th>
-                            <th>$75 Gift Card<br>(3 points)</th>
-                            <th>$100 Gift Card<br>(4 points)</th>
-                            <th>$200 Gift Card<br>(8 points)</th>
-                            <th>$300 Gift Card<br>(12 points)</th>
-                            <th>$400 Gift Card<br>(16 points)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Food Lion</td>
-                            <td><input type="checkbox" name="foodlion_25"></td>
-                            <td><input type="checkbox" name="foodlion_50"></td>
-                            <td><input type="checkbox" name="foodlion_75"></td>
-                            <td><input type="checkbox" name="foodlion_100"></td>
-                            <td><input type="checkbox" name="foodlion_200"></td>
-                            <td><input type="checkbox" name="foodlion_300"></td>
-                            <td><input type="checkbox" name="foodlion_400"></td>
-                        </tr>
-                        <tr>
-                            <td>Giant</td>
-                            <td><input type="checkbox" name="giant_25"></td>
-                            <td><input type="checkbox" name="giant_50"></td>
-                            <td><input type="checkbox" name="giant_75"></td>
-                            <td><input type="checkbox" name="giant_100"></td>
-                            <td><input type="checkbox" name="giant_200"></td>
-                            <td><input type="checkbox" name="giant_300"></td>
-                            <td><input type="checkbox" name="giant_400"></td>
-                        </tr>
-                        <tr>
-                            <td>Walmart</td>
-                            <td><input type="checkbox" name="walmart_25"></td>
-                            <td><input type="checkbox" name="walmart_50"></td>
-                            <td><input type="checkbox" name="walmart_75"></td>
-                            <td><input type="checkbox" name="walmart_100"></td>
-                            <td><input type="checkbox" name="walmart_200"></td>
-                            <td><input type="checkbox" name="walmart_300"></td>
-                            <td><input type="checkbox" name="walmart_400"></td>
-                        </tr>
-                        <tr>
-                            <td>Wegmans</td>
-                            <td><input type="checkbox" name="wegmans_25"></td>
-                            <td><input type="checkbox" name="wegmans_50"></td>
-                            <td><input type="checkbox" name="wegmans_75"></td>
-                            <td><input type="checkbox" name="wegmans_100"></td>
-                            <td><input type="checkbox" name="wegmans_200"></td>
-                            <td><input type="checkbox" name="wegmans_300"></td>
-                            <td><input type="checkbox" name="wegmans_400"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                } else {
+                        // Handle case when there are no vendors
+                        echo "No vendors found.";
+                }
+                ?>
+                    
+                
                 <label for="name">Gas Gift Cards</label>
                 <p> We are currently offering gas cards from Sheetz and Wawa.</p>
                 <label for="name">Gas Card Selection</label>
-                <style>
-                    th, td {
-                        padding: 8px;
-                        text-align: center;
+                <?php
+                //reset vendors array collection
+                $sql = "SELECT * FROM `dbGiftCardVendors`";
+                $all_vendors = mysqli_query($con,$sql);
+                // Check if there are any vendors
+                if (mysqli_num_rows($all_vendors) > 0) {
+                    // Loop through each row in the result set
+                    while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
+                        // Check if the vendor type is "gas"
+                        if ($vendor['vendorType'] == "gas") {
+                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
+                            echo '<select name="'. $vendor['vendorName'] .'" id="'. $vendor['vendorName'] .'">';
+                            for ($i = 25; $i <= 400; $i += 25) {
+                                echo '<option value="'. $vendor['vendorName'] .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
+                             }
+                            echo '</select>';
+                        }
                     }
-                </style>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>$25 Gift Card<br>(1 point)</th>
-                            <th>$50 Gift Card<br>(2 points)</th>
-                            <th>$75 Gift Card<br>(3 points)</th>
-                            <th>$100 Gift Card<br>(4 points)</th>
-                            <th>$200 Gift Card<br>(8 points)</th>
-                            <th>$300 Gift Card<br>(12 points)</th>
-                            <th>$400 Gift Card<br>(16 points)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sheetz</td>
-                            <td><input type="checkbox" name="sheetz_25"></td>
-                            <td><input type="checkbox" name="sheetz_50"></td>
-                            <td><input type="checkbox" name="sheetz_75"></td>
-                            <td><input type="checkbox" name="sheetz_100"></td>
-                            <td><input type="checkbox" name="sheetz_200"></td>
-                            <td><input type="checkbox" name="sheetz_300"></td>
-                            <td><input type="checkbox" name="sheetz_400"></td>
-                        </tr>
-                        <tr>
-                            <td>Wawa</td>
-                            <td><input type="checkbox" name="wawa_25"></td>
-                            <td><input type="checkbox" name="wawa_50"></td>
-                            <td><input type="checkbox" name="wawa_75"></td>
-                            <td><input type="checkbox" name="wawa_100"></td>
-                            <td><input type="checkbox" name="wawa_200"></td>
-                            <td><input type="checkbox" name="wawa_300"></td>
-                            <td><input type="checkbox" name="wawa_400"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                } else {
+                        // Handle case when there are no vendors
+                        echo "No vendors found.";
+                }
+                ?>
 
                 <label for="house_cleaning">* Would you like house cleaning? </label>
                 <ul>
