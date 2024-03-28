@@ -69,11 +69,6 @@
             }
             $first = $args['first-name'];
             $last = $args['last-name'];
-            /*$dateOfBirth = validateDate($args['birthdate']);
-            if (!$dateOfBirth) {
-                $errors = true;
-                echo 'bad dob';
-            }*/
 
             $address = $args['address'];
             $city = $args['city'];
@@ -143,19 +138,19 @@
             }
             // need to incorporate availability here
             $newperson = new Person(
-            //first, last venue
-		    $first, $last, 'portland', 
-            //address, city state, zip code, profile picture
-            $address, $city, $state, $zipcode, "",
-            //phone1, phone type, phone 2, phonetype 2, email
-            $phone, $phoneType, null, null, $email, 
-            //contact name, contact number, contact relation
-		    null,null,null, 
-            //ct=contact when, type=t, status = st, ct=contact method 
-            null, 'admin', 'Active', $contactMethod, 
-            //availability array, schedule array, hours array
-		    '', '', '', 
-            //bd=date of birth, sd=start date, notes, password
+                //first, last, venue
+		        $first, $last, 'portland', 
+                //address, city, state, zip code, profile picture
+                $address, $city, $state, $zipcode, "",
+                //phone1, phone type, phone 2, phonetype 2, email
+                $phone, $phoneType, null, null, $email, 
+                //contact name, contact number, contact relation
+		        null,null,null, 
+                //ct=contact when, type=t, status = st, ct=contact method 
+                null, 'Admin', 'Active', $contactMethod, 
+                //availability array, schedule array, hours array
+		        '', '', '', 
+                //bd=date of birth, sd=start date, notes, password
                 null,null, null, $password,
                 /*$sundaysStart, $sundaysEnd, $mondaysStart, $mondaysEnd,
                 $tuesdaysStart, $tuesdaysEnd, $wednesdaysStart, $wednesdaysEnd,
@@ -180,6 +175,7 @@
                 //how did they hear, general family info, lead volunteer, GC delivery method, location
                 null,null,null,null,null
             );
+            echo "after large create statement <br>";
             $result = add_person($newperson);
             if (!$result) {
                 echo '<p>That e-mail address is already in use.</p>';

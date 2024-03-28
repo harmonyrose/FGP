@@ -13,7 +13,7 @@ $values = [
     "18:00", "19:00", "20:00", "21:00", "22:00", "23:00",
     "23:59"
 ];
-
+//legacy function from code base, used in parsing volunteer availability
 function buildSelect($name, $disabled=false, $selected=null) {
     global $times;
     global $values;
@@ -43,11 +43,11 @@ function buildSelect($name, $disabled=false, $selected=null) {
 }
 ?>
 
-<h1>New Volunteer Registration</h1>
+<h1>New Admin Registration</h1>
 <main class="signup-form">
     <form class="signup-form" method="post">
         <h2>Registration Form</h2>
-        <p>Please fill out each section of the following form if you would like to volunteer for the organization.</p>
+    
         <p>An asterisk (<em>*</em>) indicates a required field.</p>
         <fieldset>
             <legend>Personal Information</legend>
@@ -125,7 +125,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
         </fieldset>
         <fieldset>
             <legend>Contact Information</legend>
-            <p>The following information will help us determine the best way to contact you.</p>
+            <!--<p>The following information will help us determine the best way to contact you.</p>-->
             <label for="email"><em>* </em>E-mail</label>
             <!--<p>This will also serve as your username when logging in.</p>-->
             <input type="email" id="email" name="email" required placeholder="Enter your e-mail address">
@@ -150,7 +150,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
        
         <fieldset>
             <legend>Login Credentials</legend>
-            <p>You will use the following information to log in to the VMS.</p>
+            <p>You will use the following information to log in to the system.</p>
 
             <label for="email-relisting">E-mail Address</label>
             <span id="email-dupe" class="pseudo-input">Enter your e-mail address above</span>

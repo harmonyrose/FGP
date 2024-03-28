@@ -251,7 +251,7 @@
             //contact name, contact number, contact relation
 		    $econtactName, null, null, 
             //ct=contact when, type=t, status = st, ct=contact method 
-            null, 'family', 'pending', $cmethod, 
+            null, 'Family', 'Pending', $cmethod, 
             //availability array, schedule array, hours array
 		    '', '', '', 
             //bd=date of birth, sd=start date, notes password
@@ -270,7 +270,7 @@
             ,$meals, $housecleaning, $lawncare,$profphotos,
             $gas,$grocery,$aaaInterest,$socialEvents, $houseProjects,
             //how did they hear, general family info, lead volunteer, GC delivery method, location
-            $how_did_you_hear,$family_info,$leadvolunteer,null,null
+            $how_did_you_hear,$family_info,null,null,null
             );
             $result = add_person($newperson);
             if (!$result) {
