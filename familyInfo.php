@@ -1,3 +1,7 @@
+<!-- familyInfo.php-->
+<!-- Lists all the info of the family in the get requests in a table for easy access -->
+<!-- Joshua Cottrell -->
+
 <?php
     // Template for new VMS pages. Base your new page on this one
 
@@ -21,6 +25,7 @@
         die();
     }
 
+    // Get the dbPersons information of the family in the get request so we can display all their information
     require_once ('database/dbPersons.php');
     $person = retrieve_person($_GET['contact_id']);
 
@@ -29,159 +34,197 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Makes the page title unique to the family even though its the same base file -->
     <link rel="stylesheet" type="text/css" href="css/familyInfo.css">
     <?php require_once('universal.inc');
     echo '<title> FGP | ' . $person->get_first_name() . ' ' . $person->get_last_name() . '</title>'; ?>
 </head>
 <body>
+    <!-- Unique family header for same reason as above -->
     <?php require_once('header.php');
     echo '<h1>' . $person->get_first_name() . '\'s Information</h1>'; ?>
     <form id="family-list" class="general" method="get">
-        <!-- The information -->
-        <div class="info-box">
-        <?php
-            // Call each getter function and print the information
-            echo "<div class=\"label\">First Name</div>";
-            echo "<div class=\"label\">Last Name</div>";
-            echo "<div class=\"label\">Address</div>";
-            echo "<div class=\"item\">" . $person->get_first_name() . " </div>";
-            echo "<div class=\"item\">" . $person->get_last_name() . " </div>";
-            echo "<div class=\"item\">" . $person->get_address() . " </div>";
-            echo "<div class=\"label\">ID</div>";
-            echo "<div class=\"label\">Start Date</div>";
-            echo "<div class=\"label\">Venue</div>";
-            echo "<div class=\"item\">" . $person->get_id() . " </div>";
-            echo "<div class=\"item\">" . $person->get_start_date() . " </div>";
-            echo "<div class=\"item\">" . $person->get_venue() . " </div>";
-            echo "<div class=\"label\">City</div>";
-            echo "<div class=\"label\">State</div>";
-            echo "<div class=\"label\">Zip</div>";
-            echo "<div class=\"item\">" . $person->get_city() . " </div>";
-            echo "<div class=\"item\">" . $person->get_state() . " </div>";
-            echo "<div class=\"item\">" . $person->get_zip() . " </div>";
-            echo "<div class=\"label\">Phone 1</div>";
-            echo "<div class=\"label\">Phone 1 Type</div>";
-            echo "<div class=\"label\">Birthday</div>";
-            echo "<div class=\"item\">" . $person->get_phone1() . " </div>";
-            echo "<div class=\"item\">" . $person->get_phone1type() . " </div>";
-            echo "<div class=\"item\">" . $person->get_birthday() . " </div>";
-            echo "<div class=\"label\">Email</div>";
-            echo "<div class=\"label\">Parent Name</div>";
-            echo "<div class=\"label\">Contact Method</div>";
-            echo "<div class=\"item\">" . $person->get_email() . " </div>";
-            echo "<div class=\"item\">" . $person->get_contact_name() . " </div>";
-            echo "<div class=\"item\">" . $person->get_cMethod() . " </div>";
-            echo "<div class=\"label\">How Did You Hear</div>";
-            echo "<div class=\"label\">Type</div>";
-            echo "<div class=\"label\">Status</div>";
-            echo "<div class=\"item\">" . $person->get_how_did_you_hear() . " </div>";
-            echo "<div class=\"item\">" . implode(", ", $person->get_type()) . " </div>";
-            echo "<div class=\"item\">" . $person->get_status() . " </div>";
-            echo "<div class=\"label\">Notes</div>";
-            echo "<div class=\"label\">Password</div>";
-            echo "<div class=\"label\">Is Password Change Required?</div>";
-            echo "<div class=\"item\">" . $person->get_notes() . " </div>";
-            echo "<div class=\"item\">" . $person->get_password() . " </div>";
-            echo "<div class=\"item\">" . ($person->is_password_change_required() ? "Yes" : "No") . " </div>";
-            echo "<div class=\"label\">Diagnosis</div>";
-            echo "<div class=\"label\">Diagnosis Date</div>";
-            echo "<div class=\"label\">Hospital</div>";
-            echo "<div class=\"item\">" . $person->get_diagnosis() . " </div>";
-            echo "<div class=\"item\">" . $person->get_diagnosis_date() . " </div>";
-            echo "<div class=\"item\">" . $person->get_hospital() . " </div>";
-            echo "<div class=\"label\">Permission to Confirm</div>";
-            echo "<div class=\"label\">Expected Treatment End Date</div>";
-            echo "<div class=\"label\">Allergies</div>";
-            echo "<div class=\"item\">" . $person->get_permission_to_confirm() . " </div>";
-            echo "<div class=\"item\">" . $person->get_expected_treatment_end_date() . " </div>"; 
-            echo "<div class=\"item\">" . $person->get_allergies() . " </div>";
-            echo "<div class=\"label\">Sibling Info</div>";
-            echo "<div class=\"label\">Can Share Contact Info?</div>";
-            echo "<div class=\"label\">Username</div>";
-            echo "<div class=\"item\">" . $person->get_sibling_info() . " </div>";
-            echo "<div class=\"item\">" . ($person->get_can_share_contact_info() ? "Yes" : "No") . " </div>";
-            echo "<div class=\"item\">" . $person->get_username() . " </div>";
-            echo "<div class=\"label\">Meals</div>";
-            echo "<div class=\"label\">House Cleaning</div>";
-            echo "<div class=\"label\">Lawncare</div>";
-            if ($person->get_meals() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-             
-            if ($person->get_housecleaning() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            if ($person->get_lawncare() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            echo "<div class=\"label\">Photography</div>";
-            echo "<div class=\"label\">Gas</div>";
-            echo "<div class=\"label\">Grocery</div>";
-            if ($person->get_photography() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            if ($person->get_gas() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            if ($person->get_grocery() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            echo "<div class=\"label\">AAA Interest</div>";
-            echo "<div class=\"label\">Social Events</div>";
-            echo "<div class=\"label\">House Projects</div>";
-            if ($person->get_aaaInterest() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            }
-            else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            if ($person->get_socialEvents() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            } else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            
-            if ($person->get_houseProjects() == 0) {
-                echo "<div class=\"item\">Not Interested </div>";
-            } else {
-                echo "<div class=\"item\">Interested </div>";
-            }
-            echo "<div class=\"label\">Lead Volunteer</div>";
-            echo "<div class=\"label\">Gift Card Delivery Method</div>";
-            echo "<div class=\"label\">Location</div>";
-            if ($person->get_aaaInterest() == 0) {
-                echo "<div class=\"item\">AAA Interest: Not Interested </div>";
-            } else {
-                echo "<div class=\"item\">AAA Interest: Interested </div>";
-            }
-            echo "<div class=\"item\">Gift Card Delivery Method: " . $person->get_gift_card_delivery_method() . " </div>";
-            echo "<div class=\"item\">Location: " . $person->get_location() . " </div>";
-            echo "<div class=\"label\">Family Info</div>";
-            echo "<div class=\"label\"></div>";
-            echo "<div class=\"label\"></div>";
-            echo "<div class=\"item\">Family Info: " . $person->get_familyInfo() . " </div>";
-            ?>
+        <!-- The families information presented in a table since it was the best way I could think of -->
+        <!-- All the infromation is formatted the same, but I don't know if you can loop through each getter without stating each getter -->
+        <!-- And since each getter is called only once, I think this was unforunately the most efficient way to do it -->
+        <!-- But if I'm wrong update it or tell me how to update it -->
+        <div class="table-wrapper"><table class="general" id="BooleanTable" style="margin-top: 30px">
+                <tr>
+                    <td>First Name</td>
+                    <td><?php echo $person->get_first_name(); ?></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><?php echo $person->get_last_name(); ?></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><?php echo $person->get_address(); ?></td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td><?php echo $person->get_id(); ?></td>
+                </tr>
+                <tr>
+                    <td>Start Date</td>
+                    <td><?php echo $person->get_start_date(); ?></td>
+                </tr>
+                <tr>
+                    <td>Venue</td>
+                    <td><?php echo $person->get_venue(); ?></td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td><?php echo $person->get_city(); ?></td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td><?php echo $person->get_state(); ?></td>
+                </tr>
+                <tr>
+                    <td>Zip</td>
+                    <td><?php echo $person->get_zip(); ?></td>
+                </tr>
+                <tr>
+                    <td>Phone 1</td>
+                    <td><?php echo $person->get_phone1(); ?></td>
+                </tr>
+                <tr>
+                    <td>Phone 1 Type</td>
+                    <td><?php echo $person->get_phone1type(); ?></td>
+                </tr>
+                <tr>
+                    <td>Birthday</td>
+                    <td><?php echo $person->get_birthday(); ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><?php echo $person->get_email(); ?></td>
+                </tr>
+                <tr>
+                    <td>Parent Name</td>
+                    <td><?php echo $person->get_contact_name(); ?></td>
+                </tr>
+                <tr>
+                    <td>Contact Method</td>
+                    <td><?php echo $person->get_cMethod(); ?></td>
+                </tr>
+                <tr>
+                    <td>How Did You Hear</td>
+                    <td><?php echo $person->get_how_did_you_hear(); ?></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td><?php echo implode(", ", $person->get_type()); ?></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><?php echo $person->get_status(); ?></td>
+                </tr>
+                <tr>
+                    <td>Notes</td>
+                    <td><?php echo $person->get_notes(); ?></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><?php echo $person->get_password(); ?></td>
+                </tr>
+                <tr>
+                    <td>Is Password Change Required?</td>
+                    <td><?php echo ($person->is_password_change_required() ? "Yes" : "No"); ?></td>
+                </tr>
+                <tr>
+                    <td>Diagnosis</td>
+                    <td><?php echo $person->get_diagnosis(); ?></td>
+                </tr>
+                <tr>
+                    <td>Diagnosis Date</td>
+                    <td><?php echo $person->get_diagnosis_date(); ?></td>
+                </tr>
+                <tr>
+                    <td>Hospital</td>
+                    <td><?php echo $person->get_hospital(); ?></td>
+                </tr>
+                <tr>
+                    <td>Permission to Confirm</td>
+                    <td><?php echo $person->get_permission_to_confirm(); ?></td>
+                </tr>
+                <tr>
+                    <td>Expected Treatment End Date</td>
+                    <td><?php echo $person->get_expected_treatment_end_date(); ?></td>
+                </tr>
+                <tr>
+                    <td>Allergies</td>
+                    <td><?php echo $person->get_allergies(); ?></td>
+                </tr>
+                <tr>
+                    <td>Sibling Info</td>
+                    <td><?php echo $person->get_sibling_info(); ?></td>
+                </tr>
+                <tr>
+                    <td>Can Share Contact Info?</td>
+                    <td><?php echo ($person->get_can_share_contact_info() ? "Yes" : "No"); ?></td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td><?php echo $person->get_username(); ?></td>
+                </tr>
+                <tr>
+                    <td>Family Info</td>
+                    <td><?php echo $person->get_familyInfo(); ?></td>
+                </tr>
+            <tr>
+                <td>Meals</td>
+                <td><?php echo ($person->get_meals() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>House Cleaning</td>
+                <td><?php echo ($person->get_housecleaning() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Lawncare</td>
+                <td><?php echo ($person->get_lawncare() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Photography</td>
+                <td><?php echo ($person->get_photography() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Gas</td>
+                <td><?php echo ($person->get_gas() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Grocery</td>
+                <td><?php echo ($person->get_grocery() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>AAA Interest</td>
+                <td><?php echo ($person->get_aaaInterest() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Social Events</td>
+                <td><?php echo ($person->get_socialEvents() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>House Projects</td>
+                <td><?php echo ($person->get_houseProjects() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Lead Volunteer</td>
+                <td><?php echo ($person->get_aaaInterest() == 0) ? "Not Interested" : "Interested"; ?></td>
+            </tr>
+            <tr>
+                <td>Gift Card Delivery Method</td>
+                <td><?php echo $person->get_gift_card_delivery_method();?></td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td><?php echo $person->get_location();?></td>
+            </tr>
+        </table>
             </div>
             <!-- Return button -->
-            <a class="button cancel" href="viewFamilyAccounts.php">Return to Family List</a>
+            <a class="button cancel" style="margin-top: 30px" href="viewFamilyAccounts.php">Return to Family List</a>
         </form>
     </body>
     </html>
