@@ -1,3 +1,8 @@
+<!-- viewFamilyAccounts.php-->
+<!-- Lists all the families in dbPersons so that admins can easily keep track of them -->
+<!-- Also links to each families familyInfo.php page to get more detailed information if needed -->
+<!-- Joshua Cottrell -->
+
 <?php
     // Template for new VMS pages. Base your new page on this one
 
@@ -23,6 +28,7 @@
 
 
 // Formatting for each row of the table
+// Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
 function displaySearchRow($person){
     echo "
     <tr>
@@ -31,10 +37,6 @@ function displaySearchRow($person){
         <td>" . $person->get_email() . "</td>";
     echo "</tr>";
 } 
-
-
-
-
 ?>
 
 
@@ -49,6 +51,7 @@ function displaySearchRow($person){
         <h1>Family List</h1>
         <form id="family-list" class="general" method="get">
             <!-- The actual table -->
+            <!-- Takes all the families from dbPersons and displays them following the displaySearchRow function above to create a list of families-->
             <?php 
                 require_once('database/dbPersons.php');
                 // Get list of families from dbPersons database \\
@@ -76,7 +79,7 @@ function displaySearchRow($person){
                             </table>
                         </div>';
                     } else {
-                        // If there are not vendors, print error message \\
+                        // If there are no families, print error message \\
                         echo '<div class="error-toast">There are no families.</div>';
                     }
             ?>

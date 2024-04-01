@@ -1,3 +1,7 @@
+<!-- familyInfo.php-->
+<!-- Lists all the info of the family in the get requests in a table for easy access -->
+<!-- Joshua Cottrell -->
+
 <?php
     // Template for new VMS pages. Base your new page on this one
 
@@ -21,6 +25,7 @@
         die();
     }
 
+    // Get the dbPersons information of the family in the get request so we can display all their information
     require_once ('database/dbPersons.php');
     $person = retrieve_person($_GET['contact_id']);
 
@@ -29,15 +34,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Makes the page title unique to the family even though its the same base file -->
     <link rel="stylesheet" type="text/css" href="css/familyInfo.css">
     <?php require_once('universal.inc');
     echo '<title> FGP | ' . $person->get_first_name() . ' ' . $person->get_last_name() . '</title>'; ?>
 </head>
 <body>
+    <!-- Unique family header for same reason as above -->
     <?php require_once('header.php');
     echo '<h1>' . $person->get_first_name() . '\'s Information</h1>'; ?>
     <form id="family-list" class="general" method="get">
-        <!-- The information -->
+        <!-- The families information presented in a table since it was the best way I could think of -->
+        <!-- All the infromation is formatted the same, but I don't know if you can loop through each getter without stating each getter -->
+        <!-- And since each getter is called only once, I think this was unforunately the most efficient way to do it -->
+        <!-- But if I'm wrong update it or tell me how to update it -->
         <div class="table-wrapper"><table class="general" id="BooleanTable" style="margin-top: 30px">
                 <tr>
                     <td>First Name</td>
