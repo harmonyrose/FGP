@@ -164,26 +164,28 @@ function buildSelect($name, $disabled=false, $selected=null) {
 
                 <label for="allergies">* Are there any food allergies that we need to be aware of? </label>
                 <ul>
-                <li><input type="checkbox" id="peanuts" name="allergies[]" value="Peanuts"> Peanuts</li>
-                <li><input type="checkbox" id="treenuts" name="allergies[]" value="Tree Nuts"> Tree Nuts</li>
-                <li><input type="checkbox" id="gluten" name="allergies[]" value="Gluten"> Gluten</li>
-                <li><input type="checkbox" id="soy" name="allergies[]" value="Soy"> Soy</li>
-                <li><input type="checkbox" id="egg" name="allergies[]" value="Egg"> Egg</li>
-                <li><input type="checkbox" id="dairy" name="allergies[]" value="Dairy"> Dairy</li>
-                <li><input type="checkbox" id="none" name="allergies[]" value="No Known Allergies"> No Known Allergies</li>
-                <li><input type="checkbox" id="other" name="allergies[]" value="other"> Other: <input type= "text" id="otherallergy" name="otherallergy" /></li>
+                <li><input type="checkbox" id="peanuts" name="allergies[]" value="peanuts"> Peanuts</li>
+                <li><input type="checkbox" id="treenuts" name="allergies[]" value="tree nuts"> Tree Nuts</li>
+                <li><input type="checkbox" id="gluten" name="allergies[]" value="gluten"> Gluten</li>
+                <li><input type="checkbox" id="soy" name="allergies[]" value="soy"> Soy</li>
+                <li><input type="checkbox" id="egg" name="allergies[]" value="egg"> Egg</li>
+                <li><input type="checkbox" id="dairy" name="allergies[]" value="dairy"> Dairy</li>
+                <li><input type="checkbox" id="no allergies" name="allergies[]" value="no allergies"> No Known Allergies</li>
+                <li><input type="checkbox" id="otherAllergy" name="otherAllergy" value="other"> Other:></li>
+                <li><input type= "text" name="otherAllergyText" placeholder="Enter other allergy"></li>
                 </ul>
 
                 <label for="snacks">* What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
                 <ul>
-                <li><input type="checkbox" id="crackers" name="snacks[]" value="Crackers"> Crackers</li>
-                <li><input type="checkbox" id="cookies" name="snacks[]" value="Cookies"> Cookies</li>
-                <li><input type="checkbox" id="chips" name="snacks[]" value="Chips"> Chips</li>
-                <li><input type="checkbox" id="granolabars" name="snacks[]" value="Granola Bars"> Granola Bars</li>
-                <li><input type="checkbox" id="cereal" name="snacks[]" value="Cereal"> Cereal</li>
-                <li><input type="checkbox" id="nuts" name="snacks[]" value="Nuts"> Nuts</li>
-                <li><input type="checkbox" id="fruitsnacks" name="snacks[]" value="Fruit Snacks"> Fruit Snacks</li>
-                <li><input type="checkbox" id="other" name="snacks[]" value="Other:"> Other: <input type= "text" id="name2" name="name2" /></li>
+                <li><input type="checkbox" id="crackers" name="snacks[]" value="crackers"> Crackers</li>
+                <li><input type="checkbox" id="cookies" name="snacks[]" value="cookies"> Cookies</li>
+                <li><input type="checkbox" id="chips" name="snacks[]" value="chips"> Chips</li>
+                <li><input type="checkbox" id="granolabars" name="snacks[]" value="granola bars"> Granola Bars</li>
+                <li><input type="checkbox" id="cereal" name="snacks[]" value="cereal"> Cereal</li>
+                <li><input type="checkbox" id="nuts" name="snacks[]" value="nuts"> Nuts</li>
+                <li><input type="checkbox" id="fruitsnacks" name="snacks[]" value="fruit snacks"> Fruit Snacks</li>
+                <li><input type="checkbox" id="otherSnack" name="otherSnack" value="other"> Other:></li>
+                <li><input type= "text" name="otherSnackText" placeholder="Enter other snack"></li>
                 </ul>
 
                 <label for="snack_notes">* Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>

@@ -85,7 +85,25 @@
             $photography = $args['photography'];
             $house_projects = $args['house_projects'];
             $financial_relief = $args['financial_relief'];
-
+            //checkbox fields
+            //Collect allergies selected
+            if(isset($_POST["allergies"])){
+                $allergies = implode(",", $_POST["allergies"]);
+            }
+            // Check if "other" checkbox was selected and text box is not empty
+            if (isset($_POST["otherAllergy"]) && isset($_POST["otherAllergyText"]) && !empty($_POST["otherAllergyText"])) {
+                // Add the other allergy to the allergies array
+                $allergies[] = $_POST["otherAllergyText"];
+            }
+            //Collect snacks selected
+            if(isset($_POST["snacks"])){
+                $snacks = implode(",", $_POST["snacks"]);
+            }
+            // Check if "other" checkbox was selected and text box is not empty
+            if (isset($_POST["otherSnack"]) && isset($_POST["otherSnackText"]) && !empty($_POST["otherSnackText"])) {
+                // Add the other snack to the snacks array
+                $snacks[] = $_POST["otherSnackText"];
+            }
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
@@ -117,7 +135,7 @@
             // need to incorporate availability here
             $newpointsprog = new PointsProg(
                 $id, $name, $email, $address, $freezer_meals, 
-                null, null, $snack_notes, 
+                $allergies, $snacks, $snack_notes, 
                 null, null, null, null, null, null, 
                 $house_cleaning, $lawn_care, 
                 $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, 
