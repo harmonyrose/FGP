@@ -1,4 +1,47 @@
 <?php
+$times = [
+    '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '5:00 AM',
+    '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM',
+    '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM',
+    '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM',
+    '11:59 PM'
+];
+$values = [
+    "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", 
+    "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", 
+    "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", 
+    "18:00", "19:00", "20:00", "21:00", "22:00", "23:00",
+    "23:59"
+];
+
+function buildSelect($name, $disabled=false, $selected=null) {
+    global $times;
+    global $values;
+    if ($disabled) {
+        $select = '
+            <select id="' . $name . '" name="' . $name . '" disabled>';
+    } else {
+        $select = '
+            <select id="' . $name . '" name="' . $name . '">';
+    }
+    if (!$selected) {
+        $select .= '<option disabled selected value>Select a time</option>';
+    }
+    $n = count($times);
+    for ($i = 0; $i < $n; $i++) {
+        $value = $values[$i];
+        if ($selected == $value) {
+            $select .= '
+                <option value="' . $values[$i] . '" selected>' . $times[$i] . '</option>';
+        } else {
+            $select .= '
+                <option value="' . $values[$i] . '">' . $times[$i] . '</option>';
+        }
+    }
+    $select .= '</select>';
+    return $select;
+}
+
     // Make session information accessible, allowing us to associate
     // data with the logged-in user.
     session_cache_expire(30);
@@ -88,12 +131,18 @@
         <h1>Points Program</h1>
         <main class="date">
             <h2>Points Program Form</h2>
-            <form id="new-event-form" method="post">
+            <form id="new-points-prog-form" method="post">
+
                 <label for="name">* Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter contact name">
-                <label for="name">* Address </label>
+
+                <label for="email">* Email </label>
+                <input type="text" id="email" name="email" required placeholder="Enter email">
+
+                <label for="address">* Address </label>
                 <input type="text" id="address" name="address" required placeholder="Enter address">
-                <label for="name">Freezer Meals & Snacks </label>
+
+                <label for="freezer_meals_and_snacks">Freezer Meals & Snacks </label>
                     <p><b>We offer two freezer meals and snacks per month at NO CHARGE to your points.</b> 
                     Freezer meals will be delivered on the third <b>Tuesday</b> of even months
                     (February, April, June, August, October and December) and snacks will
@@ -102,39 +151,46 @@
                       On freezer meal months, we ask that you leave a cooler on your doorstep.  
                       A volunteer will leave the meals in the cooler without ringing the doorbell
                        and there's no need for you to be home. 
-                </p>
-                <label for="name">* How many freezer meals would you like? </label>
+                    </p>
+
+                <label for="freezer_meals_and_snacks">* How many freezer meals would you like? </label>
                 <ul>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=2> 2 Meals per month (Free)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=4> 4 meals per month (2 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=6> 6 meals per month (3 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=8> 8 meals per month (4 points)</li>
-                <li><input type="radio" id="freezer_meals" name="freezer_meals" value=0> We do not want ANY freezer meals</li>
+                <li><input type="radio" id="freezer_2" name="freezer_meals" value=2> 2 Meals per month (Free)</li>
+                <li><input type="radio" id="freezer_4" name="freezer_meals" value=4> 4 meals per month (2 points)</li>
+                <li><input type="radio" id="freezer_6" name="freezer_meals" value=6> 6 meals per month (3 points)</li>
+                <li><input type="radio" id="freezer_8" name="freezer_meals" value=8> 8 meals per month (4 points)</li>
+                <li><input type="radio" id="freezer_0" name="freezer_meals" value=0> We do not want ANY freezer meals</li>
                 </ul>
-                <label for="name">* Are there any food allergies that we need to be aware of? </label>
+
+                <label for="allergies">* Are there any food allergies that we need to be aware of? </label>
                 <ul>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Peanuts"> Peanuts</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Tree Nuts"> Tree Nuts</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Gluten"> Gluten</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Soy"> Soy</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Egg"> Egg</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="Dairy"> Dairy</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="No Known Allergies"> No Known Allergies</li>
-                <li><input type="checkbox" id="allergies" name="allergies" value="other"> Other: <input type= "text" id="otherallergy" name="otherallergy" /></li>
+                <li><input type="checkbox" id="peanuts" name="allergies[]" value="peanuts"> Peanuts</li>
+                <li><input type="checkbox" id="treenuts" name="allergies[]" value="tree nuts"> Tree Nuts</li>
+                <li><input type="checkbox" id="gluten" name="allergies[]" value="gluten"> Gluten</li>
+                <li><input type="checkbox" id="soy" name="allergies[]" value="soy"> Soy</li>
+                <li><input type="checkbox" id="egg" name="allergies[]" value="egg"> Egg</li>
+                <li><input type="checkbox" id="dairy" name="allergies[]" value="dairy"> Dairy</li>
+                <li><input type="checkbox" id="no allergies" name="allergies[]" value="no allergies"> No Known Allergies</li>
+                <li><input type="checkbox" id="otherAllergy" name="otherAllergy" value="other"> Other:></li>
+                <li><input type= "text" name="otherAllergyText" placeholder="Enter other allergy"></li>
                 </ul>
-                <label for="name">* What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
+
+                <label for="snacks">* What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
                 <ul>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Crackers"> Crackers</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Cookies"> Cookies</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Chips"> Chips</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Granola Bars"> Granola Bars</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Cereal"> Cereal</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Nuts"> Nuts</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Fruit Snacks"> Fruit Snacks</li>
-                <li><input type="checkbox" id="snacks" name="snacks" value="Other:"> Other: <input type= "text" id="name2" name="name2" /></li>
+                <li><input type="checkbox" id="crackers" name="snacks[]" value="crackers"> Crackers</li>
+                <li><input type="checkbox" id="cookies" name="snacks[]" value="cookies"> Cookies</li>
+                <li><input type="checkbox" id="chips" name="snacks[]" value="chips"> Chips</li>
+                <li><input type="checkbox" id="granolabars" name="snacks[]" value="granola bars"> Granola Bars</li>
+                <li><input type="checkbox" id="cereal" name="snacks[]" value="cereal"> Cereal</li>
+                <li><input type="checkbox" id="nuts" name="snacks[]" value="nuts"> Nuts</li>
+                <li><input type="checkbox" id="fruitsnacks" name="snacks[]" value="fruit snacks"> Fruit Snacks</li>
+                <li><input type="checkbox" id="otherSnack" name="otherSnack" value="other"> Other:></li>
+                <li><input type= "text" name="otherSnackText" placeholder="Enter other snack"></li>
                 </ul>
-                <label for="name">* Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>
+
+                <label for="snack_notes">* Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>
                 <input type="text" id="snack_notes" name="snack_notes" required placeholder="Your answer">
+
                 <label for="name">Grocery Store Gift Cards </label>
                 <p>We only offer gift cards from stores that allow us to 
                     purchase the cards online.  Shoppers Food Warehouse 
@@ -191,145 +247,64 @@
                         echo "No vendors found.";
                 }
                 ?>
-                <label for="name">* Would you like house cleaning? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "once" . '" required/> ' . "Once a month (7 points)" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "twice" . '" required/> ' . "Twice a month (14 points)" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="house_cleaning" value="' . "no" . '" required/> ' . "We do not want house cleaning" . '</li>';
-                        echo '</ul>';
-                    ?>
-                <label for="name">* Would you like lawn care? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="lawn_care" value="' . "yes" . '" required/> ' . "Yes (3 points per month)" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="lawn_care" value="' . "no" . '" required/> ' . "We do not want lawn care" . '</li>';
-                        echo '</ul>';
-                    ?>
-                <label for="name">* Would you like a AAA Plus Membership? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="AAA_membership" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="AAA_membership" value="' . "no" . '" required/> ' . "No" . '</li>';
-                        echo '</ul>';
-                    ?>
+
+                <label for="house_cleaning">* Would you like house cleaning? </label>
+                <ul>
+                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value="Once a month"> Once a month (7 points)</li>
+                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value="Twice a month"> Twice a month (14 points)</li>
+                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value="No house cleaning"> We do not want house cleaning</li>
+                </ul>
+
+                <label for="lawn_care">* Would you like lawn care? </label>
+                <ul>
+                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value="Yes"> Yes (3 points per month)</li>
+                <li><input type="radio" id="lawn_care_no" name="lawn_care" value="No"> We do not want lawn care</li>
+                </ul>
+
+                <label for="aaa_membership">* Would you like a AAA Plus Membership? </label>
+                <ul>
+                <li><input type="radio" id="aaa_yes" name="aaa_membership" value="Yes"> Yes</li>
+                <li><input type="radio" id="aaa_no" name="aaa_membership" value="No"> No</li>
+                </ul>
+
                 <p> If yes to AAA Membership please provide the responsible party's name and date of birth. </p>
+
                 <p>Responsible Party's Name </p>
-                <input type="text" id="AAA_membership_name" name="AAA_membership_name" required placeholder="Enter name">
+                <input type="text" id="aaa_membership_name" name="aaa_membership_name" required placeholder="Enter name">
+
                 <p> Responsible Party's Date of Birth </p>
-                <input type="date" id="AAA_membership_DOB" name="AAA_membership_DOB" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
-                <label for="name"> Photography </label>
+                <input type="date" id="aaa_membership_dob" name="aaa_membership_dob" required placeholder="Date of birth"  max="<?php echo date('Y-m-d'); ?>">
+                
+                <label for="photography"> Photography </label>
                     <p> 
                     We offer your family two sessions of photography.  
                     We will do one during treatment and again after treatment has finished. 
                     There is no charge to your points for this service. 
-                    </p> 
-                <label for="name">* Are you interested in a photography session? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="photography" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="photography" value="' . "no" . '" required/> ' . "No" . '</li>';
-                        echo '</ul>';
-                    ?>
-                <label for="name"> Additional Services </label>
+                    </p>
+
+                <label for="photography">* Are you interested in a photography session? </label>
+                <ul>
+                <li><input type="radio" id="photo_yes" name="photography" value="Yes"> Yes</li>
+                <li><input type="radio" id="photo_no" name="photography" value="No"> No</li>
+
+                <label for="add_services"> Additional Services </label>
                     <p>
                     We currently offer to help with house projects and financial relief twice a year.  
                     If you are interested we will contact you when these services become available
                     </p>   
-                <label for="name">* House Projects </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="house_projects" value="' . "more_info" . '" required/> ' . "We would like more information when available" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="house_projects" value="' . "not_interested" . '" required/> ' . "We are not interested in house projects" . '</li>';
-                        echo '</ul>';
-                    ?>
-                <label for="name">* Financial Relief </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="financiel_relief" value="' . "more_info" . '" required/> ' . "We would like more information when available" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="financiel_relief" value="' . "not_interested" . '" required/> ' . "We are not interested in financial relief" . '</li>';
-                        echo '</ul>';
-                    ?>
-                <input type="submit" value="Submit">
-                                <!--Commented out original ODHS code-->
-                <!--<label for="name">* Appointment Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter name">
-                <label for="name">* Abbreviated Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
-                <label for="name">* Date </label>
-                <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
-                <label for="name">* Start Time </label>
-                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                <label for="name">* Description </label>
-                <input type="text" id="description" name="description" required placeholder="Enter description">
-                <fieldset>
-                    <label for="name">* Service </label>
-                    <?php 
-                        // fetch data from the $all_services variable
-                        // and individually display as an option
-                        echo '<ul>';
-                        while ($service = mysqli_fetch_array(
-                                $all_services, MYSQLI_ASSOC)):; 
-                            echo '<li><input class="checkboxes" type="checkbox" name="service[]" value="' . $service['id'] . '" required/> ' . $service['name'] . '</li>';
-                        endwhile;
-                        echo '</ul>';
-                    ?>
-                </fieldset> 
-                <label for="name">* Location </label>
-                <select for="name" id="location" name="location" required>
-                    <option value="">--</option>
-                    <?php 
-                        // fetch data from the $all_locations variable
-                        // and individually display as an option
-                        while ($location = mysqli_fetch_array(
-                                $all_locations, MYSQLI_ASSOC)):; 
-                    ?>
-                    <option value="<?php echo $location['id'];?>">
-                        <?php echo $location['name'];?>
-                    </option>
-                    <?php 
-                        endwhile; 
-                        // terminate while loop
-                    ?>
-                </select><p></p>
-  
-                <label for="name">* Animal</label>
-                <select for="name" id="animal" name="animal" required>
-                    <?php 
-                        // fetch data from the $all_animals variable
-                        // and individually display as an option
-                        while ($animal = mysqli_fetch_array(
-                                $all_animals, MYSQLI_ASSOC)):; 
-                    ?>
-                    <option value="<?php echo $animal['id'];?>">
-                        <?php echo $animal['name'];?>
-                    </option>
-                    <?php 
-                        endwhile; 
-                        // terminate while loop
-                    ?>
-                </select><br/>
-                <p></p>
-                -->
+                <label for="house_projects">* House Projects </label>
+                <ul>
+                <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested"> We would like more information when available</li>
+                <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested"> We are not interested in house projects</li>
+
+                <label for="financial_relief">* Financial Relief </label>
+                <ul>
+                <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested"> We would like more information when available</li>
+                <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested"> We are not interested in financial relief</li>
+
+                <input type="submit" name="points_form" value="Submit">
             </form>
-                <?php if ($date): ?>
-                    <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>
-                <?php else: ?>
-                    <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
-                <?php endif ?>
-                <!-- Require at least one checkbox be checked -->
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        var checkboxes = $('.checkboxes');
-                        checkboxes.change(function(){
-                            if($('.checkboxes:checked').length>0) {
-                                checkboxes.removeAttr('required');
-                            } else {
-                                checkboxes.attr('required', 'required');
-                            }
-                        });
-                    });
-                </script>
+
         </main>
     </body>
 </html>

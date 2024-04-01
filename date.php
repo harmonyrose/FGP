@@ -78,12 +78,12 @@
                 }
             ?>
             <?php
-            if ($accessLevel >= 2) {
-                echo '
-                    <a class="button" href="pointsProgForm.php?date=' . $date . '">
-                        Create New Event
-                    </a>';
-            }
+            // if ($accessLevel >= 2) {
+            //     echo '
+            //         <a class="button" href="pointsProgForm.php?date=' . $date . '">
+            //             Create New Event
+            //         </a>';
+            // }
             ?>
 			<a href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" class="button cancel" style="margin-top: -.5rem">Return to Calendar</a>
         </main>

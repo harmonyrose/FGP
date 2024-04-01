@@ -1,82 +1,160 @@
-?php
-/**
- * Encapsulated version of a dbEvents entry.
- */
-class Event {
-    private $id;
-    private $name;
-    private $abbrevName;
-    private $date;
-    private $startTime;
-    private $endTime;
-    private $description;
-    private $location;
-    private $capacity;
-    private $trainingMedia;
-    private $postMedia;
-    private $animalId;
+<?php
+    // Author: Lauren Knight
+    // Description: Registration page for new volunteers
+    // session_cache_expire(30);
+    // session_start();
+    
+    require_once('include/input-validation.php');
 
-    function __construct($id, $name, $abbrevName, $date, $startTime, $endTime, $description, $location, $capacity, $trainingMedia, $postMedia, $animalId) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->abbrevName = $abbrevName;
-        $this->date = $date;
-        $this->startTime = $startTime;
-        $this->endTime = $endTime;
-        $this->description = $description;
-        $this->location = $location;
-        $this->capacity = $capacity;
-        $this->trainingMedia = $trainingMedia;
-        $this->postMedia = $postMedia;
-        $this->animalId = $animalId;
-    }
+    // $loggedIn = false;
+    // if (isset($_SESSION['change-password'])) {
+    //     header('Location: changePassword.php');
+    //     die();
+    // }
+    // if (isset($_SESSION['_id'])) {
+    //     $loggedIn = true;
+    //     $accessLevel = $_SESSION['access_level'];
+    //     $userID = $_SESSION['_id'];
+    // }
 
-    function getID() {
-        return $this->id;
-    }
+    // Require admin privileges
+    /*if ($accessLevel < 2)
+    {
+        header('Location: login.php');
+        echo 'bad access level';
+        die();
+    }*/
+    
 
-    function getName() {
-        return $this->name;
-    }
+    // if (isset($_SESSION['_id'])) {
+    //     header('Location: index.php');
+    // } else {
+    //     $_SESSION['logged_in'] = 1;
+    //     $_SESSION['access_level'] = 0;
+    //     $_SESSION['venue'] = "";
+    //     $_SESSION['type'] = "";
+    //     $_SESSION['_id'] = "guest";
+    //     header('Location: personEdit.php?id=new');
+    // }
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <?php require_once('universal.inc'); ?>
+    <title>FGP | Points Program </title>
+</head>
+<body>
+    <?php
+        require_once('header.php');
+        require_once('domain/PointsProg.php');
+        require_once('database/dbPointsProg.php');
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // make every submitted field SQL-safe except for password
+            $ignoreList = array('password');
+            $args = sanitize($_POST, $ignoreList);
 
-    function getAbbreviatedName() {
-        return $this->abbrevName;
-    }
-
-    function getDate() {
-        return $this->date;
-    }
-
-    function getStartTime() {
-        return $this->startTime;
-    }
-
-    function getEndTime() {
-        return $this->endTime;
-    }
-
-    function getDescription() {
-        return $this->description;
-    }
-
-    function getLocation() {
-        return $this->location;
-    }
-
-    function getCapacity() {
-        return $this->capacity;
-    }
+            // echo "<p>The form was submitted:</p>";
+            // foreach ($args as $key => $value) {
+            //     echo "<p>$key: $value</p>";
+            // }
 
 
-    function getTrainingMedia() {
-        return $trainingMedia;
-    }
+            $required = array('name', 'email', 'address', 'freezer_meals', 'snack_notes',
+            'house_cleaning', 'lawn_care', 'aaa_membership', 'photography', 
+            'house_projects', 'financial_relief'
+                //form requries these but they cannot be confirmed by computer
+            );
+            
+            
+            
+            $errors = false;
+            if (!wereRequiredFieldsSubmitted($args, $required)) {
+                $errors = true;
+            }
 
-    function getPostMedia() {
-        return $postMedia;
-    }
+            $id = find_next_id() + 1;
+            $name = $args['name'];
+            $email = $args['email'];
+            $address = $args['address'];
+            $freezer_meals = $args['freezer_meals'];
+            $snack_notes = $args['snack_notes'];
+            $house_cleaning = $args['house_cleaning'];
+            $lawn_care = $args['lawn_care'];
+            $AAA_membership = $args['aaa_membership'];
 
-    function getAnimalId() {
-        return $animalId;
-    }
-}
+            $photography = $args['photography'];
+            $house_projects = $args['house_projects'];
+            $financial_relief = $args['financial_relief'];
+            //checkbox fields
+            //Collect allergies selected
+            if(isset($_POST["allergies"])){
+                $allergies = implode(",", $_POST["allergies"]);
+            }
+            // Check if "other" checkbox was selected and text box is not empty
+            if (isset($_POST["otherAllergy"]) && isset($_POST["otherAllergyText"]) && !empty($_POST["otherAllergyText"])) {
+                // Add the other allergy to the allergies array
+                $allergies[] = $_POST["otherAllergyText"];
+            }
+            //Collect snacks selected
+            if(isset($_POST["snacks"])){
+                $snacks = implode(",", $_POST["snacks"]);
+            }
+            // Check if "other" checkbox was selected and text box is not empty
+            if (isset($_POST["otherSnack"]) && isset($_POST["otherSnackText"]) && !empty($_POST["otherSnackText"])) {
+                // Add the other snack to the snacks array
+                $snacks[] = $_POST["otherSnackText"];
+            }
+
+            if ($errors) {
+                echo '<p>Your form submission contained unexpected input.</p>';
+                die();
+            }
+
+
+
+            $optional=array('aaa_membership_name', 'aaa_membership_dob');
+
+            if($args['aaa_membership_name']){
+                $AAA_membership_name=$args['aaa_membership_name'];
+            }
+            else{
+                $AAA_membership_name="";
+            }
+
+            if($args['aaa_membership_dob']){
+                $AAA_membership_DOB = validateDate($args['aaa_membership_dob']);
+                if (!$AAA_membership_DOB) {
+                    $errors = true;
+                    echo 'bad dob';
+                }
+            }
+            else{
+                $AAA_membership_DOB="";
+            }
+
+            // need to incorporate availability here
+            $newpointsprog = new PointsProg(
+                $id, $name, $email, $address, $freezer_meals, 
+                $allergies, $snacks, $snack_notes, 
+                null, null, null, null, null, null, 
+                $house_cleaning, $lawn_care, 
+                $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, 
+                $photography, $house_projects, $financial_relief, null
+            );
+
+            $result = add_points_prog($newpointsprog);
+            if (!$result) {
+                echo '<p>something went wrong</p>';
+            } else {
+                if ($loggedIn) {
+                    echo '<script>document.location = "index.php?registerSuccess";</script>';
+                } else {
+                    echo '<script>document.location = "login.php?registerSuccess";</script>';
+                }
+            }
+        } else {
+            require_once('pointsProgForm.php'); 
+        }
+    ?>
+</body>
+</html>

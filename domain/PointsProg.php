@@ -5,6 +5,7 @@
 class PointsProg {
     private $id;
     private $name;
+    private $email;
     private $address;
     private $freezer_meals;
     private $allergies;
@@ -27,9 +28,14 @@ class PointsProg {
     private $points_used;
 
     // Constructor
-    public function __construct($id, $name, $address, $freezer_meals, $allergies, $snacks, $snack_notes, $foodlion, $giant, $walmart, $wegmans, $sheetz, $wawa, $house_cleaning, $lawn_care, $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, $photography, $house_projects, $financial_relief, $points_used) {
+    public function __construct($id, $name, $email, $address, $freezer_meals, 
+            $allergies, $snacks, $snack_notes, $foodlion, $giant, $walmart, 
+            $wegmans, $sheetz, $wawa, $house_cleaning, $lawn_care, 
+            $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, 
+            $photography, $house_projects, $financial_relief, $points_used) {
         $this->id = $id;
         $this->name = $name;
+        $this->email = $email;
         $this->address = $address;
         $this->freezer_meals = $freezer_meals;
         $this->allergies = $allergies;
@@ -61,6 +67,10 @@ class PointsProg {
         return $this->name;
     }
 
+    public function getEmail() {
+        return $this->email;
+    }
+    
     public function getAddress() {
         return $this->address;
     }
