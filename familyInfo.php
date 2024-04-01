@@ -33,16 +33,6 @@
     <?php require_once('universal.inc');
     echo '<title> FGP | ' . $person->get_first_name() . ' ' . $person->get_last_name() . '</title>'; ?>
 </head>
-<style>   /* Apply alternating background colors */
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2; /* Lighter color */
-        }
-            
-        tr:nth-child(odd) {
-            background-color: #e6e6e6; /* Slightly darker color */
-        }
-    </style>
 <body>
     <?php require_once('header.php');
     echo '<h1>' . $person->get_first_name() . '\'s Information</h1>'; ?>
@@ -221,7 +211,7 @@
                 <td>Location</td>
                 <td><?php echo $person->get_location();?></td>
             </tr>
-        </table></div>
+        </table>
             </div>
             <!-- Return button -->
             <a class="button cancel" style="margin-top: 30px" href="viewFamilyAccounts.php">Return to Family List</a>

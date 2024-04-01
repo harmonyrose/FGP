@@ -109,18 +109,6 @@ function displaySearchRow($vendor){
         </script>
 
 
-    <style>   /* Apply alternating background colors */
-        tr:nth-child(even) {
-            background-color: #f2f2f2; /* Lighter color */
-        }
-            
-        tr:nth-child(odd) {
-            background-color: #e6e6e6; /* Slightly darker color */
-        }
-    </style>
-
-
-
             <!-- The actual table -->
             <?php 
                 require_once('include/input-validation.php');
