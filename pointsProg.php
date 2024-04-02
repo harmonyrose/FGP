@@ -60,7 +60,7 @@
 
 
             $required = array('name', 'email', 'address', 'freezer_meals', 'snack_notes',
-            'house_cleaning', 'lawn_care', 'aaa_membership', 'photography', 
+             'house_cleaning', 'lawn_care', 'aaa_membership', 'photography', 
             'house_projects', 'financial_relief'
                 //form requries these but they cannot be confirmed by computer
             );
@@ -78,10 +78,10 @@
             $address = $args['address'];
             $freezer_meals = $args['freezer_meals'];
             $snack_notes = $args['snack_notes'];
+            
             $house_cleaning = $args['house_cleaning'];
             $lawn_care = $args['lawn_care'];
             $AAA_membership = $args['aaa_membership'];
-
             $photography = $args['photography'];
             $house_projects = $args['house_projects'];
             $financial_relief = $args['financial_relief'];
@@ -93,7 +93,8 @@
             // Check if "other" checkbox was selected and text box is not empty
             if (isset($_POST["otherAllergy"]) && isset($_POST["otherAllergyText"]) && !empty($_POST["otherAllergyText"])) {
                 // Add the other allergy to the allergies array
-                $allergies[] = $_POST["otherAllergyText"];
+                $otherAllergy =  "," . $_POST["otherAllergyText"];
+                $allergies .= $otherAllergy;
             }
             //Collect snacks selected
             if(isset($_POST["snacks"])){
@@ -102,8 +103,20 @@
             // Check if "other" checkbox was selected and text box is not empty
             if (isset($_POST["otherSnack"]) && isset($_POST["otherSnackText"]) && !empty($_POST["otherSnackText"])) {
                 // Add the other snack to the snacks array
-                $snacks[] = $_POST["otherSnackText"];
+                $otherSnack = "," . $_POST["otherSnackText"];
+                $snacks .= $otherSnack;
             }
+            //grocery fields
+            //Collect grocery input
+            if(isset($_POST["grocery"])){
+                $grocery = implode(",", $_POST["grocery"]);
+            }
+            //gas fields
+            //Collect gas selected
+            if(isset($_POST["gas"])){
+                $gas = implode(",", $_POST["gas"]);
+            }
+
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
@@ -136,7 +149,7 @@
             $newpointsprog = new PointsProg(
                 $id, $name, $email, $address, $freezer_meals, 
                 $allergies, $snacks, $snack_notes, 
-                null, null, null, null, null, null, 
+                $grocery, $gas, 
                 $house_cleaning, $lawn_care, 
                 $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, 
                 $photography, $house_projects, $financial_relief, null
