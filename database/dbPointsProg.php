@@ -20,12 +20,8 @@ function add_points_prog($pointsprog) {
             $pointsprog->getAllergies() . '","' .
             $pointsprog->getSnacks() . '","' .
             $pointsprog->getSnackNotes() . '","' .
-            $pointsprog->getFoodlion() . '","' .
-            $pointsprog->getGiant() . '","' .
-            $pointsprog->getWalmart() . '","' .
-            $pointsprog->getWegmans() . '","' .
-            $pointsprog->getSheetz() . '","' .
-            $pointsprog->getWawa() . '","' .
+            $pointsprog->getGrocery() . '","' .
+            $pointsprog->getGas() . '","' .
             $pointsprog->getHouseCleaning() . '","' .
             $pointsprog->getLawnCare() . '","' .
             $pointsprog->getAAAMembership() . '","' .
@@ -85,12 +81,8 @@ function make_a_points_prog($result_row) {
         $result_row['allergies'],
         $result_row['snacks'],
         $result_row['snack_notes'],
-        $result_row['foodlion'],
-        $result_row['giant'],
-        $result_row['walmart'],
-        $result_row['wegmans'],
-        $result_row['sheetz'],
-        $result_row['wawa'],
+        $result_row['grocery'],
+        $result_row['gas'],
         $result_row['house_cleaning'],
         $result_row['lawn_care'],
         $result_row['AAA_membership'],

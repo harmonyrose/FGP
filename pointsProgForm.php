@@ -31,7 +31,8 @@
         
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
+            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes",
+            "house_cleaning", "lawn_care",
             "AAA_membership", "photography", "house_projects", "financial_relief"
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
@@ -156,10 +157,14 @@
                         // Check if the vendor type is "grocery"
                         if ($vendor['vendorType'] == "grocery") {
                             echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
-                            echo '<select name="'. $vendor['vendorName'] .'" id="'. $vendor['vendorName'] .'">';
+                            echo '<select name="grocery[]" id="'. $vendor['vendorName'] .'">';
+                            echo '<option value= "" id = "">No Grocery Gift Cards</option>';
+                            $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
-                                echo '<option value="'. $vendor['vendorName'] .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
-                             }
+                                $value = $vendor['vendorName'] . "-" . $numCards;
+                                echo '<option value="'. $value .'" id="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
+                                $numCards++;
+                            }
                             echo '</select>';
                         }
                     }
@@ -178,15 +183,18 @@
                 $all_vendors = mysqli_query($con,$sql);
                 // Check if there are any vendors
                 if (mysqli_num_rows($all_vendors) > 0) {
-                    // Loop through each row in the result set
                     while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
                         // Check if the vendor type is "gas"
                         if ($vendor['vendorType'] == "gas") {
                             echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
-                            echo '<select name="'. $vendor['vendorName'] .'" id="'. $vendor['vendorName'] .'">';
+                            echo '<select name="gas[]" id="'. $vendor['vendorName'] .'">';
+                            echo '<option value="" id = "">No Gas Gift Cards</option>';
+                            $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
-                                echo '<option value="'. $vendor['vendorName'] .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
-                             }
+                                $value = $vendor['vendorName'] ."-". $numCards;
+                                echo '<option value="'. $value .'" id ="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
+                                $numCards++;
+                            }
                             echo '</select>';
                         }
                     }
