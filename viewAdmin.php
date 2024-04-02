@@ -15,10 +15,11 @@ if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+
 // Function to delete an admin
 function delete_admin($id) {
     global $connection; // Access the global $connection variable
-    $query = "DELETE FROM dbPersons WHERE id = '$id' AND type = 'admin' OR type='Admin'";
+    $query = "DELETE FROM dbPersons WHERE (id = '$id') AND (type = 'admin' OR type='Admin')";
     $result = mysqli_query($connection, $query);
     if (!$result) {
         die("Delete failed: " . mysqli_error($connection));
@@ -51,7 +52,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <td style="text-align: center; padding: 10px;"><?php echo $row['last_name']; ?></td>
         <td style="text-align: center; padding: 10px;"><?php echo $row['email']; ?></td>
         <td style="text-align: center; padding: 10px;">
-            <form method="post">
+            <form method="post" onsubmit="return confirm('Are you sure you want to delete this admin?');">
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                 <button type="submit" name="delete" style="background-color: red; color: white;">Delete</button>
             </form>
@@ -69,14 +70,16 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <?php
 // Handle delete action
-//look up happy-toast for delete confirmation message
 if (isset($_POST['delete'])) {
     $id = $_POST['id']; // Admin ID
     delete_admin($id);
+    // Redirect to prevent form resubmission
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
 }
 else if(isset($_POST['modify'])){
     $id = $_POST['id']; // Family ID
-    header("Location: familyServiceDoc.php?id=$id");
+    header("Location: modifyAdminForm.php?id=$id");
 }
 ?>
 
