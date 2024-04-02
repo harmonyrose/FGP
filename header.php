@@ -51,7 +51,6 @@
         $permission_array['about.php'] = 0;
         $permission_array['apply.php'] = 0;
         $permission_array['logout.php'] = 0;
-        $permission_array['register.php'] = 0;
         $permission_array['findanimal.php'] = 0;
         $permission_array['createaccount.php']=0;
         //pages volunteers can view
@@ -71,6 +70,7 @@
         $permission_array['registeradminform.php'] = 1;
         $permission_array['registeradmin.php'] = 1;
         //pages only managers can view
+        $permission_array['register.php'] = 2;
         $permission_array['personsearch.php'] = 2;
         $permission_array['personedit.php'] = 0; // changed to 0 so that applicants can apply
         $permission_array['viewschedule.php'] = 2;
