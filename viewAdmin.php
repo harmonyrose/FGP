@@ -68,6 +68,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <?php
 // Handle delete action
+//look up happy-toast for delete confirmation message
 if (isset($_POST['delete'])) {
     $id = $_POST['id']; // Admin ID
     delete_admin($id);
