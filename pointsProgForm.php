@@ -31,8 +31,7 @@
         
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes",
-            "house_cleaning", "lawn_care",
+            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
             "AAA_membership", "photography", "house_projects", "financial_relief"
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
@@ -73,7 +72,6 @@
         <?php if (isset($_GET['pointsError'])): ?>
             <div class="error-toast">More than 19 points were used. Please modify your choices and resubmit. </div>
         <?php endif ?>
-        <?php $args = $_SESSION['form_data'] ?>
         <main class="date">
             <h2>Points Program Form</h2>
             <form id="new-points-prog-form" method="post">
@@ -158,7 +156,7 @@
                         if ($vendor['vendorType'] == "grocery") {
                             echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
                             echo '<select name="grocery[]" id="'. $vendor['vendorName'] .'">';
-                            echo '<option value= "" id = "">No Grocery Gift Cards</option>';
+                            echo '<option value="none">No Grocery Gift Cards</option>';
                             $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
                                 $value = $vendor['vendorName'] . "-" . $numCards;
@@ -183,12 +181,13 @@
                 $all_vendors = mysqli_query($con,$sql);
                 // Check if there are any vendors
                 if (mysqli_num_rows($all_vendors) > 0) {
+                    // Loop through each row in the result set
                     while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
                         // Check if the vendor type is "gas"
                         if ($vendor['vendorType'] == "gas") {
                             echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
                             echo '<select name="gas[]" id="'. $vendor['vendorName'] .'">';
-                            echo '<option value="" id = "">No Gas Gift Cards</option>';
+                            echo '<option value="none">No Gas Gift Cards</option>';
                             $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
                                 $value = $vendor['vendorName'] ."-". $numCards;
