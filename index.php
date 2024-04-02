@@ -45,6 +45,8 @@
                 <div class="happy-toast">Location successfully removed!</div>
             <?php elseif (isset($_GET['registerSuccess'])): ?>
                 <div class="happy-toast">Family registered successfully!</div>
+            <?php elseif (isset($_GET['registerAdminSuccess'])): ?>
+                <div class="happy-toast">Admin registered successfully!</div>
             <?php endif ?>
             <p>Welcome back, <?php echo $person->get_first_name() ?>!</p>
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>

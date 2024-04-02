@@ -181,9 +181,9 @@
                 echo '<p>That e-mail address is already in use.</p>';
             } else {
                 if ($loggedIn) {
-                    echo '<script>document.location = "index.php?registerSuccess";</script>';
+                    echo '<script>document.location = "index.php?registerAdminSuccess";</script>';
                 } else {
-                    echo '<script>document.location = "login.php?registerSuccess";</script>';
+                    echo '<script>document.location = "login.php?registerAdminSuccess";</script>';
                 }
             }
         } else {
