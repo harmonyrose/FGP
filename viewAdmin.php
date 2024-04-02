@@ -25,6 +25,7 @@ function delete_admin($id) {
     }
 }
 
+
 // Query to fetch all admins from the database
 $query = "SELECT * FROM dbPersons WHERE type = 'admin' OR type='Admin'";
 $result = mysqli_query($connection, $query);

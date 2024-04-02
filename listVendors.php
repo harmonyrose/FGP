@@ -1,3 +1,9 @@
+<!-- listVendors.php -->
+<!-- List all the vendors in dbGiftCardVendors so that admins can easily keep track of them -->
+<!-- Also handles deleting vendors -->
+<!-- Joshua Cottrell -->
+
+
 <?php
     // Template for new VMS pages. Base your new page on this one
 
@@ -109,10 +115,6 @@ function displaySearchRow($vendor){
         </script>
 
 
-
-
-
-
             <!-- The actual table -->
             <?php 
                 require_once('include/input-validation.php');
@@ -135,6 +137,7 @@ function displaySearchRow($vendor){
                                 </thead>
                                 <tbody class="standout">';
                         // Show each vendor as formatted in displaySearchRow above \\
+
                         foreach ($vendors as $vendor) {
                             displaySearchRow($vendor);
                         }

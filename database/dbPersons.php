@@ -292,7 +292,7 @@ function getall_dbPersons($name_from, $name_to, $venue) {
 */
 function getall_families() {
     $con=connect();
-    $query = 'SELECT * FROM dbPersons WHERE id != "vmsroot"';
+    $query = 'SELECT * FROM dbPersons WHERE id != "vmsroot" AND type != "admin"';
     $result = mysqli_query($con,$query);
     if ($result == null || mysqli_num_rows($result) == 0) {
         mysqli_close($con);

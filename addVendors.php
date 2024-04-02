@@ -1,3 +1,7 @@
+<!-- addVendors.php-->
+<!-- Form admins will use to add new vendors to dbGiftCardVendors -->
+<!-- Joshua Cottrell -->
+
 <?php
 
 
