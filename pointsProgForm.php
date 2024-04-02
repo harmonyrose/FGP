@@ -221,10 +221,10 @@
                 <p> If yes to AAA Membership, please provide the responsible party's name and date of birth. </p>
 
                 <label for="aaa_membership_name"> Responsible Party's Name </label>
-                <input type="text" id="aaa_membership_name" name="aaa_membership_name" required placeholder="Enter name">
+                <input type="text" id="aaa_membership_name" name="aaa_membership_name" placeholder="Enter name">
 
                 <label for="aaa_membership_dob"> Responsible Party's Date of Birth </label>
-                <input type="date" id="aaa_membership_dob" name="aaa_membership_dob" required placeholder="Date of birth"  max="<?php echo date('Y-m-d'); ?>">
+                <input type="date" id="aaa_membership_dob" name="aaa_membership_dob" placeholder="Date of birth"  max="<?php echo date('Y-m-d'); ?>">
                 
                 <label for="photography"> Photography </label>
                     <p> 
