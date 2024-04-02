@@ -77,7 +77,9 @@
             $email = $args['email'];
             $address = $args['address'];
             $freezer_meals = $args['freezer_meals'];
-            $points_used += ($freezer_meals / 2);
+            if ($freezer_meals != 2){
+                $points_used += ($freezer_meals / 2);
+            }
             $snack_notes = $args['snack_notes'];
             
             $house_cleaning = $args['house_cleaning'];
@@ -121,6 +123,27 @@
                 $gas = implode(",", $_POST["gas"]);
             }
 
+
+            // Regular expression pattern to match integers inside parentheses
+            $pattern = '/\((\d+)\)/';
+
+            // Use preg_match_all to find all matches of the pattern in the string
+            preg_match_all($pattern, $grocery, $matches);
+
+            // $matches[1] contains all the integers found within parentheses
+            foreach ($matches[1] as $match) {
+                // Convert the matched string to integer and add to the total
+                $points_used += intval($match);
+            }
+
+            // Use preg_match_all to find all matches of the pattern in the string
+            preg_match_all($pattern, $gas, $matches);
+
+            // $matches[1] contains all the integers found within parentheses
+            foreach ($matches[1] as $match) {
+                // Convert the matched string to integer and add to the total
+                $points_used += intval($match);
+            }
 
             if ($errors) {
                 echo '<p>Your form submission contained unexpected input.</p>';
