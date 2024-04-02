@@ -3,7 +3,7 @@
     // Description: Registration page for new volunteers
     // session_cache_expire(30);
     // session_start();
-    
+
     require_once('include/input-validation.php');
 
     // $loggedIn = false;
@@ -52,7 +52,7 @@
             // make every submitted field SQL-safe except for password
             $ignoreList = array('password');
             $args = sanitize($_POST, $ignoreList);
-
+            $_SESSION['form_data'] = $args;
             // echo "<p>The form was submitted:</p>";
             // foreach ($args as $key => $value) {
             //     echo "<p>$key: $value</p>";
@@ -65,7 +65,7 @@
                 //form requries these but they cannot be confirmed by computer
             );
             
-            
+            $points_used = 0;
             
             $errors = false;
             if (!wereRequiredFieldsSubmitted($args, $required)) {
@@ -77,9 +77,13 @@
             $email = $args['email'];
             $address = $args['address'];
             $freezer_meals = $args['freezer_meals'];
+            $points_used += ($freezer_meals / 2);
             $snack_notes = $args['snack_notes'];
             $house_cleaning = $args['house_cleaning'];
+            $points_used += ($house_cleaning * 7);
+
             $lawn_care = $args['lawn_care'];
+            $points_used += ($lawn_care * 3);
             $AAA_membership = $args['aaa_membership'];
 
             $photography = $args['photography'];
@@ -132,6 +136,13 @@
                 $AAA_membership_DOB="";
             }
 
+            
+            if($points_used > 19){
+                header("Location: pointsProg.php?pointsError");
+                die();
+            }
+            
+
             // need to incorporate availability here
             $newpointsprog = new PointsProg(
                 $id, $name, $email, $address, $freezer_meals, 
@@ -139,7 +150,7 @@
                 null, null, null, null, null, null, 
                 $house_cleaning, $lawn_care, 
                 $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, 
-                $photography, $house_projects, $financial_relief, null
+                $photography, $house_projects, $financial_relief, $points_used
             );
 
             $result = add_points_prog($newpointsprog);
@@ -156,5 +167,6 @@
             require_once('pointsProgForm.php'); 
         }
     ?>
+
 </body>
 </html>
