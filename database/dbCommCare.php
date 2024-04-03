@@ -11,23 +11,23 @@ function add_comm_care($commcare) {
     //if there's no entry for this id, add it
     if ($result == null || mysqli_num_rows($result) == 0) {
         mysqli_query($con,'INSERT INTO dbCommCare VALUES("' .
-            $pointsprog->getId() . '","' .
-            $pointsprog->getEmail() . '","' .
-            $pointsprog-> getAdultNames(). '","'.
-            $pointsprog->getChildrenInfo() . '","' .
-            $pointsprog->getSportsFan() . '","' .
-            $pointsprog->getSportsInfo() . '","' .
-            $pointsprog->getSitDinner() . '","' .
-            $pointsprog->getFastFood() . '","' .
-            $pointsprog->getSweetTreat() . '","' .
-            $pointsprog->getFaveSweet() . '","' .
-            $pointsprog->getFaveSalt() . '","' .
-            $pointsprog->getFaveCandy() . '","' .
-            $pointsprog->getFaveCookie() . '","' .
-            $pointsprog->getForFun() . '","' .
-            $pointsprog->getWarmAct() . '","' .
-            $pointsprog->getColdAct() . '","' .
-            $pointsprog->getNotes() . '","' .
+            $commcare->getId() . '","' .
+            $commcare->getEmail() . '","' .
+            $commcare-> getAdultNames(). '","'.
+            $commcare->getChildrenInfo() . '","' .
+            $commcare->getSportsFan() . '","' .
+            $commcare->getSportsInfo() . '","' .
+            $commcare->getSitDinner() . '","' .
+            $commcare->getFastFood() . '","' .
+            $commcare->getSweetTreat() . '","' .
+            $commcare->getFaveSweet() . '","' .
+            $commcare->getFaveSalt() . '","' .
+            $commcare->getFaveCandy() . '","' .
+            $commcare->getFaveCookie() . '","' .
+            $commcare->getForFun() . '","' .
+            $commcare->getWarmAct() . '","' .
+            $commcare->getColdAct() . '","' .
+            $commcare->getNotes() . '","' .
             '");'
         );							
         mysqli_close($con);
