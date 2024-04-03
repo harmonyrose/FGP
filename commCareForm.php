@@ -72,15 +72,17 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>FGP | Community Care</title>
+        <title>FGP | Community Care Package Form</title>
     </head>
     <body>
         <?php require_once('header.php') ?>
-        <h1>Community Care</h1>
+        <h1>Community Care Package Form</h1>
         <main class="date">
             <h2>Community Care Package Form</h2>
             <form id="new-event-form" method="post">
                 <!--Adult names and children info -->
+                <label for="email">* Email </label>
+                <input type="text" id="email" name="email" required placeholder="Enter email">
                 <label for="adultNames">* Names of adults in household </label>
                 <input type="text" id="adultNames" name="adultNames" required placeholder="Enter adult names">
                 <label for="childrenInfo">* For children in the house hold: list names,ages, genders and clothing sizes</label>
@@ -124,7 +126,7 @@
 
 
                 <input type="submit" value="Submit">
-                                <!--Commented out original ODHS code-->
+                <!--Commented out original ODHS code-->
                 <!--<label for="name">* Appointment Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter name">
                 <label for="name">* Abbreviated Name</label>
