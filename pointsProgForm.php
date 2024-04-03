@@ -1,52 +1,7 @@
 <?php
-$times = [
-    '12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '5:00 AM',
-    '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM',
-    '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM',
-    '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM',
-    '11:59 PM'
-];
-$values = [
-    "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", 
-    "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", 
-    "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", 
-    "18:00", "19:00", "20:00", "21:00", "22:00", "23:00",
-    "23:59"
-];
 
-function buildSelect($name, $disabled=false, $selected=null) {
-    global $times;
-    global $values;
-    if ($disabled) {
-        $select = '
-            <select id="' . $name . '" name="' . $name . '" disabled>';
-    } else {
-        $select = '
-            <select id="' . $name . '" name="' . $name . '">';
-    }
-    if (!$selected) {
-        $select .= '<option disabled selected value>Select a time</option>';
-    }
-    $n = count($times);
-    for ($i = 0; $i < $n; $i++) {
-        $value = $values[$i];
-        if ($selected == $value) {
-            $select .= '
-                <option value="' . $values[$i] . '" selected>' . $times[$i] . '</option>';
-        } else {
-            $select .= '
-                <option value="' . $values[$i] . '">' . $times[$i] . '</option>';
-        }
-    }
-    $select .= '</select>';
-    return $select;
-}
-
-    // Make session information accessible, allowing us to associate
-    // data with the logged-in user.
     session_cache_expire(30);
     session_start();
-
     ini_set("display_errors",1);
     error_reporting(E_ALL);
 
@@ -59,6 +14,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
         $accessLevel = $_SESSION['access_level'];
         $userID = $_SESSION['_id'];
     } 
+
     // Require admin privileges
     if ($accessLevel < 2) {
         header('Location: login.php');
@@ -68,10 +24,10 @@ function buildSelect($name, $disabled=false, $selected=null) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbPointsProg.php');
+        
         $args = sanitize($_POST, null);
         $required = array(
-            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes",
-            "house_cleaning", "lawn_care",
+            "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
             "AAA_membership", "photography", "house_projects", "financial_relief"
         );
         if (!wereRequiredFieldsSubmitted($args, $required)) {
@@ -86,22 +42,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             }
             require_once('include/output.php');
             
-            $name = htmlspecialchars_decode($args['name']);
-            $date = date('l, F j, Y', strtotime($date));
-            require_once('database/dbMessages.php');
-            system_message_all_users_except($userID, "A new event was created!", "Exciting news!\r\n\r\nThe [$name](event: $id) event at $startTime on $date was added!\r\nSign up today!");
-            header("Location: event.php?id=$id&createSuccess");
-            die();
-        }
-    }
-    $date = null;
-    if (isset($_GET['date'])) {
-        $date = $_GET['date'];
-        $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
-        $timeStamp = strtotime($date);
-        if (!preg_match($datePattern, $date) || !$timeStamp) {
-            header('Location: calendar.php');
-            die();
+
         }
     }
 
@@ -109,13 +50,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
     // Connect to database
     include_once('database/dbinfo.php'); 
     $con=connect();  
-    // Get all the animals from animal table
-    $sql = "SELECT * FROM `dbAnimals`";
-    $all_animals = mysqli_query($con,$sql);
-    $sql = "SELECT * FROM `dbLocations`";
-    $all_locations = mysqli_query($con,$sql);
-    $sql = "SELECT * FROM `dbServices`";
-    $all_services = mysqli_query($con,$sql);
+
     //get all vendors from vendor table
     $sql = "SELECT * FROM `dbGiftCardVendors`";
     $all_vendors = mysqli_query($con,$sql);
@@ -130,10 +65,18 @@ function buildSelect($name, $disabled=false, $selected=null) {
     <body>
         <?php require_once('header.php') ?>
         <h1>Points Program</h1>
+        <?php if (isset($_GET['pointsError'])): ?>
+            <div class="error-toast">More than 19 points were used. Please modify your choices and resubmit. </div>
+        <?php endif ?>
         <main class="date">
             <h2>Points Program Form</h2>
             <form id="new-points-prog-form" method="post">
 
+                <p> Our goal is to provide servies that meet your needs as a family during this
+                    difficult time. You have a total of <b>19 points</b> "to spend" each month.
+                    Your choices will remain the same each month unless you change them using
+                    this form.
+                </p>
                 <label for="name">* Name </label>
                 <input type="text" id="name" name="name" required placeholder="Enter contact name">
 
@@ -191,15 +134,15 @@ function buildSelect($name, $disabled=false, $selected=null) {
 
                 <label for="snack_notes">* Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>
                 <input type="text" id="snack_notes" name="snack_notes" required placeholder="Your answer">
-
+                <br><br>
                 <label for="name">Grocery Store Gift Cards </label>
                 <p>We only offer gift cards from stores that allow us to 
                     purchase the cards online.  Shoppers Food Warehouse 
                     and Aldi do not currently have that service. 
                     Please note that Walmart does not allow shipments to
-                    PO Boxes. 
+                    PO Boxes. Please select the grocery store gift cards
+                    you would like.
                 </p>
-                <label for="name"> Store Selection </label>
                 <?php
                 // Check if there are any vendors
                 if (mysqli_num_rows($all_vendors) > 0) {
@@ -209,10 +152,10 @@ function buildSelect($name, $disabled=false, $selected=null) {
                         if ($vendor['vendorType'] == "grocery") {
                             echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
                             echo '<select name="grocery[]" id="'. $vendor['vendorName'] .'">';
-                            echo '<option value= "" id = "">No Grocery Gift Cards</option>';
+                            echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
                             $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
-                                $value = $vendor['vendorName'] . "-" . $numCards;
+                                $value = $vendor['vendorName'] . "(" . $numCards . ")";
                                 echo '<option value="'. $value .'" id="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
                                 $numCards++;
                             }
@@ -225,25 +168,25 @@ function buildSelect($name, $disabled=false, $selected=null) {
                 }
                 ?>
                     
-                
+                <br><br>
                 <label for="name">Gas Gift Cards</label>
-                <p> We are currently offering gas cards from Sheetz and Wawa.</p>
-                <label for="name">Gas Card Selection</label>
+                <p> Please select the gas gift cards you would like.</p>
                 <?php
                 //reset vendors array collection
                 $sql = "SELECT * FROM `dbGiftCardVendors`";
                 $all_vendors = mysqli_query($con,$sql);
                 // Check if there are any vendors
                 if (mysqli_num_rows($all_vendors) > 0) {
+                    // Loop through each row in the result set
                     while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
                         // Check if the vendor type is "gas"
                         if ($vendor['vendorType'] == "gas") {
                             echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
                             echo '<select name="gas[]" id="'. $vendor['vendorName'] .'">';
-                            echo '<option value="" id = "">No Gas Gift Cards</option>';
+                            echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
                             $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
-                                $value = $vendor['vendorName'] ."-". $numCards;
+                                $value = $vendor['vendorName'] ."(". $numCards . ")";
                                 echo '<option value="'. $value .'" id ="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
                                 $numCards++;
                             }
@@ -255,18 +198,18 @@ function buildSelect($name, $disabled=false, $selected=null) {
                         echo "No vendors found.";
                 }
                 ?>
-
+                <br><br>
                 <label for="house_cleaning">* Would you like house cleaning? </label>
                 <ul>
-                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value="Once a month"> Once a month (7 points)</li>
-                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value="Twice a month"> Twice a month (14 points)</li>
-                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value="No house cleaning"> We do not want house cleaning</li>
+                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1> Once a month (7 points)</li>
+                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2> Twice a month (14 points)</li>
+                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0> We do not want house cleaning</li>
                 </ul>
 
                 <label for="lawn_care">* Would you like lawn care? </label>
                 <ul>
-                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value="Yes"> Yes (3 points per month)</li>
-                <li><input type="radio" id="lawn_care_no" name="lawn_care" value="No"> We do not want lawn care</li>
+                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value=1> Yes (3 points per month)</li>
+                <li><input type="radio" id="lawn_care_no" name="lawn_care" value=0> We do not want lawn care</li>
                 </ul>
 
                 <label for="aaa_membership">* Would you like a AAA Plus Membership? </label>
@@ -275,13 +218,13 @@ function buildSelect($name, $disabled=false, $selected=null) {
                 <li><input type="radio" id="aaa_no" name="aaa_membership" value="No"> No</li>
                 </ul>
 
-                <p> If yes to AAA Membership please provide the responsible party's name and date of birth. </p>
+                <p> If yes to AAA Membership, please provide the responsible party's name and date of birth. </p>
 
-                <p>Responsible Party's Name </p>
-                <input type="text" id="aaa_membership_name" name="aaa_membership_name" required placeholder="Enter name">
+                <label for="aaa_membership_name"> Responsible Party's Name </label>
+                <input type="text" id="aaa_membership_name" name="aaa_membership_name" placeholder="Enter name">
 
-                <p> Responsible Party's Date of Birth </p>
-                <input type="date" id="aaa_membership_dob" name="aaa_membership_dob" required placeholder="Date of birth"  max="<?php echo date('Y-m-d'); ?>">
+                <label for="aaa_membership_dob"> Responsible Party's Date of Birth </label>
+                <input type="date" id="aaa_membership_dob" name="aaa_membership_dob" placeholder="Date of birth"  max="<?php echo date('Y-m-d'); ?>">
                 
                 <label for="photography"> Photography </label>
                     <p> 
@@ -294,6 +237,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
                 <ul>
                 <li><input type="radio" id="photo_yes" name="photography" value="Yes"> Yes</li>
                 <li><input type="radio" id="photo_no" name="photography" value="No"> No</li>
+                </ul>
 
                 <label for="add_services"> Additional Services </label>
                     <p>
@@ -304,13 +248,15 @@ function buildSelect($name, $disabled=false, $selected=null) {
                 <ul>
                 <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested"> We would like more information when available</li>
                 <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested"> We are not interested in house projects</li>
+                </ul>
 
                 <label for="financial_relief">* Financial Relief </label>
                 <ul>
                 <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested"> We would like more information when available</li>
                 <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested"> We are not interested in financial relief</li>
-
-                <input type="submit" name="points_form" value="Submit">
+                </ul>
+                <br>
+                <input type="submit" name="form_data" value="Submit">
             </form>
 
         </main>
