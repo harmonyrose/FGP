@@ -52,12 +52,30 @@ if (!$connection) {
             $lastname=$_POST['last_name'];
             update_last_name($id,$lastname);
         }
-        if(isset($_POST['address'])&&isset($_POST['city'])){
+        if(isset($_POST['address'])){
             $street=$_POST['address'];
-            $city=$_POST['city'];
-            $state='VA';
-            $zip=00000;
-            //update_address($id,$street,$city,$state,$zip);
+
+            if(isset($_POST['city'])){
+                $city=$_POST['city'];
+            }
+            else{
+                $city=$person->get_city();
+            }
+
+            if(isset($_POST['state'])){
+                $state=$_POST['state'];
+            }
+            else{
+                $state=$person->get_state();
+            }
+
+            if(isset($_POST['zip'])){
+                $zip=$_POST['zip'];
+            }
+            else{
+                $zip=$person->get_zip();
+            }
+            update_address($id,$street,$city,$state,$zip);
         }
         if(isset($_POST['phone'])){
             $phone=validateAndFilterPhoneNumber($_POST['phone']);
@@ -70,8 +88,8 @@ if (!$connection) {
         if(isset($_POST['contact-method'])){
             $contact_method=$_POST['contact-method'];
             update_cmethod($id,$contact_method);
-        }
-    echo "Update successful.";
+        }    
+    echo '<script>document.location = "viewAdmin.php?modifyAdminSuccess";</script>';
     }
 
 

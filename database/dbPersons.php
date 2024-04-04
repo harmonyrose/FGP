@@ -1056,9 +1056,13 @@ function find_user_names($name) {
     //broken at the moment
     function update_address($id, $street, $city, $state, $zip) {
         $con=connect();
-        $query = 'UPDATE dbPersons SET address= "' . $street . '", SET city="' .$city. 
-        //'", SET state="'.$state.
+        $query = 'UPDATE dbPersons 
+        SET address= "' . $street . 
+        '", city= "' .$city. 
+        '", state="'.$state.
+        '", zip="'.$zip.
         '" WHERE id = "' . $id . '"';
+        //echo $query."<br>";
         $result = mysqli_query($con,$query);
         mysqli_close($con);
         return $result;
