@@ -59,6 +59,18 @@ if (!$connection) {
             $zip=00000;
             //update_address($id,$street,$city,$state,$zip);
         }
+        if(isset($_POST['phone'])){
+            $phone=validateAndFilterPhoneNumber($_POST['phone']);
+            update_phone($id,$phone);
+        }
+        if(isset($_POST['phone-type'])){
+            $phone_type=$_POST['phone-type'];
+            update_phone_type($id,$phone_type);
+        }
+        if(isset($_POST['contact-method'])){
+            $contact_method=$_POST['contact-method'];
+            update_cmethod($id,$contact_method);
+        }
     echo "Update successful.";
     }
 
@@ -139,27 +151,24 @@ if (!$connection) {
                 <option value="WY">Wyoming</option>
             </select>
 
-            <label for="zip"><em>* </em>Zip Code</label>
+            <label for="zip">Zip Code</label>
             <input type="text" id="zip" name="zip" pattern="[0-9]{5}" title="5-digit zip code" placeholder="Enter your 5-digit zip code">
         </fieldset>
         <fieldset>
             <legend>Contact Information</legend>
             <!--<p>The following information will help us determine the best way to contact you.</p>-->
-            <label for="email"><em>* </em>E-mail</label>
-            <!--<p>This will also serve as your username when logging in.</p>-->
-            <input type="email" id="email" name="email"  placeholder="Enter your e-mail address">
-
-            <label for="phone"><em>* </em>Phone Number</label>
+            
+            <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" placeholder="Ex. (555) 555-5555">
 
-            <label><em>* </em>Phone Type</label>
+            <label>Phone Type</label>
             <div class="radio-group">
                 <input type="radio" id="phone-type-cellphone" name="phone-type" value="cellphone" ><label for="phone-type-cellphone">Cell</label>
                 <input type="radio" id="phone-type-home" name="phone-type" value="home" ><label for="phone-type-home">Home</label>
                 <input type="radio" id="phone-type-work" name="phone-type" value="work" ><label for="phone-type-work">Work</label>
             </div>
 
-            <label><em>* </em>Preferred Contact Method</label>
+            <label>Preferred Contact Method</label>
             <div class="radio-group">
                 <input type="radio" id="method-phone" name="contact-method" value="phone" ><label for="method-phone">Phone call</label>
                 <input type="radio" id="method-text" name="contact-method" value="text" ><label for="method-text">Text</label>
