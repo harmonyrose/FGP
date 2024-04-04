@@ -27,6 +27,20 @@ function delete_admin($id) {
 }
 
 
+// Handle delete action
+if (isset($_POST['delete'])) {
+    $id = $_POST['id']; // Admin ID
+    delete_admin($id);
+    // Redirect to prevent form resubmission
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
+else if(isset($_POST['modify'])){
+    $id = $_POST['id']; // Family ID
+    header("Location: modifyAdminForm.php?id=$id");
+}
+
+
 // Query to fetch all admins from the database
 $query = "SELECT * FROM dbPersons WHERE type = 'admin' OR type='Admin'";
 $result = mysqli_query($connection, $query);
@@ -68,20 +82,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </table>
 
-<?php
-// Handle delete action
-if (isset($_POST['delete'])) {
-    $id = $_POST['id']; // Admin ID
-    delete_admin($id);
-    // Redirect to prevent form resubmission
-    header("Location: ".$_SERVER['PHP_SELF']);
-    exit();
-}
-else if(isset($_POST['modify'])){
-    $id = $_POST['id']; // Family ID
-    header("Location: modifyAdminForm.php?id=$id");
-}
-?>
+
 
 <?php
 // Close the database connection

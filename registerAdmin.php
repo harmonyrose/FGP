@@ -175,7 +175,7 @@
                 //how did they hear, general family info, lead volunteer, GC delivery method, location
                 null,null,null,null,null
             );
-            echo "after large create statement <br>";
+            
             $result = add_person($newperson);
             if (!$result) {
                 echo '<p>That e-mail address is already in use.</p>';

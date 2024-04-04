@@ -1,9 +1,11 @@
 <?php
+session_cache_expire(30);
 session_start();
-require_once('header.php');
+
+require_once('include/input-validation.php');
 
 // Connect to the database
-$hostname = "localhost"; 
+/*$hostname = "localhost"; 
 $database = "fgp";
 $username = "fgp";
 $password = "fgp";
@@ -13,35 +15,52 @@ $connection = mysqli_connect($hostname, $username, $password, $database);
 // Check if the connection was successful
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
-}
+}*/
 
-// Retrieve family information
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $person=retrieve_person($id);
-    if (!$result) {
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <?php require_once('universal.inc'); ?>
+    <title>ODHS Medicine Tracker | Register <?php if ($loggedIn) echo ' New Volunteer' ?></title>
+</head>
+<body>
+    <?php
+        require_once('header.php');
+        require_once('domain/Person.php');
+        require_once('database/dbPersons.php');
+
+    // Retrieve family information
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $person=retrieve_person($id);
+    }
+    if (!$person) {
         die("Database query failed.");
     }
-}
-
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //$id = $_POST['id']; // Family ID
-    if(isset($_POST['first-name'])){
-        $firstname=$_POST['first-name'];
-    }
-    else{
-        $firstname=$person->get_first_name();
-    }
     
 
-    // Update family information
-    //update_family_info($id, $location, $start_date, $lead_volunteer, $gift_card_delivery_method);
-    // Display success message
+    // Check if the form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $args = sanitize($_POST);
+
+        if(isset($_POST['first-name'])){
+            $firstname=$_POST['first-name'];
+            update_first_name($id,$firstname);
+        }
+        if(isset($_POST['last_name'])){
+            $lastname=$_POST['last_name'];
+            update_last_name($id,$lastname);
+        }
+        if(isset($_POST['address'])&&isset($_POST['city'])){
+            $street=$_POST['address'];
+            $city=$_POST['city'];
+            $state='VA';
+            $zip=00000;
+            //update_address($id,$street,$city,$state,$zip);
+        }
     echo "Update successful.";
-    
-
-}
+    }
 
 
 ?>
@@ -153,3 +172,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 <?php require_once('universal.inc'); ?>
+</body>
+</html>
