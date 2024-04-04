@@ -1,8 +1,3 @@
-<!-- viewFamilyAccounts.php-->
-<!-- Lists all the families in dbPersons so that admins can easily keep track of them -->
-<!-- Also links to each families familyInfo.php page to get more detailed information if needed -->
-<!-- Joshua Cottrell -->
-
 <?php
     // Template for new VMS pages. Base your new page on this one
 
@@ -26,17 +21,17 @@
         die();
     }
 
-
-// Formatting for each row of the table
-// Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
-function displaySearchRow($person){
-    echo "
-    <tr>
-        <td><a href='familyInfo.php?contact_id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
-        <td>" . $person->get_first_name() . "</td>
-        <td>" . $person->get_email() . "</td>";
-    echo "</tr>";
-} 
+    // Formatting for each row of the table
+    // Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
+    function displaySearchRow($person){
+        echo "
+        <tr>
+            <td><a href='familyInfo.php?contact_id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
+            <td>" . $person->get_first_name() . "</td>
+            <td>" . $person->get_email() . "</td>
+            <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>";
+        echo "</tr>";
+    } 
 ?>
 
 
@@ -55,33 +50,34 @@ function displaySearchRow($person){
             <?php 
                 require_once('database/dbPersons.php');
                 // Get list of families from dbPersons database \\
-                    $people = getall_families();
-                    // If there are people, create table \\
-                    if (count($people) > 0) {
-                        echo '
-                        <div class="table-wrapper">
-                            <table class="general" id="familyTable">
-                                <thead>
-                                    <tr>
-                                        <th>Parent\'s Name</th>
-                                        <th>Child\'s Name</th>
-                                        <th>Email Address</th>';
-                                    echo '</tr>
-                                </thead>
-                                <tbody class="standout">';
-                        // Show each person as formatted in displaySearchRow above \\
-                        foreach ($people as $person) {
-                            displaySearchRow($person);
-                        }
-                        // End table \\
-                        echo '
-                                </tbody>
-                            </table>
-                        </div>';
-                    } else {
-                        // If there are no families, print error message \\
-                        echo '<div class="error-toast">There are no families.</div>';
+                $people = getall_families();
+                // If there are people, create table \\
+                if (count($people) > 0) {
+                    echo '
+                    <div class="table-wrapper">
+                        <table class="general" id="familyTable">
+                            <thead>
+                                <tr>
+                                    <th>Parent\'s Name</th>
+                                    <th>Child\'s Name</th>
+                                    <th>Email Address</th>
+                                    <th>Action</th>';
+                                echo '</tr>
+                            </thead>
+                            <tbody class="standout">';
+                    // Show each person as formatted in displaySearchRow above \\
+                    foreach ($people as $person) {
+                        displaySearchRow($person);
                     }
+                    // End table \\
+                    echo '
+                            </tbody>
+                        </table>
+                    </div>';
+                } else {
+                    // If there are no families, print error message \\
+                    echo '<div class="error-toast">There are no families.</div>';
+                }
             ?>
             <p></p>
             <!-- Return button -->
