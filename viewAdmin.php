@@ -48,9 +48,10 @@ $result = mysqli_query($connection, $query);
 if (!$result) {
     die("Database query failed.");
 }
-
-// Display admins and their details
 ?>
+
+<!-- Display admins and their details-->
+
 
 <table style="margin: auto; border-collapse: collapse;">
     <tr>

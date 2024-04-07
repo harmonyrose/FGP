@@ -44,52 +44,36 @@ if (!$connection) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST);
 
-        if(isset($_POST['first-name'])){
-            $firstname=$_POST['first-name'];
+        if($args['first-name']!=$person->get_first_name()){
+            $firstname=$args['first-name'];
             update_first_name($id,$firstname);
         }
-        if(isset($_POST['last_name'])){
-            $lastname=$_POST['last_name'];
+        if($args['last-name']!=$person->get_address()){
+            $lastname=$args['last-name'];
             update_last_name($id,$lastname);
         }
-        if(isset($_POST['address'])){
-            $street=$_POST['address'];
-
-            if(isset($_POST['city'])){
-                $city=$_POST['city'];
-            }
-            else{
-                $city=$person->get_city();
-            }
-
-            if(isset($_POST['state'])){
-                $state=$_POST['state'];
-            }
-            else{
-                $state=$person->get_state();
-            }
-
-            if(isset($_POST['zip'])){
-                $zip=$_POST['zip'];
-            }
-            else{
-                $zip=$person->get_zip();
-            }
+        if($args['address']!=$person->get_address()){
+            $street=$args['address'];    
+            $city=$args['city'];
+            $state=$args['state'];
+            $zip=$args['zip'];
             update_address($id,$street,$city,$state,$zip);
         }
-        if(isset($_POST['phone'])){
-            $phone=validateAndFilterPhoneNumber($_POST['phone']);
+        if($args['phone']!=$person->get_phone1()){
+            //$phone=validateAndFilterPhoneNumber($args['phone']);
+            $phone=$args['phone'];
             update_phone($id,$phone);
         }
-        if(isset($_POST['phone-type'])){
-            $phone_type=$_POST['phone-type'];
+        if(isset($args['phone-type'])){
+            $phone_type=$args['phone-type'];
             update_phone_type($id,$phone_type);
         }
-        if(isset($_POST['contact-method'])){
-            $contact_method=$_POST['contact-method'];
+        if(isset($args['contact-method'])){
+            $contact_method=$args['contact-method'];
             update_cmethod($id,$contact_method);
         }    
     echo '<script>document.location = "viewAdmin.php?modifyAdminSuccess";</script>';
+    exit();
     }
 
 
@@ -98,20 +82,24 @@ if (!$connection) {
 <main class="signup-form">
     <form class="signup-form" method="post">
         <h2>Modify Form</h2>
-        <p> Fill in fields you wish to update.
+        <p> Current information for this admin is displayed. Please edit the fields you wish to modify. </p>
         <fieldset>
             <legend>Personal Information</legend>
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="Enter first name">
+            <input type="text" id="first-name" name="first-name" 
+            value="<?php echo $person->get_first_name();?>">
 
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Enter last name">
+            <input type="text" id="last-name" name="last-name" 
+            value="<?php echo $person->get_last_name();?>" >
 
             <label for="address">Street Address</label>
-            <input type="text" id="address" name="address" placeholder="Enter street address">
+            <input type="text" id="address" name="address"
+            value="<?php echo $person->get_address();?>" >
 
             <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Enter city">
+            <input type="text" id="city" name="city" 
+            value="<?php echo $person->get_city();?>">
 
             <label for="state">State</label>
             
@@ -170,16 +158,19 @@ if (!$connection) {
             </select>
 
             <label for="zip">Zip Code</label>
-            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" title="5-digit zip code" placeholder="Enter your 5-digit zip code">
+            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" title="5-digit zip code" 
+            value="<?php echo $person->get_zip();?>">
+
         </fieldset>
         <fieldset>
             <legend>Contact Information</legend>
-            <!--<p>The following information will help us determine the best way to contact you.</p>-->
             
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" placeholder="Ex. (555) 555-5555">
+            <input type="tel" id="phone" name="phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+            value="<?php echo $person->get_phone1();?>">
 
             <label>Phone Type</label>
+            <?php echo "Current phone type is: ". $person->get_phone1type()."<br>";?>
             <div class="radio-group">
                 <input type="radio" id="phone-type-cellphone" name="phone-type" value="cellphone" ><label for="phone-type-cellphone">Cell</label>
                 <input type="radio" id="phone-type-home" name="phone-type" value="home" ><label for="phone-type-home">Home</label>
@@ -187,6 +178,7 @@ if (!$connection) {
             </div>
 
             <label>Preferred Contact Method</label>
+            <?php echo "Current prefered contact method is: ". $person->get_cmethod()."<br>";?>
             <div class="radio-group">
                 <input type="radio" id="method-phone" name="contact-method" value="phone" ><label for="method-phone">Phone call</label>
                 <input type="radio" id="method-text" name="contact-method" value="text" ><label for="method-text">Text</label>
