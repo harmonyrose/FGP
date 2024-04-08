@@ -29,6 +29,22 @@
     require_once ('database/dbPersons.php');
     $person = retrieve_person($_GET['contact_id']);
 
+
+    // Check if status and contact_id are provided
+    if (isset($_GET['status']) && isset($_GET['contact_id'])) {
+        // Call the update_status() function
+        $status = $_GET['status'];
+        $contact_id = $_GET['contact_id'];
+        update_status($contact_id, $status);
+        // Redirect to the current page without the 'status' parameter but with the 'contact_id' parameter
+        // This is not only done to make the url look good but also because it won't update the default option in the table if I don't
+        $redirect_url = strtok($_SERVER["REQUEST_URI"], '?'); // Get the current URL without query parameters
+        $contact_id_param = "contact_id=" . urlencode($_GET['contact_id']); // Get contact_id
+        header("Location: $redirect_url?$contact_id_param"); // Combine to get full URL and then redirect there
+        exit();
+    }
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +135,15 @@
                 </tr>
                 <tr>
                     <td>Status</td>
-                    <td><?php echo $person->get_status(); ?></td>
+                    <td>
+                        <form id="status-form">
+                            <select name="status" id="status" onchange="updateStatus()">
+                                <option value="pending" <?php if (strtolower($person->get_status()) == 'pending') echo 'selected="selected"'; ?>>Pending</option>
+                                <option value="active" <?php if (strtolower($person->get_status()) == 'active') echo 'selected="selected"'; ?>>Active</option>
+                                <option value="remission" <?php if (strtolower($person->get_status()) == 'remission') echo 'selected="selected"'; ?>>Remission</option>
+                            </select>
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>Notes</td>
@@ -223,6 +247,25 @@
             </tr>
         </table>
             </div>
+
+            <!-- javascript function to handle changing family status -->
+            <!-- Redirects to the same page but with status in the get params-->
+            <script>
+            function updateStatus() {
+                var selectedStatus = $('#status').val();
+                var url = window.location.href.split('?')[0]; // Get the base URL without query parameters
+                var params = new URLSearchParams(window.location.search); // Get the existing query parameters
+                
+                // Update the 'status' parameter with the selected status
+                params.set('status', selectedStatus);
+                
+                // Construct the new URL with updated parameters
+                var newUrl = url + '?' + params.toString();
+
+                // Redirect to the new URL
+                window.location.href = newUrl;
+            }
+            </script>
             <!-- Return button -->
             <a class="button cancel" style="margin-top: 30px" href="viewFamilyAccounts.php">Return to Family List</a>
         </form>
