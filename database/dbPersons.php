@@ -1035,6 +1035,62 @@ function find_user_names($name) {
         mysqli_close($connection);
         return $row['first_name'] . ' ' . $row['last_name'];
     }
-	
+
+
+	function update_first_name($id, $new_name) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET first_name = "' . $new_name . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_last_name($id, $new_name) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET last_name = "' . $new_name . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    //broken at the moment
+    function update_address($id, $street, $city, $state, $zip) {
+        $con=connect();
+        $query = 'UPDATE dbPersons 
+        SET address= "' . $street . 
+        '", city= "' .$city. 
+        '", state="'.$state.
+        '", zip="'.$zip.
+        '" WHERE id = "' . $id . '"';
+        //echo $query."<br>";
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_phone($id, $new_phone) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET phone1 = "' . $new_phone . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_phone_type($id, $new_phone_type) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET phone1type = "' . $new_phone_type . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_cmethod($id, $new_cmethod) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET cmethod = "' . $new_cmethod . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+    
     
     

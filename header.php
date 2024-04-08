@@ -80,7 +80,9 @@
         $permission_array['reports.php'] = 2;
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
-        $permission_array['pointsprog.php'] = 2;
+
+        $permission_array['pointsprog.php'] = 0;
+        
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -102,6 +104,7 @@
         $permission_array['familyinfo.php'] = 2;
         $permission_array['approve.php'] = 2;
         $permission_array['viewadmin.php'] = 2;
+        $permission_array['modifyfamily.php'] = 2;
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
       
