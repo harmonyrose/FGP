@@ -49,7 +49,9 @@ if (!$result) {
     die("Database query failed.");
 }
 ?>
-
+<?php if (isset($_GET['modifyAdminSuccess'])): ?>
+                <div class="happy-toast">Admin modified successfully!</div>
+<?php endif?>
 <!-- Display admins and their details-->
 
 

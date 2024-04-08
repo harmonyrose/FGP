@@ -60,8 +60,8 @@ if (!$connection) {
             update_address($id,$street,$city,$state,$zip);
         }
         if($args['phone']!=$person->get_phone1()){
-            //$phone=validateAndFilterPhoneNumber($args['phone']);
-            $phone=$args['phone'];
+            $phone=validateAndFilterPhoneNumber($args['phone']);
+            //$phone=$args['phone'];
             update_phone($id,$phone);
         }
         if(isset($args['phone-type'])){
