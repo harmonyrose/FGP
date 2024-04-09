@@ -73,6 +73,10 @@
                      <img src="images/create-report.svg">
                     <span>Points Program Form</span>
                 </div>
+                <div class="dashboard-item" data-link="commCare.php">
+                     <img src="images/create-report.svg">
+                    <span>Community Care Package Form</span>
+                </div>
 				<div class="dashboard-item" data-link="addAnimal.php">
                     <img src="images/settings.png">
                     <span>Add Animal</span>
