@@ -99,8 +99,10 @@
             $newcommcare = new CommCare(
                 $id, $email, $adultNames, $childrenInfo,
                 $sportsFan, $sportsInfo, $sitDinner, $fastFood, $sweetTreat, $faveSweet, 
-                $faveSalt, $faveCandy, $faveCookie, $forFun, $warmAct, $coldAct, $notes);
+                $faveSalt, $faveCandy, $faveCookie, $forFun, $warmAct, $coldAct, $notes
+            );
 
+            
             $result = add_comm_care($newcommcare);
             if (!$result) {
                 echo '<p>something went wrong</p>';

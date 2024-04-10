@@ -27,7 +27,7 @@ function add_comm_care($commcare) {
             $commcare->getForFun() . '","' .
             $commcare->getWarmAct() . '","' .
             $commcare->getColdAct() . '","' .
-            $commcare->getNotes() . '","' .
+            $commcare->getNotes() . 
             '");'
         );							
         mysqli_close($con);
