@@ -135,7 +135,7 @@
                     <img src="images/settings.png">
                     <span>Approve Acounts</span>
                 </div>
-                <div class="dashboard-item" data-link="addAdmin.php">
+                <div class="dashboard-item" data-link="registerAdmin.php">
                     <img src="images/settings.png">
                     <span>Add Admin</span>
                 </div>
