@@ -89,12 +89,11 @@
                 <input type="text" id="childrenInfo" name="childrenInfo" required placeholder="Enter children information">
                 <!--Sports Fans? If so, what teams do you like? -->
                 <label for="sportsFan">* Are you sports fans? </label>
-                    <?php 
-                        echo '<ul>';
-                        echo '<li><input class="radio" type="radio" name="sportsFan" value="' . "yes" . '" required/> ' . "Yes" . '</li>';
-                        echo '<li><input class="radio" type="radio" name="sportsFan" value="' . "no" . '" required/> ' . "No" . '</li>';
-                        echo '</ul>';
-                    ?>
+
+                <ul>
+                <li><input type="radio" id="sportsYes" name="sportsFan" value=1> Yes </li>
+                <li><input type="radio" id="sportsNo" name="sportsFan" value=0> No </li>
+                </ul>
                 <label for="sportsInfo">What teams do you enjoy cheering for? </label>
                 <input type="text" id="sportsInfo" name="sportsInfo" required placeholder="Enter team names">
                 <!--Resturants and Snack Preferences -->
@@ -126,66 +125,6 @@
 
 
                 <input type="submit" value="Submit">
-                <!--Commented out original ODHS code-->
-                <!--<label for="name">* Appointment Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter name">
-                <label for="name">* Abbreviated Name</label>
-                <input type="text" id="abbrev-name" name="abbrev-name" maxlength="11" required placeholder="Enter name that will appear on calendar">
-                <label for="name">* Date </label>
-                <input type="date" id="date" name="date" <?php if ($date) echo 'value="' . $date . '"'; ?> min="<?php echo date('Y-m-d'); ?>" required>
-                <label for="name">* Start Time </label>
-                <input type="text" id="start-time" name="start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                <label for="name">* Description </label>
-                <input type="text" id="description" name="description" required placeholder="Enter description">
-                <fieldset>
-                    <label for="name">* Service </label>
-                    <?php 
-                        // fetch data from the $all_services variable
-                        // and individually display as an option
-                        echo '<ul>';
-                        while ($service = mysqli_fetch_array(
-                                $all_services, MYSQLI_ASSOC)):; 
-                            echo '<li><input class="checkboxes" type="checkbox" name="service[]" value="' . $service['id'] . '" required/> ' . $service['name'] . '</li>';
-                        endwhile;
-                        echo '</ul>';
-                    ?>
-                </fieldset> 
-                <label for="name">* Location </label>
-                <select for="name" id="location" name="location" required>
-                    <option value="">--</option>
-                    <?php 
-                        // fetch data from the $all_locations variable
-                        // and individually display as an option
-                        while ($location = mysqli_fetch_array(
-                                $all_locations, MYSQLI_ASSOC)):; 
-                    ?>
-                    <option value="<?php echo $location['id'];?>">
-                        <?php echo $location['name'];?>
-                    </option>
-                    <?php 
-                        endwhile; 
-                        // terminate while loop
-                    ?>
-                </select><p></p>
-  
-                <label for="name">* Animal</label>
-                <select for="name" id="animal" name="animal" required>
-                    <?php 
-                        // fetch data from the $all_animals variable
-                        // and individually display as an option
-                        while ($animal = mysqli_fetch_array(
-                                $all_animals, MYSQLI_ASSOC)):; 
-                    ?>
-                    <option value="<?php echo $animal['id'];?>">
-                        <?php echo $animal['name'];?>
-                    </option>
-                    <?php 
-                        endwhile; 
-                        // terminate while loop
-                    ?>
-                </select><br/>
-                <p></p>
-                -->
             </form>
                 <?php if ($date): ?>
                     <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>

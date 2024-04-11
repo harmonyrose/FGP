@@ -45,6 +45,10 @@
                 <div class="happy-toast">Location successfully removed!</div>
             <?php elseif (isset($_GET['registerSuccess'])): ?>
                 <div class="happy-toast">Family registered successfully!</div>
+            <?php elseif (isset($_GET['registerAdminSuccess'])): ?>
+                <div class="happy-toast">Admin registered successfully!</div>
+            <?php elseif (isset($_GET['modifyAdminSuccess'])): ?>
+                <div class="happy-toast">Admin modified successfully!</div>
             <?php endif ?>
             <p>Welcome back, <?php echo $person->get_first_name() ?>!</p>
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
@@ -68,6 +72,10 @@
                 <div class="dashboard-item" data-link="pointsProg.php">
                      <img src="images/create-report.svg">
                     <span>Points Program Form</span>
+                </div>
+                <div class="dashboard-item" data-link="commCare.php">
+                     <img src="images/create-report.svg">
+                    <span>Community Care Package Form</span>
                 </div>
 				<div class="dashboard-item" data-link="addAnimal.php">
                     <img src="images/settings.png">
@@ -127,7 +135,10 @@
                     <img src="images/settings.png">
                     <span>Approve Acounts</span>
                 </div>
-              
+                <div class="dashboard-item" data-link="addAdmin.php">
+                    <img src="images/settings.png">
+                    <span>Add Admin</span>
+                </div>
                 <div class="dashboard-item" data-link="viewAdmin.php">
                     <img src="images/settings.png">
                     <span>View Admin</span>
