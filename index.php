@@ -107,7 +107,7 @@
                 
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
-                    <div class="dashboard-item" data-link="viewProfile.php">
+                    <div class="dashboard-item" data-link="familyInfo.php">
                         <img src="images/view-profile.svg">
                         <span>View Profile</span>
                     </div>

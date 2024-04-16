@@ -199,7 +199,7 @@
                     <p><?php echo time24hTo12h($user->get_saturday_availability_start()) . ' - ' . time24hTo12h($user->get_saturday_availability_end()) ?></p>
                 <?php endif ?>
             </fieldset> -->
-            <a class="button" href="editProfile.php<?php if ($id != $userID) echo '?id=' . $id ?>">Edit Profile</a>
+            <!-- <a class="button" href="editProfile.php<?php if ($id != $userID) echo '?id=' . $id ?>">Edit Profile</a> -->
             <?php if ($id != $userID): ?>
                 <?php if (($accessLevel == 2 && $user->get_access_level() == 1) || $accessLevel >= 3): ?>
                     <a class="button" href="resetPassword.php?id=<?php echo htmlspecialchars($_GET['id']) ?>">Reset Password</a>
@@ -207,8 +207,8 @@
                 <a class="button" href="volunteerReport.php?id=<?php echo htmlspecialchars($_GET['id']) ?>">View Volunteer Hours</a>
                 <a class="button cancel" href="personSearch.php">Return to User Search</a>
             <?php else: ?>
-                <a class="button" href="changePassword.php">Change Password</a>
-                <a class="button" href="volunteerReport.php">View Volunteer Hours</a>
+                <!-- <a class="button" href="changePassword.php">Change Password</a>
+                <a class="button" href="volunteerReport.php">View Volunteer Hours</a> -->
                 <a class="button cancel" href="index.php">Return to Dashboard</a>
             <?php endif ?>
         </main>
