@@ -26,7 +26,7 @@ function create_volunteer($volunteer){
     }
 }
 
-// Finds the highest id in the database that is not already used so it can be assigned to the next vendor. Used in create_vendor.
+// Finds the highest id in the database that is not already used so it can be assigned to the next volunteer.
 function find_next_id() {
     $query = "SELECT MAX(volunteerID) AS max_id FROM dbvolunteer";
     $connection = connect();
@@ -56,7 +56,32 @@ function find_next_id() {
     return $row['max_id'];
 }
 
-function find_volunteer($volunteer){
+function volunteerObj($obj){ // creates a volunteer obj to add inside an array
+    $volunteerData = new Volunteer(
+                    $obj = ['volunteerID'],
+                    $obj = ['firstName'],
+                    $obj = ['lastName'],
+                    $obj = ['email']
+                );
+    return $volunteerData;
+}
+
+function display_volunteer(){ // function to list all volunteers
+    $query = "SELECT * FROM dbvolunteer";
+    $con = connect();
+    $result = mysqli_query($con, $query);
+    if (!$result) {
+        mysqli_close($con);
+        return [];
+    }
+    $raw = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $volunteers = array();
+    while($result_row = mysqli_fetch_all($result, MYSQLI_ASSOC)){
+        $volunteer = volunteerObj($result_row);
+        $volunteers[] = $volunteer;
+
+    }
+    return $volunteers;
 
 
 }
