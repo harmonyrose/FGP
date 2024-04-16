@@ -79,50 +79,47 @@
         <h1>Community Care Package Form</h1>
         <main class="date">
             <h2>Community Care Package Form</h2>
+            <p>Please fill out the form below. Required fields are marked with an asterisk (<span style="color: red;">*</span>)</p>
             <form id="new-event-form" method="post">
                 <!--Adult names and children info -->
-                <label for="email">* Email </label>
+                <label for="email">Email </label>
                 <input type="text" id="email" name="email" required placeholder="Enter email">
-                <label for="adultNames">* Names of adults in household </label>
+                <label for="adultNames">Names of adults in household </label>
                 <input type="text" id="adultNames" name="adultNames" required placeholder="Enter adult names">
-                <label for="childrenInfo">* For children in the house hold: list names,ages, genders and clothing sizes</label>
+                <label for="childrenInfo">For children in the house hold: list names,ages, genders and clothing sizes</label>
                 <input type="text" id="childrenInfo" name="childrenInfo" required placeholder="Enter children information">
                 <!--Sports Fans? If so, what teams do you like? -->
-                <label for="sportsFan">* Are you sports fans? </label>
-
+                <label for="sportsFan">Are you sports fans? <span style="color: red;">*</span></label>
                 <ul>
-                <li><input type="radio" id="sportsYes" name="sportsFan" value=1> Yes </li>
+                <li><input type="radio" id="sportsYes" name="sportsFan" value=1 required> Yes </li>
                 <li><input type="radio" id="sportsNo" name="sportsFan" value=0> No </li>
                 </ul>
                 <label for="sportsInfo">What teams do you enjoy cheering for? </label>
-                <input type="text" id="sportsInfo" name="sportsInfo" required placeholder="Enter team names">
+                <input type="text" id="sportsInfo" name="sportsInfo" placeholder="Enter team names">
                 <!--Resturants and Snack Preferences -->
-                <label for="sitDinner">* Where do you like to eat a sit-down dinner?</label>
+                <label for="sitDinner">Where do you like to eat a sit-down dinner?</label>
                 <input type="text" id="sitDinner" name="sitDinner" required placeholder="Enter a restaurant name">
-                <label for="fastFood">* What are your favorite fast food restaurants?</label>
+                <label for="fastFood">What are your favorite fast food restaurants?</label>
                 <input type="text" id="fastFood" name="fastFood" required placeholder="Enter a restaurant name">
-                <label for="sweetTreat">* Where do you like to grab a sweet treat?</label>
+                <label for="sweetTreat">Where do you like to grab a sweet treat?</label>
                 <input type="text" id="sweetTreat" name="sweetTreat" required placeholder="Enter a restaurant/store name">
-                <label for="faveSweet">* What is your favorite sweet treat?</label>
+                <label for="faveSweet">What is your favorite sweet treat?</label>
                 <input type="text" id="faveSweet" name="faveSweet" required placeholder="Enter a sweet treat">
-                <label for="faveSalt">* What is your favorite salty snack?</label>
+                <label for="faveSalt">What is your favorite salty snack?</label>
                 <input type="text" id="faveSalt" name="faveSalt" required placeholder="Enter a salty snack">
-                <label for="faveCandy">* What is your favorite candy? </label>
+                <label for="faveCandy">What is your favorite candy? </label>
                 <input type="text" id="faveCandy" name="faveCandy" required placeholder="Enter a candy name">
-                <label for="faveCookie">* What is your favorite cookie?</label>
+                <label for="faveCookie">What is your favorite cookie?</label>
                 <input type="text" id="faveCookie" name="faveCookie" required placeholder="Enter a cookie name">
                 <!--Activity Preferences -->
-                <label for="forFun">* What does your family like to do for fun?</label>
+                <label for="forFun">What does your family like to do for fun?</label>
                 <input type="text" id="forFun" name="forFun" required placeholder="Enter an activity">
-                <label for="warmAct">* What is your favorite warm weather activity? </label>
+                <label for="warmAct">What is your favorite warm weather activity? </label>
                 <input type="text" id="warmAct" name="warmAct" required placeholder="Enter an activity name">
-                <label for="coldAct">* What is your favorite cold weather activity?</label>
+                <label for="coldAct">What is your favorite cold weather activity?</label>
                 <input type="text" id="coldAct" name="coldAct" required placeholder="Enter an activity name">
                 <label for="notes">What else would you like us to know about your family?</label>
-                <input type="text" id="notes" name="notes" required placeholder="Enter any other information">
-
-
-
+                <input type="text" id="notes" name="notes" placeholder="Enter any other information">
 
                 <input type="submit" value="Submit">
             </form>
