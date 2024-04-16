@@ -74,11 +74,9 @@ function display_volunteer(){ // function to list all volunteers
         mysqli_close($con);
         return [];
     }
-    $raw = mysqli_fetch_all($result, MYSQLI_ASSOC);
     $volunteers = array();
-    while($result_row = mysqli_fetch_all($result, MYSQLI_ASSOC)){
-        $volunteer = volunteerObj($result_row);
-        $volunteers[] = $volunteer;
+    while($result_row = mysqli_fetch_assoc($result)){
+        $volunteers[] = $result_row;
 
     }
     return $volunteers;
