@@ -16,7 +16,7 @@
         $userID = $_SESSION['_id'];
     }
     // admin-only access
-    if ($accessLevel < 2) {
+    if ($accessLevel < 1) {
         header('Location: index.php');
         die();
     }
@@ -26,7 +26,7 @@
     function displaySearchRow($person){
         echo "
         <tr>
-            <td><a href='familyInfo.php?contact_id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
+            <td><a href='familyInfo.php?id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
             <td>" . $person->get_first_name() . "</td>
             <td>" . $person->get_email() . "</td>
             <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>";
@@ -67,7 +67,9 @@
                             <tbody class="standout">';
                     // Show each person as formatted in displaySearchRow above \\
                     foreach ($people as $person) {
-                        displaySearchRow($person);
+                        if ($person->get_access_level() < $_SESSION['access_level']) {
+                            displaySearchRow($person);
+                        }
                     }
                     // End table \\
                     echo '

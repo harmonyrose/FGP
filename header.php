@@ -54,6 +54,7 @@
         $permission_array['findanimal.php'] = 0;
         $permission_array['createaccount.php'] = 0;
         $permission_array['commcareform.php'] = 0;
+        $permission_array['familyinfo.php'] = 0;
         //pages volunteers can view
         $permission_array['help.php'] = 1;
         $permission_array['dashboard.php'] = 1;
@@ -70,6 +71,7 @@
         $permission_array['familyservicedoc.php'] = 1;
         $permission_array['registeradminform.php'] = 1;
         $permission_array['registeradmin.php'] = 1;
+        $permission_array['viewfamilyaccounts.php'] = 1;
         //pages only managers can view
         $permission_array['register.php'] = 2;
         $permission_array['personsearch.php'] = 2;
@@ -100,8 +102,6 @@
         $permission_array['giftcardmanagement.php'] = 2;
         $permission_array['listvendors.php'] = 2;
         $permission_array['addvendors.php'] = 2;
-        $permission_array['viewfamilyaccounts.php'] = 2;
-        $permission_array['familyinfo.php'] = 2;
         $permission_array['approve.php'] = 2;
         $permission_array['viewadmin.php'] = 2;
         $permission_array['modifyfamily.php'] = 2;
