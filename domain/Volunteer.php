@@ -1,16 +1,23 @@
 <?php
 
 class Volunteer {
+    private $id;
     private $firstName;
     private $lastName;
     private $email;
 
-    public function __construct($firstName, $lastName, $email) {
+    public function __construct($id, $firstName, $lastName, $email) {
+        $this->$id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
     }
-
+    public function getid(){
+        return $this->id;
+    }
+    public function setid($id){
+        $this->id = $id;
+    }
     // Getter for first name
     public function getFirstName() {
         return $this->firstName;

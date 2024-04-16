@@ -60,7 +60,7 @@
             // }
 
             $required = array(
-                'first-name', 'last-name', 'email'
+                'volunteerID','first-name', 'last-name', 'email'
             );
             $errors = false;
             //$first = $args['first-name'];

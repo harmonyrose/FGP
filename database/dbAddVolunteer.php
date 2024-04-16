@@ -4,35 +4,13 @@ include_once('dbinfo.php');
 include_once(dirname(__FILE__).'/../domain/Volunteer.php');
 
 
-// just a random function doesnt do anything
-function add_volunteer($volunteer) {
-    if (!$volunteer instanceof Volunteer)
-        die("Error: add_volunteer type mismatch");
-    $con=connect();
-    $query = "SELECT * FROM dbvolunteer WHERE email = '" . $volunteer->get_id() . "'";
-    $result = mysqli_query($con,$query);
-    //if there's no entry for this id, add it
-    if ($result == null || mysqli_num_rows($result) == 0) {
-        mysqli_query($con,'INSERT INTO dbvolunteer VALUES("' .
-            $volunteer->getFirstName() . '","' .
-            $volunteer->getLastName() . '","' .
-            $volunteer->getEmail() . '","' .
-            '");'
-
-        );							
-        mysqli_close($con);
-        return true;
-    }
-    mysqli_close($con);
-    return false;
-}
-
 function create_volunteer($volunteer){
     $con =connect();
+    $id = find_next_id()+1;
     $firstname = $volunteer['first-name'];
     $lastname = $volunteer['last-name'];
     $email = $volunteer['email'];
-    $query = "INSERT INTO dbvolunteer (firstName, lastName, email) VALUES('$firstname', '$lastname', '$email')";
+    $query = "INSERT INTO dbvolunteer (volunteerID, firstName, lastName, email) VALUES('$id' ,'$firstname', '$lastname', '$email')";
     try {
         $result = mysqli_query($con, $query);
         mysqli_commit($con);
@@ -46,6 +24,39 @@ function create_volunteer($volunteer){
             throw $e; // Re-throw other exceptions
         }
     }
+}
+
+// Finds the highest id in the database that is not already used so it can be assigned to the next vendor. Used in create_vendor.
+function find_next_id() {
+    $query = "SELECT MAX(volunteerID) AS max_id FROM dbvolunteer";
+    $connection = connect();
+
+    if (!$connection) {
+        // Connection failed, return null or handle error accordingly
+        return null;
+    }
+
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        // Query execution failed
+        mysqli_close($connection);
+        return null;
+    }
+
+    $row = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    mysqli_close($connection);
+
+    if (!$row || empty($row['max_id'])) {
+        // No max vendorID found
+        return null;
+    }
+
+    return $row['max_id'];
+}
+
+function find_volunteer($volunteer){
 
 
 }
