@@ -147,6 +147,10 @@
                     <img src="images/person-search.svg">
                     <span>View Family Accounts</span>
                 </div>
+                <div class="dashboard-item" data-link="currentFamiliesReport.php">
+                    <img src="images/person-search.svg">
+                    <span>Family Report</span>
+                </div>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>

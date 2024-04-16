@@ -178,9 +178,9 @@ function retrieve_persons_by_username($username) {
         echo "More than one matching username...<br>";
     }
     /*$result_row = mysqli_fetch_assoc($result);
-    // var_dump($result_row);
+    var_dump($result_row);
     $thePerson = make_a_person($result_row);
-//    mysqli_close($con);
+    mysqli_close($con);
     return $thePerson;*/
 
     $result = mysqli_query($con,$query);
