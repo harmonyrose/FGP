@@ -88,6 +88,10 @@
                     <img src="images/person-search.svg">
                     <span>Find Volunteer</span>
                 </div>
+                <div class="dashboard-item" data-link="register.php">
+                    <img src="images/create-report.svg">
+                    <span>Add Volunteer</span>
+                </div>
                 <div class="dashboard-item" data-link="viewArchived.php">
                     <img src="images/person-search.svg">
                     <span>Archived Animals</span>
@@ -96,6 +100,7 @@
                     <img src="images/create-report.svg">
                     <span>Create Report</span>
                 </div>
+                
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="viewProfile.php">
