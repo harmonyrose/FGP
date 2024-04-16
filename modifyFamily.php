@@ -39,6 +39,7 @@ function update_family_info1($id, $location, $gift_card_delivery_method, $first_
               can_share_contact_info = '$can_share_contact_info' 
               WHERE id = '$id'";
     
+    
     $result = mysqli_query($connection, $query);
     if (!$result) {
         die("Update failed: " . mysqli_error($connection));
