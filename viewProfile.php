@@ -1,3 +1,8 @@
+<!-- viewProfile.php -->
+<!-- Displays information about the current logged in user -->
+<!-- Majority of code is legacy from ODHS -->
+<!-- Slightly edited by Joshua Cottrell -->
+
 <?php
     // Make session information accessible, allowing us to associate
     // data with the logged-in user.
@@ -54,7 +59,7 @@
     <head>
         <?php require_once('universal.inc') ?>
         <!-- <link rel="stylesheet" href="css/editprofile.css" type="text/css" /> -->
-        <title>ODHS Medicine Tracker | View User</title>
+        <title>FGP | View User</title>
     </head>
     <body>
         <?php 
@@ -95,6 +100,8 @@
             <?php endif ?>
             <fieldset>
                 <legend>General Information</legend>
+                <label>Name</label>
+                <p><?php echo $user->get_first_name() . ' ' . $user->get_last_name() ?></p>
                 <label>Username</label>
                 <p><?php echo $user->get_id() ?></p>
                 <label>Profile Picture</label>
@@ -136,11 +143,11 @@
                         echo $status;
                     }
                 ?></p>
-                <?php if ($id != $userID && $accessLevel >= 2): ?>
+                <!-- <?php if ($id != $userID && $accessLevel >= 2): ?>
                     <?php if ($accessLevel >= 3): ?>
                         <a href="modifyUserRole.php?id=<?php echo $id ?>" class="button">Change Role/Status</a>
                     <?php endif ?>
-                <?php endif ?>
+                <?php endif ?> -->
             </fieldset>
             <fieldset>
                 <legend>Contact Information</legend>
@@ -150,10 +157,8 @@
                 <p><a href="tel:<?php echo $user->get_phone1() ?>"><?php echo formatPhoneNumber($user->get_phone1()) ?></a> (<?php echo ucfirst($user->get_phone1type()) ?>)</p>
                 <label>Preferred Contact Method</label>
                 <p><?php echo ucfirst($user->get_cMethod()) ?></p>
-                <label>Best Time to Contact</label>
-                <p><?php echo ucfirst($user->get_contact_time()) ?></p>
             </fieldset>
-            <fieldset>
+            <!-- <fieldset>
                 <legend>Emergency Contact</legend>
                 <label>Name</label>
                 <p><?php echo $user->get_contact_name() ?></p>
@@ -161,8 +166,8 @@
                 <p><?php echo $user->get_relation() ?></p>
                 <label>Phone Number</label>
                 <p><a href="tel:<?php echo $user->get_contact_num() ?>"><?php echo formatPhoneNumber($user->get_contact_num()) ?></a></p>
-            </fieldset>
-            <fieldset>
+            </fieldset> -->
+            <!-- <fieldset>
                 <legend>Volunteer Information</legend>
                 <label>Availability</label>
                 <?php if ($user->get_sunday_availability_start()): ?>
@@ -193,8 +198,8 @@
                     <label>Saturdays</label>
                     <p><?php echo time24hTo12h($user->get_saturday_availability_start()) . ' - ' . time24hTo12h($user->get_saturday_availability_end()) ?></p>
                 <?php endif ?>
-            </fieldset>
-            <a class="button" href="editProfile.php<?php if ($id != $userID) echo '?id=' . $id ?>">Edit Profile</a>
+            </fieldset> -->
+            <!-- <a class="button" href="editProfile.php<?php if ($id != $userID) echo '?id=' . $id ?>">Edit Profile</a> -->
             <?php if ($id != $userID): ?>
                 <?php if (($accessLevel == 2 && $user->get_access_level() == 1) || $accessLevel >= 3): ?>
                     <a class="button" href="resetPassword.php?id=<?php echo htmlspecialchars($_GET['id']) ?>">Reset Password</a>
@@ -202,8 +207,8 @@
                 <a class="button" href="volunteerReport.php?id=<?php echo htmlspecialchars($_GET['id']) ?>">View Volunteer Hours</a>
                 <a class="button cancel" href="personSearch.php">Return to User Search</a>
             <?php else: ?>
-                <a class="button" href="changePassword.php">Change Password</a>
-                <a class="button" href="volunteerReport.php">View Volunteer Hours</a>
+                <!-- <a class="button" href="changePassword.php">Change Password</a>
+                <a class="button" href="volunteerReport.php">View Volunteer Hours</a> -->
                 <a class="button cancel" href="index.php">Return to Dashboard</a>
             <?php endif ?>
         </main>

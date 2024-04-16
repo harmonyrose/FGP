@@ -44,7 +44,11 @@
             <?php elseif (isset($_GET['deleteLocation'])): ?>
                 <div class="happy-toast">Location successfully removed!</div>
             <?php elseif (isset($_GET['registerSuccess'])): ?>
-                <div class="happy-toast">Volunteer registered successfully!</div>
+                <div class="happy-toast">Family registered successfully!</div>
+            <?php elseif (isset($_GET['registerAdminSuccess'])): ?>
+                <div class="happy-toast">Admin registered successfully!</div>
+            <?php elseif (isset($_GET['modifyAdminSuccess'])): ?>
+                <div class="happy-toast">Admin modified successfully!</div>
             <?php endif ?>
             <p>Welcome back, <?php echo $person->get_first_name() ?>!</p>
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
@@ -65,31 +69,17 @@
                         }
                     ?></span>
                 </div>
-                <div class="dashboard-item" data-link="calendar.php">
-                    <img src="images/view-calendar.svg">
-                    <span>View Calendar</span>
+                <div class="dashboard-item" data-link="pointsProg.php">
+                     <img src="images/create-report.svg">
+                    <span>Points Program Form</span>
                 </div>
-                <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="pointsProgForm.php">
-                        <img src="images/create-report.svg">
-                        <span>Points Program Form</span>
-                    </div>
-                <?php endif ?>
+                <div class="dashboard-item" data-link="commCare.php">
+                     <img src="images/create-report.svg">
+                    <span>Community Care Package Form</span>
+                </div>
 				<div class="dashboard-item" data-link="addAnimal.php">
                     <img src="images/settings.png">
                     <span>Add Animal</span>
-                </div>
-				<div class="dashboard-item" data-link="addService.php">
-                    <img src="images/settings.png">
-                    <span>Add Service</span>
-                </div>
-				<div class="dashboard-item" data-link="addLocation.php">
-                    <img src="images/settings.png">
-                    <span>Add Location</span>
-                </div>
-                <div class="dashboard-item" data-link="findAnimal.php">
-                        <img src="images/person-search.svg">
-                        <span>Find Animal</span>
                 </div>
                 <!-- Commenting out because volunteers won't be searching events
                 <div class="dashboard-item" data-link="eventSearch.php">
@@ -98,25 +88,26 @@
                 </div>
                 -->
                 <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="personSearch.php">
-                        <img src="images/person-search.svg">
-                        <span>Find Volunteer</span>
-                    </div>
-                    <div class="dashboard-item" data-link="register.php">
-                        <img src="images/add-person.svg">
-                        <span>Register Volunteer</span>
-                    </div>
-                    <div class="dashboard-item" data-link="viewArchived.php">
-                        <img src="images/person-search.svg">
-                        <span>Archived Animals</span>
-                    </div>
-                    <div class="dashboard-item" data-link="report.php">
-                        <img src="images/create-report.svg">
-                        <span>Create Report</span>
-                    </div>
+                <div class="dashboard-item" data-link="personSearch.php">
+                    <img src="images/person-search.svg">
+                    <span>Find Volunteer</span>
+                </div>
+                <div class="dashboard-item" data-link="register.php">
+                    <img src="images/create-report.svg">
+                    <span>Add Volunteer</span>
+                </div>
+                <div class="dashboard-item" data-link="viewArchived.php">
+                    <img src="images/person-search.svg">
+                    <span>Archived Animals</span>
+                </div>
+                <div class="dashboard-item" data-link="report.php">
+                    <img src="images/create-report.svg">
+                    <span>Create Report</span>
+                </div>
+                
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
-                    <div class="dashboard-item" data-link="viewProfile.php">
+                    <div class="dashboard-item" data-link="familyInfo.php">
                         <img src="images/view-profile.svg">
                         <span>View Profile</span>
                     </div>
@@ -138,6 +129,27 @@
                 <div class="dashboard-item" data-link="giftCardManagement.php">
                     <img src="images/giftcard.svg">
                     <span>Gift Card Management</span>
+                </div>
+
+                <div class="dashboard-item" data-link="approve.php">
+                    <img src="images/settings.png">
+                    <span>Approve Acounts</span>
+                </div>
+                <div class="dashboard-item" data-link="registerAdmin.php">
+                    <img src="images/settings.png">
+                    <span>Add Admin</span>
+                </div>
+                <div class="dashboard-item" data-link="viewAdmin.php">
+                    <img src="images/settings.png">
+                    <span>View Admin</span>
+                </div>
+                <div class="dashboard-item" data-link="viewFamilyAccounts.php">
+                    <img src="images/person-search.svg">
+                    <span>View Family Accounts</span>
+                </div>
+                <div class="dashboard-item" data-link="currentFamiliesReport.php">
+                    <img src="images/person-search.svg">
+                    <span>Family Report</span>
                 </div>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">

@@ -5,17 +5,14 @@
 class PointsProg {
     private $id;
     private $name;
+    private $email;
     private $address;
     private $freezer_meals;
     private $allergies;
     private $snacks;
     private $snack_notes;
-    private $foodlion;
-    private $giant;
-    private $walmart;
-    private $wegmans;
-    private $sheetz;
-    private $wawa;
+    private $grocery;
+    private $gas;
     private $house_cleaning;
     private $lawn_care;
     private $AAA_membership;
@@ -27,20 +24,20 @@ class PointsProg {
     private $points_used;
 
     // Constructor
-    public function __construct($id, $name, $address, $freezer_meals, $allergies, $snacks, $snack_notes, $foodlion, $giant, $walmart, $wegmans, $sheetz, $wawa, $house_cleaning, $lawn_care, $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, $photography, $house_projects, $financial_relief, $points_used) {
+    public function __construct($id, $name, $email, $address, $freezer_meals, 
+            $allergies, $snacks, $snack_notes, $grocery, $gas, $house_cleaning, $lawn_care, 
+            $AAA_membership, $AAA_membership_name, $AAA_membership_DOB, 
+            $photography, $house_projects, $financial_relief, $points_used) {
         $this->id = $id;
         $this->name = $name;
+        $this->email = $email;
         $this->address = $address;
         $this->freezer_meals = $freezer_meals;
         $this->allergies = $allergies;
         $this->snacks = $snacks;
         $this->snack_notes = $snack_notes;
-        $this->foodlion = $foodlion;
-        $this->giant = $giant;
-        $this->walmart = $walmart;
-        $this->wegmans = $wegmans;
-        $this->sheetz = $sheetz;
-        $this->wawa = $wawa;
+        $this->grocery = $grocery;
+        $this->gas = $gas;
         $this->house_cleaning = $house_cleaning;
         $this->lawn_care = $lawn_care;
         $this->AAA_membership = $AAA_membership;
@@ -61,6 +58,10 @@ class PointsProg {
         return $this->name;
     }
 
+    public function getEmail() {
+        return $this->email;
+    }
+    
     public function getAddress() {
         return $this->address;
     }
@@ -81,28 +82,12 @@ class PointsProg {
         return $this->snack_notes;
     }
 
-    public function getFoodlion() {
-        return $this->foodlion;
+    public function getGrocery() {
+        return $this->grocery;
     }
 
-    public function getGiant() {
-        return $this->giant;
-    }
-
-    public function getWalmart() {
-        return $this->walmart;
-    }
-
-    public function getWegmans() {
-        return $this->wegmans;
-    }
-
-    public function getSheetz() {
-        return $this->sheetz;
-    }
-
-    public function getWawa() {
-        return $this->wawa;
+    public function getGas() {
+        return $this->gas;
     }
 
     public function getHouseCleaning() {

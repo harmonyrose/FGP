@@ -51,11 +51,10 @@
         $permission_array['about.php'] = 0;
         $permission_array['apply.php'] = 0;
         $permission_array['logout.php'] = 0;
-        $permission_array['register.php'] = 0;
         $permission_array['findanimal.php'] = 0;
-        $permission_array['createaccount.php']=0;
-        //move to admin or superadmin later, here for testing
-        $permission_array['approve.php']=0;
+        $permission_array['createaccount.php'] = 0;
+        $permission_array['commcareform.php'] = 0;
+        $permission_array['familyinfo.php'] = 0;
         //pages volunteers can view
         $permission_array['help.php'] = 1;
         $permission_array['dashboard.php'] = 1;
@@ -69,7 +68,12 @@
         $permission_array['viewprofile.php'] = 1;
         $permission_array['viewnotification.php'] = 1;
         $permission_array['volunteerreport.php'] = 1;
+        $permission_array['familyservicedoc.php'] = 1;
+        $permission_array['registeradminform.php'] = 1;
+        $permission_array['registeradmin.php'] = 1;
+        $permission_array['viewfamilyaccounts.php'] = 1;
         //pages only managers can view
+        $permission_array['register.php'] = 2;
         $permission_array['personsearch.php'] = 2;
         $permission_array['personedit.php'] = 0; // changed to 0 so that applicants can apply
         $permission_array['viewschedule.php'] = 2;
@@ -78,7 +82,9 @@
         $permission_array['reports.php'] = 2;
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
-        $permission_array['pointsprogform.php'] = 2;
+
+        $permission_array['pointsprog.php'] = 0;
+        
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -96,7 +102,13 @@
         $permission_array['giftcardmanagement.php'] = 2;
         $permission_array['listvendors.php'] = 2;
         $permission_array['addvendors.php'] = 2;
-
+        $permission_array['approve.php'] = 2;
+        $permission_array['viewadmin.php'] = 2;
+        $permission_array['modifyfamily.php'] = 2;
+        $permission_array['currentFamiliesReport.php'] = 2;
+        //need to update permission later
+        $permission_array['modifyadminform.php'] = 0;
+      
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1));
         $current_page = substr($current_page, strpos($current_page,"/"));
@@ -133,7 +145,7 @@
             echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
             echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
             echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'pointsProgForm.php">Add</a>');
+            echo('<a class="dropdown-item" href="' . $path . 'pointsProg.php">Add</a>');
             echo('</div>');
             echo('</li>');
 

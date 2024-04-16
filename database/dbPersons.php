@@ -79,11 +79,12 @@ function add_person($person) {
             $person->get_hospital() . '","' .
             $person->get_permission_to_confirm() . '","' .
             $person->get_expected_treatment_end_date() . '","' .
-            $person->get_services_interested_in() . '","' .
+            //$person->get_services_interested_in() . '","' .
             $person->get_allergies() . '","' .
             $person->get_sibling_info() . '","' .
             $person->get_can_share_contact_info() . '","' .
             $person->get_username() . '","' .
+            
             $person->get_meals() . '","' .
             $person->get_housecleaning() . '","' .
             $person->get_lawncare() . '","' .
@@ -146,6 +147,7 @@ function retrieve_person($id) {
 //    mysqli_close($con);
     return $thePerson;
 }
+
 // Name is first concat with last name. Example 'James Jones'
 // return array of Persons.
 function retrieve_persons_by_name ($name) {
@@ -162,6 +164,32 @@ function retrieve_persons_by_name ($name) {
         $persons[] = $the_person;
     }
     return $persons;	
+}
+
+function retrieve_persons_by_username($username) {
+    $con=connect();
+    $query = "SELECT * FROM dbPersons WHERE username = '" . $username . "'";
+    $result = mysqli_query($con,$query);
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    elseif (mysqli_num_rows($result)>=2){
+        echo "More than one matching username...<br>";
+    }
+    /*$result_row = mysqli_fetch_assoc($result);
+    var_dump($result_row);
+    $thePerson = make_a_person($result_row);
+    mysqli_close($con);
+    return $thePerson;*/
+
+    $result = mysqli_query($con,$query);
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $the_person = make_a_person($result_row);
+        $persons[] = $the_person;
+        //echo "new person added to output array <br>";
+    }
+    return $persons;
 }
 
 function change_password($id, $newPass) {
@@ -262,9 +290,9 @@ function getall_dbPersons($name_from, $name_to, $venue) {
   @return all rows from dbPersons
 
 */
-function getall_volunteers() {
+function getall_families() {
     $con=connect();
-    $query = 'SELECT * FROM dbPersons WHERE id != "vmsroot"';
+    $query = 'SELECT * FROM dbPersons WHERE id != "vmsroot" AND type != "admin"';
     $result = mysqli_query($con,$query);
     if ($result == null || mysqli_num_rows($result) == 0) {
         mysqli_close($con);
@@ -354,7 +382,7 @@ function make_a_person($result_row) {
                     $result_row['hospital'],
                     $result_row['permission_to_confirm'],
                     $result_row['expected_treatment_end_date'],
-                    $result_row['services_interested_in'],
+                    //$result_row['services_interested_in'],
                     $result_row['allergies'],
                     $result_row['sibling_info'],
                     $result_row['can_share_contact_info'],
@@ -1007,3 +1035,62 @@ function find_user_names($name) {
         mysqli_close($connection);
         return $row['first_name'] . ' ' . $row['last_name'];
     }
+
+
+	function update_first_name($id, $new_name) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET first_name = "' . $new_name . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_last_name($id, $new_name) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET last_name = "' . $new_name . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    //broken at the moment
+    function update_address($id, $street, $city, $state, $zip) {
+        $con=connect();
+        $query = 'UPDATE dbPersons 
+        SET address= "' . $street . 
+        '", city= "' .$city. 
+        '", state="'.$state.
+        '", zip="'.$zip.
+        '" WHERE id = "' . $id . '"';
+        //echo $query."<br>";
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_phone($id, $new_phone) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET phone1 = "' . $new_phone . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_phone_type($id, $new_phone_type) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET phone1type = "' . $new_phone_type . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_cmethod($id, $new_cmethod) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET cmethod = "' . $new_cmethod . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+    
+    
+    

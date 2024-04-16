@@ -429,6 +429,7 @@ main.calendar-view th {
     }
 }
 
+
 .calendar-day:hover:not(.other-month) {
     outline: 2px solid var(--accent-color);
 }
@@ -844,6 +845,15 @@ table.general th {
 table.general th, table.general td {
     padding: 1rem;
     white-space: nowrap;
+}
+
+/* Alternates table row colors to be lighter and then darker shades of gray to make it easier to read */
+table.general tr:nth-child(even) {
+    background-color: #f2f2f2; /* Lighter color */
+}
+
+table.general tr:nth-child(odd) {
+    background-color: #e6e6e6; /* Slightly darker color */
 }
 
 .standout {

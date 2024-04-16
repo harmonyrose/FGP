@@ -1,6 +1,5 @@
 <?php
-    // Author: Lauren Knight
-    // Description: Registration page for new volunteers
+    // Description: Registration page for new families
     session_cache_expire(30);
     session_start();
     
@@ -58,13 +57,14 @@
             //     echo "<p>$key: $value</p>";
             // }
 
+            //required fields
             $required = array('econtact-name','cmethod','phone','email',
                 'address', 'city', 'state', 'zip', 'first-name', 'last-name', 'birthdate',
                 'diagnosis','diagnosis_date','hospital','permission_to_confirm',
                 'expected_treatment_end_date','services','agreement'
-                //form requries these but they cannot be confirmed by computer
             );
-            
+
+            $services=$args['services'];
             
             
             $errors = false;
@@ -140,37 +140,51 @@
             $diagnosis=$args['diagnosis'];
             $permission_to_confirm=$args['permission_to_confirm'];
            
-            /*
-            $services=$args['services'];
-            if(empty($services)){
-                $meals=0;
-                $housecleaning=0;
-                $lawncare=0;
-                $photography=0;
-                $gas=0;
-                $grocery=0;
-                $aaaInterest=0;
-                $socialEvents=0;
-                $houseProjects=0;
-            }
-            else{
-                $n=count($services);
-                echo $n . "number of services[] items";
-                for($i=0;$i<$n;$i++){
-                    switch ($services[$i]){
-                        case 'meals':
-                            $meals=1;
-                        case 'lawncare':
-                            $lawncare=1;
-                        case 'housecleaning':
-                            $housecleaning=1;
-                    }
-                }
-            }*/
-
-
             
-
+            $meals=0;
+            $housecleaning=0;
+            $lawncare=0;
+            $profphotos=0;
+            $gas=0;
+            $grocery=0;
+            $aaaInterest=0;
+            $socialEvents=0;
+            $houseProjects=0;
+            
+            //iterate over array to check if value was passed via checkbox
+            foreach ($services as $service){
+                //echo $service . "<br>";
+                switch ($service){
+                    case 'meals':
+                        $meals=1;
+                        break;
+                    case 'housecleaning':
+                        $housecleaning=1;  
+                        break;
+                    case 'lawncare':
+                        $lawncare=1;
+                        break;
+                    case 'profphotos':
+                        $profphotos=1;
+                        break;
+                    case 'gascards':
+                        $gas=1;  
+                        break;  
+                    case 'grocerycards':
+                        $grocery=1;  
+                        break;
+                    case 'aaa':
+                        $aaaInterest=1;  
+                        break;
+                    case 'socialEvents':
+                        $socialEvents=1;  
+                        break;
+                    case 'houseProjects':
+                        $houseProjects=1;  
+                        break;
+                }
+            }
+            
             // May want to enforce password requirements at this step
             $password=$dateOfBirth;
             //$password = password_hash($args['password'], PASSWORD_BCRYPT);
@@ -179,7 +193,7 @@
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
             }
-
+            //optional field parsing
             $optional=array('allergies','sibling_info','can_share_contact_info',
             'family_info','how_did_you_hear','address2');
 
@@ -196,7 +210,6 @@
             else{
                 $sibling_info="";
             }
-
 
             if($args['can_share_contact_info']){
                 $can_share_contact_info=$args['can_share_contact_info'];
@@ -222,70 +235,7 @@
                 $address=$address.", ".$args['address2'];
             }
 
-            
-            if(isset($_POST['meals'])){
-                $meals=1;
-            }
-            else{
-                $meals=0;
-            }
-            if(isset($_POST['gascards'])){
-                $gascards=1;
-            }
-            else{
-                $gascards=0;
-            }
-            if(isset($_POST['lawncare'])){
-                $lawncare=1;
-            }
-            else{
-                $lawncare=0;
-            }
-            
-            if(isset($_POST['housecleaning'])){
-                $housecleaning=1;
-            }
-            else{
-                $housecleaning=0;
-            }
-            /*
-            if($args['lawncare']){
-                $lawncare=1;
-            }
-            else{
-                $lawncare=0;
-            }
 
-            if($args['photography']){
-                $photography=1;
-            }
-            else{
-                $photography=0;
-            }
-
-            if($args['gas']){
-                $gas=1;
-            }
-            else{
-                $gas=0;
-            }*/
-
-            //code to make this run and not throw errors
-            //just sets all the variables of the checkbox question to 0
-            $meals=0;
-            $housecleaning=0;
-            $lawncare=0;
-            $photography=0;
-            $gas=0;
-            $grocery=0;
-            $aaaInterest=0;
-            $socialEvents=0;
-            $houseProjects=0;
-
-            $services_interested_in=0;
-
-
-            // need to incorporate availability here
             $newperson = new Person(
             //first, last venue
 		    $first, $last, 'portland', 
@@ -296,7 +246,7 @@
             //contact name, contact number, contact relation
 		    $econtactName, null, null, 
             //ct=contact when, type=t, status = st, ct=contact method 
-            null, 'family', 'pending', $cmethod, 
+            null, 'Family', 'Pending', $cmethod, 
             //availability array, schedule array, hours array
 		    '', '', '', 
             //bd=date of birth, sd=start date, notes password
@@ -308,10 +258,11 @@
             //avail, avail, must change password, gender, diagnosis
             null,null, 0, null,$diagnosis,
             $diagnosis_date,$hospital,$permission_to_confirm, 
-            $expected_treatment_end_date,$services_interested_in, 
+            $expected_treatment_end_date,
+            //$services_interested_in, 
             $allergies,$sibling_info,$can_share_contact_info,
             substr($first, 0,1).$last //username
-            ,$meals, $housecleaning, $lawncare,$photography,
+            ,$meals, $housecleaning, $lawncare,$profphotos,
             $gas,$grocery,$aaaInterest,$socialEvents, $houseProjects,
             //how did they hear, general family info, lead volunteer, GC delivery method, location
             $how_did_you_hear,$family_info,null,null,null
