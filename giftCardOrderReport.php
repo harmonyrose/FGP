@@ -40,11 +40,11 @@ function fetch_current_families_data() {
 // Fetch data for the Current Families Report
 $current_families_data = fetch_current_families_data();
 
-function fetch_all_emails() {
+function fetch_all_vendors() {
     global $connection;
 
-    // Query to fetch all emails
-    $query = "SELECT id, email FROM dbPersons";
+    // Query to fetch all vendors
+    $query = "SELECT vendorID, vendorName FROM dbGiftCardVendors";
 
     $result = mysqli_query($connection, $query);
 
@@ -53,16 +53,16 @@ function fetch_all_emails() {
     }
 
     // Fetch data and return as an array
-    $emails = [];
+    $vendors = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $emails[$row['id']] = $row['email'];
+        $vendors[$row['vendorID']] = $row['vendorName'];
     }
 
-    return $emails;
+    return $vendors;
 }
 
-// Fetch all emails
-$emails = fetch_all_emails();
+// Fetch all vendors
+$vendors = fetch_all_vendors();
 
 // Generate CSV file
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
