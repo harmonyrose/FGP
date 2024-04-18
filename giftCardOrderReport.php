@@ -53,8 +53,12 @@ $vendors = fetch_all_vendors();
 
 // Generate CSV file
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //MAKE FILE NAME THE MONTH AND YEAR
+    // Get the current month and year
+    $month = date('F');
+    $year = date('Y');
 
-    $filename = "giftCardOrderReport.csv";
+    $filename = $month.$year."giftCardOrderReport.csv";
     $fp = fopen($filename, 'w');
     
     // Write CSV header
