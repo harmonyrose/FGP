@@ -1,94 +1,75 @@
 <?php
 session_start();
-
-
-// Connect to the database
-$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
+//include_once('dbinfo.php');
 // Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$connection) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 
 // Function to fetch data for the Current Families Report
-function fetch_family_names() {
-    global $connection;
+// function fetch_family_names() {
+//     $connection = connect();
 
-    // Query to fetch required data from the database
-    $query = "SELECT name FROM dbPointsProg";
+//     // Query to fetch required data from the database
+//     $query = "SELECT name FROM dbPointsProg";
 
-    $result = mysqli_query($connection, $query);
+//     $result = mysqli_query($connection, $query);
 
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($connection));
-    }
+//     if (!$result) {
+//         die("Database query failed: " . mysqli_error($connection));
+//     }
 
-    // Fetch data and return as an array
-    $data = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $data[] = $row;
-    }
-
-    return $data;
-}
+//     // Fetch data and return as an array
+//     $data = [];
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         $data[] = $row;
+//     }
+//     mysqli_close($connection);
+//     return $data;
+// }
 
 // Fetch names for report
-$family_names = fetch_family_names();
+//$family_names = fetch_family_names();
 
 function fetch_all_vendors() {
-    global $connection;
 
-    // Query to fetch all vendors
-    $query = "SELECT vendorID, vendorName FROM dbGiftCardVendors";
-
-    $result = mysqli_query($connection, $query);
-
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($connection));
+    include_once('database/dbinfo.php'); 
+    $con=connect();  
+    $sql = "SELECT * FROM `dbGiftCardVendors`";
+    $all_vendors = mysqli_query($con,$sql);
+    // Check if there are any vendors
+    if (mysqli_num_rows($all_vendors) > 0) {
+        // Loop through each row in the result set
+        $vendors = [];
+        while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
+            // Check if the vendor type is "gas"
+            $vendors[] = $vendor['vendorName'];
+        }
     }
-
-    // Fetch data and return as an array
-    $vendors = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $vendors[$row['vendorID']] = $row['vendorName'];
-    }
-
     return $vendors;
-}
+
+} 
 
 // Fetch all vendors
 $vendors = fetch_all_vendors();
 
+
 // Generate CSV file
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Fetch data for the selected email
-    //$query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons WHERE id = '$selected_email_id'";
-    //$result = mysqli_query($connection, $query);
-
-    //if (!$result) {
-    //    die("Database query failed: " . mysqli_error($connection));
-    //}
-
-    // Create CSV file
     $filename = "giftCardOrderReport.csv";
     $fp = fopen($filename, 'w');
-
+    
     // Write CSV header
-    fputcsv($fp, array('Preferred Contact Method', 'Phone', 'Email', 'Address', 'First Name', 'Last Name', 'Birthday', 'Diagnosis', 'Diagnosis Date', 'Hospital', 'Expected Treatment End Date', 'Allergies', 'Sibling Info'));
-
-    // Write data rows
-    while ($row = mysqli_fetch_assoc($result)) {
-        // Extract values from the associative array
-        $values = array_values($row);
-        // Write the values to the CSV file
-        fputcsv($fp, $values);
-    }
+    $header = array_merge(array('Family'), $vendors);
+    fputcsv($fp, $header);
+    // // Write data rows
+    // while ($row = mysqli_fetch_assoc($result)) {
+    //     // Extract values from the associative array
+    //     $values = array_values($row);
+    //     // Write the values to the CSV file
+    //     fputcsv($fp, $values);
+    // }
 
     // Close file pointer
     fclose($fp);
