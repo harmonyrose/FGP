@@ -1,35 +1,31 @@
 <?php
 session_start();
-//include_once('dbinfo.php');
-// Check if the connection was successful
-// if (!$connection) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
 
-// Function to fetch data for the Current Families Report
-// function fetch_family_names() {
-//     $connection = connect();
 
-//     // Query to fetch required data from the database
-//     $query = "SELECT name FROM dbPointsProg";
+//Function to fetch data for the family names
+function fetch_family_names() {
+    include_once('database/dbinfo.php'); 
+    $con=connect();  
+    // Query to fetch required data from the database
+    $query = "SELECT * FROM dbPointsProg";
 
-//     $result = mysqli_query($connection, $query);
+    $result = mysqli_query($con, $query);
 
-//     if (!$result) {
-//         die("Database query failed: " . mysqli_error($connection));
-//     }
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($con));
+    }
 
-//     // Fetch data and return as an array
-//     $data = [];
-//     while ($row = mysqli_fetch_assoc($result)) {
-//         $data[] = $row;
-//     }
-//     mysqli_close($connection);
-//     return $data;
-// }
+    // Fetch data and return as an array
+    $family_names = [];
+    while ($family= mysqli_fetch_assoc($result)) {
+        $family_names[] = $family['name'];
+    }
+    mysqli_close($con);
+    return $family_names;
+}
 
-// Fetch names for report
-//$family_names = fetch_family_names();
+//Fetch names for report
+$family_names = fetch_family_names();
 
 function fetch_all_vendors() {
 
@@ -46,6 +42,7 @@ function fetch_all_vendors() {
             $vendors[] = $vendor['vendorName'];
         }
     }
+    mysqli_close($con);
     return $vendors;
 
 } 
@@ -63,13 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Write CSV header
     $header = array_merge(array('Family'), $vendors);
     fputcsv($fp, $header);
-    // // Write data rows
-    // while ($row = mysqli_fetch_assoc($result)) {
-    //     // Extract values from the associative array
-    //     $values = array_values($row);
-    //     // Write the values to the CSV file
-    //     fputcsv($fp, $values);
-    // }
+    foreach ($family_names as $family_name) {
+        // Write the family name to the CSV file
+        fputcsv($fp, array($family_name));
+    }
 
     // Close file pointer
     fclose($fp);
@@ -81,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Delete file
     unlink($filename);
-    mysqli_close($connection);
     exit;
 }
 ?>
