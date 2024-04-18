@@ -90,18 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
 <?php require_once('universal.inc'); ?>
-    <title>Generate CSV</title>
+    <title>Gift Card Order Report</title>
 </head>
 <body>
     <?php require_once('header.php'); ?>
-    <h1>Generate CSV</h1>
+    <h1>Gift Card Order Report</h1>
     <form method="post" action="">
-        <label for="email">Select Email:</label>
-        <select name="email" id="email">
-            <?php foreach ($emails as $id => $email) : ?>
-                <option value="<?php echo $id; ?>"><?php echo $email; ?></option>
-            <?php endforeach; ?>
-        </select>
+
+    <br><br>
         <button type="submit">Generate CSV</button>
         <br>
         <br>
