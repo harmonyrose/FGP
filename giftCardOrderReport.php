@@ -96,16 +96,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require_once('header.php'); ?>
     <h1>Gift Card Order Report</h1>
     <form method="post" action="">
+        <br><br>
+    <style>
+        .generate-csv-btn {
+            padding: 15px 15px; /* Adjust padding for height and width */
+            background-color: green; /* Change background color to green */
+            color: white; /* Change text color to white */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            width: auto;
+            display: inline-block; /* Make the button inline-block to make it respect height */
+            font-size: 24px; /* Increase font size */
+        }
 
-    <br><br>
-        <button type="submit">Generate CSV</button>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        /* Style for hover effect */
+        .generate-csv-btn:hover {
+            background-color: darkgreen; /* Darken the background color on hover */
+        }
+
+        /* Container to center the button */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the start (top) of the container */
+            height: 30vh; /* Make the container fill 70% of the viewport height */
+        }
+    </style>
+
+    <!-- Container to center the button -->
+    <div class="button-container">
+        <!-- Apply the class to the button -->
+        <button type="submit" class="generate-csv-btn">Generate Gift Card Order Report</button>
+    </div>
+
     </form>
     <a href="giftCardManagement.php" class="button cancel">Return to Gift Card Management</a>
     <div class="space-below-button"></div>
