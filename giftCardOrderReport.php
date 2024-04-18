@@ -16,11 +16,11 @@ if (!$connection) {
 }
 
 // Function to fetch data for the Current Families Report
-function fetch_current_families_data() {
+function fetch_family_names() {
     global $connection;
 
     // Query to fetch required data from the database
-    $query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons";
+    $query = "SELECT name FROM dbPointsProg";
 
     $result = mysqli_query($connection, $query);
 
@@ -37,8 +37,8 @@ function fetch_current_families_data() {
     return $data;
 }
 
-// Fetch data for the Current Families Report
-$current_families_data = fetch_current_families_data();
+// Fetch names for report
+$family_names = fetch_family_names();
 
 function fetch_all_emails() {
     global $connection;
@@ -65,16 +65,15 @@ function fetch_all_emails() {
 $emails = fetch_all_emails();
 
 // Generate CSV file
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
-    $selected_email_id = $_POST['email'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Fetch data for the selected email
-    $query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons WHERE id = '$selected_email_id'";
-    $result = mysqli_query($connection, $query);
+    //$query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons WHERE id = '$selected_email_id'";
+    //$result = mysqli_query($connection, $query);
 
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($connection));
-    }
+    //if (!$result) {
+    //    die("Database query failed: " . mysqli_error($connection));
+    //}
 
     // Create CSV file
     $filename = "giftCardOrderReport.csv";
@@ -126,9 +125,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
         <br>
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </form>
     <a href="giftCardManagement.php" class="button cancel">Return to Gift Card Management</a>
     <div class="space-below-button"></div>
+    <br>
     <a href="index.php" class="button cancel">Return to Dashboard</a>
 </body>
 </html>
