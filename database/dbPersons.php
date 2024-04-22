@@ -99,7 +99,10 @@ function add_person($person) {
             $person->get_familyInfo() . '","' .
             $person->get_leadVolunteer() . '","' .
             $person->get_gift_card_delivery_method() . '","' .
-            $person->get_location() .
+            $person->get_location() . '","' .
+            $person->get_remission_trans_date() . '","' .
+            $person->get_remission_end_date() . '","' .
+            $person->get_remembrance_date().
             '");'
 
         );							
@@ -400,7 +403,10 @@ function make_a_person($result_row) {
                     $result_row['familyInfo'],
                     $result_row['leadVolunteer'],
                     $result_row['gift_card_delivery_method'],
-                    $result_row['location']
+                    $result_row['location'],
+                    $result_row['remission_trans_date'],
+                    $result_row['remission_end_date'],
+                    $result_row['remembrance_date']
                 );   
     return $thePerson;
 }

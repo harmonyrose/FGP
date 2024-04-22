@@ -40,7 +40,7 @@ function fetch_current_families_data() {
 $current_families_data = fetch_current_families_data();
 
 // Generate CSV file
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['generate_csv'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['generate_csv_all'])) {
 
     // Create CSV file
     $filename = "current_family_report.csv";
@@ -81,7 +81,16 @@ mysqli_close($connection);
     <?php require_once('header.php'); ?>
     <h1>Generate CSV</h1>
     <form method="post" action="">
-        <button type="submit" name="generate_csv">Generate CSV for All Families</button>
+        <label name="status"> Select the family status you want a report on </label>
+        <select name="status" id="status">
+            <option value="select"> Select a Status </option>
+            <option value="Active"> Active </option>
+            <option value="Remission"> Remission </option>
+            <option value="Survivor"> Survivor </option>
+            <option value="Stargazer"> Stargazer </option>
+        </select>
+        <button type="submit" name="generate_csv"> Generate CVS </button>
+        <button type="submit" name="generate_csv_all">Generate CSV for All Families</button>
     </form>
 </body>
 </html>

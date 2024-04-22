@@ -136,7 +136,7 @@
                 echo '<p>Your form submission contained unexpected input.</p>';
                 die();
             }
-            // need to incorporate availability here
+            
             $newperson = new Person(
                 //first, last, venue
 		        $first, $last, 'portland', 
@@ -173,7 +173,9 @@
                 //gas, grocery, aaainterest, social events, houseprojects
                 null,null,null,null,null,
                 //how did they hear, general family info, lead volunteer, GC delivery method, location
-                null,null,null,null,null
+                null,null,null,null,null,
+                //remission_trans_date, remission end date, remembrance date
+                null, null, null
             );
             
             $result = add_person($newperson);
