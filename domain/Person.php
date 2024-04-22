@@ -102,6 +102,9 @@ class Person {
 	private	$leadVolunteer;
 	private	$gift_card_delivery_method;
 	private	$location;
+	private $remission_trans_date;
+	private $remission_end_date;
+	private $remembrance_date;
 	
 
 	function __construct($f, $l, $v, $a, $c, $s, $z, $pp, $p1, $p1t, $p2, $p2t, $e, 
@@ -121,7 +124,8 @@ class Person {
 			$sibling_info,$can_share_contact_info,$username,$meals,
 			$housecleaning,$lawncare,$photography, $gas,$grocery,$aaaInterest,
 			$socialEvents,$houseProjects,$how_did_you_hear,$familyInfo,
-			$leadVolunteer,$gift_card_delivery_method,$location
+			$leadVolunteer,$gift_card_delivery_method,$location,
+			$remission_trans_date, $remission_end_date, $remembrance_date
 			) {
 		$this->id = $e;
 		$this->start_date = $sd;
@@ -213,6 +217,9 @@ class Person {
 		$this->leadVolunteer=$leadVolunteer;
 		$this->gift_card_delivery_method=$gift_card_delivery_method;
 		$this->location=$location;
+		$this->remission_trans_date=$remission_trans_date;
+		$this->remission_end_date=$remission_end_date;
+		$this->remembrance_date=$remembrance_date;
 	}
 
 	function get_id() {
@@ -532,6 +539,19 @@ class Person {
 	function get_familyInfo() {
 		return $this->familyInfo;
 	}
+
+	function get_remission_trans_date(){
+		return $this->remission_trans_date;
+	}
+
+	function get_remission_end_date(){
+		return $this->remission_end_date;
+	}
+
+	function get_remembrance_date(){
+		return $this->remembrance_date;
+	}
+
 	function setLocation($location) {
         $this->location = $location;
     }
@@ -547,6 +567,8 @@ class Person {
     function setGiftCardDeliveryMethod($gift_card_delivery_method) {
         $this->gift_card_delivery_method = $gift_card_delivery_method;
     }
+
+
 
 	// Function to update a person in the database
 function update_person($person) {
