@@ -85,7 +85,7 @@ function fetch_gcinfo(){
                 $store_info = explode('-', $store_number);
                 
                 // Check if the store_info array has both store name and number
-                if (count($store_info) === 2) {
+                if (count($store_info) == 2) {
                     $store_name = $store_info[0];
                     $store_num = $store_info[1];
                     
