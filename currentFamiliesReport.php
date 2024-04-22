@@ -81,6 +81,14 @@ mysqli_close($connection);
     <?php require_once('header.php'); ?>
     <h1>Generate CSV</h1>
     <form method="post" action="">
+        <label name="status"> Select the family status you want a report on </label>
+        <select name="status" id="status">
+            <option value="select"> Select a Status </option>
+            <option value="Active"> Active </option>
+            <option value="Remission"> Remission </option>
+            <option value="Survivor"> Survivor </option>
+            <option value="Stargazer"> Stargazer </option>
+        </select>
         <button type="submit" name="generate_csv">Generate CSV for All Families</button>
     </form>
 </body>
