@@ -134,7 +134,7 @@
             <label>How Did You Hear</label>
             <p><?php echo $person->get_how_did_you_hear(); ?></p>
             <label>Type</label>
-            <p><?php echo implode(", ", $person->get_type()); ?></p>
+            <p><?php echo $person->get_type(); ?></p>
             <label>Status</label>
             <p>
                 <form id="status-form" style="width: 200px">
