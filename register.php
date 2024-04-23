@@ -35,6 +35,8 @@
     //     $_SESSION['_id'] = "guest";
     //     header('Location: personEdit.php?id=new');
     // }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,7 +62,7 @@
             // }
 
             $required = array(
-                'first-name', 'last-name', 'email'
+                'volunteerID','first-name', 'last-name', 'email'
             );
             $errors = false;
             //$first = $args['first-name'];

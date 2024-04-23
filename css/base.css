@@ -276,7 +276,10 @@ label {
     width: 100%;
     text-align: left;
 }
-
+label:has(+ input:required):after {
+    content: ' *';
+    color: red;
+}
 /* Login Form */
 main.login > form {
     display: flex;
