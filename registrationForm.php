@@ -1,5 +1,7 @@
 ?>
 <!-- Reused Josh code from vendors it was too clean-->
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +25,7 @@
                 <input type="text" id="email" name="email" required placeholder="Enter volunteers' email"> 
                 <p></p>
                 <input type="submit" value="Add new volunteer">
-            </form>
+            <a class="button cancel" href="viewVolunteer.php" style="background-color: red">View and delete volunteer</a>
             <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to main menu</a>
         </main>
     </body>

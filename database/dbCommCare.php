@@ -6,35 +6,66 @@ function add_comm_care($commcare) {
     if (!$commcare instanceof CommCare)
         die("Error: add_comm_care type mismatch");
     $con=connect();
-    $query = "SELECT * FROM dbCommCare WHERE id = '" . $commcare->getId() . "'";
-    $result = mysqli_query($con,$query);
-    //if there's no entry for this id, add it
-    if ($result == null || mysqli_num_rows($result) == 0) {
-        mysqli_query($con,'INSERT INTO dbCommCare VALUES("' .
-            $pointsprog->getId() . '","' .
-            $pointsprog->getEmail() . '","' .
-            $pointsprog-> getAdultNames(). '","'.
-            $pointsprog->getChildrenInfo() . '","' .
-            $pointsprog->getSportsFan() . '","' .
-            $pointsprog->getSportsInfo() . '","' .
-            $pointsprog->getSitDinner() . '","' .
-            $pointsprog->getFastFood() . '","' .
-            $pointsprog->getSweetTreat() . '","' .
-            $pointsprog->getFaveSweet() . '","' .
-            $pointsprog->getFaveSalt() . '","' .
-            $pointsprog->getFaveCandy() . '","' .
-            $pointsprog->getFaveCookie() . '","' .
-            $pointsprog->getForFun() . '","' .
-            $pointsprog->getWarmAct() . '","' .
-            $pointsprog->getColdAct() . '","' .
-            $pointsprog->getNotes() . '","' .
-            '");'
-        );							
+
+    $query = "SELECT * FROM dbCommCare WHERE email = '" . $commcare->getEmail() . "'";
+    $result = mysqli_query($con, $query);
+
+    // Check if there's any entry for this email
+    if ($result && mysqli_num_rows($result) > 0) {
+        // Update the existing entry with the new data
+        mysqli_query($con, "UPDATE dbCommCare SET 
+            id = '" . $commcare->getId() . "',
+            email = '" . $commcare->getEmail() . "',
+            adultNames = '" . $commcare->getAdultNames() . "',
+            childrenInfo = '" . $commcare->getChildrenInfo() . "',
+            sportsFan = '" . $commcare->getSportsFan() . "',
+            sportsInfo = '" . $commcare->getSportsInfo() . "',
+            sitDinner = '" . $commcare->getSitDinner() . "',
+            fastFood = '" . $commcare->getFastFood() . "',
+            sweetTreat = '" . $commcare->getSweetTreat() . "',
+            faveSweet = '" . $commcare->getFaveSweet() . "',
+            faveSalt = '" . $commcare->getFaveSalt() . "',
+            faveCandy = '" . $commcare->getFaveCandy() . "',
+            faveCookie = '" . $commcare->getFaveCookie() . "',
+            forFun = '" . $commcare->getForFun() . "',
+            warmAct = '" . $commcare->getWarmAct() . "',
+            coldAct = '" . $commcare->getColdAct() . "',
+            notes = '" . $commcare->getNotes() . "'
+            WHERE email = '" . $commcare->getEmail() . "'
+        ");
         mysqli_close($con);
         return true;
+    } else {
+        $query = "SELECT * FROM dbCommCare WHERE id = '" . $commcare->getId() . "'";
+        $result = mysqli_query($con,$query);
+        //if there's no entry for this id, add it
+        if ($result == null || mysqli_num_rows($result) == 0) {
+            mysqli_query($con,'INSERT INTO dbCommCare VALUES("' .
+                $commcare->getId() . '","' .
+                $commcare->getEmail() . '","' .
+                $commcare-> getAdultNames(). '","'.
+                $commcare->getChildrenInfo() . '","' .
+                $commcare->getSportsFan() . '","' .
+                $commcare->getSportsInfo() . '","' .
+                $commcare->getSitDinner() . '","' .
+                $commcare->getFastFood() . '","' .
+                $commcare->getSweetTreat() . '","' .
+                $commcare->getFaveSweet() . '","' .
+                $commcare->getFaveSalt() . '","' .
+                $commcare->getFaveCandy() . '","' .
+                $commcare->getFaveCookie() . '","' .
+                $commcare->getForFun() . '","' .
+                $commcare->getWarmAct() . '","' .
+                $commcare->getColdAct() . '","' .
+                $commcare->getNotes() . 
+                '");'
+            );							
+            mysqli_close($con);
+            return true;
+        }
+        mysqli_close($con);
+        return false;
     }
-    mysqli_close($con);
-    return false;
 }
 
 function remove_comm_care($id) {
