@@ -49,7 +49,11 @@
                 <div class="happy-toast">Admin registered successfully!</div>
             <?php elseif (isset($_GET['modifyAdminSuccess'])): ?>
                 <div class="happy-toast">Admin modified successfully!</div>
-            <?php endif ?>
+            <?php elseif (isset($_GET['pointsProgSuccess'])): ?>
+                <div class="happy-toast">Points Program Form submitted successfully!</div>
+            <?php elseif (isset($_GET['commCareSuccess'])): ?>
+                <div class="happy-toast">Community Care Package Form submitted successfully!</div>
+        <?php endif ?>
             <p>Welcome back, <?php echo $person->get_first_name() ?>!</p>
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
             <div id="dashboard">

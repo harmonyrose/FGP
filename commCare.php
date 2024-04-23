@@ -104,13 +104,14 @@
 
             
             $result = add_comm_care($newcommcare);
+            header("Location: index.php?commCareSuccess");
             if (!$result) {
                 echo '<p>something went wrong</p>';
             } else {
                 if ($loggedIn) {
-                    echo '<script>document.location = "index.php?registerSuccess";</script>';
+                    echo '<script>document.location = "index.php?commCareSuccess";</script>';
                 } else {
-                    echo '<script>document.location = "login.php?registerSuccess";</script>';
+                    echo '<script>document.location = "login.php?commCareSuccess";</script>';
                 }
             }
         } else {

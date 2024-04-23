@@ -7,37 +7,71 @@ function add_points_prog($pointsprog) {
     if (!$pointsprog instanceof PointsProg)
         die("Error: add_points_prog type mismatch");
     $con=connect();
-    $query = "SELECT * FROM dbPointsProg WHERE id = '" . $pointsprog->getId() . "'";
-    $result = mysqli_query($con,$query);
-    //if there's no entry for this id, add it
-    if ($result == null || mysqli_num_rows($result) == 0) {
-        mysqli_query($con,'INSERT INTO dbPointsProg VALUES("' .
-            $pointsprog->getId() . '","' .
-            $pointsprog->getName() . '","' .
-            $pointsprog-> getEmail(). '","'.
-            $pointsprog->getAddress() . '","' .
-            $pointsprog->getFreezerMeals() . '","' .
-            $pointsprog->getAllergies() . '","' .
-            $pointsprog->getSnacks() . '","' .
-            $pointsprog->getSnackNotes() . '","' .
-            $pointsprog->getGrocery() . '","' .
-            $pointsprog->getGas() . '","' .
-            $pointsprog->getHouseCleaning() . '","' .
-            $pointsprog->getLawnCare() . '","' .
-            $pointsprog->getAAAMembership() . '","' .
-            $pointsprog->getAAAMembershipName() . '","' .
-            $pointsprog->getAAAMembershipDOB() . '","' .
-            $pointsprog->getPhotography() . '","' .
-            $pointsprog->getHouseProjects() . '","' .
-            $pointsprog->getFinancialRelief() . '","' .
-            $pointsprog->getPointsUsed() .
-            '");'
-        );							
+
+    $query = "SELECT * FROM dbPointsProg WHERE email = '" . $pointsprog->getEmail() . "'";
+    $result = mysqli_query($con, $query);
+    
+    // Check if there's any entry for this email
+    if ($result && mysqli_num_rows($result) > 0) {
+        // Update the existing entry with the new data
+        mysqli_query($con, "UPDATE dbPointsProg SET 
+            id = '" . $pointsprog->getId() . "',
+            name = '" . $pointsprog->getName() . "',
+            email = '" . $pointsprog->getEmail() . "',
+            address = '" . $pointsprog->getAddress() . "',
+            freezer_meals = '" . $pointsprog->getFreezerMeals() . "',
+            allergies = '" . $pointsprog->getAllergies() . "',
+            snacks = '" . $pointsprog->getSnacks() . "',
+            snack_notes = '" . $pointsprog->getSnackNotes() . "',
+            grocery = '" . $pointsprog->getGrocery() . "',
+            gas = '" . $pointsprog->getGas() . "',
+            house_cleaning = '" . $pointsprog->getHouseCleaning() . "',
+            lawn_care = '" . $pointsprog->getLawnCare() . "',
+            aaa_membership = '" . $pointsprog->getAAAMembership() . "',
+            aaa_membership_name = '" . $pointsprog->getAAAMembershipName() . "',
+            aaa_membership_dob = '" . $pointsprog->getAAAMembershipDOB() . "',
+            photography = '" . $pointsprog->getPhotography() . "',
+            house_projects = '" . $pointsprog->getHouseProjects() . "',
+            financial_relief = '" . $pointsprog->getFinancialRelief() . "',
+            points_used = '" . $pointsprog->getPointsUsed() . "'
+            WHERE email = '" . $pointsprog->getEmail() . "'
+        ");
         mysqli_close($con);
         return true;
+    } 
+    else {
+        $query = "SELECT * FROM dbPointsProg WHERE id = '" . $pointsprog->getId() . "'";
+        $result = mysqli_query($con,$query);
+        //if there's no entry for this id, add it
+        if ($result == null || mysqli_num_rows($result) == 0) {
+            mysqli_query($con,'INSERT INTO dbPointsProg VALUES("' .
+                $pointsprog->getId() . '","' .
+                $pointsprog->getName() . '","' .
+                $pointsprog-> getEmail(). '","'.
+                $pointsprog->getAddress() . '","' .
+                $pointsprog->getFreezerMeals() . '","' .
+                $pointsprog->getAllergies() . '","' .
+                $pointsprog->getSnacks() . '","' .
+                $pointsprog->getSnackNotes() . '","' .
+                $pointsprog->getGrocery() . '","' .
+                $pointsprog->getGas() . '","' .
+                $pointsprog->getHouseCleaning() . '","' .
+                $pointsprog->getLawnCare() . '","' .
+                $pointsprog->getAAAMembership() . '","' .
+                $pointsprog->getAAAMembershipName() . '","' .
+                $pointsprog->getAAAMembershipDOB() . '","' .
+                $pointsprog->getPhotography() . '","' .
+                $pointsprog->getHouseProjects() . '","' .
+                $pointsprog->getFinancialRelief() . '","' .
+                $pointsprog->getPointsUsed() .
+                '");'
+            );							
+            mysqli_close($con);
+            return true;
+        }
+        mysqli_close($con);
+        return false;
     }
-    mysqli_close($con);
-    return false;
 }
 
 function remove_points_prog($id) {
