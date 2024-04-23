@@ -90,7 +90,7 @@ function display_volunteer(){ // function to list all volunteers
         <td>'.$lastName.'</td>
         <td>'.$email.'</td>
         <td>
-            <a class="button delete" id="deleteButton" style="background-color: red">Delete</a>
+            <a href="deleteVolunteer.php?volunteerID='.$id.'"class="button delete" id="deleteButton" style="background-color: red">Delete</a>
         </td>
     </tr>';
     }
