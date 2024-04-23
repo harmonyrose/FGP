@@ -5,29 +5,6 @@ session_start();
 
 require_once('header.php');
 require_once('database/dbPersons.php');
-// Connect to the database
-/*$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}*/
-
-// Function to update status
-/*function update_status($id, $new_status) {
-    $con=connect();
-    //global $connection; // Access the global $connection variable
-    $query = "UPDATE dbPersons SET status = '$new_status' WHERE id = '$id'";
-    $result = mysqli_query($connection, $query);
-    if (!$result) {
-        die("Update failed: " . mysqli_error($connection));
-    }
-}*/
 
 // Check if the "Approve" or "Reject" button is clicked
 if (isset($_POST['approve'])) {

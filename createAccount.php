@@ -265,7 +265,9 @@
             ,$meals, $housecleaning, $lawncare,$profphotos,
             $gas,$grocery,$aaaInterest,$socialEvents, $houseProjects,
             //how did they hear, general family info, lead volunteer, GC delivery method, location
-            $how_did_you_hear,$family_info,null,null,null
+            $how_did_you_hear,$family_info,null,null,null,
+            //remission trans date,remission end date, remembrance date
+            null, null, null
             );
             $result = add_person($newperson);
             if (!$result) {
