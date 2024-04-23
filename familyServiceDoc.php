@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id']; // Family ID
     $location = $_POST['location'];
     $start_date = $_POST['start_date'];
-    $lead_volunteer = $_POST['leadVolunteer'];
+    $lead_volunteer = $_POST['lead_volunteer'];
     $gift_card_delivery_method = $_POST['gift_card_delivery_method'];
 
     // Update family information
@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Display success message
     echo "Update successful.";
     header("Location: approve.php");
-
 }
 
 // Retrieve family information
@@ -55,6 +54,18 @@ if (isset($_GET['id'])) {
     $lead_volunteer = $row['leadVolunteer'];
     $gift_card_delivery_method = $row['gift_card_delivery_method'];
 }
+
+$sql = "SELECT firstName, lastName FROM dbVolunteer";
+$result = mysqli_query($connection, $sql);
+$leadVolunteers = []; // Initialize an empty array to store lead volunteers
+
+// Check if there are results
+if ($result && mysqli_num_rows($result) > 0) {
+    // Loop through each row and store lead volunteer data
+    while ($row = mysqli_fetch_assoc($result)) {
+        $leadVolunteers[] = $row;
+    }
+}
 ?>
 
 <!-- Form to edit family information -->
@@ -67,8 +78,17 @@ if (isset($_GET['id'])) {
     <input type="date" name="start_date" id="start_date" value="<?php echo $start_date; ?>" required><br>
 
     <label for="lead_volunteer">Lead Volunteer:</label>
-    <input type="text" name="lead_volunteer" id="lead_volunteer" value="<?php echo $lead_volunteer; ?>" required><br>
-
+    <select name="lead_volunteer" id="lead_volunteer" required>
+        <?php
+        // Populate the dropdown with lead volunteers
+        foreach ($leadVolunteers as $volunteer) {
+            $fullName = $volunteer['firstName'] . ' ' . $volunteer['lastName'];
+            $selected = ($lead_volunteer == $fullName) ? 'selected' : ''; // Check if this option is selected
+            echo "<option value='$fullName' $selected>$fullName</option>";
+        }
+        ?>
+    </select><br>
+    
     <label for="gift_card_delivery_method">Gift Card Delivery Method:</label>
     <select name="gift_card_delivery_method" id="gift_card_delivery_method" required>
         <option value="Mail" <?php if ($gift_card_delivery_method == 'Mail') echo 'selected'; ?>>Mail</option>
