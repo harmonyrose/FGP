@@ -136,15 +136,20 @@
             <label>Type</label>
             <p><?php echo $person->get_type(); ?></p>
             <label>Status</label>
-            <p>
-                <form id="status-form" style="width: 200px">
-                    <select name="status" id="status" onchange="updateStatus()">
-                        <option value="pending" <?php if (strtolower($person->get_status()) == 'pending') echo 'selected="selected"'; ?>>Pending</option>
-                        <option value="active" <?php if (strtolower($person->get_status()) == 'active') echo 'selected="selected"'; ?>>Active</option>
-                        <option value="remission" <?php if (strtolower($person->get_status()) == 'remission') echo 'selected="selected"'; ?>>Remission</option>
-                    </select>
-                </form>
-            </p>
+            <?php if (isset($_GET['id'])): ?>
+                <p>
+                    <form id="status-form" style="width: 200px">
+                        <select name="status" id="status" onchange="updateStatus()">
+                            <option value="pending" <?php if (strtolower($person->get_status()) == 'pending') echo 'selected="selected"'; ?>>Pending</option>
+                            <option value="active" <?php if (strtolower($person->get_status()) == 'active') echo 'selected="selected"'; ?>>Active</option>
+                            <option value="remission" <?php if (strtolower($person->get_status()) == 'remission') echo 'selected="selected"'; ?>>Remission</option>
+                        </select>
+                    </form>
+                </p>
+            <?php else: ?>
+              <?php echo "<p>" . $person->get_status() . "</p>"; ?>
+            <?php endif; ?>
+            
             <label>Notes</label>
             <p><?php echo $person->get_notes(); ?></p>
             <label>Password</label>
