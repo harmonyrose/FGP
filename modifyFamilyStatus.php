@@ -31,36 +31,19 @@ require_once('include/input-validation.php');
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST);
+        /*
+        if($args['status']){
+            $status=$args['status'];
+            update_status($persons->get_id(),$status)
+        }*/
 
-        if($args['first-name']!=$person->get_first_name()){
-            $firstname=$args['first-name'];
-            update_first_name($id,$firstname);
+        if($args['remission_trans_date']){
+            $remission_trans_date=$args['remission_trans_date'];
+            $person->set_remission_trans_date($remission_trans_date);
         }
-        if($args['last-name']!=$person->get_address()){
-            $lastname=$args['last-name'];
-            update_last_name($id,$lastname);
-        }
-        if($args['address']!=$person->get_address()){
-            $street=$args['address'];    
-            $city=$args['city'];
-            $state=$args['state'];
-            $zip=$args['zip'];
-            update_address($id,$street,$city,$state,$zip);
-        }
-        if($args['phone']!=$person->get_phone1()){
-            $phone=validateAndFilterPhoneNumber($args['phone']);
-            //$phone=$args['phone'];
-            update_phone($id,$phone);
-        }
-        if(isset($args['phone-type'])){
-            $phone_type=$args['phone-type'];
-            update_phone_type($id,$phone_type);
-        }
-        if(isset($args['contact-method'])){
-            $contact_method=$args['contact-method'];
-            update_cmethod($id,$contact_method);
-        }    
-    echo '<script>document.location = "viewAdmin.php?modifyAdminSuccess";</script>';
+        
+          
+    echo '<script>document.location = "viewFamilyAccounts.php?modifySuccess";</script>';
     exit();
     }
 
@@ -71,8 +54,8 @@ require_once('include/input-validation.php');
     <form class="modify-status-form" method="post">
         <h2>Modify Status</h2>
         <p> Current family status is <?php echo $person->get_status()?> </p>
-        <label name="status"> Select the family status you want to change to  </label>
-        <select name="status" id="status">
+        <label name="status"> Select the family status you want to change to (required) </label>
+        <select name="status" id="status" required>
             <option value="select"> Select a Status </option>
             <option value="Active"> Active </option>
             <option value="Remission"> Remission </option>
