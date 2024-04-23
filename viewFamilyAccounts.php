@@ -29,7 +29,8 @@
             <td><a href='familyInfo.php?contact_id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
             <td>" . $person->get_first_name() . "</td>
             <td>" . $person->get_email() . "</td>
-            <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>";
+            <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
+            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>";
         echo "</tr>";
     } 
 ?>
@@ -61,7 +62,8 @@
                                     <th>Parent\'s Name</th>
                                     <th>Child\'s Name</th>
                                     <th>Email Address</th>
-                                    <th>Action</th>';
+                                    <th>Actions</th>
+                                    <th></th>';
                                 echo '</tr>
                             </thead>
                             <tbody class="standout">';

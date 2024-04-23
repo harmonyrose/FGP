@@ -30,6 +30,10 @@
             //find all matching accounts with same username, can be dulplicates
             $users = retrieve_persons_by_username($username);
             //echo "count of users: ". count($users). "<br>";
+            //if username is not in system, throw error, doesn't work yet
+            if($users==false){
+                $badLogin=true;
+            }
             //check array of users, if just one, that is the correct user
             if(count($users)==1){
                 $user=$users[0];
