@@ -23,8 +23,8 @@ class CommCare {
 
     // Constructor
     public function __construct($id, $email, $adultNames, $childrenInfo,
-     $sportsFan, $sportsInfo, $sitDinner, $fastFood, $sweetTreat, $faveSweet, 
-     $faveSalt, $faveCandy, $faveCookie, $forFun, $warmAct, $coldAct, $notes) {
+            $sportsFan, $sportsInfo, $sitDinner, $fastFood, $sweetTreat, $faveSweet, 
+            $faveSalt, $faveCandy, $faveCookie, $forFun, $warmAct, $coldAct, $notes) {
 
         $this->id = $id;
         $this->email = $email;

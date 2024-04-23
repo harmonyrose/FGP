@@ -16,7 +16,7 @@
         $userID = $_SESSION['_id'];
     }
     // admin-only access
-    if ($accessLevel < 2) {
+    if ($accessLevel < 1) {
         header('Location: index.php');
         die();
     }
@@ -53,25 +53,24 @@ if (isset($_POST['delete'])) {
     header("Location: ".$_SERVER['PHP_SELF']);
     exit();
 }
-
-// Formatting for each row of the table
-// Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
-function displaySearchRow($person){
-    echo "<tr>
-        <td><a href='familyInfo.php?contact_id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
-        <td>" . $person->get_first_name() . "</td>
-        <td>" . $person->get_email() . "</td>
-        <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
-        <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>
-        <td>
+    // Formatting for each row of the table
+    // Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
+    function displaySearchRow($person){
+        echo "
+        <tr>
+            <td><a href='familyInfo.php?id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
+            <td>" . $person->get_first_name() . "</td>
+            <td>" . $person->get_email() . "</td>
+            <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
+            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>
+            <td>
             <form method='post'>
                 <input type='hidden' name='id' value='" . $person->get_id() . "'>
                 <button type='submit' name='delete' class='button delete' onclick='return confirmDelete();'>Delete</button>
             </form>
-        </td>
-    </tr>";
-}
-
+            </td>
+            </tr>";
+    } 
 ?>
 
 <script>
@@ -113,7 +112,9 @@ function confirmDelete() {
                             <tbody class="standout">';
                     // Show each person as formatted in displaySearchRow above \\
                     foreach ($people as $person) {
-                        displaySearchRow($person);
+                        if ($person->get_access_level() < $_SESSION['access_level']) {
+                            displaySearchRow($person);
+                        }
                     }
                     // End table \\
                     echo '

@@ -51,6 +51,10 @@
                     <img src="images/list.svg">
                     <span>List Vendors</span>
                 </div>
+                <div class="dashboard-item" data-link="giftCardOrderReport.php">
+                     <img src="images/create-report.svg">
+                    <span>Generate Gift Card Order Report</span>
+                </div>
                 <div class="dashboard-item" data-link="index.php">
                     <img src="images/dashboard.svg">
                     <span>Dashboard</span>

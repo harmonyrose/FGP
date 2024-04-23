@@ -125,7 +125,7 @@
 
 
             // Regular expression pattern to match integers inside parentheses
-            $pattern = '/\((\d+)\)/';
+            $pattern = '/-(\d+)/';
 
             // Use preg_match_all to find all matches of the pattern in the string
             preg_match_all($pattern, $grocery, $matches);
@@ -190,13 +190,14 @@
             );
 
             $result = add_points_prog($newpointsprog);
+            header("Location: index.php?pointsProgSuccess");
             if (!$result) {
                 echo '<p>something went wrong</p>';
             } else {
                 if ($loggedIn) {
-                    echo '<script>document.location = "index.php?registerSuccess";</script>';
+                    echo '<script>document.location = "index.php?pointsProgSuccess";</script>';
                 } else {
-                    echo '<script>document.location = "login.php?registerSuccess";</script>';
+                    echo '<script>document.location = "login.php?pointsProgSuccess";</script>';
                 }
             }
         } else {

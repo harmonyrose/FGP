@@ -49,7 +49,11 @@
                 <div class="happy-toast">Admin registered successfully!</div>
             <?php elseif (isset($_GET['modifyAdminSuccess'])): ?>
                 <div class="happy-toast">Admin modified successfully!</div>
-            <?php endif ?>
+            <?php elseif (isset($_GET['pointsProgSuccess'])): ?>
+                <div class="happy-toast">Points Program Form submitted successfully!</div>
+            <?php elseif (isset($_GET['commCareSuccess'])): ?>
+                <div class="happy-toast">Community Care Package Form submitted successfully!</div>
+        <?php endif ?>
             <p>Welcome back, <?php echo $person->get_first_name() ?>!</p>
             <p>Today is <?php echo date('l, F j, Y'); ?>.</p>
             <div id="dashboard">
@@ -72,6 +76,10 @@
                 <div class="dashboard-item" data-link="pointsProg.php">
                      <img src="images/create-report.svg">
                     <span>Points Program Form</span>
+                </div>
+                <div class="dashboard-item" data-link="commCare.php">
+                     <img src="images/create-report.svg">
+                    <span>Community Care Package Form</span>
                 </div>
 				<div class="dashboard-item" data-link="addAnimal.php">
                     <img src="images/settings.png">
@@ -103,7 +111,7 @@
                 
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
-                    <div class="dashboard-item" data-link="viewProfile.php">
+                    <div class="dashboard-item" data-link="familyInfo.php">
                         <img src="images/view-profile.svg">
                         <span>View Profile</span>
                     </div>
@@ -131,7 +139,7 @@
                     <img src="images/settings.png">
                     <span>Approve Acounts</span>
                 </div>
-                <div class="dashboard-item" data-link="addAdmin.php">
+                <div class="dashboard-item" data-link="registerAdmin.php">
                     <img src="images/settings.png">
                     <span>Add Admin</span>
                 </div>
