@@ -106,6 +106,7 @@
         $permission_array['viewadmin.php'] = 2;
         $permission_array['modifyfamily.php'] = 2;
         $permission_array['currentFamiliesReport.php'] = 2;
+        $permission_array['viewvolunteer.php'] = 2;
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
       
