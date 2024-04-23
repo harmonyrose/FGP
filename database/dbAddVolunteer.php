@@ -75,11 +75,28 @@ function display_volunteer(){ // function to list all volunteers
         return [];
     }
     $volunteers = array();
+    //while($result_row = mysqli_fetch_assoc($result)){
+        //$volunteers[] = $result_row;
+
+    //}
     while($result_row = mysqli_fetch_assoc($result)){
-        $volunteers[] = $result_row;
-
+        $id = $result_row['volunteerID'];
+        $firstName = $result_row['firstName'];
+        $lastName = $result_row['lastName'];
+        $email = $result_row['email'];
+        echo '<tr>
+        <th scope="row">'.$id.'</th>
+        <td>'.$firstName.'</td>
+        <td>'.$lastName.'</td>
+        <td>'.$email.'</td>
+        <td>
+            <a href="deleteVolunteer.php?volunteerID='.$id.'"class="button delete" id="deleteButton" style="background-color: red">Delete</a>
+        </td>
+    </tr>';
     }
-    return $volunteers;
+}
 
+function delete_volunteer(){
+    
 
 }

@@ -25,30 +25,7 @@
                 <input type="text" id="email" name="email" required placeholder="Enter volunteers' email"> 
                 <p></p>
                 <input type="submit" value="Add new volunteer">
-            </form>
-            <h3>Volunteer List</h3>
-            <form id = "volunteer-list" method ="post">
-                <table>
-                    <tr>
-                        <th> Volunteer ID </th>
-                        <th> First Name </th>
-                        <th> Last Name </th>
-                        <th> Email </th>
-                    </tr>
-                <?php require_once("database/dbAddVolunteer.php");
-                $volunteers = display_volunteer();
-                foreach($volunteers as $volunteer){
-                    echo "<tr>";
-                    echo "<td>" . $volunteer['volunteerID'] . "</td>";
-                    echo "<td>" . $volunteer['firstName'] . "</td>";
-                    echo "<td>" . $volunteer['lastName'] . "</td>";
-                    echo "<td>" . $volunteer['email'] . "</td>";
-                    echo "<tr>";
-                }
-
-                ?>
-                </table>
-            </form>
+            <a class="button cancel" href="viewVolunteer.php" style="background-color: red">View and delete volunteer</a>
             <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to main menu</a>
         </main>
     </body>
