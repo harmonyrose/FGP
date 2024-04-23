@@ -83,7 +83,7 @@
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
 
-        $permission_array['pointsprog.php'] = 0;
+        $permission_array['pointsprog.php'] = 1;
         
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
@@ -105,11 +105,12 @@
         $permission_array['approve.php'] = 2;
         $permission_array['viewadmin.php'] = 2;
         $permission_array['modifyfamily.php'] = 2;
-        $permission_array['currentFamiliesReport.php'] = 2;
+        $permission_array['currentfamiliesreport.php'] = 2;
         $permission_array['viewvolunteer.php'] = 2;
         $permission_array['giftcardorderreport.php'] = 2;
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
+        $permission_array['modifyfamilystatus.php']=2;
       
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1));

@@ -125,7 +125,7 @@
 
 
             // Regular expression pattern to match integers inside parentheses
-            $pattern = '/\((\d+)\)/';
+            $pattern = '/-(\d+)/';
 
             // Use preg_match_all to find all matches of the pattern in the string
             preg_match_all($pattern, $grocery, $matches);

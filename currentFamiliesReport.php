@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once('header.php');
 
 // Connect to the database
 $hostname = "localhost"; 
@@ -19,8 +18,8 @@ if (!$connection) {
 function fetch_current_families_data() {
     global $connection;
 
-    // Query to fetch required data from the database
-    $query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons";
+    // Query to fetch required data from the database where type = 'family'
+    $query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons WHERE type = 'family'";
 
     $result = mysqli_query($connection, $query);
 
@@ -40,41 +39,8 @@ function fetch_current_families_data() {
 // Fetch data for the Current Families Report
 $current_families_data = fetch_current_families_data();
 
-function fetch_all_emails() {
-    global $connection;
-
-    // Query to fetch all emails
-    $query = "SELECT id, email FROM dbPersons";
-
-    $result = mysqli_query($connection, $query);
-
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($connection));
-    }
-
-    // Fetch data and return as an array
-    $emails = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $emails[$row['id']] = $row['email'];
-    }
-
-    return $emails;
-}
-
-// Fetch all emails
-$emails = fetch_all_emails();
-
 // Generate CSV file
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
-    $selected_email_id = $_POST['email'];
-
-    // Fetch data for the selected email
-    $query = "SELECT cMethod, phone1, email, address, first_name, last_name, birthday, diagnosis, diagnosis_date, hospital, expected_treatment_end_date, allergies, sibling_info FROM dbPersons WHERE id = '$selected_email_id'";
-    $result = mysqli_query($connection, $query);
-
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($connection));
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['generate_csv_all'])) {
 
     // Create CSV file
     $filename = "current_family_report.csv";
@@ -84,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
     fputcsv($fp, array('Preferred Contact Method', 'Phone', 'Email', 'Address', 'First Name', 'Last Name', 'Birthday', 'Diagnosis', 'Diagnosis Date', 'Hospital', 'Expected Treatment End Date', 'Allergies', 'Sibling Info'));
 
     // Write data rows
-    while ($row = mysqli_fetch_assoc($result)) {
+    foreach ($current_families_data as $row) {
         fputcsv($fp, $row);
     }
 
@@ -108,20 +74,23 @@ mysqli_close($connection);
 <!DOCTYPE html>
 <html>
 <head>
+    <?php require_once('universal.inc'); ?>
     <title>Generate CSV</title>
 </head>
 <body>
-    <?php require_once('universal.inc'); ?>
+    <?php require_once('header.php'); ?>
     <h1>Generate CSV</h1>
     <form method="post" action="">
-        <label for="email">Select Email:</label>
-        <select name="email" id="email">
-            <?php foreach ($emails as $id => $email) : ?>
-                <option value="<?php echo $id; ?>"><?php echo $email; ?></option>
-            <?php endforeach; ?>
+        <label name="status"> Select the family status you want a report on </label>
+        <select name="status" id="status">
+            <option value="select"> Select a Status </option>
+            <option value="Active"> Active </option>
+            <option value="Remission"> Remission </option>
+            <option value="Survivor"> Survivor </option>
+            <option value="Stargazer"> Stargazer </option>
         </select>
-        <button type="submit">Generate CSV</button>
+        <button type="submit" name="generate_csv"> Generate CVS </button>
+        <button type="submit" name="generate_csv_all">Generate CSV for All Families</button>
     </form>
-
 </body>
 </html>

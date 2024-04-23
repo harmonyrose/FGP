@@ -38,7 +38,6 @@ function fetch_all_vendors() {
         // Loop through each row in the result set
         $vendors = [];
         while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
-            // Check if the vendor type is "gas"
             $vendors[] = $vendor['vendorName'];
         }
     }
@@ -46,11 +45,74 @@ function fetch_all_vendors() {
     return $vendors;
 
 } 
-
 // Fetch all vendors
 $vendors = fetch_all_vendors();
+// family name plus ugle string
+function fetch_gcinfo(){
+    include_once('database/dbinfo.php'); 
+    $con=connect();  
+    // Query to fetch required data from the database
+    $query = "SELECT name, CONCAT(grocery, ',', gas) AS combined_stores FROM dbPointsProg";
 
+    $result = mysqli_query($con, $query);
 
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($con));
+    }
+    // Check if any rows were returned
+    if ($result->num_rows > 0) {
+    // Initialize an empty array to store the data
+    $info = [];
+    // Fetch all vendors
+    $vendors = fetch_all_vendors();
+    // Fetch associative array
+    while($row = $result->fetch_assoc()) {
+
+        // Split the string by comma to get individual store-name, number pairs
+        $store_info_pairs = explode(',', $row['combined_stores']);
+        //print_r($store_info_pairs);
+        // Initialize an empty array to store the numbers associated with vendors
+        $vendor_numbers = [$row['name']];
+
+        // Iterate through each vendor
+        foreach ($vendors as $vendor) {
+            // Initialize the number as null for the current vendor
+            $number = null;
+            
+            // Iterate through each store number pair
+            foreach ($store_info_pairs as $store_number) {
+                // Split the store number pair into store name and number
+                $store_info = explode('-', $store_number);
+                
+                // Check if the store_info array has both store name and number
+                if (count($store_info) == 2) {
+                    $store_name = $store_info[0];
+                    $store_num = $store_info[1];
+                    
+                    // If the store name matches the current vendor, store the number
+                    if ($store_name === $vendor) {
+                        $number = $store_num;
+                        break; // Break out of the loop once a match is found
+                    }
+                }else{$number = "-";}
+            }
+            
+            // Store the number associated with the vendor
+            $vendor_numbers[] = $number;
+        }
+
+        array_push($info, $vendor_numbers);
+    }
+
+    } else {
+        echo "No data found";
+    }
+    mysqli_close($con);
+    return $info;
+}
+
+$row_info=fetch_gcinfo();
+    
 // Generate CSV file
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //MAKE FILE NAME THE MONTH AND YEAR
@@ -64,9 +126,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Write CSV header
     $header = array_merge(array('Family'), $vendors);
     fputcsv($fp, $header);
-    foreach ($family_names as $family_name) {
-        // Write the family name to the CSV file
-        fputcsv($fp, array($family_name));
+    // foreach ($family_names as $family_name) {
+    //     // Write the family name to the CSV file
+    //     $row = array_merge(array($family_name), $info); //outputs the same grocery info on each row
+    //     fputcsv($fp, $info);
+    // }
+    // Loop through the array and write each array as a row in the CSV file
+    foreach ($row_info as $row) {
+        fputcsv($fp, $row);
     }
 
     // Close file pointer
