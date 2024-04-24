@@ -180,14 +180,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         fclose($handle);
     }
 
-    // Prompt download
-    header('Content-Type: application/csv');
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    readfile($filename);
-
-    // Delete file
-    unlink($filename);
-    exit;
+    $pdfFileName = $month.$year.'giftCardSignOff.pdf';
+    
 }
 ?>
 
@@ -195,11 +189,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
 <?php require_once('universal.inc'); ?>
-    <title>Gift Card Order Report</title>
+    <title>Gift Card Sign Off Report</title>
 </head>
 <body>
     <?php require_once('header.php'); ?>
-    <h1>Gift Card Order Report</h1>
+    <h1>Gift Card Sign Off Report</h1>
     <form method="post" action="">
         <br><br>
     <style>
@@ -232,7 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Container to center the button -->
     <div class="button-container">
         <!-- Apply the class to the button -->
-        <button type="submit" class="generate-csv-btn">Generate Gift Card Order Report</button>
+        <button type="submit" class="generate-csv-btn">Generate Gift Card Sign Off Report</button>
     </div>
 
     </form>
