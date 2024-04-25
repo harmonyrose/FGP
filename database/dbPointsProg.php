@@ -129,6 +129,23 @@ function make_a_points_prog($result_row) {
     );   
     return $thePointsProg;
 }
+function getall_pointsProgs() {
+    $con=connect();
+    $query = 'SELECT * FROM dbPointsProg';
+    $result = mysqli_query($con,$query);
+    if ($result == null || mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    $result = mysqli_query($con,$query);
+    $thePointsProgs = array();
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $thePointsProg = make_a_points_prog($result_row);
+        $thePointsProgs[] = $thePointsProg;
+    }
+
+    return $thePointsProgs;
+}
 
 function find_next_id() {
     $query = "SELECT MAX(id) AS max_id FROM dbPointsProg";

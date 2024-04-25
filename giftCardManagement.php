@@ -55,7 +55,7 @@
                      <img src="images/create-report.svg">
                     <span>Generate Gift Card Order Report</span>
                 </div>
-                <div class="dashboard-item" data-link="giftCardSignOff.php">
+                <div class="dashboard-item" data-link="giftCardSignOffTable.php">
                      <img src="images/create-report.svg">
                     <span>Generate Gift Card Sign-off Form</span>
                 </div>
