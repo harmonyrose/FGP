@@ -29,7 +29,7 @@
         <tr>
             <td>" . $person->getName() . "</td>
             <td>" . $person->getEmail() . "</td>
-            <td><a href='giftCardSignOff.php?family_id=" . urlencode($person->getId()) . "' class='button'>Sign</a></td>";
+            <td><a href='giftCardSignOffForm.php?family_id=" . urlencode($person->getId()) . "' class='button'>Sign</a></td>";
         echo "</tr>";
     } 
     
@@ -45,6 +45,9 @@
     <body>
         <?php require_once('header.php') ?>
         <h1>Family List</h1>
+        <?php if (isset($_GET['signOffSuccess'])){ ?>
+                <div class="happy-toast">Sign-Off Submitted Sucessfully!</div>
+        <?php } ?>
         <form id="family-list" class="general" method="get">
             <!-- The actual table -->
             <!-- Takes all the families from dbPersons and displays them following the displaySearchRow function above to create a list of families-->
