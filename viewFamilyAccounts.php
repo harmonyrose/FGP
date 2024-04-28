@@ -106,6 +106,7 @@ function confirmDelete() {
                                     <th>Child\'s Name</th>
                                     <th>Email Address</th>
                                     <th>Actions</th>
+                                    <th></th>
                                     <th></th>';
                                 echo '</tr>
                             </thead>

@@ -31,19 +31,28 @@ require_once('include/input-validation.php');
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST);
-        /*
+        
         if($args['status']){
             $status=$args['status'];
-            update_status($persons->get_id(),$status)
-        }*/
-
-        if($args['remission_trans_date']){
-            $remission_trans_date=$args['remission_trans_date'];
-            $person->set_remission_trans_date($remission_trans_date);
+            update_status($person->get_id(),$status);
         }
-        
+
+        if(isset($args['remission_trans_date'])){
+            $remission_trans_date=$args['remission_trans_date'];
+            update_remission_trans_date($person->get_id(), $remission_trans_date);
+        }
+
+        if(isset($args['remembrance_date'])){
+            $remembrance_date=$args['remembrance_date'];
+            update_remembrance_date($person->get_id(), $remembrance_date);
+        }
+
+        if(isset($args['remembrance_wishes'])){
+            $remembrance_wishes=$args['remembrance_wishes'];
+            update_notes($person->get_id(), $remembrance_wishes);
+        }
           
-    echo '<script>document.location = "viewFamilyAccounts.php?modifySuccess";</script>';
+    //echo '<script>document.location = "viewFamilyAccounts.php?modifySuccess";</script>';
     exit();
     }
 
@@ -53,7 +62,9 @@ require_once('include/input-validation.php');
 <main class="modify-status-form">
     <form class="modify-status-form" method="post">
         <h2>Modify Status</h2>
+        <p> Child name is: <?php echo $person->get_first_name() . " ". $person->get_last_name()?></p>
         <p> Current family status is <?php echo $person->get_status()?> </p>
+        
         <label name="status"> Select the family status you want to change to (required) </label>
         <select name="status" id="status" required>
             <option value="select"> Select a Status </option>
@@ -62,20 +73,21 @@ require_once('include/input-validation.php');
             <option value="Survivor"> Survivor </option>
             <option value="Stargazer"> Stargazer </option>
         </select>
-        <p> Please fill out the relevent fields for the new status where applicable.</p>
+        <h3> Please fill out the relevent fields for the new status where applicable.</h3>
         <fieldset>
             <legend> Remission Modification Fields </legend>
             <label for="remission_trans_date"> Remission Transition Date</label>
-            <input type="date" id="remission_trans_date">
+            <input type="date" name="remission_trans_date">
 
         </fieldset>
+        
         <fieldset>
             <legend> Stargazer Modification Fields </legend>
             <label for="remembrance_date"> Remembrance Date</label>
-            <input type="date" id="remembrance_date" >
+            <input type="date" name="remembrance_date" >
 
-            <label for="notes"> Remembrance Wishes</label>
-            <input type="text" id="notes" placeholder="Enter wishes">
+            <label for="remembrance_wishes"> Remembrance Wishes</label>
+            <input type="text" name="remembrance_wishes" placeholder="Enter wishes">
         </fieldset>
 
     <button type="submit">Submit</button>

@@ -1097,6 +1097,25 @@ function find_user_names($name) {
         mysqli_close($con);
         return $result;
     }
-    
+
+    function update_remission_trans_date($id, $date) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET remission_trans_date = "' . $date . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        //$dateObj=date_create($date);
+        //date_add($dateObj,date_interval_create_from_date_string("1year"));
+        //$query = 'UPDATE dbPersons SET remission_end_date = "' . $date . '" WHERE id = "' . $id . '"';
+        //$result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_remembrance_date($id, $date) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET remembrance_date = "' . $date . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
     
     
