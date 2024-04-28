@@ -14,6 +14,31 @@ if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+// Function to fetch data from the pointsprog 
+function fetch_pointsprog_data() {
+    global $connection;
+
+    // Query to fetch required data from the "pointsprog" table
+    $query = "SELECT snacks, AAA_membership, gas, freezer_meals, house_cleaning FROM dbPointsProg";
+
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        die("Database query failed: " . mysqli_error($connection));
+    }
+
+    // Fetch data and return as an array
+    $data = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
+// Fetch data from the "pointsprog" table
+$pointsprog_data = fetch_pointsprog_data();
+
 // Function to fetch data for the Current Families Report
 function fetch_current_families_data() {
     global $connection;
@@ -47,10 +72,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['generate_csv_all'])) {
     $fp = fopen($filename, 'w');
 
     // Write CSV header
-    fputcsv($fp, array('Preferred Contact Method', 'Phone', 'Email', 'Address', 'First Name', 'Last Name', 'Birthday', 'Diagnosis', 'Diagnosis Date', 'Hospital', 'Expected Treatment End Date', 'Allergies', 'Sibling Info'));
+    fputcsv($fp, array('Preferred Contact Method', 'Phone', 'Email', 'Address', 'First Name', 'Last Name', 'Birthday', 'Diagnosis', 'Diagnosis Date', 'Hospital', 'Expected Treatment End Date', 'Allergies', 'Sibling Info', ));
 
-    // Write data rows
+    // Write current_families_data
     foreach ($current_families_data as $row) {
+        fputcsv($fp, $row);
+    }
+
+    // Add an empty row
+    fputcsv($fp, array());
+
+    // Write pointsprog_data
+    fputcsv($fp, array('Snacks', 'AAA', 'Gas', 'Freezer Meals', 'House Cleaning')); // Label for pointsprog_data
+    foreach ($pointsprog_data as $row){
         fputcsv($fp, $row);
     }
 
