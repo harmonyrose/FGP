@@ -1102,10 +1102,12 @@ function find_user_names($name) {
         $con=connect();
         $query = 'UPDATE dbPersons SET remission_trans_date = "' . $date . '" WHERE id = "' . $id . '"';
         $result = mysqli_query($con,$query);
-        //$dateObj=date_create($date);
+        $dateObj=new DateTimeImmutable($date);
+        $new_date=$dateObj->add(new DateInterval('P1Y'));
+        $date_final=$new_date->format("Y-m-d");
         //date_add($dateObj,date_interval_create_from_date_string("1year"));
-        //$query = 'UPDATE dbPersons SET remission_end_date = "' . $date . '" WHERE id = "' . $id . '"';
-        //$result = mysqli_query($con,$query);
+        $query = 'UPDATE dbPersons SET remission_end_date = "' . $date_final . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
         mysqli_close($con);
         return $result;
     }

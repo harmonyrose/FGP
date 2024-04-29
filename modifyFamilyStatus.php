@@ -73,7 +73,7 @@ require_once('include/input-validation.php');
             <option value="Survivor"> Survivor </option>
             <option value="Stargazer"> Stargazer </option>
         </select>
-        <h3> Please fill out the relevent fields for the new status where applicable.</h3>
+        <h4> Please fill out the relevent fields for the new status where applicable.</h4>
         <fieldset>
             <legend> Remission Modification Fields </legend>
             <label for="remission_trans_date"> Remission Transition Date</label>
