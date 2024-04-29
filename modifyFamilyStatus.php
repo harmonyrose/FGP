@@ -52,7 +52,7 @@ require_once('include/input-validation.php');
             update_notes($person->get_id(), $remembrance_wishes);
         }
           
-    //echo '<script>document.location = "viewFamilyAccounts.php?modifySuccess";</script>';
+    echo '<script>document.location = "viewFamilyAccounts.php?modifySuccess";</script>';
     exit();
     }
 
