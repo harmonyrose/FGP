@@ -47,7 +47,7 @@ function fetch_all_vendors() {
 } 
 // Fetch all vendors
 $vendors = fetch_all_vendors();
-// family name plus ugle string
+// Fetch family name and store-numberofcards string
 function fetch_gcinfo(){
     include_once('database/dbinfo.php'); 
     $con=connect();  
@@ -126,18 +126,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Write CSV header
     $header = array_merge(array('Family'), $vendors);
     fputcsv($fp, $header);
-    // foreach ($family_names as $family_name) {
-    //     // Write the family name to the CSV file
-    //     $row = array_merge(array($family_name), $info); //outputs the same grocery info on each row
-    //     fputcsv($fp, $info);
-    // }
+    
     // Loop through the array and write each array as a row in the CSV file
     foreach ($row_info as $row) {
         fputcsv($fp, $row);
     }
-
     // Close file pointer
     fclose($fp);
+    //Calculate giftcard order totals
+    // Initialize an array to store column totals
+    $columnTotals = [];
+
+    // Open the CSV file for reading
+    if (($handle = fopen($filename, 'r')) !== false) {
+        // Loop through each row in the CSV file
+        while (($data = fgetcsv($handle)) !== false) {
+            // Loop through each column in the row
+            for ($columnIndex = 1; $columnIndex < count($data); $columnIndex++) {
+                // Initialize column total if not already initialized
+                if (!isset($columnTotals[$columnIndex])) {
+                    $columnTotals[$columnIndex] = 0;
+                }
+                
+                // Check if the value is an integer
+                $value = $data[$columnIndex];
+                if (ctype_digit($value)) {
+                    // If it's an integer, add it to the column total
+                    $columnTotals[$columnIndex] += (int)$value;
+                }
+            }
+        }
+
+        // Close the CSV file
+        fclose($handle);
+    }
+
+    // Append the column totals as a new row to the CSV data
+    // Initialize the new row with a "Totals:" value for the first column
+    $totalsRow = ['Totals:'];
+
+    // Append the column totals to the new row, starting from the second column
+    foreach ($columnTotals as $total) {
+        $cash = '$'.((int)$total * 25); //multiply column total by 25 to create cash amount
+        $totalsRow[] = $cash;
+    }
+
+    // Open the CSV file for appending
+    if (($handle = fopen($filename, 'a')) !== false) {
+        // Write the new row to the end of the file
+        fputcsv($handle, $totalsRow);
+
+        // Close the CSV file
+        fclose($handle);
+    }
 
     // Prompt download
     header('Content-Type: application/csv');
@@ -152,52 +193,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html>
-<head>
-<?php require_once('universal.inc'); ?>
-    <title>Gift Card Order Report</title>
-</head>
-<body>
-    <?php require_once('header.php'); ?>
-    <h1>Gift Card Order Report</h1>
-    <form method="post" action="">
-        <br><br>
-    <style>
-        .generate-csv-btn {
-            padding: 15px 15px; /* Adjust padding for height and width */
-            background-color: green; /* Change background color to green */
-            color: white; /* Change text color to white */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Add border radius for rounded corners */
-            cursor: pointer; /* Change cursor to pointer on hover */
-            width: auto;
-            display: inline-block; /* Make the button inline-block to make it respect height */
-            font-size: 24px; /* Increase font size */
-        }
+    <head>
+        <?php require_once('universal.inc'); ?>
+        <title>FGP | Gift Card Order Report</title>
+    </head>
+    <body>
+        <?php require_once('header.php'); ?>
+        <h1>Gift Card Order Report</h1>
+        <form method="post">
+            <br>
+            <style>
+                .generate-csv-btn {
+                    padding: 25px 25px; /* Adjust padding for height and width */
+                    background-color: green; /* Change background color to green */
+                    color: white; /* Change text color to white */
+                    border: none; /* Remove border */
+                    border-radius: 5px; /* Add border radius for rounded corners */
+                    cursor: pointer; /* Change cursor to pointer on hover */
+                    width: auto;
+                    display: inline-block; /* Make the button inline-block to make it respect height */
+                    font-size: 24px; /* Increase font size */
+                }
 
-        /* Style for hover effect */
-        .generate-csv-btn:hover {
-            background-color: darkgreen; /* Darken the background color on hover */
-        }
+                /* Style for hover effect */
+                .generate-csv-btn:hover {
+                    background-color: darkgreen; /* Darken the background color on hover */
+                }
 
-        /* Container to center the button */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align items to the start (top) of the container */
-            height: 30vh; /* Make the container fill 70% of the viewport height */
-        }
-    </style>
+                /* Container to center the button */
+                .button-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start; /* Align items to the start (top) of the container */
+                    height: 40vh; /* Make the container fill 70% of the viewport height */
+                }
+                p {
+                    margin-left:150px;
+                    margin-right: 150px;
+                }
 
-    <!-- Container to center the button -->
-    <div class="button-container">
-        <!-- Apply the class to the button -->
-        <button type="submit" class="generate-csv-btn">Generate Gift Card Order Report</button>
-    </div>
+            </style>
 
-    </form>
-    <a href="giftCardManagement.php" class="button cancel">Return to Gift Card Management</a>
-    <div class="space-below-button"></div>
-    <br>
-    <a href="index.php" class="button cancel">Return to Dashboard</a>
-</body>
+            <p> Click the button to generate this month's <b>Gift Card Order Report.</b> The report
+                will display the number of $25 gift cards requested by each family for each
+                vendor. The total dollar amounts needed from each vendor are displayed at the
+                bottom of the report.
+            </p>
+            <br>
+            <br>
+            <!-- Container to center the button -->
+            <div class="button-container">
+            <!-- Apply the class to the button -->
+                <button type="submit" class="generate-csv-btn">Generate Gift Card Order Report</button>
+            </div>
+            <a class="button cancel" href="giftCardManagement.php">Return to Gift Card Management</a>
+            <div class="space-below-button"></div>
+            <br>
+            <a href="index.php" class="button cancel">Return to Dashboard</a>
+        </form>
+    </body>
 </html>

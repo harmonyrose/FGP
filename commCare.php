@@ -74,6 +74,14 @@
 
             $id = find_next_id() + 1;
             $email = $args['email'];
+            $con=connect();
+            $query = "SELECT * FROM dbPersons WHERE email = '$email'";
+            $result = mysqli_query($con, $query);
+            if (mysqli_num_rows($result) == 0) {
+                $errors = true;
+                header("Location: commCare.php?emailError");
+
+            }
             $adultNames = $args['adultNames'];
             $childrenInfo = $args['childrenInfo'];
             $sportsFan = $args['sportsFan'];
