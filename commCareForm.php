@@ -77,6 +77,9 @@
     <body>
         <?php require_once('header.php') ?>
         <h1>Community Care Package Form</h1>
+        <?php if (isset($_GET['emailError'])): ?>
+            <div class="error-toast">The email you entered was not found in our system. Please try again.</div>
+        <?php endif ?>
         <main class="date">
             <h2>Community Care Package Form</h2>
             <p>Please fill out the form below. Required fields are marked with an asterisk (<span style="color: red;">*</span>)</p>

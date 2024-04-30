@@ -33,7 +33,8 @@ function add_points_prog($pointsprog) {
             photography = '" . $pointsprog->getPhotography() . "',
             house_projects = '" . $pointsprog->getHouseProjects() . "',
             financial_relief = '" . $pointsprog->getFinancialRelief() . "',
-            points_used = '" . $pointsprog->getPointsUsed() . "'
+            points_used = '" . $pointsprog->getPointsUsed() . "',
+            giftCardPickUp = '" . $pointsprog->getGiftCardPickUp() . "'
             WHERE email = '" . $pointsprog->getEmail() . "'
         ");
         mysqli_close($con);
@@ -63,7 +64,8 @@ function add_points_prog($pointsprog) {
                 $pointsprog->getPhotography() . '","' .
                 $pointsprog->getHouseProjects() . '","' .
                 $pointsprog->getFinancialRelief() . '","' .
-                $pointsprog->getPointsUsed() .
+                $pointsprog->getPointsUsed() . '","' .
+                $pointsprog->getGiftCardPickUp() .
                 '");'
             );							
             mysqli_close($con);
@@ -125,9 +127,27 @@ function make_a_points_prog($result_row) {
         $result_row['photography'],
         $result_row['house_projects'],
         $result_row['financial_relief'],
-        $result_row['points_used']
+        $result_row['points_used'],
+        $result_row['giftCardPickUp']
     );   
     return $thePointsProg;
+}
+function getall_pointsProgs() {
+    $con=connect();
+    $query = 'SELECT * FROM dbPointsProg';
+    $result = mysqli_query($con,$query);
+    if ($result == null || mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    $result = mysqli_query($con,$query);
+    $thePointsProgs = array();
+    while ($result_row = mysqli_fetch_assoc($result)) {
+        $thePointsProg = make_a_points_prog($result_row);
+        $thePointsProgs[] = $thePointsProg;
+    }
+
+    return $thePointsProgs;
 }
 
 function find_next_id() {

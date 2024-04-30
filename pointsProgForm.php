@@ -15,8 +15,8 @@
         $userID = $_SESSION['_id'];
     } 
 
-    // Require admin privileges
-    if ($accessLevel < 2) {
+    // Do not require admin perms
+    if ($accessLevel < 1) {
         header('Location: login.php');
         echo 'bad access level';
         die();
@@ -67,6 +67,9 @@
         <h1>Points Program</h1>
         <?php if (isset($_GET['pointsError'])): ?>
             <div class="error-toast">More than 19 points were used. Please modify your choices and resubmit. </div>
+        <?php endif ?>
+        <?php if (isset($_GET['emailError'])): ?>
+            <div class="error-toast">The email you entered was not found in our system. Please try again.</div>
         <?php endif ?>
         <main class="date">
             <h2>Points Program Form</h2>
@@ -156,7 +159,7 @@
                             echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
                             $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
-                                $value = $vendor['vendorName'] . "(" . $numCards . ")";
+                                $value = $vendor['vendorName'] . "-" . $numCards ;
                                 echo '<option value="'. $value .'" id="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
                                 $numCards++;
                             }
@@ -187,7 +190,7 @@
                             echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
                             $numCards = 1;
                             for ($i = 25; $i <= 400; $i += 25) {
-                                $value = $vendor['vendorName'] ."(". $numCards . ")";
+                                $value = $vendor['vendorName'] ."-". $numCards ;
                                 echo '<option value="'. $value .'" id ="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
                                 $numCards++;
                             }

@@ -16,23 +16,24 @@
         $userID = $_SESSION['_id'];
     }
     // admin-only access
-    if ($accessLevel < 2) {
+    if ($accessLevel < 1) {
         header('Location: index.php');
         die();
     }
+    
 
     // Formatting for each row of the table
     // Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
     function displaySearchRow($person){
         echo "
         <tr>
-            <td><a href='familyInfo.php?id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
-            <td>" . $person->get_first_name() . "</td>
-            <td>" . $person->get_email() . "</td>
-            <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
-            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>";
+            <td>" . $person->getName() . "</td>
+            <td>" . $person->getEmail() . "</td>
+            <td>" . $person->getGiftCardPickUp() . "</td>
+            <td><a href='giftCardSignOffForm.php?family_id=" . urlencode($person->getId()) . "' class='button'>Sign</a></td>";
         echo "</tr>";
     } 
+    
 ?>
 
 
@@ -45,13 +46,16 @@
     <body>
         <?php require_once('header.php') ?>
         <h1>Family List</h1>
+        <?php if (isset($_GET['signOffSuccess'])){ ?>
+                <div class="happy-toast">Sign-Off Submitted Sucessfully!</div>
+        <?php } ?>
         <form id="family-list" class="general" method="get">
             <!-- The actual table -->
             <!-- Takes all the families from dbPersons and displays them following the displaySearchRow function above to create a list of families-->
             <?php 
-                require_once('database/dbPersons.php');
+                require_once('database/dbPointsProg.php');
                 // Get list of families from dbPersons database \\
-                $people = getall_families();
+                $people = getall_pointsProgs();
                 // If there are people, create table \\
                 if (count($people) > 0) {
                     echo '
@@ -59,19 +63,24 @@
                         <table class="general" id="familyTable">
                             <thead>
                                 <tr>
-                                    <th>Parent\'s Name</th>
-                                    <th>Child\'s Name</th>
-                                    <th>Email Address</th>
-                                    <th>Actions</th>
-                                    <th></th>';
+                                    <th onclick="sortTable(0)">
+                                    Name
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(1)">
+                                    Email
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th>Signed Off</th>
+                                    <th>Action</th>';
                                 echo '</tr>
                             </thead>
                             <tbody class="standout">';
                     // Show each person as formatted in displaySearchRow above \\
                     foreach ($people as $person) {
-                        if ($person->get_access_level() < $_SESSION['access_level']) {
                             displaySearchRow($person);
-                        }
                     }
                     // End table \\
                     echo '
@@ -84,8 +93,35 @@
                 }
             ?>
             <p></p>
-            <!-- Return button -->
-            <a class="button cancel" href="index.php">Return to Dashboard</a>
         </form>
+        <a href="giftCardManagement.php" class="button cancel">Return to Gift Card Management</a>
+        <div class="space-below-button"></div>
+        <br>
+        <a href="index.php" class="button cancel">Return to Dashboard</a>
+        <script>
+        // JavaScript function to sort table by column index
+        function sortTable(colIndex) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("familyTable");
+            switching = true;
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("td")[colIndex];
+                    y = rows[i + 1].getElementsByTagName("td")[colIndex];
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+    </script>
     </body>
 </html>
