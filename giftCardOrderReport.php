@@ -193,52 +193,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html>
-<head>
-<?php require_once('universal.inc'); ?>
-    <title>Gift Card Order Report</title>
-</head>
-<body>
-    <?php require_once('header.php'); ?>
-    <h1>Gift Card Order Report</h1>
-    <form method="post" action="">
-        <br><br>
-    <style>
-        .generate-csv-btn {
-            padding: 15px 15px; /* Adjust padding for height and width */
-            background-color: green; /* Change background color to green */
-            color: white; /* Change text color to white */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Add border radius for rounded corners */
-            cursor: pointer; /* Change cursor to pointer on hover */
-            width: auto;
-            display: inline-block; /* Make the button inline-block to make it respect height */
-            font-size: 24px; /* Increase font size */
-        }
+    <head>
+        <?php require_once('universal.inc'); ?>
+        <title>FGP | Gift Card Order Report</title>
+    </head>
+    <body>
+        <?php require_once('header.php'); ?>
+        <h1>Gift Card Order Report</h1>
+        <form method="post">
+            <br>
+            <style>
+                .generate-csv-btn {
+                    padding: 25px 25px; /* Adjust padding for height and width */
+                    background-color: green; /* Change background color to green */
+                    color: white; /* Change text color to white */
+                    border: none; /* Remove border */
+                    border-radius: 5px; /* Add border radius for rounded corners */
+                    cursor: pointer; /* Change cursor to pointer on hover */
+                    width: auto;
+                    display: inline-block; /* Make the button inline-block to make it respect height */
+                    font-size: 24px; /* Increase font size */
+                }
 
-        /* Style for hover effect */
-        .generate-csv-btn:hover {
-            background-color: darkgreen; /* Darken the background color on hover */
-        }
+                /* Style for hover effect */
+                .generate-csv-btn:hover {
+                    background-color: darkgreen; /* Darken the background color on hover */
+                }
 
-        /* Container to center the button */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align items to the start (top) of the container */
-            height: 30vh; /* Make the container fill 70% of the viewport height */
-        }
-    </style>
+                /* Container to center the button */
+                .button-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start; /* Align items to the start (top) of the container */
+                    height: 40vh; /* Make the container fill 70% of the viewport height */
+                }
+                p {
+                    margin-left:150px;
+                    margin-right: 150px;
+                }
 
-    <!-- Container to center the button -->
-    <div class="button-container">
-        <!-- Apply the class to the button -->
-        <button type="submit" class="generate-csv-btn">Generate Gift Card Order Report</button>
-    </div>
+            </style>
 
-    </form>
-    <a href="giftCardManagement.php" class="button cancel">Return to Gift Card Management</a>
-    <div class="space-below-button"></div>
-    <br>
-    <a href="index.php" class="button cancel">Return to Dashboard</a>
-</body>
+            <p> Click the button to generate this month's <b>Gift Card Order Report.</b> The report
+                will display the number of $25 gift cards requested by each family for each
+                vendor. The total dollar amounts needed from each vendor are displayed at the
+                bottom of the report.
+            </p>
+            <br>
+            <br>
+            <!-- Container to center the button -->
+            <div class="button-container">
+            <!-- Apply the class to the button -->
+                <button type="submit" class="generate-csv-btn">Generate Gift Card Order Report</button>
+            </div>
+            <a class="button cancel" href="giftCardManagement.php">Return to Gift Card Management</a>
+            <div class="space-below-button"></div>
+            <br>
+            <a href="index.php" class="button cancel">Return to Dashboard</a>
+        </form>
+    </body>
 </html>

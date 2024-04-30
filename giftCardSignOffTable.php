@@ -29,6 +29,7 @@
         <tr>
             <td>" . $person->getName() . "</td>
             <td>" . $person->getEmail() . "</td>
+            <td>" . $person->getGiftCardPickUp() . "</td>
             <td><a href='giftCardSignOffForm.php?family_id=" . urlencode($person->getId()) . "' class='button'>Sign</a></td>";
         echo "</tr>";
     } 
@@ -72,6 +73,7 @@
                                     <span class="arrow-up">&#9650;</span>
                                     <span class="arrow-down">&#9660;</span>
                                     </th>
+                                    <th>Signed Off</th>
                                     <th>Action</th>';
                                 echo '</tr>
                             </thead>

@@ -68,6 +68,9 @@
         <?php if (isset($_GET['pointsError'])): ?>
             <div class="error-toast">More than 19 points were used. Please modify your choices and resubmit. </div>
         <?php endif ?>
+        <?php if (isset($_GET['emailError'])): ?>
+            <div class="error-toast">The email you entered was not found in our system. Please try again.</div>
+        <?php endif ?>
         <main class="date">
             <h2>Points Program Form</h2>
             <form id="new-points-prog-form" method="post">
