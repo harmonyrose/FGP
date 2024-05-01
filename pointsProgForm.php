@@ -206,9 +206,9 @@
                 <br><br>
                 <label for="house_cleaning">Would you like house cleaning? </label>
                 <ul>
-                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1> Once a month (7 points)</li>
-                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2> Twice a month (14 points)</li>
-                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0> We do not want house cleaning</li>
+                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1 required> Once a month (7 points)</li>
+                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2 required> Twice a month (14 points)</li>
+                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0 required> We do not want house cleaning</li>
                 </ul>
 
                 <label for="lawn_care">Would you like lawn care? </label>
