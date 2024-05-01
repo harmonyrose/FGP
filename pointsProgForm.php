@@ -3,8 +3,8 @@
     // Authors: Harmony Peura and Grayson Jones
     // HTML form for the Points Program Form, to be filled out by families.
 
-    session_cache_expire(30);
-    session_start();
+    //session_cache_expire(30);
+    //session_start();
     ini_set("display_errors",1);
     error_reporting(E_ALL);
 

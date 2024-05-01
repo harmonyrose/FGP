@@ -2,8 +2,8 @@
   // Authors: Harmony Peura and Grayson Jones
     // Parses and saves input from the Points Program Form
 
-    //session_cache_expire(30);
-    //session_start();
+    session_cache_expire(30);
+    session_start();
     require_once('include/input-validation.php');
     // $loggedIn = false;
     // if (isset($_SESSION['change-password'])) {

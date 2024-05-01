@@ -2,8 +2,8 @@
     // Authors: Harmony Peura and Grayson Jones
     // Community Care Package Form for families to fill out.
 
-    // session_cache_expire(30);
-    // session_start();
+    session_cache_expire(30);
+    session_start();
 
     require_once('include/input-validation.php');
 
