@@ -70,12 +70,12 @@
                                     <span class="arrow-up">&#9650;</span>
                                     <span class="arrow-down">&#9660;</span>
                                     </th>
-                                    <th onclick="sortTable(3)">
+                                    <th onclick="sortTable(2)">
                                     Email Address
                                     <span class="arrow-up">&#9650;</span>
                                     <span class="arrow-down">&#9660;</span>
                                     </th>
-                                    <th onclick="sortTable(4)">
+                                    <th onclick="sortTable(3)">
                                     Status
                                     <span class="arrow-up">&#9650;</span>
                                     <span class="arrow-down">&#9660;</span>
