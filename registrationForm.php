@@ -17,11 +17,11 @@
             <h2>New Volunteer Form</h2>
             <form id="new-volunteer-form" method="post">
                 
-                <label for="name">Volunteer First Name *</label>
+                <label for="name">Volunteer First Name </label>
                 <input type="text" id="first-name" name="first-name" required placeholder="Enter volunteers' first name">
-                <label for="name">Volunteer Last Name *</label>
+                <label for="name">Volunteer Last Name </label>
                 <input type="text" id="last-name" name="last-name" required placeholder="Enter volunteers' last name"> 
-                <label for="name">Volunteer Email *</label>
+                <label for="name">Volunteer Email </label>
                 <input type="text" id="email" name="email" required placeholder="Enter volunteers' email"> 
                 <p></p>
                 <input type="submit" value="Add new volunteer">
