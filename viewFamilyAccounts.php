@@ -16,7 +16,7 @@
         $userID = $_SESSION['_id'];
     }
     // admin-only access
-    if ($accessLevel < 1) {
+    if ($accessLevel < 2) {
         header('Location: index.php');
         die();
     }
@@ -61,6 +61,7 @@ if (isset($_POST['delete'])) {
             <td><a href='familyInfo.php?id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
             <td>" . $person->get_first_name() . "</td>
             <td>" . $person->get_email() . "</td>
+            <td>" . $person->get_status() . "</td>
             <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
             <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>
             <td>
@@ -102,9 +103,26 @@ function confirmDelete() {
                         <table class="general" id="familyTable">
                             <thead>
                                 <tr>
-                                    <th>Parent\'s Name</th>
-                                    <th>Child\'s Name</th>
-                                    <th>Email Address</th>
+                                    <th onclick="sortTable(0)">
+                                    Parent\'s Name
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(1)">
+                                    Child\'s Name
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(3)">
+                                    Email Address
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(4)">
+                                    Status
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
                                     <th>Actions</th>
                                     <th></th>
                                     <th></th>';
@@ -130,6 +148,31 @@ function confirmDelete() {
             <p></p>
             <!-- Return button -->
             <a class="button cancel" href="index.php">Return to Dashboard</a>
+            <script>
+            // JavaScript function to sort table by column index
+            function sortTable(colIndex) {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("familyTable");
+                switching = true;
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("td")[colIndex];
+                        y = rows[i + 1].getElementsByTagName("td")[colIndex];
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+        </script>
         </form>
     </body>
 </html>

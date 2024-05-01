@@ -149,16 +149,21 @@ class Person {
 		$this->contact_time = $ct;
 		$this->cMethod = $cntm;
 		$this->mustChangePassword = $mcp;
-		$this->type = $t !== "" ? explode(',', $t) : array();
-		$this->access_level = 2;
-		//if ($t !== "") {
-			//$this->type = explode(',', $t);
-			//global $accessLevelsByRole;
-			//$this->access_level = $accessLevelsByRole[$t];
-		//} else {
-			//$this->type = array();
-			//$this->access_level = 0;
-		//}
+		$this->type = $t;
+		// I think these might not matter but doesn't hurt to have them
+		if (strtolower($this->type) == "family") {
+			$this->access_level = 1;
+		}
+		elseif (strtolower($this->type) == "admin") {
+			$this->access_level = 2;
+		}
+		// vmsroot has no type assigned so you have to check for it separately
+		elseif (strtolower($this->type) == "superadmin" || strtolower($this->first_name) == "vmsroot") { 
+			$this->access_level = 3;
+		}
+		else{
+			$this->access_level = 0;
+		}
 		$this->status = $st;
 		if ($av == "")
 			$this->availability = array();

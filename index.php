@@ -81,10 +81,10 @@
                      <img src="images/create-report.svg">
                     <span>Community Care Package Form</span>
                 </div>
-				<div class="dashboard-item" data-link="addAnimal.php">
+				<!-- <div class="dashboard-item" data-link="addAnimal.php">
                     <img src="images/settings.png">
                     <span>Add Animal</span>
-                </div>
+                </div> -->
                 <!-- Commenting out because volunteers won't be searching events
                 <div class="dashboard-item" data-link="eventSearch.php">
                     <img src="images/search.svg">
@@ -92,22 +92,22 @@
                 </div>
                 -->
                 <?php if ($_SESSION['access_level'] >= 2): ?>
-                <div class="dashboard-item" data-link="personSearch.php">
+                <!-- <div class="dashboard-item" data-link="personSearch.php">
                     <img src="images/person-search.svg">
                     <span>Find Volunteer</span>
-                </div>
+                </div> -->
                 <div class="dashboard-item" data-link="register.php">
                     <img src="images/create-report.svg">
                     <span>Add Volunteer</span>
                 </div>
-                <div class="dashboard-item" data-link="viewArchived.php">
+                <!-- <div class="dashboard-item" data-link="viewArchived.php">
                     <img src="images/person-search.svg">
                     <span>Archived Animals</span>
-                </div>
-                <div class="dashboard-item" data-link="report.php">
+                </div> -->
+                <!-- <div class="dashboard-item" data-link="report.php">
                     <img src="images/create-report.svg">
                     <span>Create Report</span>
-                </div>
+                </div> -->
                 
                 <?php endif ?>
                 <?php if ($notRoot) : ?>
@@ -115,17 +115,19 @@
                         <img src="images/view-profile.svg">
                         <span>View Profile</span>
                     </div>
-                    <div class="dashboard-item" data-link="editProfile.php">
+                    <!-- Should get this working -->
+                    <!-- <div class="dashboard-item" data-link="editProfile.php">
                         <img src="images/manage-account.svg">
                         <span>Edit Profile</span>
-                    </div>
+                    </div> -->
                 <?php endif ?>
-                <?php if ($notRoot) : ?>
+                <!-- <?php if ($notRoot) : ?>
                     <div class="dashboard-item" data-link="volunteerReport.php">
                         <img src="images/volunteer-history.svg">
                         <span>View My Hours</span>
                     </div>
-                <?php endif ?>
+                <?php endif ?> -->
+                <?php if ($_SESSION['access_level'] >= 2) : ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
@@ -143,10 +145,12 @@
                     <img src="images/settings.png">
                     <span>Add Admin</span>
                 </div>
+                <?php if ($_SESSION['access_level'] == 3) : ?> 
                 <div class="dashboard-item" data-link="viewAdmin.php">
                     <img src="images/settings.png">
                     <span>View Admin</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="viewFamilyAccounts.php">
                     <img src="images/person-search.svg">
                     <span>View Family Accounts</span>
@@ -155,6 +159,7 @@
                     <img src="images/person-search.svg">
                     <span>Family Report</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>

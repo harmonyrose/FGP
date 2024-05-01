@@ -1,34 +1,42 @@
 <?php
 
-    // Authors: Harmony Peura and Grayson Jones
-    // HTML form for the Points Program Form, to be filled out by families.
-
     session_cache_expire(30);
     session_start();
     ini_set("display_errors",1);
     error_reporting(E_ALL);
 
-    // $loggedIn = false;
-    // $accessLevel = 0;
-    // $userID = null;
-    // if (isset($_SESSION['_id'])) {
-    //     $loggedIn = true;
-    //     // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
-    //     $accessLevel = $_SESSION['access_level'];
-    //     $userID = $_SESSION['_id'];
-    // } 
+    $loggedIn = false;
+    $accessLevel = 0;
+    $userID = null;
+    if (isset($_SESSION['_id'])) {
+        $loggedIn = true;
+        // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
+        $accessLevel = $_SESSION['access_level'];
+        $userID = $_SESSION['_id'];
+    } 
 
     // Do not require admin perms
-    // if ($accessLevel < 1) {
-    //     header('Location: login.php');
-    //     echo 'bad access level';
-    //     die();
-    // }
+    if ($accessLevel < 1) {
+        header('Location: login.php');
+        echo 'bad access level';
+        die();
+    }
+    require_once('database/dbPersons.php');
+    require_once('database/dbPointsProg.php');
+    if (isset($_GET['id'])) {
+        $person = retrieve_person($_GET['id']);
 
+        $pointsProg = retrieve_points_prog($_GET['id']);
+        // If the family hasn't filled out their points program form, we have nothing to show them, so redirect back to familyinfo with an error
+        if (!$pointsProg) {
+            header('Location: familyInfo.php?id=' . $_GET['id'] . '&pointsProgError=1');
+        }
+        // Otherwise continue
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbPointsProg.php');
-        // Sanitize input, check for required fields
+        
         $args = sanitize($_POST, null);
         $required = array(
             "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
@@ -45,14 +53,17 @@
                 die();
             }
             require_once('include/output.php');
+            
+
         }
     }
 
-    // Not used, but scared to remove.
+    // get animal data from database for form
+    // Connect to database
     include_once('database/dbinfo.php'); 
     $con=connect();  
 
-    // Fetch all gift card vendors to be displayed in the form.
+    //get all vendors from vendor table
     $sql = "SELECT * FROM `dbGiftCardVendors`";
     $all_vendors = mysqli_query($con,$sql);
 
@@ -83,13 +94,13 @@
                 </p>
                 <p>Please fill out the form below. Required fields are marked with an asterisk (<span style="color: red;">*</span>)</p>
                 <label for="name">Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter contact name">
+                <input type="text" id="name" name="name" required placeholder="Enter contact name" value="<?php echo $person->get_first_name(); ?>">
 
                 <label for="email">Email </label>
-                <input type="text" id="email" name="email" required placeholder="Enter email">
+                <input type="text" id="email" name="email" required placeholder="Enter email" value="<?php echo $person->get_email(); ?>">
 
                 <label for="address">Address </label>
-                <input type="text" id="address" name="address" required placeholder="Enter address">
+                <input type="text" id="address" name="address" required placeholder="Enter address" value="<?php echo $person->get_address(); ?>">
 
                 <label for="freezer_meals_and_snacks">Freezer Meals & Snacks </label>
                     <p><b>We offer two freezer meals and snacks per month at NO CHARGE to your points.</b> 
@@ -138,7 +149,7 @@
                 </ul>
 
                 <label for="snack_notes">Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>
-                <input type="text" id="snack_notes" name="snack_notes" required placeholder="Your answer">
+                <input type="text" id="snack_notes" name="snack_notes" required placeholder="Your answer" value="<?php echo $pointsProg->getSnackNotes(); ?>">
                 <br><br>
                 <label for="name">Grocery Store Gift Cards </label>
                 <p>We only offer gift cards from stores that allow us to 
@@ -177,7 +188,7 @@
                 <label for="name">Gas Gift Cards</label>
                 <p> Please select the gas gift cards you would like.</p>
                 <?php
-                // reset vendors array collection
+                //reset vendors array collection
                 $sql = "SELECT * FROM `dbGiftCardVendors`";
                 $all_vendors = mysqli_query($con,$sql);
                 // Check if there are any vendors
@@ -204,23 +215,23 @@
                 }
                 ?>
                 <br><br>
-                <label for="house_cleaning" required>Would you like house cleaning? </label>
+                <label for="house_cleaning">Would you like house cleaning? </label>
                 <ul>
-                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1 required> Once a month (7 points)</li>
-                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2 required> Twice a month (14 points)</li>
-                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0 required> We do not want house cleaning</li>
+                <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1> Once a month (7 points)</li>
+                <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2> Twice a month (14 points)</li>
+                <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0> We do not want house cleaning</li>
                 </ul>
 
-                <label for="lawn_care" required>Would you like lawn care? </label>
+                <label for="lawn_care">Would you like lawn care? </label>
                 <ul>
-                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value=1 required> Yes (3 points per month)</li>
-                <li><input type="radio" id="lawn_care_no" name="lawn_care" value=0 required> We do not want lawn care</li>
+                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value=1> Yes (3 points per month)</li>
+                <li><input type="radio" id="lawn_care_no" name="lawn_care" value=0> We do not want lawn care</li>
                 </ul>
 
-                <label for="aaa_membership" required>Would you like a AAA Plus Membership? </label>
+                <label for="aaa_membership">Would you like a AAA Plus Membership? </label>
                 <ul>
-                <li><input type="radio" id="aaa_yes" name="aaa_membership" value="Yes" required> Yes</li>
-                <li><input type="radio" id="aaa_no" name="aaa_membership" value="No" required> No</li>
+                <li><input type="radio" id="aaa_yes" name="aaa_membership" value="Yes"> Yes</li>
+                <li><input type="radio" id="aaa_no" name="aaa_membership" value="No"> No</li>
                 </ul>
 
                 <p> If yes to AAA Membership, please provide the responsible party's name and date of birth. </p>
@@ -238,10 +249,10 @@
                     There is no charge to your points for this service. 
                     </p>
 
-                <label for="photography" required>Are you interested in a photography session? </label>
+                <label for="photography">Are you interested in a photography session? </label>
                 <ul>
-                <li><input type="radio" id="photo_yes" name="photography" value="Yes" required> Yes</li>
-                <li><input type="radio" id="photo_no" name="photography" value="No" required> No</li>
+                <li><input type="radio" id="photo_yes" name="photography" value="Yes"> Yes</li>
+                <li><input type="radio" id="photo_no" name="photography" value="No"> No</li>
                 </ul>
 
                 <label for="add_services"> Additional Services </label>
@@ -249,16 +260,16 @@
                     We currently offer to help with house projects and financial relief twice a year.  
                     If you are interested we will contact you when these services become available
                     </p>   
-                <label for="house_projects" required>House Projects </label>
+                <label for="house_projects">House Projects </label>
                 <ul>
-                <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested" required> We would like more information when available</li>
-                <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested" required> We are not interested in house projects</li>
+                <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested"> We would like more information when available</li>
+                <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested"> We are not interested in house projects</li>
                 </ul>
 
-                <label for="financial_relief" required>Financial Relief </label>
+                <label for="financial_relief">Financial Relief </label>
                 <ul>
-                <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested" required> We would like more information when available</li>
-                <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested" required> We are not interested in financial relief</li>
+                <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested"> We would like more information when available</li>
+                <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested"> We are not interested in financial relief</li>
                 </ul>
                 <br>
                 <input type="submit" name="form_data" value="Submit">
