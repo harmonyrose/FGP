@@ -204,23 +204,23 @@
                 }
                 ?>
                 <br><br>
-                <label for="house_cleaning">Would you like house cleaning? </label>
+                <label for="house_cleaning" required>Would you like house cleaning? </label>
                 <ul>
                 <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1 required> Once a month (7 points)</li>
                 <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2 required> Twice a month (14 points)</li>
                 <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0 required> We do not want house cleaning</li>
                 </ul>
 
-                <label for="lawn_care">Would you like lawn care? </label>
+                <label for="lawn_care" required>Would you like lawn care? </label>
                 <ul>
-                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value=1> Yes (3 points per month)</li>
-                <li><input type="radio" id="lawn_care_no" name="lawn_care" value=0> We do not want lawn care</li>
+                <li><input type="radio" id="lawn_care_yes" name="lawn_care" value=1 required> Yes (3 points per month)</li>
+                <li><input type="radio" id="lawn_care_no" name="lawn_care" value=0 required> We do not want lawn care</li>
                 </ul>
 
-                <label for="aaa_membership">Would you like a AAA Plus Membership? </label>
+                <label for="aaa_membership" required>Would you like a AAA Plus Membership? </label>
                 <ul>
-                <li><input type="radio" id="aaa_yes" name="aaa_membership" value="Yes"> Yes</li>
-                <li><input type="radio" id="aaa_no" name="aaa_membership" value="No"> No</li>
+                <li><input type="radio" id="aaa_yes" name="aaa_membership" value="Yes" required> Yes</li>
+                <li><input type="radio" id="aaa_no" name="aaa_membership" value="No" required> No</li>
                 </ul>
 
                 <p> If yes to AAA Membership, please provide the responsible party's name and date of birth. </p>
@@ -238,10 +238,10 @@
                     There is no charge to your points for this service. 
                     </p>
 
-                <label for="photography">Are you interested in a photography session? </label>
+                <label for="photography" required>Are you interested in a photography session? </label>
                 <ul>
-                <li><input type="radio" id="photo_yes" name="photography" value="Yes"> Yes</li>
-                <li><input type="radio" id="photo_no" name="photography" value="No"> No</li>
+                <li><input type="radio" id="photo_yes" name="photography" value="Yes" required> Yes</li>
+                <li><input type="radio" id="photo_no" name="photography" value="No" required> No</li>
                 </ul>
 
                 <label for="add_services"> Additional Services </label>
@@ -249,16 +249,16 @@
                     We currently offer to help with house projects and financial relief twice a year.  
                     If you are interested we will contact you when these services become available
                     </p>   
-                <label for="house_projects">House Projects </label>
+                <label for="house_projects" required>House Projects </label>
                 <ul>
-                <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested"> We would like more information when available</li>
-                <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested"> We are not interested in house projects</li>
+                <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested" required> We would like more information when available</li>
+                <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested" required> We are not interested in house projects</li>
                 </ul>
 
-                <label for="financial_relief">Financial Relief </label>
+                <label for="financial_relief" required>Financial Relief </label>
                 <ul>
-                <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested"> We would like more information when available</li>
-                <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested"> We are not interested in financial relief</li>
+                <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested" required> We would like more information when available</li>
+                <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested" required> We are not interested in financial relief</li>
                 </ul>
                 <br>
                 <input type="submit" name="form_data" value="Submit">
