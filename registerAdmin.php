@@ -1,6 +1,5 @@
 <?php
-    // Author: Lauren Knight
-    // Description: Registration page for new volunteers
+    // Description: Registration page for new admins
     session_cache_expire(30);
     session_start();
     

@@ -51,35 +51,35 @@ function buildSelect($name, $disabled=false, $selected=null) {
              diagnosis which will be sent to you within the next 24 hours. Please fill out this form to give us an idea of what type of support your family needs. 
              If we provide support in your area, we will let you know next steps. We are accepting applications for families in Planning District 16 (Stafford, 
              Spotsylvania, Caroline, King George Counties and Fredericksburg City) and the Northern Neck. This application does not guarantee services!</p>
-        <p>An asterisk (<em>*</em>) indicates a required field.</p>
+        <p>An asterisk (<em><FONT COLOR=#ff0000>*</FONT></em>) indicates a required field.</p>
         <fieldset>
             <!--<legend>Personal Information</legend>-->
-            <label for="econtact-name"><em>* </em>Who is the best person to contact to set up services?</label>
+            <label for="econtact-name">Who is the best person to contact to set up services?</label>
             <input type="text" id="econtact-name" name="econtact-name" required placeholder="Your answer">
 
-            <label for="cmethod"><em>* </em>What is your prefered means of contact?</label>
+            <label for="cmethod">What is your prefered means of contact?</label>
             <select id="cmethod" name="cmethod" required>
                 <option value="">Choose an option</option>
                 <option value="text">Text Message</option>
                 <option value="call">Phone Call</option>
             </select>
 
-            <label for="phone"><em>* </em>Phone Number</label>
+            <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required placeholder="Ex. (555) 555-5555">
            
-            <label for="email"><em>* </em>Email</label>
+            <label for="email">Email</label>
             <input type="text" id="email" name="email" required placeholder="">
 
-            <label for="address"><em>* </em>Address</label>
+            <label for="address">Address</label>
             <input type="text" id="address" name="address" required placeholder="">
 
             <label for="address2">Address Line 2</label>
             <input type="text" id="address2" name="address2" placeholder="">
 
-            <label for="city"><em>* </em>City</label>
+            <label for="city"><City</label>
             <input type="text" id="city" name="city" required placeholder="Enter your city">
 
-            <label for="state"><em>* </em>State</label>
+            <label for="state">State</label>
             
             <select id="state" name="state" required>
                 <option value="AL">Alabama</option>
@@ -135,37 +135,37 @@ function buildSelect($name, $disabled=false, $selected=null) {
                 <option value="WY">Wyoming</option>
             </select>
 
-            <label for="zip"><em>* </em>Zip Code</label>
+            <label for="zip">Zip Code</label>
             <input type="text" id="zip" name="zip" pattern="[0-9]{5}" title="5-digit zip code" required placeholder="Enter your 5-digit zip code">
         
-            <label for="first-name"><em>* </em>Child's First Name</label>
+            <label for="first-name">Child's First Name</label>
             <input type="text" id="first-name" name="first-name" required placeholder="">
 
-            <label for="last-name"><em>* </em>Child's Last Name</label>
+            <label for="last-name">Child's Last Name</label>
             <input type="text" id="last-name" name="last-name" required placeholder="">
 
-            <label for="birthdate"><em>* </em>Child's Birthdate</label>
+            <label for="birthdate">Child's Birthdate</label>
             <input type="date" id="birthdate" name="birthdate" required placeholder="Choose your birthday" max="<?php echo date('Y-m-d'); ?>">
 
-            <label for="diagnosis"><em>* </em>Child's Diagnosis</label>
+            <label for="diagnosis">Child's Diagnosis</label>
             <input type="text" id="diagnosis" name="diagnosis" required placeholder="Your answer">
 
-            <label for="diagnosis_date"><em>* </em>Date of Diagnosis</label>
+            <label for="diagnosis_date">Date of Diagnosis</label>
             <input type="date" id="diagnosis_date" name="diagnosis_date" required placeholder="Your answer">
 
-            <label for="hospital"><em>* </em>Where is your child receiving treatment? please include name of oncologist or contact at hospital</label>
+            <label for="hospital">Where is your child receiving treatment? please include name of oncologist or contact at hospital</label>
             <input type="text" id="hospital" name="hospital" required placeholder="Your answer">
 
-            <label><em>* </em>Do we have permission to reach out to the above mentioned on your behalf to confirm treament?</label>
+            <label>Do we have permission to reach out to the above mentioned on your behalf to confirm treament?</label>
             <div class="radio-group">
                 <input type="radio" id="permission-yes" name="permission_to_confirm" value="Yes" required><label for="permission-yes">Yes</label>
                 <input type="radio" id="permission-no" name="permission_to_confirm" value="No" required><label for="permission-no">No</label>
             </div>
 
-            <label for="expected_treatment_end_date"><em>* </em>What is the expected date of treatment completion?</label>
+            <label for="expected_treatment_end_date">What is the expected date of treatment completion?</label>
             <input type="date" id="expected_treatment_end_date" name="expected_treatment_end_date" required placeholder="Your answer">
 
-            <label for="services_interested_in"><em>* </em>What services are you interested in?</label>
+            <label for="services_interested_in">What services are you interested in?</label>
             <p> This is not a guarentee of services. Service is dependent upon volunteer availability. </p>
             <ul>
                 
@@ -228,7 +228,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="how_did_you_hear">How did you hear about FGP?</label>
             <input type="text" id="how_did_you_hear" name="how_did_you_hear" placeholder="Your answer">
 
-            <label for="agreement"><em>* </em>In consideration of Fairy Godmother Project allowing Volunteer to act as an official “Fairy Godmother Project” volunteer,
+            <label for="agreement">In consideration of Fairy Godmother Project allowing Volunteer to act as an official “Fairy Godmother Project” volunteer,
             Family voluntarily waives any and all rights to recovery from Fairy Godmother Project, its representatives, agents, officers, directors, shareholders, employees,
             insurers, attorneys, successors and assigns, for all claims, demands, damages, actions, costs, expenses, actions, causes of action, suits at law or in equity for injuries,
             damage, or other loss to person or property that Family and any other individual or entity claiming by or through Family, may sustain while receiving services as part 

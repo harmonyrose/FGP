@@ -25,7 +25,9 @@
                 <input type="text" id="email" name="email" required placeholder="Enter volunteers' email"> 
                 <p></p>
                 <input type="submit" value="Add new volunteer">
+                <br></br>
             <a class="button cancel" href="viewVolunteer.php" style="background-color: red">View and delete volunteer</a>
+            <br></br>
             <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to main menu</a>
         </main>
     </body>

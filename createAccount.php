@@ -52,10 +52,6 @@
             $ignoreList = array('password');
             $args = sanitize($_POST, $ignoreList);
 
-            // echo "<p>The form was submitted:</p>";
-            // foreach ($args as $key => $value) {
-            //     echo "<p>$key: $value</p>";
-            // }
 
             //required fields
             $required = array('econtact-name','cmethod','phone','email',
@@ -64,6 +60,7 @@
                 'expected_treatment_end_date','services','agreement'
             );
 
+            //process required fields, do input validation on some fields
             $services=$args['services'];
             
             
@@ -124,23 +121,11 @@
 
             $econtactName = $args['econtact-name'];
             $agreement=$args['agreement'];
-            //requires signature to be same as contact parent, doesn't seem 
-            //like a guarentee so cut for now
-            /*if(validateAgreement($agreement, $econtactName)!=0){
-                $errors=true;
-                echo 'bad agreement';
-            }*/
-
-            /*$phone1 = validateAndFilterPhoneNumber($args['econtact-phone']);
-            if (!$econtactPhone) {
-                $errors = true;
-                echo 'bad e-contact phone';
-            }*/
             
             $diagnosis=$args['diagnosis'];
             $permission_to_confirm=$args['permission_to_confirm'];
            
-            
+            //set services options all to 0 so the variables are initialized 
             $meals=0;
             $housecleaning=0;
             $lawncare=0;
@@ -197,6 +182,7 @@
             $optional=array('allergies','sibling_info','can_share_contact_info',
             'family_info','how_did_you_hear','address2');
 
+            //if field was set, set variable to input, otherwise set variable to empty string
             if($args['allergies']){
                 $allergies=$args['allergies'];
             }
@@ -236,6 +222,7 @@
             }
 
 
+            //create statement for person object
             $newperson = new Person(
             //first, last venue
 		    $first, $last, 'portland', 
