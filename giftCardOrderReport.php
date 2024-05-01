@@ -10,7 +10,8 @@ function fetch_family_names() {
     include_once('database/dbinfo.php'); 
     $con=connect();  
     // Query to fetch required data from the database
-    $query = "SELECT * FROM dbPointsProg";
+    //$query = "SELECT * FROM dbPointsProg";
+    $query="SELECT dbPointsProg.* FROM dbPointsProg INNER JOIN dbPersons on dbPersons.id=dbPointsProg.email WHERE dbPersons.status='Active'";
     $result = mysqli_query($con, $query);
     if (!$result) {
         die("Database query failed: " . mysqli_error($con));

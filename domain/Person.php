@@ -360,7 +360,16 @@ class Person {
 	}
 
 	function get_status() {
-		return $this->status;
+		$today=date("YYYY-MM-DD");
+		if($this->remission_end_date>=$today && $this->status=="Remission"){
+			return "Survivor";
+		}
+		else if($this->status=="Survivor"){
+			return $this->status;
+		}
+		else{
+			return $this->status;
+		}
 	}
 
 	function get_availability() { // array of day:hours:venue
