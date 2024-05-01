@@ -1,19 +1,11 @@
 <?php
+//page to modify family information
 session_start();
 require_once('header.php');
+require_once('database/dbinfo.php');
 
-// Connect to the database
-$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+//connect to database
+$con=connect();
 
 require_once('database/dbPersons.php');
 $person = retrieve_person($_GET['family_id']);
@@ -23,7 +15,7 @@ if (!$person) {
 }
 
 function update_family_info1($id, $location, $gift_card_delivery_method, $first_name, $last_name, $phone1, $phone1type, $contact_name, $cMethod, $hospital, $expected_treatment_end_date, $can_share_contact_info) {
-    global $connection; // Access the global $connection variable
+    $con=connect();
     
     $query = "UPDATE dbPersons SET 
               location = '$location', 

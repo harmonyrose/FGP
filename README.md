@@ -4,7 +4,7 @@
 # Old Dominion Humane Society (ODHS) Medicine Tracker
 
 
-COntributer: Gabe Carlton
+Contributer: Gabe Carlton
 Contributer: Harmony Peura
 Contributor: Grayson Jones
 Contributor: Eric Bae

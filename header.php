@@ -111,7 +111,7 @@
         $permission_array['giftcardorderreport.php'] = 2;
         $permission_array['viewfamilycommcare.php'] = 2;
         $permission_array['giftcardsignofftable.php'] = 2;
-
+        $permission_array['commcare.php'] = 1;
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
         $permission_array['modifyfamilystatus.php']=2;
@@ -148,42 +148,42 @@
             //echo('<span class="nav-divider">|</span>');
 
             echo('<li class="nav-item dropdown">');
-            echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Appointments</a>');
-            echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
-            echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'pointsProg.php">Add</a>');
+            //echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Appointments</a>');
+            //echo('<div class="dropdown-menu" aria-labelledby="navbarDropdown">');
+            //echo('<a class="dropdown-item" href="' . $path . 'calendar.php">Calendar</a>');
+            //echo('<a class="dropdown-item" href="' . $path . 'inbox.php">Notifications</a>');
+            //echo('<a class="dropdown-item" href="' . $path . 'pointsProg.php">Add</a>');
             echo('</div>');
             echo('</li>');
 
 	        //echo('<span class="nav-divider">|</span>');
             echo('<li class="nav-item dropdown">');
-	        echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteers</a>');
-            echo('<div class="dropdown-menu">');
-            echo('<a class="dropdown-item" href="' . $path . 'personSearch.php">Search</a>
-		        <a class="dropdown-item" href="register.php">Add</a>');
+	        //echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Volunteers</a>');
+            //echo('<div class="dropdown-menu">');
+            //echo('<a class="dropdown-item" href="' . $path . 'personSearch.php">Search</a>
+		        //<a class="dropdown-item" href="register.php">Add</a>');
             echo('</div>');
             echo('</li>');
 
             //echo('<span class="nav-divider">|</span>');
             echo('<li class="nav-item dropdown">');
-            echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Animals</a>');
-            echo('<div class="dropdown-menu">');
-            echo('<a class="dropdown-item" href="' . $path . 'findAnimal.php">Search</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'addAnimal.php">Add</a>');
-	        echo('<a class="dropdown-item" href="' . $path . 'report.php">Reports</a>');
-	        echo('<a class="dropdown-item" href="' . $path . 'viewArchived.php">Archived Animals</a>');
+            //echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Animals</a>');
+            //echo('<div class="dropdown-menu">');
+            //echo('<a class="dropdown-item" href="' . $path . 'findAnimal.php">Search</a>');
+            //echo('<a class="dropdown-item" href="' . $path . 'addAnimal.php">Add</a>');
+	        //echo('<a class="dropdown-item" href="' . $path . 'report.php">Reports</a>');
+	        //echo('<a class="dropdown-item" href="' . $path . 'viewArchived.php">Archived Animals</a>');
 
             echo('</div>');
             echo('</li>');
 
             //echo('<span class="nav-divider">|</span>');
             echo('<li class="nav-item dropdown">');
-            echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Others</a>');
-            echo('<div class="dropdown-menu">');
-            echo('<a class="dropdown-item" href="' . $path . 'addService.php">Add Service</a>');
-            echo('<a class="dropdown-item" href="' . $path . 'addLocation.php">Add Location</a>');
-	        echo('<a class="dropdown-item" href="' . $path . 'changePassword.php">Change Password</a>');
+            //echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                                                            </a>');
+            //echo('<div class="dropdown-menu">');
+            //echo('<a class="dropdown-item" href="' . $path . 'addService.php">Add Service</a>');
+            //echo('<a class="dropdown-item" href="' . $path . 'addLocation.php">Add Location</a>');
+	        //echo('<a class="dropdown-item" href="' . $path . 'changePassword.php">Change Password</a>');
 
             echo('</div>');
             echo('</li>');

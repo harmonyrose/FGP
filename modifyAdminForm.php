@@ -1,28 +1,17 @@
 <?php
+//modify other admin account information
 session_cache_expire(30);
 session_start();
 
 require_once('include/input-validation.php');
 
-// Connect to the database
-/*$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}*/
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <?php require_once('universal.inc'); ?>
-    <title>ODHS Medicine Tracker | Register <?php if ($loggedIn) echo ' New Volunteer' ?></title>
+    <title>FGP | Modify Admin <?php if ($loggedIn) echo ' New Volunteer' ?></title>
 </head>
 <body>
     <?php
@@ -44,6 +33,7 @@ if (!$connection) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST);
 
+        //if a field has a different input value than the current value, update the value
         if($args['first-name']!=$person->get_first_name()){
             $firstname=$args['first-name'];
             update_first_name($id,$firstname);
@@ -83,6 +73,7 @@ if (!$connection) {
     <form class="signup-form" method="post">
         <h2>Modify Form</h2>
         <p> Current information for this admin is displayed. Please edit the fields you wish to modify. </p>
+        <!--form displays current values for each column in the entry box or printed above the question-->
         <fieldset>
             <legend>Personal Information</legend>
             <label for="first-name">First Name</label>

@@ -1,28 +1,21 @@
 <?php
+//View list of all admins in the system, gives option to delete or modify any admin
 session_start();
 require_once('header.php');
+require_once('database/dbinfo.php');
 
-// Connect to the database
-$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+//connect to database
+$con=connect();
 
 
 // Function to delete an admin
 function delete_admin($id) {
-    global $connection; // Access the global $connection variable
+    //global $connection; // Access the global $connection variable
+    $con=connect();
     $query = "DELETE FROM dbPersons WHERE (id = '$id') AND (type = 'admin' OR type='Admin')";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($con, $query);
     if (!$result) {
-        die("Delete failed: " . mysqli_error($connection));
+        die("Delete failed: " . mysqli_error($con));
     }
 }
 
@@ -43,7 +36,7 @@ else if(isset($_POST['modify'])){
 
 // Query to fetch all admins from the database
 $query = "SELECT * FROM dbPersons WHERE type = 'admin' OR type='Admin'";
-$result = mysqli_query($connection, $query);
+$result = mysqli_query($con, $query);
 
 if (!$result) {
     die("Database query failed.");
@@ -89,6 +82,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <?php
 // Close the database connection
-mysqli_close($connection);
+mysqli_close($con);
 require_once('universal.inc');
 ?>
