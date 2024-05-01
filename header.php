@@ -175,7 +175,7 @@
 
             //echo('<span class="nav-divider">|</span>');
             echo('<li class="nav-item dropdown">');
-            //echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Others</a>');
+            //echo('<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                                                            </a>');
             //echo('<div class="dropdown-menu">');
             //echo('<a class="dropdown-item" href="' . $path . 'addService.php">Add Service</a>');
             //echo('<a class="dropdown-item" href="' . $path . 'addLocation.php">Add Location</a>');
