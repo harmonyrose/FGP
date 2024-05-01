@@ -102,7 +102,7 @@
                        and there's no need for you to be home. 
                     </p>
 
-                <label for="freezer_meals_and_snacks">How many freezer meals would you like? </label>
+                <label for="freezer_meals_and_snacks">How many freezer meals would you like? <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="freezer_2" name="freezer_meals" value=2> 2 Meals per month (Free)</li>
                 <li><input type="radio" id="freezer_4" name="freezer_meals" value=4> 4 meals per month (2 points)</li>
@@ -111,7 +111,7 @@
                 <li><input type="radio" id="freezer_0" name="freezer_meals" value=0> We do not want ANY freezer meals</li>
                 </ul>
 
-                <label for="allergies">Are there any food allergies that we need to be aware of? </label>
+                <label for="allergies">Are there any food allergies that we need to be aware of? <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="checkbox" id="peanuts" name="allergies[]" value="peanuts"> Peanuts</li>
                 <li><input type="checkbox" id="treenuts" name="allergies[]" value="tree nuts"> Tree Nuts</li>
@@ -124,7 +124,8 @@
                 <li><input type= "text" name="otherAllergyText" placeholder="Enter other allergy"></li>
                 </ul>
 
-                <label for="snacks">What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
+                <label for="snacks">What types of snacks do you prefer?  <span style="color: red;">*</span></label>
+                <p>We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </p>
                 <ul>
                 <li><input type="checkbox" id="crackers" name="snacks[]" value="crackers"> Crackers</li>
                 <li><input type="checkbox" id="cookies" name="snacks[]" value="cookies"> Cookies</li>
@@ -155,7 +156,7 @@
                     while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
                         // Check if the vendor type is "grocery"
                         if ($vendor['vendorType'] == "grocery") {
-                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
+                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .' <span style="color: red;">*</span></label>';
                             echo '<select name="grocery[]" id="'. $vendor['vendorName'] .'">';
                             echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
                             $numCards = 1;
@@ -186,7 +187,7 @@
                     while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
                         // Check if the vendor type is "gas"
                         if ($vendor['vendorType'] == "gas") {
-                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
+                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .' <span style="color: red;">*</span></label>';
                             echo '<select name="gas[]" id="'. $vendor['vendorName'] .'">';
                             echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
                             $numCards = 1;
@@ -204,20 +205,20 @@
                 }
                 ?>
                 <br><br>
-                <label for="house_cleaning" required>Would you like house cleaning? </label>
+                <label for="house_cleaning" required>Would you like house cleaning? <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="house_cleaning_1" name="house_cleaning" value=1 required> Once a month (7 points)</li>
                 <li><input type="radio" id="house_cleaning_2" name="house_cleaning" value=2 required> Twice a month (14 points)</li>
                 <li><input type="radio" id="house_cleaning_0" name="house_cleaning" value=0 required> We do not want house cleaning</li>
                 </ul>
 
-                <label for="lawn_care" required>Would you like lawn care? </label>
+                <label for="lawn_care" required>Would you like lawn care? <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="lawn_care_yes" name="lawn_care" value=1 required> Yes (3 points per month)</li>
                 <li><input type="radio" id="lawn_care_no" name="lawn_care" value=0 required> We do not want lawn care</li>
                 </ul>
 
-                <label for="aaa_membership" required>Would you like a AAA Plus Membership? </label>
+                <label for="aaa_membership" required>Would you like a AAA Plus Membership? <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="aaa_yes" name="aaa_membership" value="Yes" required> Yes</li>
                 <li><input type="radio" id="aaa_no" name="aaa_membership" value="No" required> No</li>
@@ -238,7 +239,7 @@
                     There is no charge to your points for this service. 
                     </p>
 
-                <label for="photography" required>Are you interested in a photography session? </label>
+                <label for="photography" required>Are you interested in a photography session? <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="photo_yes" name="photography" value="Yes" required> Yes</li>
                 <li><input type="radio" id="photo_no" name="photography" value="No" required> No</li>
@@ -249,13 +250,13 @@
                     We currently offer to help with house projects and financial relief twice a year.  
                     If you are interested we will contact you when these services become available
                     </p>   
-                <label for="house_projects" required>House Projects </label>
+                <label for="house_projects" required>House Projects <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="house_more_info" name="house_projects" value="More info requested" required> We would like more information when available</li>
                 <li><input type="radio" id="house_not_interested" name="house_projects" value="Not interested" required> We are not interested in house projects</li>
                 </ul>
 
-                <label for="financial_relief" required>Financial Relief </label>
+                <label for="financial_relief" required>Financial Relief <span style="color: red;">*</span></label>
                 <ul>
                 <li><input type="radio" id="relief_more_info" name="financial_relief" value="More info requested" required> We would like more information when available</li>
                 <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested" required> We are not interested in financial relief</li>
