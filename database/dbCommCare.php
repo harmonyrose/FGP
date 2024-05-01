@@ -97,6 +97,20 @@ function retrieve_comm_care($id) {
     return $theCommCare;
 }
 
+//added new function because to view comm care the id needed is email and not the databse id
+function email_retrieve_comm_care($email){
+    $con=connect();
+    $query = "SELECT * FROM dbCommCare WHERE email ='" . $email . "'";
+    $result = mysqli_query($con,$query);
+    if(mysqli_num_rows($result)!==1){
+        mysqli_close($con);
+        return false;
+    }
+    $result_row = mysqli_fetch_assoc($result);
+    $theCommCare = make_a_comm_care($result_row);
+    return $theCommCare;
+}
+
 
      
 function make_a_comm_care($result_row) {
