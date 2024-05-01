@@ -30,8 +30,7 @@
             <td>" . $person->get_first_name() . "</td>
             <td>" . $person->get_email() . "</td>
             <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
-            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>
-            <td><a href='viewFamilyCommCare.php?family_id=" . urlencode($person->get_id())."' class='button'>Community Care Package Form</a></td>";
+            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>";
         echo "</tr>";
     } 
 ?>

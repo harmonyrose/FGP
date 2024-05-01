@@ -83,13 +83,11 @@
     <h1><?php echo $person->get_first_name() . '\'s Information'; ?></h1>
     <main class="general">
         <?php
-            if (isset($_GET['picsuccess'])) {
-              $picsuccess = $_GET['picsuccess'];
-              if ($picsuccess === 'True') {
-                echo '<div class="happy-toast">Profile Picture Updated Successfully!</div>';
-              } else if ($picsuccess === 'False') {
-                echo '<div class="error-toast">There was an error updating the Profile Picture!</div>';
-              }
+            if (isset($_GET['pointsProgError'])) {
+              echo '<div class="error-toast">This family has not filled out their Points Program Form</div>';
+            }
+            if (isset($_GET['commCareError'])){
+              echo '<div class="error-toast">This family has no failled ou their Community Care Package Form</div>';
             }
         ?>
         <fieldset>
@@ -98,27 +96,9 @@
             <p><?php echo $person->get_first_name() . ' ' . $person->get_last_name(); ?></p>
             <label>ID</label>
             <p><?php echo $person->get_id(); ?></p>
-            <label>Profile Picture</label>
-            <img class="profile-pic" src="<?php
-                $profile_pic = $person -> get_profile_pic();
-                if ($profile_pic) {
-                    echo $profile_pic;
-                } else {
-                    echo 'images/default-profile-picture.svg';
-                }
-              ?>"width="140" height="140">
-            <form class="media-form hidden" method="post" id="edit-profile-picture-form">
-                <label>Edit Photo</label>
-                <label for="url">URL</label>
-                <input type="text" id="url" name="url" placeholder="Paste link to media" required>
-                <p class="error hidden" id="url-error">Please enter a valid URL.</p>
-                <input type="hidden" name="id" value="<?php echo $id ?>">
-                <input type="submit" name="edit-profile-picture-submit" value="Attach">
-            </form>
-            <a id="edit-profile-picture" class="link-like">Edit Photo</a>
-            <?php
-              echo '<a href="familyInfo.php?id='.$id.'&removePic=true" style="color:inherit">Remove Photo</a>'
-            ?>
+            <label>Forms</label>
+            <a href="viewPointsProgForm.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Points Program Form</a>
+            <a href="viewFamilyCommCare.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Community Care Package Form</a>
             <label>Address</label>
             <p><?php echo $person->get_address() . ', ' . $person->get_city() . ', ' . $person->get_state() . ' ' . $person->get_zip() ?></p>
             <label>Phone 1</label>
@@ -136,20 +116,7 @@
             <label>Type</label>
             <p><?php echo $person->get_type(); ?></p>
             <label>Status</label>
-            <?php if (isset($_GET['id'])): ?>
-                <p>
-                    <form id="status-form" style="width: 200px">
-                        <select name="status" id="status" onchange="updateStatus()">
-                            <option value="pending" <?php if (strtolower($person->get_status()) == 'pending') echo 'selected="selected"'; ?>>Pending</option>
-                            <option value="active" <?php if (strtolower($person->get_status()) == 'active') echo 'selected="selected"'; ?>>Active</option>
-                            <option value="remission" <?php if (strtolower($person->get_status()) == 'remission') echo 'selected="selected"'; ?>>Remission</option>
-                        </select>
-                    </form>
-                </p>
-            <?php else: ?>
-              <?php echo "<p>" . $person->get_status() . "</p>"; ?>
-            <?php endif; ?>
-            
+            <?php echo "<p>" . $person->get_status() . "</p>"; ?>
             <label>Notes</label>
             <p><?php echo $person->get_notes(); ?></p>
             <label>Password</label>
@@ -163,7 +130,7 @@
             <label>Hospital</label>
             <p><?php echo $person->get_hospital(); ?></p>
             <label>Permission to Confirm</label>
-            <p><?php echo $person->get_permission_to_confirm(); ?></p>
+            <p><?php echo $person->get_permission_to_confirm() ? "Yes" : "No";  ?></p>
             <label>Expected Treatment End Date</label>
             <p><?php echo $person->get_expected_treatment_end_date(); ?></p>
             <label>Allergies</label>
@@ -205,27 +172,5 @@
         <a class="button cancel" style="margin-top: 30px" href="viewFamilyAccounts.php">Return to Family List</a>
     </main>
 
-    <!-- JavaScript function to handle changing family status -->
-    <!-- Redirects to the same page but with status in the GET parameters -->
-    <script>
-        function updateStatus() {
-            var selectedStatus = $('#status').val();
-            var url = window.location.href.split('?')[0]; // Get the base URL without query parameters
-            var params = new URLSearchParams(window.location.search); // Get the existing query parameters
-
-            // Update the 'status' parameter with the selected status
-            params.set('status', selectedStatus);
-
-            // Construct the new URL with updated parameters
-            var newUrl = url + '?' + params.toString();
-
-            // Redirect to the new URL
-            window.location.href = newUrl;
-        }
-
-        document.getElementById('edit-profile-picture').addEventListener('click', function() {
-          document.querySelector('.media-form').classList.toggle('hidden');
-        });
-    </script>
 </body>
 </html>
