@@ -1,7 +1,10 @@
 <?php
+// Authors: Harmony Peura and Grayson Jones
 include_once('dbinfo.php');
 include_once(dirname(__FILE__).'/../domain/CommCare.php');
 
+// Add a row to the CommCare database. If there is already a row
+// with the given email, update it.
 function add_comm_care($commcare) {
     if (!$commcare instanceof CommCare)
         die("Error: add_comm_care type mismatch");
@@ -68,6 +71,7 @@ function add_comm_care($commcare) {
     }
 }
 
+// Remove a row from the CommCare table. Not currently used anywhere.
 function remove_comm_care($id) {
     $con=connect();
     $query = 'SELECT * FROM dbCommCare WHERE id = "' . $id . '"';
@@ -82,6 +86,7 @@ function remove_comm_care($id) {
     return true;
 }
 
+// Retrieve a row from the CommCare table. Not currently used anywhere.
 function retrieve_comm_care($id) {
     $con=connect();
     $query = "SELECT * FROM dbCommCare WHERE id = '" . $id . "'";
@@ -91,11 +96,11 @@ function retrieve_comm_care($id) {
         return false;
     }
     $result_row = mysqli_fetch_assoc($result);
-    // var_dump($result_row);
     $theCommCare = make_a_comm_care($result_row);
-//    mysqli_close($con);
+
     return $theCommCare;
 }
+
 
 //added new function because to view comm care the id needed is email and not the databse id
 function email_retrieve_comm_care($email){
@@ -112,7 +117,7 @@ function email_retrieve_comm_care($email){
 }
 
 
-     
+// Make an instance of a CommCare row. Not currently used anywhere.
 function make_a_comm_care($result_row) {
     $theCommCare = new CommCare(
         $result_row['id'],
@@ -136,6 +141,7 @@ function make_a_comm_care($result_row) {
     return $theCommCare;
 }
 
+// Used to create a unique ID for each row in the CommCare table.
 function find_next_id() {
     $query = "SELECT MAX(id) AS max_id FROM dbCommCare";
     $connection = connect();

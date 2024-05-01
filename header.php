@@ -109,6 +109,8 @@
         $permission_array['viewvolunteer.php'] = 2;
         $permission_array['giftcardorderreport.php'] = 2;
         $permission_array['viewfamilycommcare.php'] = 2;
+        $permission_array['giftcardsignofftable.php'] = 2;
+
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
         $permission_array['modifyfamilystatus.php']=2;

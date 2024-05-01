@@ -1,30 +1,34 @@
 <?php
 
+    // Authors: Harmony Peura and Grayson Jones
+    // HTML form for the Points Program Form, to be filled out by families.
+
     session_cache_expire(30);
     session_start();
     ini_set("display_errors",1);
     error_reporting(E_ALL);
 
-    $loggedIn = false;
-    $accessLevel = 0;
-    $userID = null;
-    if (isset($_SESSION['_id'])) {
-        $loggedIn = true;
-        // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
-        $accessLevel = $_SESSION['access_level'];
-        $userID = $_SESSION['_id'];
-    } 
+    // $loggedIn = false;
+    // $accessLevel = 0;
+    // $userID = null;
+    // if (isset($_SESSION['_id'])) {
+    //     $loggedIn = true;
+    //     // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
+    //     $accessLevel = $_SESSION['access_level'];
+    //     $userID = $_SESSION['_id'];
+    // } 
 
     // Do not require admin perms
-    if ($accessLevel < 1) {
-        header('Location: login.php');
-        echo 'bad access level';
-        die();
-    }
+    // if ($accessLevel < 1) {
+    //     header('Location: login.php');
+    //     echo 'bad access level';
+    //     die();
+    // }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbPointsProg.php');
-        
+        // Sanitize input, check for required fields
         $args = sanitize($_POST, null);
         $required = array(
             "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
@@ -41,17 +45,14 @@
                 die();
             }
             require_once('include/output.php');
-            
-
         }
     }
 
-    // get animal data from database for form
-    // Connect to database
+    // Not used, but scared to remove.
     include_once('database/dbinfo.php'); 
     $con=connect();  
 
-    //get all vendors from vendor table
+    // Fetch all gift card vendors to be displayed in the form.
     $sql = "SELECT * FROM `dbGiftCardVendors`";
     $all_vendors = mysqli_query($con,$sql);
 
@@ -67,6 +68,9 @@
         <h1>Points Program</h1>
         <?php if (isset($_GET['pointsError'])): ?>
             <div class="error-toast">More than 19 points were used. Please modify your choices and resubmit. </div>
+        <?php endif ?>
+        <?php if (isset($_GET['emailError'])): ?>
+            <div class="error-toast">The email you entered was not found in our system. Please try again.</div>
         <?php endif ?>
         <main class="date">
             <h2>Points Program Form</h2>
@@ -173,7 +177,7 @@
                 <label for="name">Gas Gift Cards</label>
                 <p> Please select the gas gift cards you would like.</p>
                 <?php
-                //reset vendors array collection
+                // reset vendors array collection
                 $sql = "SELECT * FROM `dbGiftCardVendors`";
                 $all_vendors = mysqli_query($con,$sql);
                 // Check if there are any vendors
