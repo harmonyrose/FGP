@@ -145,10 +145,12 @@
                     <img src="images/settings.png">
                     <span>Add Admin</span>
                 </div>
+                <?php if ($_SESSION['access_level'] == 3) : ?> 
                 <div class="dashboard-item" data-link="viewAdmin.php">
                     <img src="images/settings.png">
                     <span>View Admin</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="viewFamilyAccounts.php">
                     <img src="images/person-search.svg">
                     <span>View Family Accounts</span>
