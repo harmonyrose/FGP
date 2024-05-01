@@ -82,6 +82,7 @@
         $permission_array['reports.php'] = 2;
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
+        $permission_array['viewpointsprogform.php'] = 2;
 
         $permission_array['pointsprog.php'] = 1;
         
