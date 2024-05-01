@@ -86,6 +86,9 @@
             if (isset($_GET['pointsProgError'])) {
               echo '<div class="error-toast">This family has not filled out their Points Program Form</div>';
             }
+            if (isset($_GET['commCareError'])){
+              echo '<div class="error-toast">This family has not filled out their Community Care Package Form</div>';
+            }
         ?>
         <fieldset>
             <legend>General Information</legend>
@@ -95,6 +98,7 @@
             <p><?php echo $person->get_id(); ?></p>
             <label>Forms</label>
             <a href="viewPointsProgForm.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Points Program Form</a>
+            <a href="viewFamilyCommCare.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Community Care Package Form</a>
             <label>Address</label>
             <p><?php echo $person->get_address() . ', ' . $person->get_city() . ', ' . $person->get_state() . ' ' . $person->get_zip() ?></p>
             <label>Phone 1</label>

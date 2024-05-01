@@ -1,8 +1,10 @@
 <?php
-
+// Authors: Harmony Peura and Grayson Jones
 include_once('dbinfo.php');
 include_once(dirname(__FILE__).'/../domain/PointsProg.php');
 
+//Add a new row to the Points Program table. If the given email is already
+// in the table, update that row.
 function add_points_prog($pointsprog) {
     if (!$pointsprog instanceof PointsProg)
         die("Error: add_points_prog type mismatch");
@@ -76,6 +78,7 @@ function add_points_prog($pointsprog) {
     }
 }
 
+// Remove a row from the PointsProg table. Not currently used anywhere.
 function remove_points_prog($id) {
     $con=connect();
     $query = 'SELECT * FROM dbPointsProg WHERE id = "' . $id . '"';
@@ -90,6 +93,7 @@ function remove_points_prog($id) {
     return true;
 }
 
+// Retreive a row from the PointsProg table. Not currently used anywhere.
 function retrieve_points_prog($id) {
     $con=connect();
     $query = "SELECT * FROM dbPointsProg WHERE id = '" . $id . "'";
@@ -106,7 +110,7 @@ function retrieve_points_prog($id) {
 }
 
 
-     
+// Make a new PointsProg instance.     
 function make_a_points_prog($result_row) {
     $thePointsProg = new PointsProg(
         $result_row['id'],
@@ -132,6 +136,8 @@ function make_a_points_prog($result_row) {
     );   
     return $thePointsProg;
 }
+
+// Fetch everything from the table.
 function getall_pointsProgs() {
     $con=connect();
     $query = 'SELECT * FROM dbPointsProg';
@@ -150,6 +156,7 @@ function getall_pointsProgs() {
     return $thePointsProgs;
 }
 
+// Generate a unique ID for a new row.
 function find_next_id() {
     $query = "SELECT MAX(id) AS max_id FROM dbPointsProg";
     $connection = connect();

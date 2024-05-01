@@ -1,5 +1,6 @@
 <?php
 /**
+ * Authors: Harmony Peura and Grayson Jones
  * Encapsulated version of a Community Care Package entry.
  */
 class CommCare {
