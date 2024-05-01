@@ -87,7 +87,7 @@
               echo '<div class="error-toast">This family has not filled out their Points Program Form</div>';
             }
             if (isset($_GET['commCareError'])){
-              echo '<div class="error-toast">This family has no failled ou their Community Care Package Form</div>';
+              echo '<div class="error-toast">This family has not filled out their Community Care Package Form</div>';
             }
         ?>
         <fieldset>
