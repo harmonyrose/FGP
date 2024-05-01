@@ -59,9 +59,21 @@
                         <table class="general" id="familyTable">
                             <thead>
                                 <tr>
-                                    <th>Parent\'s Name</th>
-                                    <th>Child\'s Name</th>
-                                    <th>Email Address</th>
+                                    <th onclick="sortTable(0)">
+                                    Parent\'s Name
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(1)">
+                                    Child\'s Name
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(3)">
+                                    Email Address
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
                                     <th>Actions</th>
                                     <th></th>';
                                 echo '</tr>
@@ -86,6 +98,31 @@
             <p></p>
             <!-- Return button -->
             <a class="button cancel" href="index.php">Return to Dashboard</a>
+            <script>
+            // JavaScript function to sort table by column index
+            function sortTable(colIndex) {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("familyTable");
+                switching = true;
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("td")[colIndex];
+                        y = rows[i + 1].getElementsByTagName("td")[colIndex];
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+        </script>
         </form>
     </body>
 </html>
