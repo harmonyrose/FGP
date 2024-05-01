@@ -109,6 +109,22 @@ function retrieve_points_prog($id) {
     return $thePointsProg;
 }
 
+// Finds the most recent points program entry with the given email
+function retrieve_points_prog_by_email($email) {
+    $con=connect();
+    $query = "SELECT * FROM dbPointsProg WHERE email = '" . $email . "' ORDER BY id DESC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    if (mysqli_num_rows($result) !== 1) {
+        mysqli_close($con);
+        return false;
+    }
+    $result_row = mysqli_fetch_assoc($result);
+    // var_dump($result_row);
+    $thePointsProg = make_a_points_prog($result_row);
+//    mysqli_close($con);
+    return $thePointsProg;
+}
+
 
 // Make a new PointsProg instance.     
 function make_a_points_prog($result_row) {
