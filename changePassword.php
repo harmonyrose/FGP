@@ -34,8 +34,8 @@
                 die();
             }
             $newPassword = $_POST['new-password'];
-            $hash = password_hash($newPassword, PASSWORD_BCRYPT);
-            change_password($userID, $hash);
+            //$hash = password_hash($newPassword, PASSWORD_BCRYPT);
+            change_password($userID, $newPassword);
             if ($userID == 'vmsroot') {
                 $_SESSION['access_level'] = 3;
             } else {
@@ -54,13 +54,13 @@
             $password = $_POST['password'];
             $newPassword = $_POST['new-password'];
             $user = retrieve_person($userID);
-            if (!password_verify($password, $user->get_password())) {
+            if ($password!= $user->get_password()) {
                 $error1 = true;
             } else if($password == $newPassword) {     // old password is same as new one
                 $error2 = true;
             } else {
-                $hash = password_hash($newPassword, PASSWORD_BCRYPT);
-                change_password($userID, $hash);
+                //$hash = password_hash($newPassword, PASSWORD_BCRYPT);
+                change_password($userID, $newPassword);
                 header('Location: index.php?pcSuccess');
                 die();
             }
@@ -71,7 +71,7 @@
 <html>
     <head>
         <?php require_once('universal.inc') ?>
-        <title>ODHS Medicine Tracker | Change Password</title>
+        <title> FGP | Change Password</title>
     </head>
     <body>
         <?php require_once('header.php') ?>

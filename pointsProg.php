@@ -1,6 +1,5 @@
 <?php
-
-    // Authors: Harmony Peura and Grayson Jones
+  // Authors: Harmony Peura and Grayson Jones
     // Parses and saves input from the Points Program Form
 
     //session_cache_expire(30);

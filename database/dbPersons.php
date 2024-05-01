@@ -177,9 +177,10 @@ function retrieve_persons_by_username($username) {
         mysqli_close($con);
         return false;
     }
-    elseif (mysqli_num_rows($result)>=2){
-        echo "More than one matching username...<br>";
-    }
+    /*elseif (mysqli_num_rows($result)>=2){
+        //echo "More than one matching username...<br>";
+        
+    }*/
     /*$result_row = mysqli_fetch_assoc($result);
     var_dump($result_row);
     $thePerson = make_a_person($result_row);
@@ -1097,6 +1098,28 @@ function find_user_names($name) {
         mysqli_close($con);
         return $result;
     }
-    
+
+    //updates resmission transition date and sets remission end date to be 1 year after remission trans date
+    function update_remission_trans_date($id, $date) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET remission_trans_date = "' . $date . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        $dateObj=new DateTimeImmutable($date);
+        $new_date=$dateObj->add(new DateInterval('P1Y'));
+        $date_final=$new_date->format("Y-m-d");
+        //date_add($dateObj,date_interval_create_from_date_string("1year"));
+        $query = 'UPDATE dbPersons SET remission_end_date = "' . $date_final . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
+
+    function update_remembrance_date($id, $date) {
+        $con=connect();
+        $query = 'UPDATE dbPersons SET remembrance_date = "' . $date . '" WHERE id = "' . $id . '"';
+        $result = mysqli_query($con,$query);
+        mysqli_close($con);
+        return $result;
+    }
     
     

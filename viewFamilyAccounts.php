@@ -20,7 +20,39 @@
         header('Location: index.php');
         die();
     }
+    // Connect to the database
+$hostname = "localhost"; 
+$database = "fgp";
+$username = "fgp";
+$password = "fgp";
 
+$connection = mysqli_connect($hostname, $username, $password, $database);
+
+// Check if the connection was successful
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Function to delete a family
+function deleteFamily($id) {
+    global $connection; // Access the global $connection variable
+    $query = "DELETE FROM dbPersons WHERE id = '$id' AND (type = 'family' OR type='Family')";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        die("Delete failed: " . mysqli_error($connection));
+    }
+}
+
+
+
+// Handle delete action
+if (isset($_POST['delete'])) {
+    $id = $_POST['id']; // Family ID
+    deleteFamily($id);
+    // Redirect to prevent form resubmission
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
     // Formatting for each row of the table
     // Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
     function displaySearchRow($person){
@@ -31,11 +63,22 @@
             <td>" . $person->get_email() . "</td>
             <td>" . $person->get_status() . "</td>
             <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
-            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>";
-        echo "</tr>";
+            <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>
+            <td>
+            <form method='post'>
+                <input type='hidden' name='id' value='" . $person->get_id() . "'>
+                <button type='submit' name='delete' class='button delete' onclick='return confirmDelete();'>Delete</button>
+            </form>
+            </td>
+            </tr>";
     } 
 ?>
 
+<script>
+function confirmDelete() {
+    return confirm('Are you sure you want to delete this family?');
+}
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -81,6 +124,7 @@
                                     <span class="arrow-down">&#9660;</span>
                                     </th>
                                     <th>Actions</th>
+                                    <th></th>
                                     <th></th>';
                                 echo '</tr>
                             </thead>
