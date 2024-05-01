@@ -1,4 +1,7 @@
 <?php
+    // Authors: Harmony Peura and Grayson Jones
+    // Stores input from the Community Care Package Form into an SQL table.
+
     // Make session information accessible, allowing us to associate
     // data with the logged-in user.
     session_cache_expire(30);
@@ -23,9 +26,11 @@
         die();
     }
     */
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
-        require_once('database/dbCommCare.php'); //changed from dbPointsProg to dbCommCare
+        require_once('database/dbCommCare.php');
+        // Sanitize input
         $args = sanitize($_POST, null);
         $required = array(
             "adultNames", "childrenInfo", "sportsFan", "sitDinner", "fastFood", "sweetTreat", "faveSweet", "faveSalt",
@@ -43,6 +48,7 @@
             }
             require_once('include/output.php');
             
+            // Not used, scared to delete
             $name = htmlspecialchars_decode($args['name']);
             $date = date('l, F j, Y', strtotime($date));
             require_once('database/dbMessages.php');
@@ -62,11 +68,10 @@
         }
     }
 
-    // get animal data from database for form
-    // Connect to database
+    // Also not used, but scared to delete and breaks some sort of dependency
     include_once('database/dbinfo.php'); 
     $con=connect();  
-    // Got rid of animal dbs
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,8 +99,8 @@
                 <!--Sports Fans? If so, what teams do you like? -->
                 <label for="sportsFan">Are you sports fans? <span style="color: red;">*</span></label>
                 <ul>
-                <li><input type="radio" id="sportsYes" name="sportsFan" value=1 required> Yes </li>
-                <li><input type="radio" id="sportsNo" name="sportsFan" value=0> No </li>
+                    <li><input type="radio" id="sportsYes" name="sportsFan" value=1 required> Yes </li>
+                    <li><input type="radio" id="sportsNo" name="sportsFan" value=0> No </li>
                 </ul>
                 <label for="sportsInfo">What teams do you enjoy cheering for? </label>
                 <input type="text" id="sportsInfo" name="sportsInfo" placeholder="Enter team names">
@@ -126,24 +131,24 @@
 
                 <input type="submit" value="Submit">
             </form>
-                <?php if ($date): ?>
-                    <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>
-                <?php else: ?>
-                    <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
-                <?php endif ?>
-                <!-- Require at least one checkbox be checked -->
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        var checkboxes = $('.checkboxes');
-                        checkboxes.change(function(){
-                            if($('.checkboxes:checked').length>0) {
-                                checkboxes.removeAttr('required');
-                            } else {
-                                checkboxes.attr('required', 'required');
-                            }
-                        });
+            <?php if ($date): ?>
+                <a class="button cancel" href="calendar.php?month=<?php echo substr($date, 0, 7) ?>" style="margin-top: -.5rem">Return to Calendar</a>
+            <?php else: ?>
+                <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>
+            <?php endif ?>
+            <!-- Require at least one checkbox be checked -->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    var checkboxes = $('.checkboxes');
+                    checkboxes.change(function(){
+                        if($('.checkboxes:checked').length>0) {
+                            checkboxes.removeAttr('required');
+                        } else {
+                            checkboxes.attr('required', 'required');
+                        }
                     });
-                </script>
+                });
+            </script>
         </main>
     </body>
 </html>

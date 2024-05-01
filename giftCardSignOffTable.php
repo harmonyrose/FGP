@@ -1,8 +1,7 @@
 <?php
-    // Template for new VMS pages. Base your new page on this one
-
-    // Make session information accessible, allowing us to associate
-    // data with the logged-in user.
+    // Authors: Harmony Peura and Grayson Jones
+    // Displays Gift Card Sign Off table, allows families to sign to confirm
+    // that they received their gift cards.
     session_cache_expire(30);
     session_start();
 
@@ -23,7 +22,6 @@
     
 
     // Formatting for each row of the table
-    // Each parent name (get_contact_name) is hyperlinked to their respective familyInfo page so an admin can access their information easily
     function displaySearchRow($person){
         echo "
         <tr>
@@ -50,13 +48,12 @@
                 <div class="happy-toast">Sign-Off Submitted Sucessfully!</div>
         <?php } ?>
         <form id="family-list" class="general" method="get">
-            <!-- The actual table -->
-            <!-- Takes all the families from dbPersons and displays them following the displaySearchRow function above to create a list of families-->
             <?php 
                 require_once('database/dbPointsProg.php');
-                // Get list of families from dbPersons database \\
+                // Get list of families from dbPointsProg, thus only displaying families
+                // that have requested gift cards
                 $people = getall_pointsProgs();
-                // If there are people, create table \\
+                // If there are people, create table
                 if (count($people) > 0) {
                     echo '
                     <div class="table-wrapper">
@@ -78,22 +75,23 @@
                                 echo '</tr>
                             </thead>
                             <tbody class="standout">';
-                    // Show each person as formatted in displaySearchRow above \\
+                    // Show each person as formatted in displaySearchRow
                     foreach ($people as $person) {
                             displaySearchRow($person);
                     }
-                    // End table \\
+                    // End table
                     echo '
                             </tbody>
                         </table>
                     </div>';
                 } else {
-                    // If there are no families, print error message \\
+                    // If there are no families, print error message
                     echo '<div class="error-toast">There are no families.</div>';
                 }
             ?>
             <p></p>
         </form>
+
         <a href="giftCardManagement.php" class="button cancel">Return to Gift Card Management</a>
         <div class="space-below-button"></div>
         <br>
@@ -122,6 +120,6 @@
                 }
             }
         }
-    </script>
+        </script>
     </body>
 </html>

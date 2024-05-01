@@ -1,11 +1,11 @@
 <?php
-    //Author: Lauren Knight
-    //Description: Registration page for new volunteers
+
+    // Authors: Harmony Peura and Grayson Jones
+    // Parses and saves input from the Points Program Form
+
     //session_cache_expire(30);
     //session_start();
-
     require_once('include/input-validation.php');
-
     // $loggedIn = false;
     // if (isset($_SESSION['change-password'])) {
     //     header('Location: changePassword.php');
@@ -24,8 +24,6 @@
         echo 'bad access level';
         die();
     }*/
-    
-
     // if (isset($_SESSION['_id'])) {
     //     header('Location: index.php');
     // } else {
@@ -36,6 +34,7 @@
     //     $_SESSION['_id'] = "guest";
     //     header('Location: personEdit.php?id=new');
     // }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,11 +54,6 @@
                 $ignoreList = array('password');
                 $args = sanitize($_POST, $ignoreList);
                 $_SESSION['form_data'] = $args;
-                // echo "<p>The form was submitted:</p>";
-                // foreach ($args as $key => $value) {
-                //     echo "<p>$key: $value</p>";
-                // }
-
 
                 $required = array('name', 'email', 'address', 'freezer_meals', 'snack_notes',
                 'house_cleaning', 'lawn_care', 'aaa_membership', 'photography', 
@@ -88,8 +82,6 @@
 
                 }
 
-
-
                 $address = $args['address'];
                 $freezer_meals = $args['freezer_meals'];
                 if ($freezer_meals != 2){
@@ -106,7 +98,8 @@
                 $photography = $args['photography'];
                 $house_projects = $args['house_projects'];
                 $financial_relief = $args['financial_relief'];
-                //checkbox fields
+
+                // checkbox fields
                 //Collect allergies selected
                 if(isset($_POST["allergies"])){
                     $allergies = implode(",", $_POST["allergies"]);
@@ -138,7 +131,6 @@
                     $gas = implode(",", $_POST["gas"]);
                 }
 
-
                 // Regular expression pattern to match integers inside parentheses
                 $pattern = '/-(\d+)/';
 
@@ -165,8 +157,7 @@
                     die();
                 }
 
-
-
+                // Optional fields
                 $optional=array('aaa_membership_name', 'aaa_membership_dob');
 
                 if($args['aaa_membership_name']){
@@ -187,7 +178,6 @@
                     $AAA_membership_DOB="";
                 }
 
-                
                 if($points_used > 19){
                     header("Location: pointsProg.php?pointsError");
                     die();
@@ -195,7 +185,7 @@
                 
                 $giftCardPickUp = '';
 
-                // need to incorporate availability here
+                // Make a new PointsProg instance
                 $newpointsprog = new PointsProg(
                     $id, $name, $email, $address, $freezer_meals, 
                     $allergies, $snacks, $snack_notes, 
@@ -206,6 +196,7 @@
                     $giftCardPickUp
                 );
 
+                // Add it to the SQL table
                 $result = add_points_prog($newpointsprog);
                 header("Location: index.php?pointsProgSuccess");
                 if (!$result) {
@@ -221,6 +212,5 @@
                 require_once('pointsProgForm.php'); 
             }
         ?>
-
     </body>
 </html>

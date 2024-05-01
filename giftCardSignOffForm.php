@@ -1,6 +1,7 @@
 <?php
+// Authors: Harmony Peura and Grayson Jones
 
-//loop through families, if ID matches the given family id,
+// Function to display each row in the Gift Card Sign Off table
 function displaySearchRow($famArray){
     $family_id = $_GET['family_id'];
     foreach($famArray as $family){
@@ -43,7 +44,7 @@ function get_family_id(){
     <?php require_once('header.php') ?>
         <h1>Gift Card Sign Off</h1>
         <?php require_once('database/dbPointsProg.php');
-            // Get list of families from dbPersons database \\
+            // Get list of families from dbPointsProg
             $families = getall_pointsProgs();
             $contact_name = get_family_name($families);
 
@@ -51,7 +52,7 @@ function get_family_id(){
         <p>Below is the gift card order information for <?php echo $contact_name ?> and family. </p>
         <form id="sign-off" method="post">
         <?php 
-            //use display function to display family gc info
+            //use display function to display family gift card info
             echo '
                 <div class="table-wrapper">
                     <table class="general" id="familyTable">
@@ -72,15 +73,15 @@ function get_family_id(){
                 </div>';
         ?>
         </form>
-        <p>Please enter your name and today's date as confirmation of this order.</p>
-        <?php $family_id = get_family_id(); ?>
-        <form action="giftCardSignOff.php?family_id=<?php echo urlencode($family_id); ?>" method="POST">
-        <label for="signature">Signature:</label>
-        <input type="text" id="signature" name="signature" required placeholder="Enter contact name"><br><br>
+            <p>Please enter your name and today's date as confirmation of this order.</p>
+            <?php $family_id = get_family_id(); ?>
+            <form action="giftCardSignOff.php?family_id=<?php echo urlencode($family_id); ?>" method="POST">
+            <label for="signature">Signature:</label>
+            <input type="text" id="signature" name="signature" required placeholder="Enter contact name"><br><br>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
-        <input type="submit" value="Submit">
-    </form>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 <html>

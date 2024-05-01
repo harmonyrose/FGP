@@ -1,5 +1,8 @@
 <?php
 
+    // Authors: Harmony Peura and Grayson Jones
+    // HTML form for the Points Program Form, to be filled out by families.
+
     session_cache_expire(30);
     session_start();
     ini_set("display_errors",1);
@@ -21,10 +24,11 @@
     //     echo 'bad access level';
     //     die();
     // }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once('include/input-validation.php');
         require_once('database/dbPointsProg.php');
-        
+        // Sanitize input, check for required fields
         $args = sanitize($_POST, null);
         $required = array(
             "name", "address", "freezer_meals", "allergies", "snacks", "snack_notes", "house_cleaning", "lawn_care",
@@ -41,17 +45,14 @@
                 die();
             }
             require_once('include/output.php');
-            
-
         }
     }
 
-    // get animal data from database for form
-    // Connect to database
+    // Not used, but scared to remove.
     include_once('database/dbinfo.php'); 
     $con=connect();  
 
-    //get all vendors from vendor table
+    // Fetch all gift card vendors to be displayed in the form.
     $sql = "SELECT * FROM `dbGiftCardVendors`";
     $all_vendors = mysqli_query($con,$sql);
 
@@ -176,7 +177,7 @@
                 <label for="name">Gas Gift Cards</label>
                 <p> Please select the gas gift cards you would like.</p>
                 <?php
-                //reset vendors array collection
+                // reset vendors array collection
                 $sql = "SELECT * FROM `dbGiftCardVendors`";
                 $all_vendors = mysqli_query($con,$sql);
                 // Check if there are any vendors

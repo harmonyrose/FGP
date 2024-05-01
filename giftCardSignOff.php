@@ -1,5 +1,7 @@
 <?php
-
+// Authors: Harmony Peura and Grayson Jones
+// Allows families to sign off on gift card receival, saves
+// date of sign off
 require_once('domain/PointsProg.php');
 require_once('database/dbPointsProg.php');
 // Connect to database
@@ -29,15 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
     }
-
     // Close the database connection
     mysqli_close($connection);
-
 
 } else {
     require_once('giftCardSignOffForm.php'); 
 }
-
 header("Location: giftCardSignOffTable.php?signOffSuccess");
 exit;
 ?>

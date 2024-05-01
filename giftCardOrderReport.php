@@ -1,6 +1,9 @@
 <?php
-session_start();
 
+// Authors: Harmony Peura and Grayson Jones
+// Generates the Gift Card Order Report as a CSV file, to be
+// viewed in Excel
+session_start();
 
 //Function to fetch data for the family names
 function fetch_family_names() {
@@ -8,13 +11,10 @@ function fetch_family_names() {
     $con=connect();  
     // Query to fetch required data from the database
     $query = "SELECT * FROM dbPointsProg";
-
     $result = mysqli_query($con, $query);
-
     if (!$result) {
         die("Database query failed: " . mysqli_error($con));
     }
-
     // Fetch data and return as an array
     $family_names = [];
     while ($family= mysqli_fetch_assoc($result)) {
@@ -28,7 +28,6 @@ function fetch_family_names() {
 $family_names = fetch_family_names();
 
 function fetch_all_vendors() {
-
     include_once('database/dbinfo.php'); 
     $con=connect();  
     $sql = "SELECT * FROM `dbGiftCardVendors`";
@@ -43,8 +42,8 @@ function fetch_all_vendors() {
     }
     mysqli_close($con);
     return $vendors;
-
 } 
+
 // Fetch all vendors
 $vendors = fetch_all_vendors();
 // Fetch family name and store-numberofcards string
@@ -53,9 +52,7 @@ function fetch_gcinfo(){
     $con=connect();  
     // Query to fetch required data from the database
     $query = "SELECT name, CONCAT(grocery, ',', gas) AS combined_stores FROM dbPointsProg";
-
     $result = mysqli_query($con, $query);
-
     if (!$result) {
         die("Database query failed: " . mysqli_error($con));
     }
@@ -67,28 +64,22 @@ function fetch_gcinfo(){
     $vendors = fetch_all_vendors();
     // Fetch associative array
     while($row = $result->fetch_assoc()) {
-
         // Split the string by comma to get individual store-name, number pairs
         $store_info_pairs = explode(',', $row['combined_stores']);
-        //print_r($store_info_pairs);
         // Initialize an empty array to store the numbers associated with vendors
         $vendor_numbers = [$row['name']];
-
         // Iterate through each vendor
         foreach ($vendors as $vendor) {
             // Initialize the number as null for the current vendor
             $number = null;
-            
             // Iterate through each store number pair
             foreach ($store_info_pairs as $store_number) {
                 // Split the store number pair into store name and number
                 $store_info = explode('-', $store_number);
-                
                 // Check if the store_info array has both store name and number
                 if (count($store_info) == 2) {
                     $store_name = $store_info[0];
                     $store_num = $store_info[1];
-                    
                     // If the store name matches the current vendor, store the number
                     if ($store_name === $vendor) {
                         $number = $store_num;
@@ -96,14 +87,11 @@ function fetch_gcinfo(){
                     }
                 }else{$number = "-";}
             }
-            
             // Store the number associated with the vendor
             $vendor_numbers[] = $number;
         }
-
         array_push($info, $vendor_numbers);
     }
-
     } else {
         echo "No data found";
     }
@@ -115,28 +103,25 @@ $row_info=fetch_gcinfo();
     
 // Generate CSV file
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //MAKE FILE NAME THE MONTH AND YEAR
+    // MAKE FILE NAME THE MONTH AND YEAR
     // Get the current month and year
     $month = date('F');
     $year = date('Y');
-
     $filename = $month.$year."giftCardOrderReport.csv";
     $fp = fopen($filename, 'w');
     
     // Write CSV header
     $header = array_merge(array('Family'), $vendors);
     fputcsv($fp, $header);
-    
     // Loop through the array and write each array as a row in the CSV file
     foreach ($row_info as $row) {
         fputcsv($fp, $row);
     }
     // Close file pointer
     fclose($fp);
-    //Calculate giftcard order totals
+    // Calculate giftcard order totals
     // Initialize an array to store column totals
     $columnTotals = [];
-
     // Open the CSV file for reading
     if (($handle = fopen($filename, 'r')) !== false) {
         // Loop through each row in the CSV file
@@ -147,7 +132,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (!isset($columnTotals[$columnIndex])) {
                     $columnTotals[$columnIndex] = 0;
                 }
-                
                 // Check if the value is an integer
                 $value = $data[$columnIndex];
                 if (ctype_digit($value)) {
@@ -156,7 +140,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         }
-
         // Close the CSV file
         fclose($handle);
     }
@@ -164,18 +147,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Append the column totals as a new row to the CSV data
     // Initialize the new row with a "Totals:" value for the first column
     $totalsRow = ['Totals:'];
-
     // Append the column totals to the new row, starting from the second column
     foreach ($columnTotals as $total) {
         $cash = '$'.((int)$total * 25); //multiply column total by 25 to create cash amount
         $totalsRow[] = $cash;
     }
-
     // Open the CSV file for appending
     if (($handle = fopen($filename, 'a')) !== false) {
         // Write the new row to the end of the file
         fputcsv($handle, $totalsRow);
-
         // Close the CSV file
         fclose($handle);
     }
@@ -184,7 +164,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Content-Type: application/csv');
     header('Content-Disposition: attachment; filename="' . $filename . '"');
     readfile($filename);
-
     // Delete file
     unlink($filename);
     exit;
@@ -203,29 +182,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="post">
             <br>
             <style>
+                /* Makes the generate order report button look nicer */
                 .generate-csv-btn {
-                    padding: 25px 25px; /* Adjust padding for height and width */
-                    background-color: green; /* Change background color to green */
-                    color: white; /* Change text color to white */
-                    border: none; /* Remove border */
-                    border-radius: 5px; /* Add border radius for rounded corners */
-                    cursor: pointer; /* Change cursor to pointer on hover */
+                    padding: 25px 25px;
+                    background-color: green; 
+                    color: white; 
+                    border: none; 
+                    border-radius: 5px; 
+                    cursor: pointer; 
                     width: auto;
-                    display: inline-block; /* Make the button inline-block to make it respect height */
-                    font-size: 24px; /* Increase font size */
+                    display: inline-block; 
+                    font-size: 24px; 
                 }
-
-                /* Style for hover effect */
                 .generate-csv-btn:hover {
-                    background-color: darkgreen; /* Darken the background color on hover */
+                    background-color: darkgreen; 
                 }
-
-                /* Container to center the button */
                 .button-container {
                     display: flex;
                     justify-content: center;
-                    align-items: flex-start; /* Align items to the start (top) of the container */
-                    height: 40vh; /* Make the container fill 70% of the viewport height */
+                    align-items: flex-start; 
+                    height: 40vh; 
                 }
                 p {
                     margin-left:150px;
