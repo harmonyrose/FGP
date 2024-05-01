@@ -29,6 +29,7 @@
             <td><a href='familyInfo.php?id=" . urlencode($person->get_id()) . "'>" . $person->get_contact_name() . "</a></td>
             <td>" . $person->get_first_name() . "</td>
             <td>" . $person->get_email() . "</td>
+            <td>" . $person->get_status() . "</td>
             <td><a href='modifyFamily.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify</a></td>
             <td><a href='modifyFamilyStatus.php?family_id=" . urlencode($person->get_id()) . "' class='button'>Modify Status</a></td>";
         echo "</tr>";
@@ -71,6 +72,11 @@
                                     </th>
                                     <th onclick="sortTable(3)">
                                     Email Address
+                                    <span class="arrow-up">&#9650;</span>
+                                    <span class="arrow-down">&#9660;</span>
+                                    </th>
+                                    <th onclick="sortTable(4)">
+                                    Status
                                     <span class="arrow-up">&#9650;</span>
                                     <span class="arrow-down">&#9660;</span>
                                     </th>
