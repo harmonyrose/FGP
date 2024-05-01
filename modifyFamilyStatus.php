@@ -10,7 +10,7 @@ require_once('include/input-validation.php');
 <html>
 <head>
     <?php require_once('universal.inc'); ?>
-    <title>FGP|Modify Family Status <?php if ($loggedIn) echo ' New Volunteer' ?></title>
+    <title>FGP|Modify Family Status</title>
 </head>
 <body>
     <?php
@@ -32,11 +32,13 @@ require_once('include/input-validation.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $args = sanitize($_POST);
         
+        //update status to selected status
         if($args['status']){
             $status=$args['status'];
             update_status($person->get_id(),$status);
         }
 
+        //if the other fields were filled, update respective fields
         if(isset($args['remission_trans_date'])){
             $remission_trans_date=$args['remission_trans_date'];
             update_remission_trans_date($person->get_id(), $remission_trans_date);

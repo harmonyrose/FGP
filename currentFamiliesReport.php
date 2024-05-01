@@ -4,13 +4,7 @@ require_once('database/dbPersons.php');
 require_once('domain/Person.php');
 require_once('database/dbinfo.php');
 
-// Connect to the database
-/*$con=connect();
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}*/
+//fetch all data for active families report
 function fetch_active_data(){
     $con=connect();
     $today=date("Y-m-d");
@@ -45,15 +39,14 @@ function fetch_active_data(){
 
 
 
-//fetch family data from dbPersons on all families with status remission or
-//date of remission end has passed, thus they are not in survivor status
+//fetch family data from dbPersons on all families with status remission or survivor
 function fetch_remission_survivor_data(){
     $con=connect();
     $today=date("Y-m-d");
 
     $query="SELECT contact_name, first_name, last_name, remission_end_date, expected_treatment_end_date,
     remission_trans_date, email, phone1, address, location, birthday, diagnosis_date, diagnosis, 
-    hospital, sibling_info,leadVolunteer FROM dbPersons WHERE status = 'Remission' OR remission_end_date>='".$today."';"; 
+    hospital, sibling_info,leadVolunteer FROM dbPersons WHERE status = 'Remission' OR status='Survivor'"; 
     
     $result = mysqli_query($con, $query);
 
@@ -93,7 +86,6 @@ function fetch_stargazer_data(){
 
 // Function to fetch data from the pointsprog 
 function fetch_pointsprog_data() {
-    //global $connection;
     $con=connect();
 
     // Query to fetch required data from the "pointsprog" table
@@ -116,7 +108,6 @@ function fetch_pointsprog_data() {
 
 // Function to fetch data for the Current Families Report
 function fetch_current_families_data() {
-    //global $connection;
     $con=connect();
 
     // Query to fetch required data from the database where type = 'family'

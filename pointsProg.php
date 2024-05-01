@@ -1,8 +1,8 @@
 <?php
     // Author: Lauren Knight
     // Description: Registration page for new volunteers
-    // session_cache_expire(30);
-    // session_start();
+    //session_cache_expire(30);
+     //session_start();
 
     require_once('include/input-validation.php');
 

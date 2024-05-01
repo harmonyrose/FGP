@@ -177,9 +177,10 @@ function retrieve_persons_by_username($username) {
         mysqli_close($con);
         return false;
     }
-    elseif (mysqli_num_rows($result)>=2){
-        echo "More than one matching username...<br>";
-    }
+    /*elseif (mysqli_num_rows($result)>=2){
+        //echo "More than one matching username...<br>";
+        
+    }*/
     /*$result_row = mysqli_fetch_assoc($result);
     var_dump($result_row);
     $thePerson = make_a_person($result_row);
@@ -1098,6 +1099,7 @@ function find_user_names($name) {
         return $result;
     }
 
+    //updates resmission transition date and sets remission end date to be 1 year after remission trans date
     function update_remission_trans_date($id, $date) {
         $con=connect();
         $query = 'UPDATE dbPersons SET remission_trans_date = "' . $date . '" WHERE id = "' . $id . '"';

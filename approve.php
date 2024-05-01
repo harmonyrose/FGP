@@ -1,4 +1,5 @@
 <?php
+//page for admins to approve families for assistance
 
 // Start session
 session_start();
@@ -68,6 +69,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <?php
 // Close the database connection
-//mysqli_close($connection);
 require_once('universal.inc');
 ?>

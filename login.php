@@ -1,5 +1,5 @@
 <?php
-    // Template for new VMS pages. Base your new page on this one
+    // login page for all users
 
     // Make session information accessible, allowing us to associate
     // data with the logged-in user.
@@ -31,8 +31,9 @@
             $users = retrieve_persons_by_username($username);
             //echo "count of users: ". count($users). "<br>";
             //if username is not in system, throw error, doesn't work yet
-            if($users==false){
+            if(!$users){
                 $badLogin=true;
+                header('Location: login.php?badUsername');
             }
             //check array of users, if just one, that is the correct user
             if(count($users)==1){
@@ -108,8 +109,11 @@
             <h1>FGP Login</h1>
             <?php if (isset($_GET['registerSuccess'])): ?>
                 <div class="happy-toast">
-                    Your registration was successful! Please log in below.
-                </div>
+                    Your registration was successful! Please log in below. Your username is your child's first initial followed by
+                    their last name (i.e Jane Smith would be JSmith) and your password is your child's date of birth in YYYY-MM-DD format.
+                    </div>
+            <?php elseif (isset($_GET['badUsername'])): ?>
+                <div class="error-toast">Username is incorrect.</div>
             <?php else: ?>
             <p>Welcome! Please log in below.</p>
             <?php endif ?>
