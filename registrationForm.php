@@ -1,4 +1,4 @@
-?>
+
 <!-- Reused Josh code from vendors it was too clean-->
 
 
@@ -23,9 +23,15 @@
                 <input type="text" id="last-name" name="last-name" required placeholder="Enter volunteers' last name"> 
                 <label for="name">Volunteer Email </label>
                 <input type="text" id="email" name="email" required placeholder="Enter volunteers' email"> 
+                <label for="name">Volunteer Address </label>
+                <input type="text" id="addres" name="addres" required placeholder="Enter volunteers' address"> 
+                <label for="name">Volunteer Email </label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required placeholder="Enter volunteers' phone number"> 
                 <p></p>
                 <input type="submit" value="Add new volunteer">
+                <br></br>
             <a class="button cancel" href="viewVolunteer.php" style="background-color: red">View and delete volunteer</a>
+            <br></br>
             <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to main menu</a>
         </main>
     </body>

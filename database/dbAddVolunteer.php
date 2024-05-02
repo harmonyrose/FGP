@@ -10,7 +10,9 @@ function create_volunteer($volunteer){
     $firstname = $volunteer['first-name'];
     $lastname = $volunteer['last-name'];
     $email = $volunteer['email'];
-    $query = "INSERT INTO dbvolunteer (volunteerID, firstName, lastName, email) VALUES('$id' ,'$firstname', '$lastname', '$email')";
+    $addres = $volunteer['addres'];
+    $phoneNumber = $volunteer['phoneNumber'];
+    $query = "INSERT INTO dbvolunteer (volunteerID, firstName, lastName, email, addres, phoneNumber) VALUES('$id' ,'$firstname', '$lastname', '$email', '$addres','$phoneNumber')";
     try {
         $result = mysqli_query($con, $query);
         mysqli_commit($con);
@@ -84,11 +86,15 @@ function display_volunteer(){ // function to list all volunteers
         $firstName = $result_row['firstName'];
         $lastName = $result_row['lastName'];
         $email = $result_row['email'];
+        $addres = $result_row['addres'];
+        $phoneNumber = $result_row['phoneNumber'];
         echo '<tr>
         <th scope="row">'.$id.'</th>
         <td>'.$firstName.'</td>
         <td>'.$lastName.'</td>
         <td>'.$email.'</td>
+        <td>'.$addres.'</td>
+        <td>'.$phoneNumber.'</td>
         <td>
             <a href="deleteVolunteer.php?volunteerID='.$id.'"class="button delete" id="deleteButton" style="background-color: red">Delete</a>
         </td>
