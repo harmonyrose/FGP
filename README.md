@@ -90,7 +90,7 @@ Below is an in-depth list of features that were implemented within the system
   * Delete Location
 
 ## Design Documentation
-Several types of diagrams describing the design of the ODHS Medicine Tracker, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
+Several types of diagrams describing the design of the FGP Software, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
 
 ## "localhost" Installation
 Below are the steps required to run the project on your local machine for development and/or testing purposes.
@@ -99,18 +99,18 @@ Below are the steps required to run the project on your local machine for develo
   * For Mac, the htdocs path is `/Applications/XAMPP/xamppfiles/htdocs`
   * For Ubuntu, the htdocs path is `/opt/lampp/htdocs/`
   * For Windows, the htdocs path is `C:\xampp\htdocs`
-3. Clone the ODHS Medicine Tracker repo by running the following command: 'https://github.com/crugless54/ODHS-Animal.git'
+3. Clone the ODHS Medicine Tracker repo by running the following command: 'https://github.com/harmonyrose/FGP.git'
 4. Start the XAMPP MySQL server and Apache server
 5. Open the PHPMyAdmin console by navigating to [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
 6. Create a new database named `homebasedb`. With the database created, navigate to it by clicking on it in the lefthand pane
-7. Import the `vms.sql` file located in `htdocs/ODHS-Animal/sql` into this new database
+7. Import the `vms.sql` file located in `htdocs/FGP/sql` into this new database
 8. Create a new user by navigating to `Privileges -> New -> Add user account`
 9. Enter the following credentials for the new user:
   * Name: `homebasedb`
   * Hostname: `Local`
   * Password: `homebasedb`
   * Leave everything else untouched
-10. Navigate to [http://localhost/ODHS-Animal/](http://localhost/ODHS-Animal/) 
+10. Navigate to [http://localhost/FGP/](http://localhost/FGP/) 
 11. Log into the root user account using the username `vmsroot` with password `vmsroot`
 12. Change the root user password to a strong password
 
@@ -130,7 +130,7 @@ Dr. Polack chose SiteGround as the platform on which to host the project. Below 
 Access to the SiteGround Dashboard requires a SiteGround account with access. Access is managed by Dr. Polack.
 
 ### Localhost to Siteground
-Follow these steps to transfter your localhost version of the ODHS Medicine Tracker code to Siteground. For a video tutorial on how to complete these steps, contact Dr. Polack.
+Follow these steps to transfter your localhost version of the Fairy Godmother Project Software code to Siteground. For a video tutorial on how to complete these steps, contact Dr. Polack.
 1. Create an FTP Account on Siteground, giving you the necessary FTP credentials. (Hostname, Username, Password, Port)
 2. Use FTP File Transfer Software (Filezilla, etc.) to transfer the files from your localhost folders to your siteground folders using the FTP credentials from step 1.
 3. Create the following database-related credentials on Siteground under the MySQL tab:
@@ -146,20 +146,16 @@ Follow these steps to transfter your localhost version of the ODHS Medicine Trac
 There may occasionally be a hiccup if the caching system provided by SiteGround decides to cache one of the application's pages in an erroneous way. The cache can be cleared via the Dashboard by navigating to Speed -> Caching on the lefthand side of the control panel, choosing the DYNAMIC CACHE option in the center of the screen, and then clicking the Flush Cache option with a small broom icon under Actions.
 
 ## External Libraries and APIs
-The only outside library utilized by the ODHS Medicine Tracker is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements.
+The only outside library utilized by the FGP Software is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements.
 
 ## Potential Improvements
-Below is a list of improvements that could be made to the system in subsequent semesters.
-* The system could generate emails and send them to users (would require access to an @odhs.com email address)
-  * For user email verification
-  * For password reset
-  * For nofications/messages received (see below)
-* The notification system could be turned into a full-fledged messaging system
-  * The existing dbMessages table is set up to allow this
-* Reports
-  * Additional reports could be added
-  * Visual components could be added (graphs)
-* If a better webhosting option was chosen, file upload for pictures and documents would be better than having to use outside resources such as Google Docs or imgur for file upload
+* Implement incomplete use cases (notifications, reports, viewing received assistance, updating remission to survivor automatically)
+* Remove unused database tables
+* Remove unused PHP files
+* Continue testing for edge cases
+* Implement more robust error handling for forms
+* Implement search feature for families, volunteers, vendors, and admins
+
 
 ## License
 The project remains under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl.txt).
