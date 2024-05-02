@@ -76,7 +76,7 @@ function buildSelect($name, $disabled=false, $selected=null) {
             <label for="address2">Address Line 2</label>
             <input type="text" id="address2" name="address2" placeholder="">
 
-            <label for="city"><City</label>
+            <label for="city">City</label>
             <input type="text" id="city" name="city" required placeholder="Enter your city">
 
             <label for="state">State</label>
