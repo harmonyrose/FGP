@@ -5,12 +5,7 @@
 ## May 2024
 
 
-Contributor: Gabe Carlton
-Contributor: Harmony Peura
-Contributor: Grayson Jones
-Contributor: Eric Bae
-Contributor: Joshua Cottrell
-Contributor: Aelliana Seidenstein
+Contributors: Eric Bae, Gabe Carlton, Joshua Cottrell, Grayson Jones, Harmony Peura, Aelliana Seidenstein
 
 
 ## Purpose
