@@ -41,38 +41,38 @@ There is also a root admin account with username and password'vmsroot'.
 
 ## Features
 Features in the system are as follows:
-*Login
-*View account information
-*Modify account information
-*Update password (admin/super admin)
-*Fill out community care package form (family)
-*Create family account
-*Admin Account Module 
-  *View admin accounts
-  *Modify admin accounts
-  *Add admin accounts
-  *Delete admin accounts
-*Family Account Module 
-  *View family accounts
-  *Modify family accounts
-  *Change family status
-  *Delete family accounts  
-  *Approve family account
-*Reports Module
-  *Generate current families report
-  *Generate remission/survivor report
-  *Generate stargazer report
-*Gift card module (admin unless noted)
-  *Fill out points program form (for families)
-  *Sign off on gift card receival (families)
-  *Add gift card vendor
-  *Delete gift card vendor
-  *View gift card vendors
-  *Generate gift card order
-  *View past gift card order reports
-  *View gift card sign off
-  *Facilitate gift card sign off
-  *Generate gift card sign off form
+* Login
+* View account information
+* Modify account information
+* Update password (admin/super admin)
+* Fill out community care package form (family)
+* Create family account
+* Admin Account Module 
+  * View admin accounts
+  * Modify admin accounts
+  * Add admin accounts
+  * Delete admin accounts
+* Family Account Module 
+  * View family accounts
+  * Modify family accounts
+  * Change family status
+  * Delete family accounts  
+  * Approve family account
+* Reports Module
+  * Generate current families report
+  * Generate remission/survivor report
+  * Generate stargazer report
+* Gift card module (admin unless noted)
+  * Fill out points program form (for families)
+  * Sign off on gift card receival (families)
+  * Add gift card vendor
+  * Delete gift card vendor
+  * View gift card vendors
+  * Generate gift card order
+  * View past gift card order reports
+  * View gift card sign off
+  * Facilitate gift card sign off
+  * Generate gift card sign off form
 
 ## Design Documentation
 Several types of diagrams describing the design of the FGP Software, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
