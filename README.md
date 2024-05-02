@@ -40,54 +40,39 @@ SuperAdmins inherit all the Admin abilities and can also add/modify/delete Admin
 There is also a root admin account with username and password'vmsroot'.
 
 ## Features
-Below is an in-depth list of features that were implemented within the system
-* User registration and log in
-* Dashboard
-* User Management
-  * Change own password
-  * View volunteer hours (print-friendly)
-  * Modify profile
-  * Modify user status
-  * Modify user role (AKA access level) (SuperAdmin only)
-  * Reset password
-  * User search
-* Appointments and Appointment Management
-  * Calendar with appointment listings
-  * Calendar day view with appointment listings
-  * Appointment search
-  * Appointment details page
-  * Volunteer event sign up
-  * Assign Volunteer to event
-  * Attach event training media (links, pictures, videos)
-  * Attach post-event media (Admin/SuperAdmin only)
-  * View Appointment Roster (print-friendly)
-  * Modify appointment details
-  * Create new appointment
-  * Delete appointment
-  * Complete appointment
-* Reports (print-friendly)
-  * General Animal Reports
-* Notification system, with notifications generated when
-  * A user signs up for an event (sent to all staff members)
-  * A user is assigned to an event by a staff member (sent to that volunteer)
-  * A new event is created by a staff member (sent to all users)
-  * An appointment is close
-  * An appointment is due today
-  * An appointment is overdue
-* Animal Management
-  * Create Animals
-  * Modify Animals
-  * Delete Animals
-  * Archive Animals
-  * Search Animals in the database
-* Services
-  * Create Service
-  * Modify Service
-  * Delete Service
-* Locations
-  * Create Location
-  * Modify Location
-  * Delete Location
+Features in the system are as follows:
+*Login
+*View account information
+*Modify account information
+*Update password (admin/super admin)
+*Fill out community care package form (family)
+*Create family account
+*Admin Account Module 
+  *View admin accounts
+  *Modify admin accounts
+  *Add admin accounts
+  *Delete admin accounts
+*Family Account Module 
+  *View family accounts
+  *Modify family accounts
+  *Change family status
+  *Delete family accounts  
+  *Approve family account
+*Reports Module
+  *Generate current families report
+  *Generate remission/survivor report
+  *Generate stargazer report
+*Gift card module (admin unless noted)
+  *Fill out points program form (for families)
+  *Sign off on gift card receival (families)
+  *Add gift card vendor
+  *Delete gift card vendor
+  *View gift card vendors
+  *Generate gift card order
+  *View past gift card order reports
+  *View gift card sign off
+  *Facilitate gift card sign off
+  *Generate gift card sign off form
 
 ## Design Documentation
 Several types of diagrams describing the design of the FGP Software, including sequence diagrams and use case diagrams, are available. Please contact Dr. Polack for access.
@@ -149,7 +134,8 @@ There may occasionally be a hiccup if the caching system provided by SiteGround 
 The only outside library utilized by the FGP Software is the jQuery library. The version of jQuery used by the system is stored locally within the repo, within the lib folder. jQuery was used to implement form validation and the hiding/showing of certain page elements.
 
 ## Potential Improvements
-* Implement incomplete use cases (notifications, reports, viewing received assistance, updating remission to survivor automatically)
+* Implement incomplete use cases (notifications, reports, viewing received assistance)
+* Updating remission to survivor automatically could be implemented more robustly, current implementation does not change status in back-end and instead check for remission end dat
 * Remove unused database tables
 * Remove unused PHP files
 * Continue testing for edge cases
