@@ -135,7 +135,7 @@ The only outside library utilized by the FGP Software is the jQuery library. The
 
 ## Potential Improvements
 * Implement incomplete use cases (notifications, reports, viewing received assistance)
-* Updating remission to survivor automatically could be implemented more robustly, current implementation does not change status in back-end and instead check for remission end dat
+* Updating remission to survivor automatically could be implemented more robustly, current implementation does not change status in back-end and instead check for remission end date
 * Remove unused database tables
 * Remove unused PHP files
 * Continue testing for edge cases
