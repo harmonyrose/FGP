@@ -1,11 +1,12 @@
 
 
 
-# Old Dominion Humane Society (ODHS) Medicine Tracker
+## Fairy Godmother Project (FGP) Software
+## May 2024
 
 
-Contributer: Gabe Carlton
-Contributer: Harmony Peura
+Contributor: Gabe Carlton
+Contributor: Harmony Peura
 Contributor: Grayson Jones
 Contributor: Eric Bae
 Contributor: Joshua Cottrell
@@ -13,9 +14,12 @@ Contributor: Aelliana Seidenstein
 
 
 ## Purpose
-This project is the result of a semesters' worth of collaboration among UMW students. The goal of the project was to create a web application that the Old Dominion Humane Society organization could utilize to make it easier to manage animals and the medicines/medical treatments/vaccines that these animals recieve at the ODHS. At-a-glance features include a web-based calendar of events, event sign up, volunteer registration & login system, reporting system, basic notification system, animal registration/archiving/report generation, and location and service creation.
+This project is the result of a semesters' worth of collaboration among UMW students. The goal of the project was to create a web application that the Fairy Godmother Project could utilize to make it easier to provide assistance to families battling pediatric cancer. At a glance, families can create an account, log in, and fill out the Points Program Form and Community Care Package Form to request assistance. They can also view their own account information. Administrators can view and modify families and manage gift cards (to be provided to families). Superadministrators can manage other admin accounts. 
 
 ## Authors
+
+The FGP Software was built on the base code taken from the ODHS Medicine Tracker.
+
 The ODHS Medicine Tracker is based on an old open source project named "Homebase". [Homebase](https://a.link.will.go.here/) was originally developed for the Ronald McDonald Houses in Maine and Rhode Island by Oliver Radwan, Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
 
 Modifications to the original Homebase code were made by the Fall 2022 semester's group of students. That team consisted of Jeremy Buechler, Rebecca Daniel, Luke Gentry, Christopher Herriott, Ryan Persinger, and Jennifer Wells.
@@ -24,18 +28,21 @@ A major overhaul to the existing system took place during the Spring 2023 semest
 
 The Gwyneth's Gifts VMS code was modified in the Fall of 2023, revamping the code into the present ODHS Medicine Tracker code. Many of the existing database tables were reused, and many other tables were added. Some portions of the software's functionality were reused from the Gwyneth's Gifts VMS code. Other functions were created to fill the needs of the ODHS Medicine Tracker. The team that made these modifications and changes consisted of Garrett Moore, Artis Hart, Riley Tugeau, Julia Barnes, Ryan Warren, and Collin Rugless.
 
+Finally, the code was taken over and overhauled for the Fairy Godmother Project in the Spring of 2024. This effort was done by Eric Bae, Gabe Carlton, Josh Cottrell, Grayson Jones, Harmony Peura, and Aelliana Seidenstein. 
+
 ## User Types
-There are two types of users (also referred to as 'roles') within the ODHS.
+There are three types of users within the FGP software.
+* Families
 * Admins
 * SuperAdmins
 
-SuperAdmins have the ability to manage users, generate reports, assign users to events, reset user passwords, and modify a user's status.
+Families have the ability to create an account, log in, fill out the Points Program Form, fill out the Community Care Package form, and view their own account information.
 
-Admins have all of the abilities that SuperAdmins have, but they cannot modify other users information.
+Admins have the ability to approve family accounts, view families, modify families, delete families, add/delete volunteers, manage gift cards, update passwords, and generate reports. 
 
-Users of any type can have their status changed by SuperAdmins to Inactive to prevent them from signing up for events. Inactive users will also stop appearing in the list of volunteers available to be assigned. Additionally, the reports page allows staff members to filter out inactive users.
+SuperAdmins inherit all the Admin abilities and can also add/modify/delete Admin accounts. 
 
-There is also a root admin account with username 'vmsroot'. The default password for this account is 'vmsroot', but it must be changed upon initial log in. This account has hardcoded SuperAdmin privileges but cannot be assigned to events and does not have a user profile. It is crucial that this account be given a strong password and that the password be easily remembered, as it cannot easily be reset. This account should be used for system administration purposes only.
+There is also a root admin account with username and password'vmsroot'.
 
 ## Features
 Below is an in-depth list of features that were implemented within the system
