@@ -62,7 +62,7 @@
             // }
 
             $required = array(
-                'volunteerID','first-name', 'last-name', 'email'
+                'volunteerID','first-name', 'last-name', 'email', 'addres', 'phoneNumber'
             );
             $errors = false;
             //$first = $args['first-name'];

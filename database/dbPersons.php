@@ -50,7 +50,7 @@ function add_person($person) {
             $person->get_relation() . '","' .
             $person->get_contact_time() . '","' .
             $person->get_cMethod() . '","' . 
-            implode(',', $person->get_type()) . '","' .
+            $person->get_type() . '","' .
             $person->get_status() . '","' .
             implode(',', $person->get_availability()) . '","' .
             implode(',', $person->get_schedule()) . '","' .

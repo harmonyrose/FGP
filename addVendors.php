@@ -1,8 +1,7 @@
-<!-- addVendors.php-->
-<!-- Form admins will use to add new vendors to dbGiftCardVendors -->
-<!-- Joshua Cottrell -->
-
 <?php
+// <!-- addVendors.php-->
+// <!-- Form admins will use to add new vendors to dbGiftCardVendors -->
+// <!-- Joshua Cottrell -->
 
 
     // Make session information accessible, allowing us to associate

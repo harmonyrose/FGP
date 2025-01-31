@@ -28,6 +28,10 @@ function connect() {
         $user = "uybhc603shfl5";
         $pass = "f11kwvhy4yic";
         $database = "dbwgyuabseaoih";
+    } else if ($_SERVER['SERVER_NAME']== 'fgpfamily.org'){
+        $user="ucgw6mfdrbvqn";
+        $pass="k62pgs7ad8bg";
+        $database="dbnaaivhtxnxp7";
     }
     $con = mysqli_connect($host,$user,$pass,$database);
     if (!$con) { echo "not connected to server"; return mysqli_error($con);}

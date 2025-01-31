@@ -65,6 +65,7 @@
                         $inboxIcon = 'inbox-unread.svg';
                     }
                 ?>
+                <!-- Not-Implemented Notification Module
                 <div class="dashboard-item" data-link="inbox.php">
                     <img src="images/<?php echo $inboxIcon ?>">
                     <span>Notifications<?php 
@@ -73,6 +74,13 @@
                         }
                     ?></span>
                 </div>
+                -->
+                <!--<?php if ($_SESSION['access_level'] >= 2): ?>
+                <div class="dashboard-item" data-link="createAccount.php">
+                     <img src="images/create-report.svg">
+                    <span>Create Family Account Form</span>
+                </div>
+                <?php endif ?>-->
                 <div class="dashboard-item" data-link="pointsProg.php">
                      <img src="images/create-report.svg">
                     <span>Points Program Form</span>
@@ -158,12 +166,18 @@
                 <div class="dashboard-item" data-link="currentFamiliesReport.php">
                     <img src="images/person-search.svg">
                     <span>Family Report</span>
+                </div><?php if ($_SESSION['access_level'] >= 2): ?>
+                <div class="dashboard-item" data-link="createAccount.php">
+                     <img src="images/create-report.svg">
+                    <span>Create Family Account Form</span>
                 </div>
+                <?php endif ?>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>
                 </div>
+                
             </div>
         </main>
     </body>

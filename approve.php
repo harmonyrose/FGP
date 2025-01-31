@@ -11,7 +11,8 @@ require_once('database/dbPersons.php');
 if (isset($_POST['approve'])) {
     $id = $_POST['id']; // Family ID
     update_status($id, 'Active'); // Set status to 'Active'
-    header("Location: familyServiceDoc.php?id=$id"); // Redirect to familyServiceDoc.php after approving
+    //header("Location: familyServiceDoc.php?id=$id"); // Redirect to familyServiceDoc.php after approving
+    echo "<script>document.location = 'familyServiceDoc.php?id=".$id."';</script>";
     exit; // Stop further execution
 } elseif (isset($_POST['reject'])) {
     $id = $_POST['id']; // Family ID
@@ -41,7 +42,7 @@ if (!$result) {
 while ($row = mysqli_fetch_assoc($result)) {
     ?>
     <tr>
-        <td style="text-align: center; padding: 10px;"><?php echo $row['last_name']; ?></td>
+        <td style="text-align: center; padding: 10px;"><?php echo "<a href=\"familyInfo.php?id=" . $row['id'] ."\">"?><?php echo $row['last_name']; ?></td>
         <td style="text-align: center; padding: 10px;"><?php echo $row['email']; ?></td>
         <td style="text-align: center; padding: 10px;">
     <?php

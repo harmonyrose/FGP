@@ -1,27 +1,17 @@
 <?php
 session_start();
 require_once('header.php');
+require_once('database/dbinfo.php');
 
-// Connect to the database
-$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+$con = connect();
 
 // Function to update family information
 function update_family_info($id, $location, $start_date, $lead_volunteer, $gift_card_delivery_method) {
-    global $connection; // Access the global $connection variable
+    global $con; // Access the global $connection variable
     $query = "UPDATE dbPersons SET location = '$location', start_date = '$start_date', leadVolunteer = '$lead_volunteer', gift_card_delivery_method = '$gift_card_delivery_method' WHERE id = '$id'";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($con, $query);
     if (!$result) {
-        die("Update failed: " . mysqli_error($connection));
+        die("Update failed: " . mysqli_error($con));
     }
 }
 
@@ -37,14 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     update_family_info($id, $location, $start_date, $lead_volunteer, $gift_card_delivery_method);
     // Display success message
     echo "Update successful.";
-    header("Location: approve.php");
+    //header("Location: approve.php");
+    echo "<script>document.location = 'index.php';</script>";
 }
 
 // Retrieve family information
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "SELECT * FROM dbPersons WHERE id = '$id'";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($con, $query);
     if (!$result) {
         die("Database query failed.");
     }
@@ -56,7 +47,7 @@ if (isset($_GET['id'])) {
 }
 
 $sql = "SELECT firstName, lastName FROM dbVolunteer";
-$result = mysqli_query($connection, $sql);
+$result = mysqli_query($con, $sql);
 $leadVolunteers = []; // Initialize an empty array to store lead volunteers
 
 // Check if there are results

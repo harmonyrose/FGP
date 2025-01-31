@@ -1,7 +1,8 @@
 <?php
 //View list of all admins in the system, gives option to delete or modify any admin
+session_cache_expire(30);
 session_start();
-require_once('header.php');
+//require_once('header.php');
 require_once('database/dbinfo.php');
 
 //connect to database
@@ -25,12 +26,14 @@ if (isset($_POST['delete'])) {
     $id = $_POST['id']; // Admin ID
     delete_admin($id);
     // Redirect to prevent form resubmission
+    //header("Location: viewAdmin.php");
     header("Location: ".$_SERVER['PHP_SELF']);
     exit();
 }
 else if(isset($_POST['modify'])){
     $id = $_POST['id']; // Family ID
-    header("Location: modifyAdminForm.php?id=$id");
+    //header("Location: modifyAdminForm.php?id=$id");
+    echo "<script>document.location = 'modifyAdminForm.php?id=".$id."';</script>";
 }
 
 

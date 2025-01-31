@@ -5,7 +5,8 @@
     // data with the logged-in user.
     session_cache_expire(30);
     session_start();
-
+    require_once('database/dbinfo.php');
+    
     $loggedIn = false;
     $accessLevel = 0;
     $userID = null;
@@ -21,25 +22,15 @@
         die();
     }
     // Connect to the database
-$hostname = "localhost"; 
-$database = "fgp";
-$username = "fgp";
-$password = "fgp";
-
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-// Check if the connection was successful
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+    $con = connect();
 
 // Function to delete a family
 function deleteFamily($id) {
-    global $connection; // Access the global $connection variable
+    global $con; // Access the global $connection variable
     $query = "DELETE FROM dbPersons WHERE id = '$id' AND (type = 'family' OR type='Family')";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($con, $query);
     if (!$result) {
-        die("Delete failed: " . mysqli_error($connection));
+        die("Delete failed: " . mysqli_error($con));
     }
 }
 

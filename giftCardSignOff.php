@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the query
     if (mysqli_query($connection, $sql)) {
-        echo "Date inserted successfully into dbPointsProg";
+        //echo "Date inserted successfully into dbPointsProg";
+        header("Location: giftCardSignOffTable.php?signOffSuccess");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
     }
@@ -36,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
     require_once('giftCardSignOffForm.php'); 
+    
 }
-header("Location: giftCardSignOffTable.php?signOffSuccess");
+
 exit;
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-    session_cache_expire(30);
-    session_start();
+    // session_cache_expire(30);
+    // session_start();
     ini_set("display_errors",1);
     error_reporting(E_ALL);
 
@@ -15,9 +15,9 @@
         $userID = $_SESSION['_id'];
     } 
 
-    // Do not require admin perms
+    // Require admin perms
     if ($accessLevel < 1) {
-        header('Location: login.php');
+        echo "<script>document.location = 'index.php';</script>";
         echo 'bad access level';
         die();
     }
@@ -29,7 +29,7 @@
         $pointsProg = retrieve_points_prog_by_email($_GET['id']);
         // If the family hasn't filled out their points program form, we have nothing to show them, so redirect back to familyinfo with an error
         if (!$pointsProg) {
-            header('Location: familyInfo.php?id=' . $_GET['id'] . '&pointsProgError=1');
+            echo "<script>document.location = 'familyInfo.php?id='" . $_GET['id'] . "'&pointsProgError=1';</script>";
         }
         // Otherwise continue
     }
@@ -94,13 +94,13 @@
                 </p>
                 <p>Please fill out the form below. Required fields are marked with an asterisk (<span style="color: red;">*</span>)</p>
                 <label for="name">Name </label>
-                <input type="text" id="name" name="name" required placeholder="Enter contact name" value="<?php echo $person->get_first_name(); ?>">
+                <input type="text" id="name" name="name" required placeholder="Enter contact name" value="<?php echo $pointsProg->getName(); ?>">
 
                 <label for="email">Email </label>
-                <input type="text" id="email" name="email" required placeholder="Enter email" value="<?php echo $person->get_email(); ?>">
+                <input type="text" id="email" name="email" required placeholder="Enter email" value="<?php echo $pointsProg->getEmail(); ?>">
 
                 <label for="address">Address </label>
-                <input type="text" id="address" name="address" required placeholder="Enter address" value="<?php echo $person->get_address(); ?>">
+                <input type="text" id="address" name="address" required placeholder="Enter address" value="<?php echo $pointsProg->getAddress(); ?>">
 
                 <label for="freezer_meals_and_snacks">Freezer Meals & Snacks </label>
                     <p><b>We offer two freezer meals and snacks per month at NO CHARGE to your points.</b> 
@@ -131,8 +131,26 @@
                 <li><input type="checkbox" id="egg" name="allergies[]" value="egg" <?php if(in_array('egg', explode(",", $pointsProg->getAllergies()))) echo 'checked'; ?>> Egg</li>
                 <li><input type="checkbox" id="dairy" name="allergies[]" value="dairy" <?php if(in_array('dairy', explode(",", $pointsProg->getAllergies()))) echo 'checked'; ?>> Dairy</li>
                 <li><input type="checkbox" id="no allergies" name="allergies[]" value="no allergies" <?php if(in_array('no allergies', explode(",", $pointsProg->getAllergies()))) echo 'checked'; ?>> No Known Allergies</li>
-                <li><input type="checkbox" id="otherAllergy" name="otherAllergy" value="other" <?php if(in_array('other', explode(",", $pointsProg->getAllergies()))) echo 'checked'; ?>> Other:</li>
-                <li><input type= "text" name="otherAllergyText" placeholder="Enter other allergy"></li>
+
+                <?php
+                $allergies = explode(",", $pointsProg->getAllergies());
+
+                // Check if "other:" exists in the snacks string
+                $otherExists = false;
+                $otherNote = '';
+
+                foreach ($allergies as $allergy) {
+                    if (strpos($allergy, "Other:") !== false) {
+                        $otherExists = true;
+                        // Extract the note after "other:"
+                        $otherNote = trim(substr($allergy, strpos($allergy, "other:") + strlen("other:")));
+                        break;
+                    }
+                }
+                ?>  
+
+                <li><input type="checkbox" id="otherAllergy" name="otherAllergy" value="other" <?php if ($otherExists) echo 'checked'; ?>> Other:</li>
+                <li><input type= "text" name="otherAllergyText" value="<?php echo $otherNote; ?>" placeholder="Enter other allergy"></li>
                 </ul>
 
                 <label for="snacks">What types of snacks do you prefer?  We will do our best to accommodate.  Please note that these are examples and not an all inclusive list. </label>
@@ -144,8 +162,25 @@
                 <li><input type="checkbox" id="cereal" name="snacks[]" value="cereal" <?php if(in_array('cereal', explode(",", $pointsProg->getSnacks()))) echo 'checked'; ?>> Cereal</li>
                 <li><input type="checkbox" id="nuts" name="snacks[]" value="nuts" <?php if(in_array('nuts', explode(",", $pointsProg->getSnacks()))) echo 'checked'; ?>> Nuts</li>
                 <li><input type="checkbox" id="fruitsnacks" name="snacks[]" value="fruit snacks" <?php if(in_array('fruit snacks', explode(",", $pointsProg->getSnacks()))) echo 'checked'; ?>> Fruit Snacks</li>
-                <li><input type="checkbox" id="otherSnack" name="otherSnack" value="other" <?php if(in_array('other', explode(",", $pointsProg->getSnacks()))) echo 'checked'; ?>> Other:</li>
-                <li><input type= "text" name="otherSnackText" placeholder="Enter other snack"></li>
+                <?php
+                $snacks = explode(",", $pointsProg->getSnacks());
+
+                // Check if "other:" exists in the snacks string
+                $otherExists = false;
+                $otherNote = '';
+
+                foreach ($snacks as $snack) {
+                    if (strpos($snack, "Other:") !== false) {
+                        $otherExists = true;
+                        // Extract the note after "other:"
+                        $otherNote = trim(substr($snack, strpos($snack, "other:") + strlen("other:")));
+                        break;
+                    }
+                }
+                ?>
+
+                <li><input type="checkbox" id="otherSnack" name="otherSnack" value="other" <?php if ($otherExists) echo 'checked'; ?>> Other:</li>
+                <li><input type="text" name="otherSnackText" value="<?php echo $otherNote; ?>" placeholder="Enter other snack"></li>
                 </ul>
 
                 <label for="snack_notes">Are there any snacks that your child/children do not prefer or will not eat? Is there anything else we should know when considering snacks for your family? </label>
@@ -160,60 +195,68 @@
                     you would like.
                 </p>
                 <?php
-                // Check if there are any vendors
-                if (mysqli_num_rows($all_vendors) > 0) {
-                    // Loop through each row in the result set
-                    while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
-                        // Check if the vendor type is "grocery"
-                        if ($vendor['vendorType'] == "grocery") {
-                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
-                            echo '<select name="grocery[]" id="'. $vendor['vendorName'] .'">';
-                            echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
-                            $numCards = 1;
-                            for ($i = 25; $i <= 400; $i += 25) {
-                                $value = $vendor['vendorName'] . "-" . $numCards ;
-                                echo '<option value="'. $value .'" id="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
-                                $numCards++;
+                    // Check if there are any vendors
+                    if (mysqli_num_rows($all_vendors) > 0) {
+                        // Loop through each row in the result set
+                        while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
+                            // Check if the vendor type is "grocery"
+                            if ($vendor['vendorType'] == "grocery") {
+                                echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
+                                echo '<select name="grocery[]" id="'. $vendor['vendorName'] .'">';
+                                echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
+                                $numCards = 1;
+                                for ($i = 25; $i <= 400; $i += 25) {
+                                    $value = $vendor['vendorName'] . "-" . $numCards ;
+                                    $optionText = '$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)';
+                                    $selected = ($value === $pointsProg->getGrocery()) ? 'selected' : '';
+                                    echo '<option value="'. $value .'" id="'. $value .'" '.$selected.'>'.$optionText.'</option>';
+                                    $numCards++;
+                                }
+                                echo '</select>';
                             }
-                            echo '</select>';
                         }
-                    }
-                } else {
+                    } else {
                         // Handle case when there are no vendors
                         echo "No vendors found.";
-                }
+                    }
                 ?>
+
                     
                 <br><br>
                 <label for="name">Gas Gift Cards</label>
                 <p> Please select the gas gift cards you would like.</p>
                 <?php
-                //reset vendors array collection
-                $sql = "SELECT * FROM `dbGiftCardVendors`";
-                $all_vendors = mysqli_query($con,$sql);
-                // Check if there are any vendors
-                if (mysqli_num_rows($all_vendors) > 0) {
-                    // Loop through each row in the result set
-                    while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
-                        // Check if the vendor type is "gas"
-                        if ($vendor['vendorType'] == "gas") {
-                            echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
-                            echo '<select name="gas[]" id="'. $vendor['vendorName'] .'">';
-                            echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
-                            $numCards = 1;
-                            for ($i = 25; $i <= 400; $i += 25) {
-                                $value = $vendor['vendorName'] ."-". $numCards ;
-                                echo '<option value="'. $value .'" id ="'. $value .'">$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)</option>';
-                                $numCards++;
+                    // Reset vendors array collection
+                    $sql = "SELECT * FROM `dbGiftCardVendors`";
+                    $all_vendors = mysqli_query($con, $sql);
+                    // Check if there are any vendors
+                    if (mysqli_num_rows($all_vendors) > 0) {
+                        // Loop through each row in the result set
+                        while ($vendor = mysqli_fetch_array($all_vendors, MYSQLI_ASSOC)) {
+                            // Check if the vendor type is "gas"
+                            if ($vendor['vendorType'] == "gas") {
+                                echo '<label for="'. $vendor['vendorName'] .'">'. $vendor['vendorName'] .'</label>';
+                                echo '<select name="gas[]" id="'. $vendor['vendorName'] .'">';
+                                echo '<option value="none">No '. $vendor['vendorName'] .' Gift Cards</option>';
+                                $numCards = 1;
+                                $gasOptions = explode(",", $pointsProg->getGas());
+                                for ($i = 25; $i <= 400; $i += 25) {
+                                    $value = $vendor['vendorName'] ."-". $numCards ;
+                                    $optionText = '$'. $i .' '. $vendor['vendorName'] . ' Gift Card ('. ($i / 25) .' points)';
+                                    $selected = (in_array($value, $gasOptions)) ? 'selected' : '';
+                                    echo '<option value="'. $value .'" id="'. $value .'" '. $selected .'>'. $optionText .'</option>';
+                                    $numCards++;
+                                }
+                                echo '</select>';
                             }
-                            echo '</select>';
                         }
-                    }
-                } else {
+                    } else {
                         // Handle case when there are no vendors
                         echo "No vendors found.";
-                }
+                    }
                 ?>
+
+
                 <br><br>
                 <label for="house_cleaning">Would you like house cleaning? </label>
                 <ul>
@@ -272,6 +315,7 @@
                 <li><input type="radio" id="relief_not_interested" name="financial_relief" value="Not interested" <?php if($pointsProg->getFinancialRelief() == 0) echo 'checked'; ?>> We are not interested in financial relief</li>
                 </ul>
                 <br>
+                <input type="submit" name="form_data" value="Submit">
                 <a class="button cancel" style="margin-top: 30px" href="<?php echo 'familyInfo.php?id=' . $_GET['id']?>">Return to Family Information</a>
             </form>
 

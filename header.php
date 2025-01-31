@@ -72,6 +72,7 @@
         $permission_array['registeradminform.php'] = 1;
         $permission_array['registeradmin.php'] = 1;
         $permission_array['viewfamilyaccounts.php'] = 1;
+        $permission_array['viewpointsprog.php'] = 1;
         //pages only managers can view
         $permission_array['register.php'] = 2;
         $permission_array['personsearch.php'] = 2;
@@ -84,8 +85,8 @@
         $permission_array['modifyuserrole.php'] = 2;
         $permission_array['viewpointsprogform.php'] = 2;
 
-        $permission_array['pointsprog.php'] = 1;
-        
+        $permission_array['pointsprog.php'] = 0;
+        $permission_array['pointsprogform.php'] = 0;
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -109,9 +110,10 @@
         $permission_array['currentfamiliesreport.php'] = 2;
         $permission_array['viewvolunteer.php'] = 2;
         $permission_array['giftcardorderreport.php'] = 2;
+        $permission_array['viewfamilycommcareform.php'] = 2;
         $permission_array['viewfamilycommcare.php'] = 2;
         $permission_array['giftcardsignofftable.php'] = 2;
-        $permission_array['commcare.php'] = 1;
+        $permission_array['commcare.php'] = 0;
         //need to update permission later
         $permission_array['modifyadminform.php'] = 0;
         $permission_array['modifyfamilystatus.php']=2;

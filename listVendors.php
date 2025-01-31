@@ -1,10 +1,10 @@
-<!-- listVendors.php -->
-<!-- List all the vendors in dbGiftCardVendors so that admins can easily keep track of them -->
-<!-- Also handles deleting vendors -->
-<!-- Joshua Cottrell -->
-
-
 <?php
+// <!-- listVendors.php -->
+// <!-- List all the vendors in dbGiftCardVendors so that admins can easily keep track of them -->
+// <!-- Also handles deleting vendors -->
+// <!-- Joshua Cottrell -->
+
+
     // Template for new VMS pages. Base your new page on this one
 
     // Make session information accessible, allowing us to associate
@@ -13,7 +13,7 @@
     session_start();
 
     $loggedIn = false;
-    $accessLevel = 0;
+    $accessLevel = 1;
     $userID = null;
     if (isset($_SESSION['_id'])) {
         $loggedIn = true;
@@ -23,8 +23,8 @@
     }
     // admin-only access
     if ($accessLevel < 2) {
-        header('Location: index.php');
-        die();
+        echo "<script>document.location = 'index.php';</script>";
+        // die();
     }
 
 

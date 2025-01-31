@@ -144,6 +144,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Close the CSV file
         fclose($handle);
     }
+    // Append the column totals as a new row to the CSV data
+    // Initialize the new row with a "#ofCards:" value for the first column
+    $cardTotals = ['# of Cards:'];
+    // Append the column totals to the new row, starting from the second column
+    foreach ($columnTotals as $total) {
+        $num = $total; 
+        $cardTotals[] = $num;
+    }
+    // Open the CSV file for appending
+    if (($handle = fopen($filename, 'a')) !== false) {
+        // Write the new row to the end of the file
+        fputcsv($handle, $cardTotals);
+        // Close the CSV file
+        fclose($handle);
+    }
 
     // Append the column totals as a new row to the CSV data
     // Initialize the new row with a "Totals:" value for the first column

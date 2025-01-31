@@ -5,34 +5,33 @@
     session_cache_expire(30);
     session_start();
     require_once('include/input-validation.php');
-    // $loggedIn = false;
-    // if (isset($_SESSION['change-password'])) {
-    //     header('Location: changePassword.php');
-    //     die();
-    // }
-    // if (isset($_SESSION['_id'])) {
-    //     $loggedIn = true;
-    //     $accessLevel = $_SESSION['access_level'];
-    //     $userID = $_SESSION['_id'];
-    // }
+    $loggedIn = false;
+    if (isset($_SESSION['_id'])) {
+        $loggedIn = true;
+        $accessLevel = $_SESSION['access_level'];
+        $userID = $_SESSION['_id'];
+    }
 
     // Require admin privileges
-    /*if ($accessLevel < 2)
+    if ($accessLevel < 2)
     {
-        header('Location: login.php');
+        // header('Location: login.php');
         echo 'bad access level';
-        die();
-    }*/
-    // if (isset($_SESSION['_id'])) {
-    //     header('Location: index.php');
-    // } else {
-    //     $_SESSION['logged_in'] = 1;
-    //     $_SESSION['access_level'] = 0;
-    //     $_SESSION['venue'] = "";
-    //     $_SESSION['type'] = "";
-    //     $_SESSION['_id'] = "guest";
-    //     header('Location: personEdit.php?id=new');
-    // }
+        // die();
+    }
+
+    require_once('database/dbPersons.php');
+    require_once('database/dbPointsProg.php');
+    if (isset($_GET['id'])) {
+        $person = retrieve_person($_GET['id']);
+
+        $pointsProg = retrieve_points_prog_by_email($_GET['id']);
+        // If the family hasn't filled out their points program form, we have nothing to show them, so redirect back to familyinfo with an error
+        if (!$pointsProg) {
+            echo "<script>document.location = 'familyInfo.php?id='" . $_GET['id'] . "'&pointsProgError=1';</script>";
+        }
+        // Otherwise continue
+    }
 
 ?>
 <!DOCTYPE html>
@@ -76,7 +75,7 @@
                 $result = mysqli_query($con, $query);
                 if (mysqli_num_rows($result) == 0) {
                     $errors = true;
-                    header("Location: pointsProg.php?emailError");
+                    header("Location: viewPointsProg.php?emailError");
                     die();
 
                 }
@@ -197,18 +196,18 @@
 
                 // Add it to the SQL table
                 $result = add_points_prog($newpointsprog);
-                header("Location: index.php?pointsProgSuccess");
+                // header("Location: familyInfo.php?pointsProgSuccess");
                 if (!$result) {
                     echo '<p>something went wrong</p>';
                 } else {
                     if ($loggedIn) {
-                        echo '<script>document.location = "index.php?pointsProgSuccess";</script>';
+                        echo '<script>document.location = "familyInfo.php?id=' . $_GET['id'] . '&pointsProgSuccess";</script>';
                     } else {
-                        echo '<script>document.location = "login.php?pointsProgSuccess";</script>';
+                        echo '<script>document.location = "familyInfo.php?pointsProgSuccess";</script>';
                     }
                 }
             } else {
-                require_once('pointsProgForm.php'); 
+                require_once('viewPointsProgForm.php'); 
             }
         ?>
     </body>

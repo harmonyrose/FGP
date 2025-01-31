@@ -54,22 +54,8 @@
     // Get the dbPersons information of the family in the get request so we can display all their information
     $person = retrieve_person($id);
 
-    if (isset($_GET['removePic'])) {
-      if ($_GET['removePic'] === 'true') {
-        remove_profile_picture($id);
-      }
-    }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      if (isset($_POST['url'])) {
-        if (!update_profile_pic($id, $_POST['url'])) {
-          header('Location: familyInfo.php?id='.$id.'&picsuccess=False');
-        } else {
-          header('Location: familyInfo.php?id='.$id.'&picsuccess=True');
-        }
-      }
-    }
-    // echo '<script>alert("Inside the if statement!");</script>';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,6 +75,12 @@
             if (isset($_GET['commCareError'])){
               echo '<div class="error-toast">This family has not filled out their Community Care Package Form</div>';
             }
+            if (isset($_GET['pointsProgSuccess'])) {
+              echo '<div class="happy-toast">Points Program Form Successfully Updated</div>';
+            }
+            if (isset($_GET['commCareSuccess'])) {
+              echo '<div class="happy-toast">Community Care Form Successfully Updated</div>';
+            }
         ?>
         <fieldset>
             <legend>General Information</legend>
@@ -97,7 +89,7 @@
             <label>ID</label>
             <p><?php echo $person->get_id(); ?></p>
             <label>Forms</label>
-            <a href="viewPointsProgForm.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Points Program Form</a>
+            <a href="viewPointsProg.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Points Program Form</a>
             <a href="viewFamilyCommCare.php?id=<?php echo $id?>" class="button" style="width: 30%;">View Community Care Package Form</a>
             <label>Address</label>
             <p><?php echo $person->get_address() . ', ' . $person->get_city() . ', ' . $person->get_state() . ' ' . $person->get_zip() ?></p>

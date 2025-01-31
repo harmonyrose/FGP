@@ -45,6 +45,8 @@
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Phone Number</th>
                         <th scope="col">Operation</th>
                     </tr>
                 </thead>

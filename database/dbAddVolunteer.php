@@ -10,7 +10,9 @@ function create_volunteer($volunteer){
     $firstname = $volunteer['first-name'];
     $lastname = $volunteer['last-name'];
     $email = $volunteer['email'];
-    $query = "INSERT INTO dbvolunteer (volunteerID, firstName, lastName, email) VALUES('$id' ,'$firstname', '$lastname', '$email')";
+    $addres = $volunteer['addres'];
+    $phoneNumber = $volunteer['phoneNumber'];
+    $query = "INSERT INTO dbVolunteer (volunteerID, firstName, lastName, email, addres, phoneNumber) VALUES('$id' ,'$firstname', '$lastname', '$email', '$addres','$phoneNumber')";
     try {
         $result = mysqli_query($con, $query);
         mysqli_commit($con);
@@ -28,7 +30,7 @@ function create_volunteer($volunteer){
 
 // Finds the highest id in the database that is not already used so it can be assigned to the next volunteer.
 function find_next_id() {
-    $query = "SELECT MAX(volunteerID) AS max_id FROM dbvolunteer";
+    $query = "SELECT MAX(volunteerID) AS max_id FROM dbVolunteer";
     $connection = connect();
 
     if (!$connection) {
@@ -67,7 +69,7 @@ function volunteerObj($obj){ // creates a volunteer obj to add inside an array
 }
 
 function display_volunteer(){ // function to list all volunteers
-    $query = "SELECT * FROM dbvolunteer";
+    $query = "SELECT * FROM dbVolunteer";
     $con = connect();
     $result = mysqli_query($con, $query);
     if (!$result) {
@@ -84,11 +86,15 @@ function display_volunteer(){ // function to list all volunteers
         $firstName = $result_row['firstName'];
         $lastName = $result_row['lastName'];
         $email = $result_row['email'];
+        $addres = $result_row['addres'];
+        $phoneNumber = $result_row['phoneNumber'];
         echo '<tr>
         <th scope="row">'.$id.'</th>
         <td>'.$firstName.'</td>
         <td>'.$lastName.'</td>
         <td>'.$email.'</td>
+        <td>'.$addres.'</td>
+        <td>'.$phoneNumber.'</td>
         <td>
             <a href="deleteVolunteer.php?volunteerID='.$id.'"class="button delete" id="deleteButton" style="background-color: red">Delete</a>
         </td>

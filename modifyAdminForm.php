@@ -2,10 +2,9 @@
 //modify other admin account information
 session_cache_expire(30);
 session_start();
-
 require_once('include/input-validation.php');
 
-
+$con = connect();
 ?>
 <!DOCTYPE html>
 <html>

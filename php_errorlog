@@ -1,0 +1,750 @@
+[01-May-2024 17:16:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 21:16:45 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:16:45 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:16:45 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:16:45 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:16:45 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:16:45 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:17:04 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:17:04 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:17:04 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:17:04 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:17:04 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:17:04 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:17:17 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:17:17 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:17:17 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:17:17 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:17:17 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:17:17 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:17:31 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:17:31 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:17:31 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:17:31 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:17:31 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:17:31 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:17:37 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 21:18:14 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:18:14 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:18:14 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:18:14 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:18:14 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:18:14 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:18:46 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:18:46 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:18:46 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:18:46 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:18:46 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:18:46 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:18:57 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:18:57 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:18:57 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:18:57 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:18:57 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:18:57 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:19:27 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:19:27 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:19:27 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:19:27 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:19:27 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:19:27 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 21:24:55 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 21:24:55 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 21:24:55 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 26
+[01-May-2024 21:24:55 UTC] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/include/input-validation.php on line 62
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 195
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbMessages.php on line 287
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'fgp'@'localhost' (using password: YES) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 32
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php on line 33
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 175
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 176
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 177
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbinfo.php:32) in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 36
+[01-May-2024 17:24:55 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:24:55 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:26:18 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:26:18 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:27:42 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[01-May-2024 17:27:42 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[01-May-2024 21:28:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function connect() in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyAccounts.php:24
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyAccounts.php on line 24
+[01-May-2024 21:40:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ';' or ',' in /home/customer/www/jenniferp97.sg-host.com/public_html/listVendors.php on line 28
+[01-May-2024 21:40:45 UTC] PHP Parse error:  syntax error, unexpected 'SELECT' (T_STRING), expecting ';' or ',' in /home/customer/www/jenniferp97.sg-host.com/public_html/viewAdmin.php on line 40
+[01-May-2024 17:41:00 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 14
+[01-May-2024 17:41:00 America/New_York] PHP Notice:  Undefined variable: person in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 27
+[01-May-2024 17:41:21 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 14
+[01-May-2024 17:41:21 America/New_York] PHP Notice:  Undefined variable: person in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 27
+[01-May-2024 17:42:26 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 14
+[01-May-2024 17:42:26 America/New_York] PHP Notice:  Undefined variable: person in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 27
+[01-May-2024 17:42:53 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 14
+[01-May-2024 17:45:39 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 17:46:11 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 17:46:18 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 17:46:27 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 17:47:36 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:47:36 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:47:43 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:47:43 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:47:51 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:47:51 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:50:38 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getFreezerMeals() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:118
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 118
+[01-May-2024 17:50:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_first_name() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:54
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 54
+[01-May-2024 17:50:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_first_name() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php:79
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php on line 79
+[01-May-2024 17:50:54 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_first_name() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php:79
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php on line 79
+[01-May-2024 17:50:56 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:50:58 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:51:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:51:57 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php:42) in /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php on line 111
+[01-May-2024 17:51:57 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php on line 115
+[01-May-2024 17:52:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:52:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:52:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:52:26 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:52:28 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:52:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 17:53:59 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getFreezerMeals() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:118
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 118
+[01-May-2024 17:54:10 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 65
+[01-May-2024 17:54:59 America/New_York] PHP Warning:  implode(): Invalid arguments passed in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 53
+[01-May-2024 17:55:16 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:55:16 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:55:26 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 17:55:26 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 17:59:11 America/New_York] PHP Warning:  implode(): Invalid arguments passed in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 53
+[01-May-2024 18:00:16 America/New_York] PHP Warning:  implode(): Invalid arguments passed in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 53
+[01-May-2024 18:00:48 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 18:01:56 America/New_York] PHP Warning:  implode(): Invalid arguments passed in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbPersons.php on line 53
+[01-May-2024 18:02:04 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[01-May-2024 18:02:04 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[01-May-2024 18:02:07 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php:42) in /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php on line 111
+[01-May-2024 18:02:07 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php on line 115
+[01-May-2024 22:07:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function connect() in /home/customer/www/jenniferp97.sg-host.com/public_html/familyServiceDoc.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyServiceDoc.php on line 5
+[01-May-2024 22:07:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function connect() in /home/customer/www/jenniferp97.sg-host.com/public_html/familyServiceDoc.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyServiceDoc.php on line 5
+[01-May-2024 22:08:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function connect() in /home/customer/www/jenniferp97.sg-host.com/public_html/familyServiceDoc.php:5
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyServiceDoc.php on line 5
+[01-May-2024 18:12:01 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[01-May-2024 18:12:01 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[01-May-2024 18:15:38 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 79
+[01-May-2024 18:18:00 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[01-May-2024 18:18:00 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[01-May-2024 18:18:31 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 22:20:56 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 177
+[01-May-2024 18:28:04 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getFreezerMeals() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:118
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 118
+[01-May-2024 22:39:19 UTC] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF), expecting end of file in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 179
+[01-May-2024 18:59:25 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 19:24:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_first_name() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php:79
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php on line 79
+[01-May-2024 19:25:12 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_first_name() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php:79
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php on line 79
+[01-May-2024 19:26:26 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[01-May-2024 19:28:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getFreezerMeals() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:118
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 118
+[01-May-2024 19:28:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 65
+[01-May-2024 19:31:37 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_first_name() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php:79
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/familyInfo.php on line 79
+[01-May-2024 23:31:38 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/customer/www/jenniferp97.sg-host.com/public_html/approve.php on line 45
+[01-May-2024 23:33:29 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/customer/www/jenniferp97.sg-host.com/public_html/approve.php on line 45
+[01-May-2024 23:33:54 UTC] PHP Parse error:  syntax error, unexpected 'familyInfo' (T_STRING), expecting ';' or ',' in /home/customer/www/jenniferp97.sg-host.com/public_html/approve.php on line 45
+[01-May-2024 23:34:21 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/customer/www/jenniferp97.sg-host.com/public_html/approve.php on line 45
+[01-May-2024 23:36:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/addVendors.php:1) in /home/customer/www/jenniferp97.sg-host.com/public_html/addVendors.php on line 27
+[01-May-2024 23:36:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/addVendors.php:1) in /home/customer/www/jenniferp97.sg-host.com/public_html/addVendors.php on line 27
+[01-May-2024 19:47:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:15 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:16 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:17 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:48:57 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:50:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:50:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[01-May-2024 19:50:59 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[02-May-2024 01:53:15 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[02-May-2024 11:15:32 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 10
+[02-May-2024 11:15:32 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 11
+[02-May-2024 11:15:32 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 12
+[02-May-2024 11:35:29 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[02-May-2024 11:36:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getFreezerMeals() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:118
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 118
+[02-May-2024 11:41:34 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[02-May-2024 11:41:34 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[02-May-2024 11:42:45 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[02-May-2024 11:42:45 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[02-May-2024 11:43:36 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php:42) in /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php on line 111
+[02-May-2024 11:43:36 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/commCare.php on line 115
+[02-May-2024 11:44:35 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[02-May-2024 11:44:35 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[02-May-2024 11:44:47 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[02-May-2024 11:44:47 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[02-May-2024 11:44:51 America/New_York] PHP Notice:  Undefined variable: user in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 53
+[02-May-2024 11:45:39 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[02-May-2024 11:45:39 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[02-May-2024 11:45:53 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php:38) in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 200
+[02-May-2024 11:45:53 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/pointsProg.php on line 204
+[02-May-2024 15:49:25 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 32
+[02-May-2024 13:48:06 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[02-May-2024 13:48:27 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[02-May-2024 14:20:11 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:21:00 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:21:00 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:21:00 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:21:29 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:21:29 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:21:29 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:21:34 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:21:34 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:21:34 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:22:00 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:22:00 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:22:00 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:22:44 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:22:44 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:22:44 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:23:01 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:23:01 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:23:01 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:23:55 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:23:55 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:23:55 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 4
+[02-May-2024 14:24:17 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:24:17 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 3
+[02-May-2024 14:24:25 America/New_York] PHP Notice:  Undefined index: viewpointsprog.php in /home/customer/www/jenniferp97.sg-host.com/public_html/header.php on line 123
+[02-May-2024 14:26:28 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:26:40 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:26:44 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:26:56 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:26:57 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:27:02 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:28:25 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:28:33 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:30:01 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 186
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: address in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 94
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 95
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: address in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 94
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 95
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: address in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 94
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 95
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: address in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 94
+[02-May-2024 14:30:03 America/New_York] PHP Notice:  Undefined variable: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 95
+[02-May-2024 18:32:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function retrieve_person() in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php:24
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php on line 24
+[02-May-2024 14:32:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getFreezerMeals() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:118
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 118
+[02-May-2024 14:33:15 America/New_York] PHP Notice:  Undefined variable: address in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 13
+[02-May-2024 14:33:15 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 13
+[02-May-2024 14:33:15 America/New_York] PHP Notice:  Undefined variable: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:33:15 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:34:19 America/New_York] PHP Notice:  Undefined index: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:37:15 America/New_York] PHP Notice:  Undefined index: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:39:36 America/New_York] PHP Notice:  Undefined index: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:39:38 America/New_York] PHP Notice:  Undefined index: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:39:44 America/New_York] PHP Notice:  Undefined index: phone_number in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 92
+[02-May-2024 14:40:56 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 18:42:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function retrieve_person() in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:43
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 43
+[02-May-2024 14:43:13 America/New_York] PHP Warning:  session_cache_expire(): Cannot change cache expire when session is active in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 2
+[02-May-2024 14:43:13 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 3
+[02-May-2024 14:43:36 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:44:23 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:44:55 America/New_York] PHP Parse error:  syntax error, unexpected '$query' (T_VARIABLE) in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 15
+[02-May-2024 14:46:18 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 126
+[02-May-2024 14:46:52 America/New_York] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC), expecting ';' or ',' in /home/customer/www/jenniferp97.sg-host.com/public_html/domain/Volunteer.php on line 11
+[02-May-2024 14:47:46 America/New_York] PHP Notice:  Undefined variable: pointsProg in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 74
+[02-May-2024 14:47:46 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getSportsFan() on null in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php:74
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php(133): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 74
+[02-May-2024 14:47:53 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:48:54 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 126
+[02-May-2024 14:49:02 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 126
+[02-May-2024 14:49:06 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 126
+[02-May-2024 14:49:11 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 126
+[02-May-2024 14:49:12 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php on line 126
+[02-May-2024 14:51:48 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:52:00 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:55:27 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:55:45 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:56:10 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 14:59:19 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 15:04:11 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 15:04:56 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 15:05:05 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 15:05:24 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 15:09:10 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 76
+[02-May-2024 15:09:10 America/New_York] PHP Warning:  Illegal string offset 'first-name' in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 10
+[02-May-2024 15:09:10 America/New_York] PHP Warning:  Illegal string offset 'last-name' in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 11
+[02-May-2024 15:09:10 America/New_York] PHP Warning:  Illegal string offset 'email' in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 12
+[02-May-2024 15:09:10 America/New_York] PHP Warning:  Illegal string offset 'address' in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 13
+[02-May-2024 15:09:10 America/New_York] PHP Warning:  Illegal string offset 'phoneNumber' in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 15:10:51 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:10:51 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:10:51 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:10:51 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 75
+[02-May-2024 15:10:51 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 76
+[02-May-2024 15:16:23 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:16:23 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:16:23 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:16:23 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 71
+[02-May-2024 15:16:23 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 72
+[02-May-2024 15:20:11 America/New_York] PHP Notice:  Undefined index: volunteerID in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:20:11 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:20:11 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:20:11 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 71
+[02-May-2024 15:20:11 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 72
+[02-May-2024 15:20:11 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 73
+[02-May-2024 15:20:15 America/New_York] PHP Notice:  Undefined index: volunteerID in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:20:15 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:20:15 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:20:15 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 71
+[02-May-2024 15:20:15 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 72
+[02-May-2024 15:20:15 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 73
+[02-May-2024 15:21:01 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:21:01 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:21:01 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:21:01 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 75
+[02-May-2024 15:21:01 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 76
+[02-May-2024 15:22:15 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:22:15 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:22:15 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:22:15 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 75
+[02-May-2024 15:22:15 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 76
+[02-May-2024 15:23:25 America/New_York] PHP Notice:  Undefined index: first-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 68
+[02-May-2024 15:23:25 America/New_York] PHP Notice:  Undefined index: last-name in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 69
+[02-May-2024 15:23:25 America/New_York] PHP Notice:  Undefined index: email in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 70
+[02-May-2024 15:23:25 America/New_York] PHP Notice:  Undefined index: address in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 71
+[02-May-2024 15:23:25 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/register.php on line 72
+[02-May-2024 16:20:29 America/New_York] PHP Notice:  Undefined index: addres in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 13
+[02-May-2024 16:20:29 America/New_York] PHP Notice:  Undefined index: phoneNumber in /home/customer/www/jenniferp97.sg-host.com/public_html/database/dbAddVolunteer.php on line 14
+[02-May-2024 19:22:47 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[02-May-2024 19:40:11 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[03-May-2024 00:39:12 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:43) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 32
+[03-May-2024 00:39:12 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php:65
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php(123): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 65
+[03-May-2024 00:39:17 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:43) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 32
+[03-May-2024 00:39:17 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php:65
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php(123): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 65
+[03-May-2024 00:39:20 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:43) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 32
+[03-May-2024 00:39:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php:65
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php(123): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 65
+[03-May-2024 00:39:23 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:43) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 32
+[03-May-2024 00:39:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php:65
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php(123): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 65
+[03-May-2024 00:39:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 97
+[03-May-2024 00:40:02 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php:43) in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 32
+[03-May-2024 00:40:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php:65
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCare.php(123): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewFamilyCommCareForm.php on line 65
+[03-May-2024 13:14:18 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[03-May-2024 14:41:01 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/viewPointsProgForm.php on line 97
+[03-May-2024 14:41:39 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[03-May-2024 15:04:54 America/New_York] PHP Notice:  Undefined variable: loggedIn in /home/customer/www/jenniferp97.sg-host.com/public_html/modifyAdminForm.php on line 13
+[03-May-2024 15:46:28 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function get_id() on bool in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/jenniferp97.sg-host.com/public_html/index.php on line 22
+[03-Jun-2024 16:29:22 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 39
+[03-Jun-2024 16:29:22 America/New_York] PHP Notice:  Trying to access array offset on value of type bool in /home/customer/www/jenniferp97.sg-host.com/public_html/login.php on line 40
+[03-Jun-2024 19:42:24 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[04-Jun-2024 16:08:17 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[04-Jun-2024 16:08:30 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[04-Jun-2024 16:08:38 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Jun-2024 15:29:59 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Jun-2024 15:30:01 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Jun-2024 15:30:04 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Jun-2024 15:30:07 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Jun-2024 15:30:09 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Jun-2024 15:30:10 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[10-Jun-2024 14:23:58 America/New_York] PHP Fatal error:  Uncaught TypeError: mysqli_real_escape_string(): Argument #1 ($mysql) must be of type mysqli, null given in /home/customer/www/fgpfamily.org/public_html/modifyFamily.php:46
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/modifyFamily.php(46): mysqli_real_escape_string(NULL, '1306 Greenfield...')
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/modifyFamily.php on line 46
+[14-Jun-2024 08:17:44 America/New_York] PHP Warning:  Undefined variable $snacks in /home/customer/www/fgpfamily.org/public_html/pointsProg.php on line 189
+[14-Jun-2024 08:17:44 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/fgpfamily.org/public_html/pointsProg.php:38) in /home/customer/www/fgpfamily.org/public_html/pointsProg.php on line 200
+[14-Jun-2024 08:17:44 America/New_York] PHP Warning:  Undefined variable $loggedIn in /home/customer/www/fgpfamily.org/public_html/pointsProg.php on line 204
+[07-Aug-2024 14:32:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php on line 97
+[07-Aug-2024 14:32:36 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/fgpfamily.org/public_html/viewFamilyCommCare.php:43) in /home/customer/www/fgpfamily.org/public_html/viewFamilyCommCareForm.php on line 32
+[07-Aug-2024 14:32:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getEmail() on bool in /home/customer/www/fgpfamily.org/public_html/viewFamilyCommCareForm.php:65
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewFamilyCommCare.php(123): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewFamilyCommCareForm.php on line 65
+[12-Aug-2024 11:24:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php on line 97
+[12-Aug-2024 11:24:54 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php on line 97
+[12-Aug-2024 11:25:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php on line 97
+[02-Oct-2024 05:54:03 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[02-Oct-2024 05:54:05 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[20-Oct-2024 02:15:20 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[20-Oct-2024 02:15:24 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[24-Oct-2024 07:21:33 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[24-Oct-2024 07:21:35 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[27-Oct-2024 12:40:30 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[27-Oct-2024 12:40:35 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Nov-2024 01:12:42 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[05-Nov-2024 01:12:45 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[07-Nov-2024 04:10:28 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[07-Nov-2024 04:10:36 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[08-Nov-2024 07:53:44 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[08-Nov-2024 07:53:49 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:18:46 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:20:08 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:22:47 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:23:08 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:26:44 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php on line 97
+[23-Dec-2024 14:27:16 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function getName() on bool in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php:97
+Stack trace:
+#0 /home/customer/www/fgpfamily.org/public_html/viewPointsProg.php(210): require_once()
+#1 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/viewPointsProgForm.php on line 97
+[23-Dec-2024 14:30:16 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:33:07 America/New_York] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given in /home/customer/www/fgpfamily.org/public_html/login.php:39
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/fgpfamily.org/public_html/login.php on line 39
+[23-Dec-2024 14:36:01 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/fgpfamily.org/public_html/pointsProg.php:38) in /home/customer/www/fgpfamily.org/public_html/pointsProg.php on line 181

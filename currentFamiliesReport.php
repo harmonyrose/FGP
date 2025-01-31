@@ -283,7 +283,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
             <!--<option value="Survivor"> Survivor </option>-->
             <option value="Stargazer"> Stargazer </option>
         </select>
-        <button type="submit" name="generate_csv"> Generate CVS </button>
+        <button type="submit" name="generate_csv"> Generate CSV </button>
         <br></br>
         <button type="submit" name="generate_csv_all">Generate CSV for All Families</button>
     </form>
